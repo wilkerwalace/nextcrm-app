@@ -5,6 +5,17 @@ All notable changes to NextCRM are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.4](https://github.com/wilkerwalace/nextcrm-app/compare/v0.12.3...v0.12.4) (2026-06-16)
+
+
+### Bug Fixes
+
+* add canvas native build deps + runtime libs (alpine) ([457907c](https://github.com/wilkerwalace/nextcrm-app/commit/457907ce829585819f809393180170ce54e90be8))
+* **db:** drop legacy 0_init Invoices before invoices_module (upstream drift) ([631d458](https://github.com/wilkerwalace/nextcrm-app/commit/631d458b849ae4c7a83d06014f9ddfe62797b68a))
+* pin pnpm@9 (v11 dropped pnpm field) and restore original lockfile ([1f08ce2](https://github.com/wilkerwalace/nextcrm-app/commit/1f08ce20eeccb83a2e590ad603374503485991d3))
+* regenerate pnpm-lock.yaml to match package.json overrides ([3941442](https://github.com/wilkerwalace/nextcrm-app/commit/39414422685b2ae67c8b8ef2b03e7466566417c2))
+* set NEXT_PUBLIC_APP_URL at build (metadataBase Invalid URL on sign-in) ([8b4220f](https://github.com/wilkerwalace/nextcrm-app/commit/8b4220fcde1be71fc420d0dfc296d3839f907087))
+
 ## [0.12.3](https://github.com/pdovhomilja/nextcrm-app/compare/v0.12.2...v0.12.3) (2026-06-13)
 
 
