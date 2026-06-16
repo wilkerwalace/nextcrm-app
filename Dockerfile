@@ -9,6 +9,7 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
+RUN apk add --no-cache python3 make g++ pkgconf cairo-dev pango-dev jpeg-dev giflib-dev librsvg-dev pixman-dev freetype-dev fontconfig-dev
 RUN pnpm install --frozen-lockfile
 
 # ============================================
@@ -46,6 +47,7 @@ ENV RESEND_API_KEY="re_placeholder_for_build"
 ENV SKIP_ENV_VALIDATION=1
 
 RUN pnpm prisma generate
+RUN apk add --no-cache cairo pango jpeg giflib librsvg pixman freetype fontconfig
 RUN pnpm next build
 
 # ============================================
@@ -53,7 +55,7 @@ RUN pnpm next build
 # ============================================
 FROM node:22-alpine AS runner
 
-RUN apk add --no-cache curl postgresql-client
+RUN apk add --no-cache curl postgresql-client cairo pango jpeg giflib librsvg pixman freetype fontconfig
 
 # Install Prisma CLI + tsx + dotenv into a SEPARATE /opt/tools directory.
 # This avoids conflicts with Next.js standalone node_modules (which has
