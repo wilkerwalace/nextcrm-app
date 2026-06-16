@@ -1,7 +1,7 @@
 {
   "RootLayout": {
-    "title": "NextCRM",
-    "description": "NextCRM je open source CRM vytvořené na frameworku NextJS."
+    "title": "AMZC CRM",
+    "description": "AMZC CRM je open source CRM vytvořené na frameworku NextJS."
   },
   "ModuleMenu": {
     "dashboard": "Přehled",
@@ -27,7 +27,7 @@
   },
   "DashboardPage": {
     "containerTitle": "Přehled",
-    "containerDescription": "Vítejte v NextCRM, zde můžete vidět všechny důležité informace o vašem podniku.",
+    "containerDescription": "Vítejte v AMZC CRM, zde můžete vidět všechny důležité informace o vašem podniku.",
     "totalRevenue": "Celkový obrat",
     "expectedRevenue": "Očekávaný obrat",
     "activeUsers": "Aktivní uživatelé",
@@ -48,7 +48,7 @@
     "cardTitle": "Vytvořit nový účet",
     "cardDescription": "Vytvořte si účet přihlášením pomocí",
     "label": "Jazyk",
-    "locale": "{locale, select, de {Němčina} en {Angličtina} cz {Čeština} uk {Ukrainian} other {Neznámý}}"
+    "locale": "{locale, select, de {Němčina} en {Angličtina} cz {Čeština} uk {Ukrainian} pt {Português (Brasil)} other {Neznámý}}"
   },
   "CrmModuleMenuComponent": {
     "menuTitle": "Obchod",
@@ -86,7 +86,8 @@
     "loadingModal": "Měním jazyk...",
     "success": "Jazyk změněn",
     "changedTo": "Jazyk změněn na {language}",
-    "error": "Chyba při změně jazyka"
+    "error": "Chyba při změně jazyka",
+    "portuguese": "Português (Brasil)"
   },
   "CrmPage": {
     "title": "CRM",

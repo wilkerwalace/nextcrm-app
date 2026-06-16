@@ -935,7 +935,7 @@ model Users {
   password         String?
   username         String?
   userStatus       ActiveStatus @default(PENDING)
-  userLanguage     Language     @default(en)
+  userLanguage     Language     @default(pt)
   banned           Boolean      @default(false)
   banReason        String?
   banExpires       DateTime?
@@ -1049,6 +1049,7 @@ enum Language {
   en
   de
   uk
+  pt
 }
 
 

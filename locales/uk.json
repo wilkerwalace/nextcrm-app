@@ -1,7 +1,7 @@
 {
   "RootLayout": {
-    "title": "NextCRM",
-    "description": "NextCRM — це CRM з відкритим вихідним кодом, створена на основі NextJS."
+    "title": "AMZC CRM",
+    "description": "AMZC CRM — це CRM з відкритим вихідним кодом, створена на основі NextJS."
   },
   "ModuleMenu": {
     "dashboard": "Панель приладів",
@@ -27,7 +27,7 @@
   "DashboardPage": {
     "containerTitle": "Панель приладів",
     "totalRevenue": "Загальна виручка",
-    "containerDescription": "Ласкаво просимо до NextCRM, тут Ви можете побачити всю важливу інформацію про ваш бізнес.",
+    "containerDescription": "Ласкаво просимо до AMZC CRM, тут Ви можете побачити всю важливу інформацію про ваш бізнес.",
     "expectedRevenue": "Очікуваний дохід",
     "activeUsers": "Активні користувачі",
     "accounts": "Компанії",
@@ -47,7 +47,7 @@
     "cardTitle": "Створити новий обліковий запис",
     "cardDescription": "Створіть обліковий запис, увійшовши за допомогою",
     "label": "Мова",
-    "locale": "{locale, select, de {German} en {Engish} cz {Czech} uk {Ukrainian} other {Unknown}}"
+    "locale": "{locale, select, de {German} en {Engish} cz {Czech} uk {Ukrainian} pt {Português (Brasil)} other {Unknown}}"
   },
   "CrmModuleMenuComponent": {
     "menuTitle": "Продажі"
@@ -82,7 +82,8 @@
     "loadingModal": "Змінюю мову...",
     "success": "Мову змінено",
     "changedTo": "Мову змінено на {language}",
-    "error": "Помилка зміни мови"
+    "error": "Помилка зміни мови",
+    "portuguese": "Português (Brasil)"
   },
   "CrmPage": {
     "title": "CRM",

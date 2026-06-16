@@ -21,6 +21,7 @@ export function LanguageForm({ userId }: { userId: string }) {
   const t = useTranslations("LanguageSelector");
 
   const languages = [
+    { label: t("portuguese"), value: "pt" },
     { label: t("english"), value: "en" },
     { label: t("czech"), value: "cz" },
     { label: t("german"), value: "de" },

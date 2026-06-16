@@ -121,6 +121,7 @@ export function InviteForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
+                  <SelectItem value="pt">Português (Brasil)</SelectItem>
                   <SelectItem value="en">English</SelectItem>
                   <SelectItem value="cz">Czech</SelectItem>
                 </SelectContent>

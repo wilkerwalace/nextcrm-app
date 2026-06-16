@@ -33,6 +33,9 @@ export const activateUser = async (userId: string) => {
       case "cz":
         message = `Váš účet v aplikaci ${process.env.NEXT_PUBLIC_APP_NAME} byl aktivován. \n\n Vaše uživatelské jméno je: ${user.email} \n\n  Prosím přihlašte se na ${process.env.NEXT_PUBLIC_APP_URL} \n\n Děkujeme \n\n ${process.env.NEXT_PUBLIC_APP_NAME}`;
         break;
+      case "pt":
+        message = `Sua conta no ${process.env.NEXT_PUBLIC_APP_NAME} foi ativada. \n\n Seu usuário é: ${user.email} \n\n Acesse ${process.env.NEXT_PUBLIC_APP_URL} para entrar. \n\n Obrigado \n\n ${process.env.NEXT_PUBLIC_APP_NAME}`;
+        break;
       default:
         message = `You account has been activated in ${process.env.NEXT_PUBLIC_APP_NAME} \n\n Your username is: ${user.email} \n\n Please login to ${process.env.NEXT_PUBLIC_APP_URL} \n\n Thank you \n\n ${process.env.NEXT_PUBLIC_APP_NAME}`;
         break;

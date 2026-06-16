@@ -47,6 +47,7 @@ ENV RESEND_API_KEY="re_placeholder_for_build"
 ENV SKIP_ENV_VALIDATION=1
 
 ENV NEXT_PUBLIC_APP_URL="https://crm.amzc.tech"
+ENV NEXT_PUBLIC_APP_NAME="AMZC CRM"
 RUN pnpm prisma generate
 RUN apk add --no-cache cairo pango jpeg giflib librsvg pixman freetype fontconfig
 RUN pnpm next build

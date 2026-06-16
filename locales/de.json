@@ -1,7 +1,7 @@
 {
   "RootLayout": {
-    "title": "NextCRM",
-    "description": "Willkommen bei NextCRM CRM mit Prisma und Next.js 13"
+    "title": "AMZC CRM",
+    "description": "Willkommen bei AMZC CRM CRM mit Prisma und Next.js 13"
   },
   "ModuleMenu": {
     "dashboard": "Dashboard",
@@ -27,7 +27,7 @@
   "DashboardPage": {
     "containerTitle": "Dashboard",
     "totalRevenue": "Gesamtumsatz",
-    "containerDescription": "Willkommen bei NextCRM, hier können Sie alle wichtigen Informationen über Ihr Unternehmen sehen.",
+    "containerDescription": "Willkommen bei AMZC CRM, hier können Sie alle wichtigen Informationen über Ihr Unternehmen sehen.",
     "expectedRevenue": "Erwarteter Umsatz",
     "activeUsers": "Aktive Benutzer",
     "accounts": "Unternehmen",
@@ -47,7 +47,7 @@
     "cardTitle": "Neuen Account erstellen",
     "cardDescription": "Erstellen Sie ein Konto, indem Sie sich anmelden mit",
     "label": "Sprache",
-    "locale": "{locale, select, de {Deutsch} en {Englisch} cz {Tschechisch} uk {Ukrainian} other {Unbekannt}}"
+    "locale": "{locale, select, de {Deutsch} en {Englisch} cz {Tschechisch} uk {Ukrainian} pt {Português (Brasil)} other {Unbekannt}}"
   },
   "CrmModuleMenuComponent": {
     "menuTitle": "Handel"
@@ -82,7 +82,8 @@
     "loadingModal": "Sprache wird geändert...",
     "success": "Sprache geändert",
     "changedTo": "Sprache geändert zu {language}",
-    "error": "Fehler beim Ändern der Sprache"
+    "error": "Fehler beim Ändern der Sprache",
+    "portuguese": "Português (Brasil)"
   },
   "CrmPage": {
     "title": "CRM",
