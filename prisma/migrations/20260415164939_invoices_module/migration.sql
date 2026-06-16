@@ -1,3 +1,6 @@
+-- Fix (fork): remove a tabela Invoices legada criada no 0_init (conflito upstream)
+DROP TABLE IF EXISTS "Invoices" CASCADE;
+
 -- CreateEnum
 CREATE TYPE "Invoice_Status" AS ENUM ('DRAFT', 'ISSUED', 'SENT', 'PARTIALLY_PAID', 'PAID', 'OVERDUE', 'CANCELLED', 'DISPUTED', 'REFUNDED', 'WRITTEN_OFF');
 
