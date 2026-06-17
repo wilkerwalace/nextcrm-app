@@ -94,7 +94,7 @@ export function CommandComponent() {
             </CommandItem>
             <CommandItem>
               <Smile className="mr-2 h-4 w-4" />
-              <span>Search Emoji</span>
+              <span>Buscar emoji</span>
             </CommandItem>
             <CommandItem>
               <Calculator className="mr-2 h-4 w-4" />

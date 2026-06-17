@@ -91,7 +91,7 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to get presigned URL");
+      if (!res.ok) throw new Error("Falha ao obter URL pré-assinada");
       const { presignedUrl, fileUrl, key } = await res.json();
 
       updateFile(index, { progress: 30 });

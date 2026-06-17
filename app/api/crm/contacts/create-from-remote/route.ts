@@ -43,7 +43,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.log("Error creating contact:", error);
     return NextResponse.json(
-      { error: "Error creating contact" },
+      { error: "Erro ao criar contato" },
       { status: 500 }
     );
   }

@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     } catch (error) {
       console.log(error);
       return NextResponse.json(
-        { message: "Error creating new lead" },
+        { message: "Erro ao criar lead" },
         { status: 500 }
       );
     }

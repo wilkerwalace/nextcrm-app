@@ -69,12 +69,12 @@ export function DataTableRowActions<TData>({
     try {
       const result = await watchAccount(account.id);
       if (result.error) {
-        toast.error("Error");
+        toast.error("Erro");
       } else {
         toast.success(`Você agora acompanha a empresa: ${account.name}`);
       }
     } catch (error) {
-      toast.error("Error");
+      toast.error("Erro");
       console.log(error);
     } finally {
       setLoading(false);
@@ -86,12 +86,12 @@ export function DataTableRowActions<TData>({
     try {
       const result = await unwatchAccount(account.id);
       if (result.error) {
-        toast.error("Error");
+        toast.error("Erro");
       } else {
         toast.success(`Você não acompanha mais a empresa: ${account.name}`);
       }
     } catch (error) {
-      toast.error("Error");
+      toast.error("Erro");
       console.log(error);
     } finally {
       setLoading(false);
