@@ -50,9 +50,9 @@ const statusVariant: Record<string, "default" | "secondary" | "destructive"> = {
 };
 
 const statusLabel: Record<string, string> = {
-  DRAFT: "Draft",
-  ACTIVE: "Active",
-  ARCHIVED: "Archived",
+  DRAFT: "Rascunho",
+  ACTIVE: "Ativo",
+  ARCHIVED: "Arquivado",
 };
 
 export function BasicView({ data }: BasicViewProps) {
@@ -76,7 +76,7 @@ export function BasicView({ data }: BasicViewProps) {
         <Card>
           <CardHeader className="pb-3">
             <div className="flex w-full justify-between items-start">
-              <CardTitle>Product Information</CardTitle>
+              <CardTitle>Informações do produto</CardTitle>
               <Badge variant={statusVariant[data.status] ?? "secondary"}>
                 {statusLabel[data.status] ?? data.status}
               </Badge>
@@ -87,7 +87,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Package className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Name</p>
+                  <p className="text-sm font-medium leading-none">Nome</p>
                   <p className="text-sm text-muted-foreground">{data.name}</p>
                 </div>
               </div>
@@ -105,7 +105,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <List className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Type</p>
+                  <p className="text-sm font-medium leading-none">Tipo</p>
                   <p className="text-sm text-muted-foreground">
                     {data.type ?? "N/A"}
                   </p>
@@ -115,7 +115,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <List className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Category</p>
+                  <p className="text-sm font-medium leading-none">Categoria</p>
                   <p className="text-sm text-muted-foreground">
                     {data.category?.name ?? "N/A"}
                   </p>
@@ -125,7 +125,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <FileText className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Description</p>
+                  <p className="text-sm font-medium leading-none">Descrição</p>
                   <p className="text-sm text-muted-foreground">
                     {data.description ?? "N/A"}
                   </p>
@@ -135,7 +135,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created By</p>
+                  <p className="text-sm font-medium leading-none">Criado por</p>
                   <p className="text-sm text-muted-foreground">
                     {data.created_by_user?.name ?? "N/A"}
                   </p>
@@ -145,13 +145,13 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created</p>
+                  <p className="text-sm font-medium leading-none">Criado</p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.createdAt)}
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Last Update</p>
+                  <p className="text-sm font-medium leading-none">Última atualização</p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.updatedAt)}
                   </p>
@@ -164,14 +164,14 @@ export function BasicView({ data }: BasicViewProps) {
         {/* Pricing */}
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Pricing</CardTitle>
+            <CardTitle>Preços</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-1">
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Unit Price</p>
+                  <p className="text-sm font-medium leading-none">Preço unitário</p>
                   <p className="text-sm text-muted-foreground">
                     {formatValue(data.unit_price)}
                   </p>
@@ -181,7 +181,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Unit Cost</p>
+                  <p className="text-sm font-medium leading-none">Custo unitário</p>
                   <p className="text-sm text-muted-foreground">
                     {formatValue(data.unit_cost)}
                   </p>
@@ -191,7 +191,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Percent className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Margin</p>
+                  <p className="text-sm font-medium leading-none">Margem</p>
                   <p className="text-sm text-muted-foreground">
                     {marginPercentage != null ? `${marginPercentage}%` : "N/A"}
                   </p>
@@ -201,7 +201,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Percent className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Tax Rate</p>
+                  <p className="text-sm font-medium leading-none">Alíquota de imposto</p>
                   <p className="text-sm text-muted-foreground">
                     {data.tax_rate != null ? `${data.tax_rate}%` : "N/A"}
                   </p>
@@ -211,7 +211,7 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Ruler className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Unit</p>
+                  <p className="text-sm font-medium leading-none">Unidade</p>
                   <p className="text-sm text-muted-foreground">
                     {data.unit ?? "N/A"}
                   </p>
@@ -221,9 +221,9 @@ export function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Repeat className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Recurring</p>
+                  <p className="text-sm font-medium leading-none">Recorrente</p>
                   <p className="text-sm text-muted-foreground">
-                    {data.is_recurring ? "Yes" : "No"}
+                    {data.is_recurring ? "Sim" : "Não"}
                   </p>
                 </div>
               </div>
@@ -233,7 +233,7 @@ export function BasicView({ data }: BasicViewProps) {
                   <Repeat className="mt-px h-5 w-5" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
-                      Billing Period
+                      Período de cobrança
                     </p>
                     <p className="text-sm text-muted-foreground">
                       {data.billing_period}

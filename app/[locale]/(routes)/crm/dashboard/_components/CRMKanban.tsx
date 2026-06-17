@@ -113,7 +113,7 @@ function OpportunityCard({ opportunity, router, onThumbsDown, stage, salesStages
                     router.push(`/crm/opportunities/${opportunity.id}`)
                   }
                 >
-                  View
+                  Visualizar
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -133,11 +133,11 @@ function OpportunityCard({ opportunity, router, onThumbsDown, stage, salesStages
             </HoverCard>
           </div>
           <div className="space-x-1">
-            <span>Amount:</span>
+            <span>Valor:</span>
             <span>{opportunity.budget?.toString()}</span>
           </div>
           <div className="space-x-1">
-            <span>Expected closing:</span>
+            <span>Fechamento previsto:</span>
             <span
               className={
                 opportunity.close_date &&
@@ -338,11 +338,11 @@ const CRMKanban = ({
         columnsRef.current = initColumns(data, salesStages);
         setColumns(initColumns(data, salesStages));
       } else {
-        toast.success("Opportunity stage changed");
+        toast.success("Estágio da oportunidade alterado");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("Algo deu errado");
       columnsRef.current = initColumns(data, salesStages);
       setColumns(initColumns(data, salesStages));
     }
@@ -351,7 +351,7 @@ const CRMKanban = ({
   const onThumbsDown = async (opportunityId: string) => {
     try {
       await setInactiveOpportunity(opportunityId);
-      toast.success("Opportunity has been set to inactive");
+      toast.success("A oportunidade foi marcada como inativa");
     } catch (error) {
       console.log(error);
     } finally {
@@ -429,7 +429,7 @@ const CRMKanban = ({
           {/* Lost Opportunities Column */}
           <Card className="mx-1 w-full min-w-[300px] overflow-hidden pb-10">
             <CardTitle className="flex gap-2 p-3 justify-between">
-              <span className="text-sm font-bold">Lost</span>
+              <span className="text-sm font-bold">Perdidas</span>
             </CardTitle>
             <CardContent className="w-full h-full overflow-y-scroll space-y-2">
               {lostOpportunities.map((opportunity: any, index: number) => (
@@ -441,11 +441,11 @@ const CRMKanban = ({
                     <div className="flex flex-col space-y-1">
                       <div>{opportunity.description?.substring(0, 200)}</div>
                       <div className="space-x-1">
-                        <span>Amount:</span>
+                        <span>Valor:</span>
                         <span>{opportunity.budget?.toString()}</span>
                       </div>
                       <div className="space-x-1">
-                        <span>Expected closing:</span>
+                        <span>Fechamento previsto:</span>
                         <span
                           className={
                             opportunity.close_date &&

@@ -116,7 +116,7 @@ function TaskItem({ task, onDelete, onDone, onEdit, router }: any) {
     >
       <div className="flex flex-row justify-between mx-auto w-full py-1">
         <h2 className="grow font-bold text-sm ">
-          {task.title === "" ? "Untitled" : task.title}
+          {task.title === "" ? "Sem título" : task.title}
         </h2>
         <div className="ml-1">
           {task?.dueDateAt &&
@@ -127,7 +127,7 @@ function TaskItem({ task, onDelete, onDone, onEdit, router }: any) {
                   <ExclamationTriangleIcon className="w-4 h-4 text-red-500" />
                 </HoverCardTrigger>
                 <HoverCardContent>
-                  Attention! This task is overdue!
+                  Atenção! Esta tarefa está atrasada!
                 </HoverCardContent>
               </HoverCard>
             )}
@@ -136,7 +136,7 @@ function TaskItem({ task, onDelete, onDone, onEdit, router }: any) {
               <HoverCardTrigger>
                 <Check className="w-4 h-4 text-green-500" />
               </HoverCardTrigger>
-              <HoverCardContent>This task is done!</HoverCardContent>
+              <HoverCardContent>Esta tarefa está concluída!</HoverCardContent>
             </HoverCard>
           )}
         </div>
@@ -150,12 +150,12 @@ function TaskItem({ task, onDelete, onDone, onEdit, router }: any) {
               onClick={() => router.push(`/projects/tasks/viewtask/${task.id}`)}
             >
               <EyeIcon className="w-4 h-4 opacity-50" />
-              View
+              Ver
             </DropdownMenuItem>
             {task.taskStatus !== "COMPLETE" && (
               <DropdownMenuItem className="gap-2" onClick={() => onEdit(task)}>
                 <Pencil className="w-4 h-4 opacity-50" />
-                Edit
+                Editar
               </DropdownMenuItem>
             )}
             {task.taskStatus !== "COMPLETE" && (
@@ -164,18 +164,18 @@ function TaskItem({ task, onDelete, onDone, onEdit, router }: any) {
                 onClick={() => onDone(task.id)}
               >
                 <Check className="w-4 h-4 opacity-50" />
-                Mark as done
+                Marcar como concluída
               </DropdownMenuItem>
             )}
             <DropdownMenuItem className="gap-2" onClick={() => onDelete(task)}>
               <TrashIcon className="w-4 h-4 opacity-50" />
-              Delete
+              Excluir
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
       <div className="py-1">
-        Due date: {moment(task.dueDateAt).format("YYYY-MM-DD")}
+        Data de vencimento: {moment(task.dueDateAt).format("YYYY-MM-DD")}
       </div>
       <div className="my-2">
         <p
@@ -189,7 +189,7 @@ function TaskItem({ task, onDelete, onDone, onEdit, router }: any) {
               : `text-slate-600`
           }
         >
-          Priorita: {task.priority}
+          Prioridade: {task.priority}
         </p>
       </div>
       <HoverCard>
@@ -355,7 +355,7 @@ const Kanban = (props: any) => {
           destinationSectionId: destSection.id,
         });
       } catch (err) {
-        toast.error("Failed to update task position");
+        toast.error("Falha ao atualizar a posição da tarefa");
         setData(props.data);
       }
       return;
@@ -377,7 +377,7 @@ const Kanban = (props: any) => {
         destinationSectionId: curSectionId,
       });
     } catch (err) {
-      toast.error("Failed to update task position");
+      toast.error("Falha ao atualizar a posição da tarefa");
       setData(props.data);
     }
   };
@@ -391,10 +391,10 @@ const Kanban = (props: any) => {
       } else {
         const newData = [...data].filter((e) => e.id !== sectionId);
         setData(newData);
-        toast.success("Section deleted successfully");
+        toast.success("Seção excluída com sucesso");
       }
     } catch (err) {
-      toast.error("Something went wrong, during deleting section");
+      toast.error("Algo deu errado ao excluir a seção");
     } finally {
       setIsLoadingSection(false);
       setSectionId(null);
@@ -417,7 +417,7 @@ const Kanban = (props: any) => {
       try {
         const result = await updateSectionTitle({ sectionId, newTitle });
         if (result?.success) {
-          toast.success("New section title saved in database");
+          toast.success("Novo título da seção salvo no banco de dados");
         }
       } catch (err) {
         alert(err);
@@ -431,10 +431,10 @@ const Kanban = (props: any) => {
         boardId,
         section: sectionId,
       });
-      toast.success("New task saved in database");
+      toast.success("Nova tarefa salva no banco de dados");
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong, during creating task");
+      toast.error("Algo deu errado ao criar a tarefa");
     } finally {
       setIsLoading(false);
       router.refresh();
@@ -445,9 +445,9 @@ const Kanban = (props: any) => {
     setIsLoading(true);
     try {
       await markTaskDone(id);
-      toast.success("Success");
+      toast.success("Sucesso");
     } catch (error) {
-      toast.error("Error");
+      toast.error("Erro");
     } finally {
       setIsLoading(false);
       router.refresh();
@@ -458,7 +458,7 @@ const Kanban = (props: any) => {
     setOpen(false);
     setIsLoading(true);
     if (!selectedTask || !selectedTask.id || !selectedTask.section) {
-      toast.error("Invalid task. Please select a valid task to delete.");
+      toast.error("Tarefa inválida. Selecione uma tarefa válida para excluir.");
       setIsLoading(false);
       return;
     }
@@ -470,11 +470,11 @@ const Kanban = (props: any) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success("Task deleted successfully");
+        toast.success("Tarefa excluída com sucesso");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong, during deleting task");
+      toast.error("Algo deu errado ao excluir a tarefa");
     } finally {
       setIsLoading(false);
       router.refresh();
@@ -510,9 +510,9 @@ const Kanban = (props: any) => {
         >
           <DialogContent>
             <DialogHeader>
-              <DialogTitle className="p-2">Create new section</DialogTitle>
+              <DialogTitle className="p-2">Criar nova seção</DialogTitle>
               <DialogDescription className="p-2">
-                Fill out the form below to create a new section to this project.
+                Preencha o formulário abaixo para criar uma nova seção neste projeto.
               </DialogDescription>
             </DialogHeader>
             <NewSectionForm
@@ -528,9 +528,9 @@ const Kanban = (props: any) => {
         >
           <SheetContent className="max-w-3xl overflow-y-auto">
             <SheetHeader>
-              <SheetTitle>Update Task</SheetTitle>
+              <SheetTitle>Atualizar tarefa</SheetTitle>
               <SheetDescription>
-                Edit task details including title, description, due date, priority, and assignments
+                Edite os detalhes da tarefa, incluindo título, descrição, data de vencimento, prioridade e atribuições
               </SheetDescription>
             </SheetHeader>
             <div className="mt-6 space-y-4">
@@ -545,7 +545,7 @@ const Kanban = (props: any) => {
         </Sheet>
 
         <div className="p-2 text-xs">
-          <p>{data?.length} Sections</p>
+          <p>{data?.length} Seções</p>
         </div>
 
         <DndContext
@@ -638,7 +638,7 @@ const Kanban = (props: any) => {
             {activeTask ? (
               <div className="flex flex-col overflow-hidden items-start justify-center text-xs p-3 mb-2  rounded-md border  shadow-md opacity-80 bg-white">
                 <h2 className="font-bold text-sm">
-                  {activeTask.title === "" ? "Untitled" : activeTask.title}
+                  {activeTask.title === "" ? "Sem título" : activeTask.title}
                 </h2>
               </div>
             ) : null}

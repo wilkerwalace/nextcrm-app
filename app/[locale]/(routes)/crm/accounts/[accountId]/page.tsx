@@ -93,17 +93,17 @@ const AccountDetailPage = async (props: AccountDetailPageProps) => {
     .filter((p) => p.status === "ACTIVE")
     .map((p) => ({ id: p.id, name: p.name, currency: p.currency }));
 
-  if (!account) return <div>Account not found</div>;
+  if (!account) return <div>Empresa não encontrada</div>;
 
   return (
     <Container
-      title={`Account: ${account?.name}`}
-      description={"Everything you need to know about sales potential"}
+      title={`Empresa: ${account?.name}`}
+      description={"Tudo o que você precisa saber sobre o potencial de vendas"}
     >
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <div className="space-y-5">

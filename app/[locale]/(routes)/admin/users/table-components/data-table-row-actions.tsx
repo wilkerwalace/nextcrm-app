@@ -42,7 +42,7 @@ export function DataTableRowActions<TData>({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("The URL has been copied to your clipboard.");
+    toast.success("A URL foi copiada para a área de transferência.");
   };
 
   const onDelete = async () => {
@@ -54,9 +54,9 @@ export function DataTableRowActions<TData>({
         return;
       }
       router.refresh();
-      toast.success("User has been deleted");
+      toast.success("Usuário excluído");
     } catch (error) {
-      toast.error("Something went wrong: " + error + ". Please try again.");
+      toast.error("Algo deu errado: " + error + ". Tente novamente.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -72,9 +72,9 @@ export function DataTableRowActions<TData>({
         return;
       }
       router.refresh();
-      toast.success("User has been activated.");
+      toast.success("Usuário ativado.");
     } catch (error) {
-      toast.error("Something went wrong while activating user. Please try again.");
+      toast.error("Algo deu errado ao ativar o usuário. Tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -89,9 +89,9 @@ export function DataTableRowActions<TData>({
         return;
       }
       router.refresh();
-      toast.success("User has been deactivated.");
+      toast.success("Usuário desativado.");
     } catch (error) {
-      toast.error("Something went wrong while deactivating user. Please try again.");
+      toast.error("Algo deu errado ao desativar o usuário. Tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -106,9 +106,9 @@ export function DataTableRowActions<TData>({
         return;
       }
       router.refresh();
-      toast.success(`User role changed to ${role}.`);
+      toast.success(`Função do usuário alterada para ${role}.`);
     } catch (error) {
-      toast.error("Something went wrong while changing role. Please try again.");
+      toast.error("Algo deu errado ao alterar a função. Tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -125,47 +125,47 @@ export function DataTableRowActions<TData>({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant={"ghost"} className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Ações</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data?.id)}>
             <Copy className="mr-2 w-4 h-4" />
-            Copy ID
+            Copiar ID
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => onActivate()}>
             <UserCheck className="mr-2 w-4 h-4" />
-            Activate
+            Ativar
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onDeactivate()}>
             <UserX className="mr-2 w-4 h-4" />
-            Deactivate
+            Desativar
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
               <Shield className="mr-2 w-4 h-4" />
-              Set Role
+              Definir Função
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
               <DropdownMenuItem onClick={() => onSetRole("admin")}>
-                Admin
+                Administrador
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onSetRole("manager")}>
-                Manager
+                Gerente
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onSetRole("user")}>
-                User
+                Usuário
               </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 w-4 h-4" />
-            Delete
+            Excluir
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -31,10 +31,10 @@ export function RetryEnrichmentButton({ targetId, fields }: RetryEnrichmentButto
         }),
       });
       if (res.ok) {
-        toast.success("Retry queued. Refresh to see updated status.");
+        toast.success("Nova tentativa na fila. Atualize para ver o status atualizado.");
       } else {
         const err = await res.json();
-        toast.error(err.error ?? "Failed to retry");
+        toast.error(err.error ?? "Falha ao tentar novamente");
       }
     } finally {
       setLoading(false);
@@ -44,7 +44,7 @@ export function RetryEnrichmentButton({ targetId, fields }: RetryEnrichmentButto
   return (
     <Button variant="ghost" size="sm" onClick={handleRetry} disabled={loading}>
       <RotateCcw className={`h-3 w-3 mr-1 ${loading ? "animate-spin" : ""}`} />
-      Retry
+      Tentar novamente
     </Button>
   );
 }

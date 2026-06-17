@@ -39,7 +39,7 @@ const TargetsView = ({ data }: any) => {
               onClick={() => router.push("/crm/targets")}
               className="cursor-pointer"
             >
-              Targets
+              Alvos
             </CardTitle>
             <CardDescription></CardDescription>
           </div>
@@ -47,13 +47,13 @@ const TargetsView = ({ data }: any) => {
             <ImportTargetsModal />
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button size="sm">+ New Target</Button>
+                <Button size="sm">+ Novo Alvo</Button>
               </SheetTrigger>
               <SheetContent className="max-w-2xl overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>Create new Target</SheetTitle>
+                  <SheetTitle>Criar novo Alvo</SheetTitle>
                   <SheetDescription>
-                    Add a new target to your CRM system.
+                    Adicione um novo alvo ao seu CRM.
                   </SheetDescription>
                 </SheetHeader>
                 <div className="mt-6 space-y-4">
@@ -68,7 +68,7 @@ const TargetsView = ({ data }: any) => {
 
       <CardContent>
         {!data || data.length === 0 ? (
-          "No targets found"
+          "Nenhum alvo encontrado"
         ) : (
           <TargetsDataTable data={data} columns={columns} />
         )}

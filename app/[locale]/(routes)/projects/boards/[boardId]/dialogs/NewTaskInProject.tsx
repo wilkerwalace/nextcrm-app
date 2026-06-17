@@ -94,7 +94,7 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`New task: ${data.title}, created successfully`);
+        toast.success(`Nova tarefa: ${data.title}, criada com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);
@@ -115,13 +115,13 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="px-2">Create new task</Button>
+        <Button className="px-2">Criar nova tarefa</Button>
       </DialogTrigger>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Create New Task</DialogTitle>
+          <DialogTitle>Criar nova tarefa</DialogTitle>
           <DialogDescription>
-            Fill out the form below to create a new task.
+            Preencha o formulário abaixo para criar uma nova tarefa.
           </DialogDescription>
         </DialogHeader>
         {isLoading ? (
@@ -142,11 +142,11 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>New task name</FormLabel>
+                      <FormLabel>Nome da nova tarefa</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isLoading}
-                          placeholder="Enter task name"
+                          placeholder="Digite o nome da tarefa"
                           {...field}
                         />
                       </FormControl>
@@ -159,11 +159,11 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   name="content"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Task description</FormLabel>
+                      <FormLabel>Descrição da tarefa</FormLabel>
                       <FormControl>
                         <Textarea
                           disabled={isLoading}
-                          placeholder="Enter task description"
+                          placeholder="Digite a descrição da tarefa"
                           {...field}
                         />
                       </FormControl>
@@ -176,7 +176,7 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   name="dueDateAt"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Due date</FormLabel>
+                      <FormLabel>Data de vencimento</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -190,7 +190,7 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a expected close date</span>
+                                <span>Escolha uma data de conclusão prevista</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>
@@ -217,12 +217,12 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   name="user"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Assigned to</FormLabel>
+                      <FormLabel>Atribuído a</FormLabel>
                       <FormControl>
                         <UserSearchCombobox
                           value={field.value ?? ""}
                           onChange={field.onChange}
-                          placeholder="Select assigned user"
+                          placeholder="Selecione o usuário atribuído"
                           disabled={isLoading}
                         />
                       </FormControl>
@@ -235,14 +235,14 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   name="section"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Choose section</FormLabel>
+                      <FormLabel>Escolha a seção</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select tasks section" />
+                            <SelectValue placeholder="Selecione a seção da tarefa" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -262,21 +262,21 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   name="priority"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Choose task priority</FormLabel>
+                      <FormLabel>Escolha a prioridade da tarefa</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select tasks priority" />
+                            <SelectValue placeholder="Selecione a prioridade da tarefa" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
-                          <SelectItem value="critical">Critical</SelectItem>
+                          <SelectItem value="low">Baixa</SelectItem>
+                          <SelectItem value="medium">Média</SelectItem>
+                          <SelectItem value="high">Alta</SelectItem>
+                          <SelectItem value="critical">Crítica</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -290,9 +290,9 @@ const NewTaskInProjectDialog = ({ boardId, sections }: Props) => {
                   variant="outline"
                   onClick={() => setOpen(false)}
                 >
-                  Cancel
+                  Cancelar
                 </Button>
-                <Button type="submit">Create</Button>
+                <Button type="submit">Criar</Button>
               </DialogFooter>
             </form>
           </Form>

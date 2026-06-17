@@ -9,15 +9,15 @@ import { Plus, X } from "lucide-react";
 import type { EnrichmentField } from "@/lib/enrichment/types";
 
 const PRESET_FIELDS: EnrichmentField[] = [
-  { name: "position",         displayName: "Position / Job Title",  description: "The contact's job title or role at their company", type: "string", required: false },
-  { name: "website",          displayName: "Company Website",        description: "The company's official website URL", type: "string", required: false },
-  { name: "social_linkedin",  displayName: "LinkedIn URL",           description: "The contact's or company's LinkedIn profile URL", type: "string", required: false },
-  { name: "social_twitter",   displayName: "Twitter / X URL",        description: "The contact's or company's Twitter/X profile URL", type: "string", required: false },
-  { name: "social_facebook",  displayName: "Facebook URL",           description: "The contact's or company's Facebook page URL", type: "string", required: false },
-  { name: "social_instagram", displayName: "Instagram URL",          description: "The contact's or company's Instagram profile URL", type: "string", required: false },
-  { name: "description",      displayName: "Company Description",    description: "A brief description of what the company does", type: "string", required: false },
-  { name: "office_phone",     displayName: "Office Phone",           description: "The company or contact's office phone number", type: "string", required: false },
-  { name: "mobile_phone",     displayName: "Mobile Phone",           description: "The contact's mobile phone number", type: "string", required: false },
+  { name: "position",         displayName: "Cargo / Função",         description: "O cargo ou função do contato na empresa", type: "string", required: false },
+  { name: "website",          displayName: "Site da Empresa",        description: "A URL do site oficial da empresa", type: "string", required: false },
+  { name: "social_linkedin",  displayName: "URL do LinkedIn",        description: "A URL do perfil do contato ou da empresa no LinkedIn", type: "string", required: false },
+  { name: "social_twitter",   displayName: "URL do Twitter / X",     description: "A URL do perfil do contato ou da empresa no Twitter/X", type: "string", required: false },
+  { name: "social_facebook",  displayName: "URL do Facebook",        description: "A URL da página do contato ou da empresa no Facebook", type: "string", required: false },
+  { name: "social_instagram", displayName: "URL do Instagram",       description: "A URL do perfil do contato ou da empresa no Instagram", type: "string", required: false },
+  { name: "description",      displayName: "Descrição da Empresa",   description: "Uma breve descrição do que a empresa faz", type: "string", required: false },
+  { name: "office_phone",     displayName: "Telefone Comercial",     description: "O número de telefone comercial da empresa ou do contato", type: "string", required: false },
+  { name: "mobile_phone",     displayName: "Telefone Celular",       description: "O número de telefone celular do contato", type: "string", required: false },
 ];
 
 interface EnrichFieldSelectorProps {
@@ -51,7 +51,7 @@ export function EnrichFieldSelector({
     const field: EnrichmentField = {
       name: customName.toLowerCase().replace(/\s+/g, "_"),
       displayName: customName.trim(),
-      description: customDesc.trim() || `Find the ${customName.trim()} for this contact`,
+      description: customDesc.trim() || `Encontrar ${customName.trim()} para este contato`,
       type: "string",
       required: false,
     };
@@ -72,7 +72,7 @@ export function EnrichFieldSelector({
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
-        Select the data points to enrich. Firecrawl will search the web to find them.
+        Selecione os dados a enriquecer. O Firecrawl pesquisará na web para encontrá-los.
       </p>
 
       <div className="space-y-2">
@@ -107,21 +107,21 @@ export function EnrichFieldSelector({
       </div>
 
       <div className="border rounded-md p-3 space-y-2 bg-muted/30">
-        <p className="text-xs font-medium text-muted-foreground">Add custom field</p>
+        <p className="text-xs font-medium text-muted-foreground">Adicionar campo personalizado</p>
         <Input
-          placeholder="Field name (e.g. Number of employees)"
+          placeholder="Nome do campo (ex.: Número de funcionários)"
           value={customName}
           onChange={(e) => setCustomName(e.target.value)}
           className="h-8 text-sm"
         />
         <Input
-          placeholder="Description (optional)"
+          placeholder="Descrição (opcional)"
           value={customDesc}
           onChange={(e) => setCustomDesc(e.target.value)}
           className="h-8 text-sm"
         />
         <Button variant="outline" size="sm" onClick={addCustom} disabled={!customName.trim()}>
-          <Plus className="h-3 w-3 mr-1" /> Add field
+          <Plus className="h-3 w-3 mr-1" /> Adicionar campo
         </Button>
       </div>
 
@@ -130,7 +130,7 @@ export function EnrichFieldSelector({
         disabled={selectedFields.length === 0 || loading}
         onClick={() => onStart(selectedFields)}
       >
-        {loading ? "Starting…" : `Start Enrichment (${selectedFields.length} fields)`}
+        {loading ? "Iniciando…" : `Iniciar Enriquecimento (${selectedFields.length} campos)`}
       </Button>
     </div>
   );

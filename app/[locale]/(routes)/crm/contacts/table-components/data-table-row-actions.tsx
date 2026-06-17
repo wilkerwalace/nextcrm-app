@@ -54,10 +54,10 @@ export function DataTableRowActions<TData>({
       if (result.error) {
         toast.error(result.error);
       } else {
-        toast.success("Contact has been deleted");
+        toast.success("O contato foi excluído");
       }
     } catch (error) {
-      toast.error("Something went wrong while deleting contact. Please try again.");
+      toast.error("Algo deu errado ao excluir o contato. Tente novamente.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -76,8 +76,8 @@ export function DataTableRowActions<TData>({
       <Sheet open={updateOpen} onOpenChange={setUpdateOpen}>
         <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Update Contact - {contact?.first_name} {contact?.last_name}</SheetTitle>
-            <SheetDescription>Update contact details</SheetDescription>
+            <SheetTitle>Atualizar Contato - {contact?.first_name} {contact?.last_name}</SheetTitle>
+            <SheetDescription>Atualizar detalhes do contato</SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">
             <UpdateContactForm
@@ -95,21 +95,21 @@ export function DataTableRowActions<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem
             onClick={() => router.push(`/crm/contacts/${contact?.id}`)}
           >
-            View
+            Visualizar
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

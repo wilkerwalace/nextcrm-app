@@ -53,10 +53,10 @@ export function DataTableRowActions<TData>({
       if (result.error) {
         toast.error(result.error);
       } else {
-        toast.success("Account has been deleted");
+        toast.success("A empresa foi excluída");
       }
     } catch (error) {
-      toast.error("Something went wrong while deleting account. Please try again.");
+      toast.error("Algo deu errado ao excluir a empresa. Tente novamente.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -71,7 +71,7 @@ export function DataTableRowActions<TData>({
       if (result.error) {
         toast.error("Error");
       } else {
-        toast.success(`You are now Account: ${account.name}, watcher`);
+        toast.success(`Você agora acompanha a empresa: ${account.name}`);
       }
     } catch (error) {
       toast.error("Error");
@@ -88,7 +88,7 @@ export function DataTableRowActions<TData>({
       if (result.error) {
         toast.error("Error");
       } else {
-        toast.success(`You are no longer Account: ${account.name}, watcher`);
+        toast.success(`Você não acompanha mais a empresa: ${account.name}`);
       }
     } catch (error) {
       toast.error("Error");
@@ -109,8 +109,8 @@ export function DataTableRowActions<TData>({
       <Sheet open={updateOpen} onOpenChange={setUpdateOpen}>
         <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Update Account - {account?.name}</SheetTitle>
-            <SheetDescription>Update account details</SheetDescription>
+            <SheetTitle>Atualizar empresa - {account?.name}</SheetTitle>
+            <SheetDescription>Atualizar dados da empresa</SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">
             <UpdateAccountForm initialData={row.original} open={setUpdateOpen} />
@@ -125,30 +125,30 @@ export function DataTableRowActions<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[260px]">
           <DropdownMenuItem
             onClick={() => router.push(`/crm/accounts/${account?.id}`)}
           >
-            View
+            Visualizar
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={onWatch}>
             <Eye className="mr-2 w-4 h-4" />
-            Watch Account
+            Acompanhar empresa
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onUnWatch}>
             <EyeOff className="mr-2 w-4 h-4" />
-            Stop watching Account
+            Parar de acompanhar empresa
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

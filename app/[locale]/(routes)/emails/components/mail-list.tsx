@@ -47,7 +47,7 @@ export function MailList({ items, page, totalPages }: MailListProps) {
               <div className="flex items-center">
                 <div className="flex items-center gap-2">
                   <div className="font-semibold">
-                    {item.fromName ?? item.fromEmail ?? "Unknown"}
+                    {item.fromName ?? item.fromEmail ?? "Desconhecido"}
                   </div>
                   {!item.isRead && (
                     <span className="flex h-2 w-2 rounded-full bg-blue-600" />
@@ -69,7 +69,7 @@ export function MailList({ items, page, totalPages }: MailListProps) {
                 </div>
               </div>
               <div className="text-xs font-medium">
-                {item.subject ?? "(no subject)"}
+                {item.subject ?? "(sem assunto)"}
               </div>
             </div>
           </button>
@@ -83,7 +83,7 @@ export function MailList({ items, page, totalPages }: MailListProps) {
             disabled={page <= 1}
             onClick={() => navigate(page - 1)}
           >
-            Previous
+            Anterior
           </Button>
           <span className="text-xs text-muted-foreground">
             {page} / {totalPages}
@@ -94,7 +94,7 @@ export function MailList({ items, page, totalPages }: MailListProps) {
             disabled={page >= totalPages}
             onClick={() => navigate(page + 1)}
           >
-            Next
+            Próximo
           </Button>
         </div>
       )}

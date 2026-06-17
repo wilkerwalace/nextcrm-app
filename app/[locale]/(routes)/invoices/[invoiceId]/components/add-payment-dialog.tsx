@@ -64,11 +64,11 @@ export function AddPaymentDialog({
         reference: reference || null,
         note: note || null,
       });
-      toast.success("Payment recorded");
+      toast.success("Pagamento registrado");
       setOpen(false);
       router.refresh();
     } catch {
-      toast.error("Failed to add payment");
+      toast.error("Falha ao adicionar o pagamento");
     } finally {
       setSaving(false);
     }
@@ -78,18 +78,18 @@ export function AddPaymentDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
-          Add Payment
+          Adicionar pagamento
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            Add Payment ({currency} {balanceDue} due)
+            Adicionar pagamento ({currency} {balanceDue} em aberto)
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label>Amount</Label>
+            <Label>Valor</Label>
             <Input
               type="number"
               step="0.01"
@@ -98,7 +98,7 @@ export function AddPaymentDialog({
             />
           </div>
           <div className="space-y-2">
-            <Label>Date</Label>
+            <Label>Data</Label>
             <Input
               type="date"
               value={paidAt}
@@ -106,7 +106,7 @@ export function AddPaymentDialog({
             />
           </div>
           <div className="space-y-2">
-            <Label>Method</Label>
+            <Label>Método</Label>
             <Select value={method} onValueChange={setMethod}>
               <SelectTrigger>
                 <SelectValue />
@@ -121,26 +121,26 @@ export function AddPaymentDialog({
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Reference</Label>
+            <Label>Referência</Label>
             <Input
               value={reference}
               onChange={(e) => setReference(e.target.value)}
-              placeholder="Transaction reference"
+              placeholder="Referência da transação"
             />
           </div>
           <div className="space-y-2">
-            <Label>Note</Label>
+            <Label>Observação</Label>
             <Input
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              placeholder="Optional note"
+              placeholder="Observação opcional"
             />
           </div>
           <Button
             onClick={handleSubmit}
             disabled={saving || !amount || parseFloat(amount) <= 0}
           >
-            {saving ? "Saving..." : "Record Payment"}
+            {saving ? "Salvando..." : "Registrar pagamento"}
           </Button>
         </div>
       </DialogContent>

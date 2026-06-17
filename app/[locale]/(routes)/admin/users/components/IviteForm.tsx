@@ -33,7 +33,7 @@ const FormSchema = z.object({
   email: z.string().email(),
   language: z
     .string({
-      message: "Please select a user language.",
+      message: "Selecione um idioma para o usuário.",
     })
     .min(2),
 });
@@ -113,17 +113,17 @@ export function InviteForm() {
           name="language"
           render={({ field }) => (
             <FormItem className="w-[250px]">
-              <FormLabel>Language</FormLabel>
+              <FormLabel>Idioma</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a user language" />
+                    <SelectValue placeholder="Selecione um idioma para o usuário" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="pt">Português (Brasil)</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="cz">Czech</SelectItem>
+                  <SelectItem value="en">Inglês</SelectItem>
+                  <SelectItem value="cz">Tcheco</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -134,7 +134,7 @@ export function InviteForm() {
           {isLoading ? (
             <Icons.spinner className="animate-spin" />
           ) : (
-            "Invite user"
+            "Convidar usuário"
           )}
         </Button>
       </form>

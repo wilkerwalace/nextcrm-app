@@ -19,11 +19,11 @@ import { RetryEnrichmentButton } from "./RetryEnrichmentButton";
 export const dynamic = "force-dynamic";
 
 const STATUS_LABELS = {
-  PENDING:   { label: "Pending",     variant: "secondary" } as const,
-  RUNNING:   { label: "Running",     variant: "default" } as const,
-  COMPLETED: { label: "Completed",   variant: "default" } as const,
-  FAILED:    { label: "Failed",      variant: "destructive" } as const,
-  SKIPPED:   { label: "Skipped",     variant: "outline" } as const,
+  PENDING:   { label: "Pendente",    variant: "secondary" } as const,
+  RUNNING:   { label: "Em execução", variant: "default" } as const,
+  COMPLETED: { label: "Concluído",   variant: "default" } as const,
+  FAILED:    { label: "Falhou",      variant: "destructive" } as const,
+  SKIPPED:   { label: "Ignorado",    variant: "outline" } as const,
 };
 
 export default async function EnrichmentJobsPage() {
@@ -48,29 +48,29 @@ export default async function EnrichmentJobsPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-orange-500" />
-          <h1 className="text-2xl font-semibold">Enrichment Jobs</h1>
+          <h1 className="text-2xl font-semibold">Tarefas de Enriquecimento</h1>
         </div>
         <Link href="." className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           <RefreshCw className="h-4 w-4" />
-          Refresh
+          Atualizar
         </Link>
       </div>
 
       <Card>
         <CardHeader className="pb-2">
           <CardTitle className="text-base">
-            {records.length} enrichment job{records.length !== 1 ? "s" : ""}
+            {records.length} {records.length !== 1 ? "tarefas de enriquecimento" : "tarefa de enriquecimento"}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Contact</TableHead>
+                <TableHead>Contato</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Fields</TableHead>
-                <TableHead>Started</TableHead>
-                <TableHead>By</TableHead>
+                <TableHead>Campos</TableHead>
+                <TableHead>Iniciado</TableHead>
+                <TableHead>Por</TableHead>
                 <TableHead></TableHead>
               </TableRow>
             </TableHeader>
@@ -78,7 +78,7 @@ export default async function EnrichmentJobsPage() {
               {records.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
-                    No enrichment jobs yet. Start one from the contacts list.
+                    Nenhuma tarefa de enriquecimento ainda. Inicie uma a partir da lista de contatos.
                   </TableCell>
                 </TableRow>
               )}

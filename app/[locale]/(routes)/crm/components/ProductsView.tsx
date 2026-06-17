@@ -30,7 +30,7 @@ const ProductsView = ({ data, categories, currencies }: ProductsViewProps) => {
         <div className="flex justify-between">
           <CardTitle>
             <Link href="/crm/products" className="hover:underline">
-              Product Catalog
+              Catálogo de Produtos
             </Link>
           </CardTitle>
 
@@ -46,7 +46,7 @@ const ProductsView = ({ data, categories, currencies }: ProductsViewProps) => {
       </CardHeader>
       <CardContent>
         {!data || data.length === 0 ? (
-          "No products found. Create your first product to get started."
+          "Nenhum produto encontrado. Crie seu primeiro produto para começar."
         ) : (
           <ProductsDataTable data={data} columns={columns} />
         )}

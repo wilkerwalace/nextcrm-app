@@ -23,7 +23,7 @@ import { Icons } from "@/components/ui/icons";
 
 const formSchema = z.object({
   feedback: z.string().min(1, {
-    message: "Feedback must be at least 1 character.",
+    message: "O feedback deve ter pelo menos 1 caractere.",
   }),
 });
 
@@ -45,12 +45,12 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success("Thank you for your feedback.");
+        toast.success("Obrigado pelo seu feedback.");
         setOpen(false);
       }
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong. Please try again later.");
+      toast.error("Algo deu errado. Por favor, tente novamente mais tarde.");
     } finally {
       setLoading(false);
     }
@@ -64,17 +64,17 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
           name="feedback"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Send us a feedback</FormLabel>
+              <FormLabel>Envie-nos um feedback</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Your feedback"
+                  placeholder="Seu feedback"
                   disabled={loading}
                   {...field}
                 />
               </FormControl>
               <FormDescription className="text-xs text-muted-foreground">
-                We appreciate every feedback. Thank you for helping us make this
-                app better
+                Agradecemos cada feedback. Obrigado por nos ajudar a melhorar
+                este aplicativo
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -86,16 +86,16 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
             onClick={() => setOpen(false)}
             disabled={loading}
           >
-            Cancel
+            Cancelar
           </Button>
           <Button type="submit" variant={"secondary"} disabled={loading}>
             {loading ? (
               <div className="flex space-x-2">
                 <Icons.spinner className="h-4 w-4 animate-spin" />
-                <span>Sending ...</span>
+                <span>Enviando ...</span>
               </div>
             ) : (
-              "Submit"
+              "Enviar"
             )}
           </Button>
         </div>

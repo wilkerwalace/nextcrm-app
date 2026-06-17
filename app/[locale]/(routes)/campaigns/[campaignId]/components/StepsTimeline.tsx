@@ -13,7 +13,7 @@ type Step = {
 export default function StepsTimeline({ steps }: { steps: Step[] }) {
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold">Campaign Steps</h2>
+      <h2 className="text-lg font-semibold">Etapas da Campanha</h2>
       {steps.map((step, i) => {
         const sent = step.sends.filter((s) =>
           ["sent", "delivered"].includes(s.status)
@@ -31,29 +31,29 @@ export default function StepsTimeline({ steps }: { steps: Step[] }) {
             </div>
             <div className="flex-1 min-w-0">
               <div className="font-medium text-sm">
-                {i === 0 ? "Initial Send" : `Follow-up ${i}`} — {step.subject}
+                {i === 0 ? "Envio Inicial" : `Acompanhamento ${i}`} — {step.subject}
               </div>
               <div className="text-xs text-muted-foreground">
-                Template: {step.template?.name ?? "—"} &middot;{" "}
-                {step.delay_days > 0 ? `+${step.delay_days} days` : "initial"} &middot;{" "}
-                {step.send_to === "non_openers" ? "Non-openers only" : "All recipients"}
+                Modelo: {step.template?.name ?? "—"} &middot;{" "}
+                {step.delay_days > 0 ? `+${step.delay_days} dias` : "inicial"} &middot;{" "}
+                {step.send_to === "non_openers" ? "Apenas quem não abriu" : "Todos os destinatários"}
               </div>
             </div>
             <div className="text-right text-xs text-muted-foreground flex-shrink-0">
               {step.sent_at ? (
                 <div className="text-green-600">
-                  Sent {new Date(step.sent_at).toLocaleDateString()}
+                  Enviado em {new Date(step.sent_at).toLocaleDateString()}
                 </div>
               ) : step.scheduled_at ? (
                 <div className="text-blue-600">
-                  Scheduled {new Date(step.scheduled_at).toLocaleDateString()}
+                  Agendado para {new Date(step.scheduled_at).toLocaleDateString()}
                 </div>
               ) : (
-                <div>Pending</div>
+                <div>Pendente</div>
               )}
               {sent > 0 && (
                 <div>
-                  {sent} sent &middot; {openRate}% opens
+                  {sent} enviados &middot; {openRate}% de aberturas
                 </div>
               )}
             </div>
@@ -61,7 +61,7 @@ export default function StepsTimeline({ steps }: { steps: Step[] }) {
         );
       })}
       {steps.length === 0 && (
-        <p className="text-sm text-muted-foreground">No steps configured.</p>
+        <p className="text-sm text-muted-foreground">Nenhuma etapa configurada.</p>
       )}
     </div>
   );

@@ -17,7 +17,7 @@ const ProjectDashboard = async () => {
   const sections: Sections[] = await getSections();
 
   if (!dashboardData) {
-    return <div>DashBoard data not found</div>;
+    return <div>Dados do painel não encontrados</div>;
   }
 
   return (

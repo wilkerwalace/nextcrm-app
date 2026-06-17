@@ -4,10 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 const STATUS_CONFIG = {
-  PENDING: { label: "Pending", className: "bg-muted text-muted-foreground" },
-  PROCESSING: { label: "Processing", className: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" },
-  READY: { label: "Ready", className: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
-  FAILED: { label: "Failed", className: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
+  PENDING: { label: "Pendente", className: "bg-muted text-muted-foreground" },
+  PROCESSING: { label: "Processando", className: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" },
+  READY: { label: "Pronto", className: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
+  FAILED: { label: "Falhou", className: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
 } as const;
 
 interface ProcessingStatusBadgeProps {

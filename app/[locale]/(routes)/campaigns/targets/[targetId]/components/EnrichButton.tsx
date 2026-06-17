@@ -21,9 +21,9 @@ export function EnrichButton({ targetId }: EnrichButtonProps) {
         body: JSON.stringify({ force: true }),
       });
       if (!res.ok) throw new Error(await res.text());
-      toast.success("Enrichment started — you'll be notified when done");
+      toast.success("Enriquecimento iniciado — você será notificado quando concluir");
     } catch {
-      toast.error("Failed to start enrichment");
+      toast.error("Falha ao iniciar o enriquecimento");
     } finally {
       setLoading(false);
     }
@@ -35,10 +35,10 @@ export function EnrichButton({ targetId }: EnrichButtonProps) {
       size="sm"
       onClick={handleEnrich}
       disabled={loading}
-      title="Enrich with AI"
+      title="Enriquecer com IA"
     >
       <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
-      {loading ? "Starting…" : "Enrich with AI"}
+      {loading ? "Iniciando…" : "Enriquecer com IA"}
     </Button>
   );
 }

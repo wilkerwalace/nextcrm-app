@@ -38,7 +38,7 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => (
       <Link
@@ -67,7 +67,7 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "type",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
+      <DataTableColumnHeader column={column} title="Tipo" />
     ),
     cell: ({ row }) => {
       const type = productTypes.find((t) => t.value === row.getValue("type"));
@@ -107,7 +107,7 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "unit_price",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Price" />
+      <DataTableColumnHeader column={column} title="Preço" />
     ),
     cell: ({ row }) => (
       <div className="text-right font-mono">
@@ -120,7 +120,7 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "category",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Category" />
+      <DataTableColumnHeader column={column} title="Categoria" />
     ),
     cell: ({ row }) => (
       <div>{row.original.category?.name ?? "-"}</div>
@@ -131,7 +131,7 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "_count",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Accounts" />
+      <DataTableColumnHeader column={column} title="Empresas" />
     ),
     cell: ({ row }) => (
       <div className="text-center">

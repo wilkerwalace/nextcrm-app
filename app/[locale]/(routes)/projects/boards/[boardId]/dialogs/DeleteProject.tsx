@@ -47,10 +47,10 @@ const DeleteProjectDialog = ({ boardId, boardName }: Props) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`Project: ${boardName} deleted successfully`);
+        toast.success(`Projeto: ${boardName} excluído com sucesso`);
       }
     } catch (error) {
-      toast.error("Something went wrong while deleting project. Please try again.");
+      toast.error("Algo deu errado ao excluir o projeto. Tente novamente.");
     } finally {
       setOpen(false);
       setIsLoading(false);
@@ -64,17 +64,17 @@ const DeleteProjectDialog = ({ boardId, boardName }: Props) => {
       <DialogTrigger>
         <Button className="px-2" variant={"destructive"} asChild>
           <div className="px-3 gap-2">
-            Delete project
+            Excluir projeto
             <TrashIcon size={15} />
           </div>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Delete project</DialogTitle>
+          <DialogTitle>Excluir projeto</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this project? You will not be able
-            to recover it. All tasks will be deleted as well.
+            Tem certeza de que deseja excluir este projeto? Você não poderá
+            recuperá-lo. Todas as tarefas também serão excluídas.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -82,10 +82,10 @@ const DeleteProjectDialog = ({ boardId, boardName }: Props) => {
             variant="outline"
             onClick={() => setOpen(false)}
           >
-            Cancel
+            Cancelar
           </Button>
           <Button variant="destructive" onClick={onDelete}>
-            {isLoading ? "Deleting..." : "Delete"}
+            {isLoading ? "Excluindo..." : "Excluir"}
           </Button>
         </DialogFooter>
       </DialogContent>

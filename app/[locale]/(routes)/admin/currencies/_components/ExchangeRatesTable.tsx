@@ -28,10 +28,10 @@ export function ExchangeRatesTable({
         toCurrency: rate.toCurrency,
         rate: editValue,
       });
-      toast.success("Rate updated");
+      toast.success("Taxa atualizada");
       setEditing(null);
     } catch {
-      toast.error("Failed to update rate");
+      toast.error("Falha ao atualizar a taxa");
     }
   };
 
@@ -39,11 +39,11 @@ export function ExchangeRatesTable({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>From</TableHead>
-          <TableHead>To</TableHead>
-          <TableHead>Rate</TableHead>
-          <TableHead>Source</TableHead>
-          <TableHead>Updated</TableHead>
+          <TableHead>De</TableHead>
+          <TableHead>Para</TableHead>
+          <TableHead>Taxa</TableHead>
+          <TableHead>Origem</TableHead>
+          <TableHead>Atualizada</TableHead>
           <TableHead></TableHead>
         </TableRow>
       </TableHeader>
@@ -68,8 +68,8 @@ export function ExchangeRatesTable({
             <TableCell>
               {editing === r.id ? (
                 <div className="flex gap-1">
-                  <Button size="sm" onClick={() => handleSave(r)}>Save</Button>
-                  <Button size="sm" variant="ghost" onClick={() => setEditing(null)}>Cancel</Button>
+                  <Button size="sm" onClick={() => handleSave(r)}>Salvar</Button>
+                  <Button size="sm" variant="ghost" onClick={() => setEditing(null)}>Cancelar</Button>
                 </div>
               ) : (
                 <Button
@@ -78,7 +78,7 @@ export function ExchangeRatesTable({
                   onClick={() => { setEditing(r.id); setEditValue(r.rate); }}
                   disabled={ecbEnabled && r.source === "ECB"}
                 >
-                  Edit
+                  Editar
                 </Button>
               )}
             </TableCell>

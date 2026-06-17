@@ -37,17 +37,17 @@ export function AuditAdminTable({
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-muted-foreground">{total} total entries</p>
+      <p className="text-sm text-muted-foreground">{total} registros no total</p>
       <div className="rounded-md border">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-muted/50">
-              <th className="px-4 py-2 text-left font-medium">Entity</th>
-              <th className="px-4 py-2 text-left font-medium">Action</th>
-              <th className="px-4 py-2 text-left font-medium">User</th>
-              <th className="px-4 py-2 text-left font-medium">Date</th>
+              <th className="px-4 py-2 text-left font-medium">Entidade</th>
+              <th className="px-4 py-2 text-left font-medium">Ação</th>
+              <th className="px-4 py-2 text-left font-medium">Usuário</th>
+              <th className="px-4 py-2 text-left font-medium">Data</th>
               {role === "admin" && (
-                <th className="px-4 py-2 text-left font-medium">Actions</th>
+                <th className="px-4 py-2 text-left font-medium">Ações</th>
               )}
             </tr>
           </thead>
@@ -70,7 +70,7 @@ export function AuditAdminTable({
                       {entry.action}
                     </Badge>
                   </td>
-                  <td className="px-4 py-2">{entry.user?.name ?? "System"}</td>
+                  <td className="px-4 py-2">{entry.user?.name ?? "Sistema"}</td>
                   <td className="px-4 py-2 text-muted-foreground">
                     {formatDistanceToNow(new Date(entry.createdAt), {
                       addSuffix: true,
@@ -88,7 +88,7 @@ export function AuditAdminTable({
                             onRestore(entry.entityType, entry.entityId);
                           }}
                         >
-                          Restore
+                          Restaurar
                         </Button>
                       )}
                     </td>
@@ -111,7 +111,7 @@ export function AuditAdminTable({
                   colSpan={role === "admin" ? 5 : 4}
                   className="px-4 py-8 text-center text-muted-foreground"
                 >
-                  No audit entries found.
+                  Nenhum registro de auditoria encontrado.
                 </td>
               </tr>
             )}
@@ -125,10 +125,10 @@ export function AuditAdminTable({
           disabled={page <= 1}
           onClick={() => router.push(`?page=${page - 1}`)}
         >
-          Previous
+          Anterior
         </Button>
         <span className="text-sm text-muted-foreground">
-          Page {page} of {totalPages}
+          Página {page} de {totalPages}
         </span>
         <Button
           size="sm"
@@ -136,7 +136,7 @@ export function AuditAdminTable({
           disabled={page >= totalPages}
           onClick={() => router.push(`?page=${page + 1}`)}
         >
-          Next
+          Próxima
         </Button>
       </div>
     </div>

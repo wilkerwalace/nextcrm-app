@@ -17,7 +17,7 @@ export function FindSimilarButton({ entityType, recordId }: FindSimilarButtonPro
   return (
     <>
       <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
-        Find Similar
+        Encontrar similares
       </Button>
       <SimilarRecordsDrawer
         entityType={entityType}

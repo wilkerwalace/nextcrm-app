@@ -12,24 +12,24 @@ export const labels = [
 ];
 
 export const documentSystemTypes = [
-  { value: "RECEIPT", label: "Receipt" },
-  { value: "CONTRACT", label: "Contract" },
-  { value: "OFFER", label: "Offer" },
-  { value: "OTHER", label: "Other" },
+  { value: "RECEIPT", label: "Recibo" },
+  { value: "CONTRACT", label: "Contrato" },
+  { value: "OFFER", label: "Proposta" },
+  { value: "OTHER", label: "Outro" },
 ];
 
 export const processingStatuses = [
-  { value: "PENDING", label: "Pending", icon: CircleIcon },
-  { value: "PROCESSING", label: "Processing", icon: StopwatchIcon },
-  { value: "READY", label: "Ready", icon: CheckCircledIcon },
-  { value: "FAILED", label: "Failed", icon: CrossCircledIcon },
+  { value: "PENDING", label: "Pendente", icon: CircleIcon },
+  { value: "PROCESSING", label: "Processando", icon: StopwatchIcon },
+  { value: "READY", label: "Pronto", icon: CheckCircledIcon },
+  { value: "FAILED", label: "Falhou", icon: CrossCircledIcon },
 ];
 
 // Keep legacy exports for any remaining references
 export const statuses = processingStatuses;
 export const priorities = [
-  { label: "Low", value: "low" },
+  { label: "Baixa", value: "low" },
   { label: "Normal", value: "normal" },
-  { label: "High", value: "high" },
-  { label: "Critical", value: "critical" },
+  { label: "Alta", value: "high" },
+  { label: "Crítica", value: "critical" },
 ];

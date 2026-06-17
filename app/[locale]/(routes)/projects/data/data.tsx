@@ -12,10 +12,10 @@ import {
 export const visibility = [
   {
     value: "public",
-    label: "Public",
+    label: "Público",
   },
   {
     value: "private",
-    label: "Private",
+    label: "Privado",
   },
 ];

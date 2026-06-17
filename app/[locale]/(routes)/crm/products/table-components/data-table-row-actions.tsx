@@ -38,10 +38,10 @@ export function DataTableRowActions<TData>({
     setLoading(true);
     try {
       await deleteProduct(product.id);
-      toast.success("Product has been deleted");
+      toast.success("Produto excluído");
     } catch (error) {
       toast.error(
-        "Something went wrong while deleting product. Please try again."
+        "Algo deu errado ao excluir o produto. Tente novamente."
       );
     } finally {
       setLoading(false);
@@ -66,18 +66,18 @@ export function DataTableRowActions<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem
             onClick={() => router.push(`/crm/products/${product.id}`)}
           >
-            Edit
+            Editar
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

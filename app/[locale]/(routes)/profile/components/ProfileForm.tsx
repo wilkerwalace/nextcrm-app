@@ -72,10 +72,10 @@ export function ProfileForm({ data }: ProfileFormProps) {
         return;
       }
 
-      toast.success("Profile saved successfully");
+      toast.success("Perfil salvo com sucesso");
       router.refresh();
     } catch (error) {
-      toast.error("Something went wrong while activating your notion integration.");
+      toast.error("Algo deu errado ao salvar seu perfil.");
     } finally {
       setIsLoading(false);
     }

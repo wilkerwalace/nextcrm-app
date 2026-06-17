@@ -8,17 +8,17 @@ import { PenLineIcon, Rotate3D } from "lucide-react";
 export const statuses = [
   {
     value: "NOTSTARTED",
-    label: "Not started",
+    label: "Não iniciado",
     icon: QuestionMarkCircledIcon,
   },
   {
     value: "INPROGRESS",
-    label: "In progress",
+    label: "Em andamento",
     icon: Rotate3D,
   },
   {
     value: "SIGNED",
-    label: "Signed",
+    label: "Assinado",
     icon: PenLineIcon,
   },
 ];

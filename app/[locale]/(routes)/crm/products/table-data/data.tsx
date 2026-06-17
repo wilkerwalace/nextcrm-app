@@ -13,12 +13,12 @@ import {
 export const productTypes = [
   {
     value: "PRODUCT",
-    label: "Product",
+    label: "Produto",
     icon: BoxIcon,
   },
   {
     value: "SERVICE",
-    label: "Service",
+    label: "Serviço",
     icon: WrenchIcon,
   },
 ];
@@ -26,17 +26,17 @@ export const productTypes = [
 export const productStatuses = [
   {
     value: "DRAFT",
-    label: "Draft",
+    label: "Rascunho",
     icon: FileEditIcon,
   },
   {
     value: "ACTIVE",
-    label: "Active",
+    label: "Ativo",
     icon: CheckCircle2Icon,
   },
   {
     value: "ARCHIVED",
-    label: "Archived",
+    label: "Arquivado",
     icon: ArchiveIcon,
   },
 ];
@@ -44,22 +44,22 @@ export const productStatuses = [
 export const billingPeriods = [
   {
     value: "MONTHLY",
-    label: "Monthly",
+    label: "Mensal",
     icon: CalendarIcon,
   },
   {
     value: "QUARTERLY",
-    label: "Quarterly",
+    label: "Trimestral",
     icon: CalendarDaysIcon,
   },
   {
     value: "ANNUALLY",
-    label: "Annually",
+    label: "Anual",
     icon: CalendarRangeIcon,
   },
   {
     value: "ONE_TIME",
-    label: "One Time",
+    label: "Único",
     icon: TimerIcon,
   },
 ];

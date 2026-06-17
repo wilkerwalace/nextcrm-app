@@ -42,9 +42,9 @@ const TaskViewActions = ({
     setIsLoading(true);
     try {
       await getTaskDone(taskId);
-      toast.success("Success");
+      toast.success("Sucesso");
     } catch (error) {
-      toast.error("Error");
+      toast.error("Erro");
     } finally {
       setIsLoading(false);
       router.refresh();
@@ -53,7 +53,7 @@ const TaskViewActions = ({
 
   return (
     <div className="space-x-2 pb-2">
-      Task Actions:
+      Ações da tarefa:
       <Separator className="mb-5" />
       {initialData.taskStatus !== "COMPLETE" && (
         <Badge
@@ -66,7 +66,7 @@ const TaskViewActions = ({
           {isLoading ? (
             <Icons.spinner className="animate-spin w-4 h-4 mr-2" />
           ) : (
-            "Mark as done"
+            "Marcar como concluída"
           )}
         </Badge>
       )}
@@ -76,14 +76,14 @@ const TaskViewActions = ({
         onClick={() => setOpenEdit(true)}
       >
         <Pencil className="w-4 h-4 mr-2" />
-        Edit
+        Editar
       </Badge>
       <Sheet open={openEdit} onOpenChange={() => setOpenEdit(false)}>
         <SheetContent className="max-w-3xl overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Edit Task</SheetTitle>
+            <SheetTitle>Editar tarefa</SheetTitle>
             <SheetDescription>
-              Update task details, due date, priority, status, and assigned users
+              Atualize os detalhes da tarefa, data de vencimento, prioridade, status e usuários atribuídos
             </SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">

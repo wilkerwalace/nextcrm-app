@@ -74,7 +74,7 @@ const TaskPage = async (props: TaskPageProps) => {
                   <Calendar className="mt-px h-5 w-5" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
-                      Date created
+                      Data de criação
                     </p>
                     <p className="text-sm text-muted-foreground">
                       {moment(task.createdAt).format("YYYY-MM-DD HH:mm:ss")}
@@ -84,7 +84,7 @@ const TaskPage = async (props: TaskPageProps) => {
                 <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                   <Calendar className="mt-px h-5 w-5" />
                   <div className="space-y-1">
-                    <p className="text-sm font-medium leading-none">Date due</p>
+                    <p className="text-sm font-medium leading-none">Data de vencimento</p>
                     <p className="text-sm text-muted-foreground">
                       {moment(task.dueDateAt).format("YYYY-MM-DD HH:mm")}
                     </p>
@@ -94,7 +94,7 @@ const TaskPage = async (props: TaskPageProps) => {
                   <Calendar className="mt-px h-5 w-5" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
-                      Last modified
+                      Última modificação
                     </p>
                     <p className="text-sm text-muted-foreground">
                       {moment(task.lastEditedAt).format("YYYY-MM-DD HH:mm:ss")}
@@ -104,7 +104,7 @@ const TaskPage = async (props: TaskPageProps) => {
                 <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                   <Shield className="mt-px h-5 w-5" />
                   <div className="space-y-1">
-                    <p className="text-sm font-medium leading-none">Priority</p>
+                    <p className="text-sm font-medium leading-none">Prioridade</p>
                     <Badge
                       variant={
                         task.priority === "high" ? `destructive` : `outline`
@@ -133,10 +133,10 @@ const TaskPage = async (props: TaskPageProps) => {
                   <User className="mt-px h-5 w-5" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
-                      Assigned to
+                      Atribuído a
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {task.assigned_user?.name || "Not assigned"}
+                      {task.assigned_user?.name || "Não atribuído"}
                     </p>
                   </div>
                 </div>
@@ -144,10 +144,10 @@ const TaskPage = async (props: TaskPageProps) => {
                   <User className="mt-px h-5 w-5" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
-                      Created by
+                      Criado por
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {creatorUser?.name || "Unknown"}
+                      {creatorUser?.name || "Desconhecido"}
                     </p>
                   </div>
                 </div>
@@ -166,12 +166,12 @@ const TaskPage = async (props: TaskPageProps) => {
           <code>{JSON.stringify(taskDocuments, null, 2)}</code>
         </pre> */}
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight py-5">
-          Task documents ({taskDocuments.length})
+          Documentos da tarefa ({taskDocuments.length})
         </h4>
         <TaskDataTable data={taskDocuments} columns={columnsTask} />
         <Separator />
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight py-5">
-          Available documents ({documents.length})
+          Documentos disponíveis ({documents.length})
         </h4>
         <TaskDataTable data={documents} columns={columns} />
       </div>

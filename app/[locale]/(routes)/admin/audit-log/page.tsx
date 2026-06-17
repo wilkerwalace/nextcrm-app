@@ -27,14 +27,14 @@ const AuditLogPage = async (props: {
   };
 
   const result = await getAuditLogAdmin(filters);
-  if ("error" in result) return <div>Access denied</div>;
+  if ("error" in result) return <div>Acesso negado</div>;
 
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Audit Log</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Log de Auditoria</h1>
         <p className="text-muted-foreground text-sm mt-1">
-          Complete history of all CRM changes.
+          Histórico completo de todas as alterações do CRM.
         </p>
       </div>
       <AdminFilters

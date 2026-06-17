@@ -55,11 +55,11 @@ export function DataTableRowActions<TData>({
       if (result?.error) {
         toast.success(result.error);
       } else {
-        toast.success("Document was assigned to task");
+        toast.success("Documento atribuído à tarefa");
       }
     } catch (error) {
       console.error(error);
-      toast.success("Something went wrong, while assigning document to task");
+      toast.success("Algo deu errado ao atribuir o documento à tarefa");
     } finally {
       router.refresh();
       setLoading(false);
@@ -81,15 +81,15 @@ export function DataTableRowActions<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem onClick={onAssign}>
-            Connect to task
+            Conectar à tarefa
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            View
+            Ver
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

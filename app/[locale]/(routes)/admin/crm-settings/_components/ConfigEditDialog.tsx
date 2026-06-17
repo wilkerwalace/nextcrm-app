@@ -24,10 +24,10 @@ export function ConfigEditDialog({ configType, id, currentName, open, onOpenChan
     setLoading(true);
     try {
       await updateConfigValue(configType, id, name);
-      toast.success("Updated");
+      toast.success("Atualizado");
       onOpenChange(false);
     } catch (err: any) {
-      toast.error(err.message ?? "Failed to update");
+      toast.error(err.message ?? "Falha ao atualizar");
     } finally {
       setLoading(false);
     }
@@ -36,14 +36,14 @@ export function ConfigEditDialog({ configType, id, currentName, open, onOpenChan
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogHeader><DialogTitle>Edit Value</DialogTitle></DialogHeader>
+        <DialogHeader><DialogTitle>Editar Valor</DialogTitle></DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-1">
-            <Label htmlFor="edit-name">Name</Label>
+            <Label htmlFor="edit-name">Nome</Label>
             <Input id="edit-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required />
           </div>
           <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Saving…" : "Save"}
+            {loading ? "Salvando…" : "Salvar"}
           </Button>
         </form>
       </DialogContent>

@@ -27,7 +27,7 @@ const CreateTargetListModal = () => {
 
   const handleCreate = async () => {
     if (!name.trim()) {
-      toast.error("Name is required.");
+      toast.error("O nome é obrigatório.");
       return;
     }
 
@@ -38,7 +38,7 @@ const CreateTargetListModal = () => {
       toast.error(result.error);
       return;
     }
-    toast.success("Target list created successfully");
+    toast.success("Lista de alvos criada com sucesso");
     setOpen(false);
     setName("");
     setDescription("");
@@ -48,31 +48,31 @@ const CreateTargetListModal = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm">+ New List</Button>
+        <Button size="sm">+ Nova lista</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Create Target List</DialogTitle>
+          <DialogTitle>Criar lista de alvos</DialogTitle>
           <DialogDescription>
-            Create a new list to group your targets for campaigns or outreach.
+            Crie uma nova lista para agrupar seus alvos para campanhas ou prospecção.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name *</Label>
+            <Label htmlFor="name">Nome *</Label>
             <Input
               id="name"
-              placeholder="Q1 Outreach List"
+              placeholder="Lista de prospecção do 1º trimestre"
               value={name}
               onChange={(e) => setName(e.target.value)}
               disabled={isLoading}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">Descrição</Label>
             <Textarea
               id="description"
-              placeholder="A list of targets for Q1 outreach campaign"
+              placeholder="Uma lista de alvos para a campanha de prospecção do 1º trimestre"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               disabled={isLoading}
@@ -81,10 +81,10 @@ const CreateTargetListModal = () => {
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => setOpen(false)} disabled={isLoading}>
-            Cancel
+            Cancelar
           </Button>
           <Button onClick={handleCreate} disabled={isLoading || !name.trim()}>
-            {isLoading ? "Creating..." : "Create"}
+            {isLoading ? "Criando..." : "Criar"}
           </Button>
         </DialogFooter>
       </DialogContent>

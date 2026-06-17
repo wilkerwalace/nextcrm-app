@@ -23,7 +23,7 @@ export default async function InvoiceSettingsPage() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Invoice Settings</CardTitle>
+          <CardTitle>Configurações de Faturas</CardTitle>
         </CardHeader>
         <CardContent>
           <InvoiceSettingsForm

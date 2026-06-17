@@ -142,12 +142,12 @@ export function InvoicesTable({
     <Table>
       <TableHeader>
         <TableRow>
-          <SortHeader field="number">{labels.number ?? "Number"}</SortHeader>
-          <SortHeader field="account">{labels.account ?? "Account"}</SortHeader>
+          <SortHeader field="number">{labels.number ?? "Número"}</SortHeader>
+          <SortHeader field="account">{labels.account ?? "Empresa"}</SortHeader>
           <SortHeader field="issueDate">
-            {labels.issueDate ?? "Issued"}
+            {labels.issueDate ?? "Emitida"}
           </SortHeader>
-          <SortHeader field="dueDate">{labels.dueDate ?? "Due"}</SortHeader>
+          <SortHeader field="dueDate">{labels.dueDate ?? "Vencimento"}</SortHeader>
           <SortHeader field="grandTotal">
             {labels.total ?? "Total"}
           </SortHeader>
@@ -185,7 +185,7 @@ export function InvoicesTable({
               colSpan={6}
               className="text-center text-muted-foreground py-8"
             >
-              No invoices found
+              Nenhuma fatura encontrada
             </TableCell>
           </TableRow>
         )}

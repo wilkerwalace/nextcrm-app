@@ -176,11 +176,11 @@ export function InvoiceForm({
 
   const handleSubmit = async () => {
     if (!accountId) {
-      toast.error("Please select an account");
+      toast.error("Selecione uma empresa");
       return;
     }
     if (lineItems.length === 0 || !lineItems.some((l) => l.description)) {
-      toast.error("At least one line item is required");
+      toast.error("É necessário pelo menos um item");
       return;
     }
 
@@ -215,11 +215,11 @@ export function InvoiceForm({
         ? await updateInvoice(initialData.id, body)
         : await createInvoice(body);
 
-      toast.success(isEdit ? "Invoice updated" : "Invoice created");
+      toast.success(isEdit ? "Fatura atualizada" : "Fatura criada");
       router.push(`/invoices/${result.id}`);
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to save invoice"
+        err instanceof Error ? err.message : "Falha ao salvar a fatura"
       );
     } finally {
       setSaving(false);
@@ -233,7 +233,7 @@ export function InvoiceForm({
       <div className="space-y-6">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label>{l.type ?? "Type"}</Label>
+            <Label>{l.type ?? "Tipo"}</Label>
             <Select value={type} onValueChange={setType}>
               <SelectTrigger>
                 <SelectValue />
@@ -249,22 +249,22 @@ export function InvoiceForm({
           </div>
 
           <div className="space-y-2">
-            <Label>{l.account ?? "Account"}</Label>
+            <Label>{l.account ?? "Empresa"}</Label>
             <AccountSearchCombobox
               value={accountId}
               onChange={setAccountId}
-              placeholder="Select account..."
+              placeholder="Selecionar empresa..."
             />
           </div>
 
           <div className="space-y-2">
-            <Label>{l.series ?? "Series"}</Label>
+            <Label>{l.series ?? "Série"}</Label>
             <Select
               value={seriesId || "none"}
               onValueChange={(v) => setSeriesId(v === "none" ? "" : v)}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select series..." />
+                <SelectValue placeholder="Selecionar série..." />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">-</SelectItem>
@@ -280,7 +280,7 @@ export function InvoiceForm({
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label>{l.currency ?? "Currency"}</Label>
+            <Label>{l.currency ?? "Moeda"}</Label>
             <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger>
                 <SelectValue />
@@ -296,7 +296,7 @@ export function InvoiceForm({
           </div>
 
           <div className="space-y-2">
-            <Label>{l.dueDate ?? "Due Date"}</Label>
+            <Label>{l.dueDate ?? "Data de vencimento"}</Label>
             <Input
               type="date"
               value={dueDate}
@@ -305,18 +305,18 @@ export function InvoiceForm({
           </div>
 
           <div className="space-y-2">
-            <Label>{l.variableSymbol ?? "Variable Symbol"}</Label>
+            <Label>{l.variableSymbol ?? "Símbolo variável"}</Label>
             <Input
               value={variableSymbol}
               onChange={(e) => setVariableSymbol(e.target.value)}
-              placeholder="Variable symbol"
+              placeholder="Símbolo variável"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label>{l.bankName ?? "Bank Name"}</Label>
+            <Label>{l.bankName ?? "Nome do banco"}</Label>
             <Input
               value={bankName}
               onChange={(e) => setBankName(e.target.value)}
@@ -340,7 +340,7 @@ export function InvoiceForm({
 
         <div>
           <Label className="mb-3 block">
-            {l.lineItems ?? "Line Items"}
+            {l.lineItems ?? "Itens"}
           </Label>
           <LineItemsEditor
             items={lineItems}
@@ -362,7 +362,7 @@ export function InvoiceForm({
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label>{l.publicNotes ?? "Public Notes"}</Label>
+            <Label>{l.publicNotes ?? "Notas públicas"}</Label>
             <Textarea
               value={publicNotes}
               onChange={(e) => setPublicNotes(e.target.value)}
@@ -370,7 +370,7 @@ export function InvoiceForm({
             />
           </div>
           <div className="space-y-2">
-            <Label>{l.internalNotes ?? "Internal Notes"}</Label>
+            <Label>{l.internalNotes ?? "Notas internas"}</Label>
             <Textarea
               value={internalNotes}
               onChange={(e) => setInternalNotes(e.target.value)}
@@ -382,17 +382,17 @@ export function InvoiceForm({
         <div className="flex gap-3">
           <Button onClick={handleSubmit} disabled={saving}>
             {saving
-              ? "Saving..."
+              ? "Salvando..."
               : isEdit
-                ? "Update Draft"
-                : (l.save ?? "Save Draft")}
+                ? "Atualizar rascunho"
+                : (l.save ?? "Salvar rascunho")}
           </Button>
           <Button
             variant="outline"
             onClick={() => router.back()}
             disabled={saving}
           >
-            Cancel
+            Cancelar
           </Button>
         </div>
       </div>

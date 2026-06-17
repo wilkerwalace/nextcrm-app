@@ -37,7 +37,7 @@ const PAGE_SIZE = 50;
 export function AccountSearchCombobox({
   value,
   onChange,
-  placeholder = "Select account",
+  placeholder = "Selecionar empresa",
   disabled,
   name,
 }: AccountSearchComboboxProps) {
@@ -132,18 +132,18 @@ export function AccountSearchCombobox({
         <PopoverContent className="w-[300px] p-0" align="start">
           <Command shouldFilter={false}>
             <CommandInput
-              placeholder="Search accounts..."
+              placeholder="Buscar empresas..."
               value={search}
               onValueChange={setSearch}
             />
             <CommandList onWheelCapture={(e) => e.stopPropagation()}>
               {isLoading ? (
                 <div className="py-6 text-center text-sm text-muted-foreground">
-                  Loading...
+                  Carregando...
                 </div>
               ) : (
                 <>
-                  <CommandEmpty>No accounts found.</CommandEmpty>
+                  <CommandEmpty>Nenhuma empresa encontrada.</CommandEmpty>
                   <CommandGroup>
                     {accumulatedAccounts.map((account) => (
                       <CommandItem
@@ -170,7 +170,7 @@ export function AccountSearchCombobox({
                         onClick={() => setSkip((prev) => prev + PAGE_SIZE)}
                         disabled={isPending}
                       >
-                        Load more
+                        Carregar mais
                       </Button>
                     </div>
                   )}

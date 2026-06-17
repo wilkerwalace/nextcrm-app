@@ -37,7 +37,7 @@ const PAGE_SIZE = 50;
 export function UserSearchCombobox({
   value,
   onChange,
-  placeholder = "Select user",
+  placeholder = "Selecionar usuário",
   disabled,
   name,
 }: UserSearchComboboxProps) {
@@ -129,18 +129,18 @@ export function UserSearchCombobox({
         <PopoverContent className="w-[300px] p-0" align="start">
           <Command shouldFilter={false}>
             <CommandInput
-              placeholder="Search users..."
+              placeholder="Buscar usuários..."
               value={search}
               onValueChange={setSearch}
             />
             <CommandList onWheelCapture={(e) => e.stopPropagation()}>
               {isLoading ? (
                 <div className="py-6 text-center text-sm text-muted-foreground">
-                  Loading...
+                  Carregando...
                 </div>
               ) : (
                 <>
-                  <CommandEmpty>No users found.</CommandEmpty>
+                  <CommandEmpty>Nenhum usuário encontrado.</CommandEmpty>
                   <CommandGroup>
                     {accumulatedUsers.map((user) => (
                       <CommandItem
@@ -167,7 +167,7 @@ export function UserSearchCombobox({
                         onClick={() => setSkip((prev) => prev + PAGE_SIZE)}
                         disabled={isPending}
                       >
-                        Load more
+                        Carregar mais
                       </Button>
                     </div>
                   )}

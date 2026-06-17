@@ -41,7 +41,7 @@ interface TargetBasicViewProps {
 }
 
 export async function BasicView({ data }: TargetBasicViewProps) {
-  if (!data) return <div>Target not found</div>;
+  if (!data) return <div>Alvo não encontrado</div>;
 
   return (
     <div className="pb-3 space-y-5">
@@ -66,7 +66,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Building2 className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Company</p>
+                  <p className="text-sm font-medium leading-none">Empresa</p>
                   <p className="text-sm text-muted-foreground">
                     {data.company || "N/A"}
                   </p>
@@ -75,7 +75,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Position</p>
+                  <p className="text-sm font-medium leading-none">Cargo</p>
                   <p className="text-sm text-muted-foreground">
                     {data.position || "N/A"}
                   </p>
@@ -84,7 +84,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Globe className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Company website</p>
+                  <p className="text-sm font-medium leading-none">Site da empresa</p>
                   <p className="text-sm text-muted-foreground">
                     {data.company_website ? (
                       <Link href={data.company_website} target="_blank" className="underline">
@@ -99,7 +99,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Globe className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Personal website</p>
+                  <p className="text-sm font-medium leading-none">Site pessoal</p>
                   <p className="text-sm text-muted-foreground">
                     {data.personal_website ? (
                       <Link href={data.personal_website} target="_blank" className="underline">
@@ -116,7 +116,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created by</p>
+                  <p className="text-sm font-medium leading-none">Criado por</p>
                   <p className="text-sm text-muted-foreground">
                     {data.crate_by_user?.name || "N/A"}
                   </p>
@@ -125,7 +125,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created on</p>
+                  <p className="text-sm font-medium leading-none">Criado em</p>
                   <p className="text-sm text-muted-foreground">
                     {data.created_on
                       ? moment(data.created_on).format("MMM DD YYYY")
@@ -136,7 +136,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Last updated</p>
+                  <p className="text-sm font-medium leading-none">Última atualização</p>
                   <p className="text-sm text-muted-foreground">
                     {data.updatedAt
                       ? moment(data.updatedAt).format("MMM DD YYYY")
@@ -149,14 +149,14 @@ export async function BasicView({ data }: TargetBasicViewProps) {
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">Status</p>
                   <p className="text-sm text-muted-foreground">
-                    {data.status ? "Active" : "Inactive"}
+                    {data.status ? "Ativo" : "Inativo"}
                   </p>
                 </div>
               </div>
             </div>
             {data.tags && data.tags.length > 0 && (
               <div className="col-span-2 flex flex-col gap-2 mt-2">
-                <div>Tags:</div>
+                <div>Etiquetas:</div>
                 <div className="flex flex-wrap gap-2">
                   {data.tags.map((tag: string) => (
                     <Badge key={tag} variant="outline">
@@ -173,7 +173,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
       <div className="grid grid-cols-2 gap-3 w-full">
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Contact information</CardTitle>
+            <CardTitle>Informações de contato</CardTitle>
           </CardHeader>
           <CardContent className="gap-1">
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
@@ -195,7 +195,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <Phone className="mt-px h-5 w-5" />
               <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Mobile phone</p>
+                <p className="text-sm font-medium leading-none">Celular</p>
                 <p className="text-sm text-muted-foreground">
                   {data.mobile_phone || "N/A"}
                 </p>
@@ -204,7 +204,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <Phone className="mt-px h-5 w-5" />
               <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Office phone</p>
+                <p className="text-sm font-medium leading-none">Telefone comercial</p>
                 <p className="text-sm text-muted-foreground">
                   {data.office_phone || "N/A"}
                 </p>
@@ -215,7 +215,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
 
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Social networks</CardTitle>
+            <CardTitle>Redes sociais</CardTitle>
           </CardHeader>
           <CardContent className="gap-1">
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
@@ -261,7 +261,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
       {data.notes && data.notes.length > 0 && (
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Notes</CardTitle>
+            <CardTitle>Notas</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-1">
@@ -278,7 +278,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
       {data.target_lists && data.target_lists.length > 0 && (
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Target Lists</CardTitle>
+            <CardTitle>Listas de Alvos</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
@@ -294,7 +294,7 @@ export async function BasicView({ data }: TargetBasicViewProps) {
 
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle>Contacts</CardTitle>
+          <CardTitle>Contatos</CardTitle>
         </CardHeader>
         <CardContent>
           <TargetContactsTable

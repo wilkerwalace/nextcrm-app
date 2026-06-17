@@ -25,7 +25,7 @@ export function ProfileHeroAvatar({ avatar, name }: Props) {
     <Avatar className="h-16 w-16 rounded-full border-2 border-white/50 flex-shrink-0">
       <AvatarImage
         src={currentAvatar ?? undefined}
-        alt={name ?? "User avatar"}
+        alt={name ?? "Avatar do usuário"}
         className="object-cover"
       />
       <AvatarFallback className="bg-white/25 text-white text-xl font-bold rounded-full">

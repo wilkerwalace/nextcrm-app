@@ -29,14 +29,14 @@ const PendingPage = async () => {
   return (
     <Card className="p-10 space-y- m-10">
       <CardTitle className="flex justify-center py-10">
-        Your account has been deactivated by Admin
+        Sua conta foi desativada pelo Administrador
       </CardTitle>
       <CardDescription className="py-3">
-        Hi, your {process.env.NEXT_PUBLIC_APP_NAME} account has been disabled.
-        Ask someone in your organization to activate your account again.
+        Olá, sua conta do {process.env.NEXT_PUBLIC_APP_NAME} foi desativada.
+        Peça a alguém da sua organização para ativar sua conta novamente.
       </CardDescription>
       <CardContent>
-        <h2 className="flex justify-center text-xl">Admin List</h2>
+        <h2 className="flex justify-center text-xl">Lista de Administradores</h2>
         <div className="flex flex-wrap justify-center">
           {adminUsers &&
             adminUsers?.map((user: Users) => (
@@ -56,9 +56,9 @@ const PendingPage = async () => {
 
         <div className="flex flex-col md:flex-row space-x-2 justify-center items-center pt-5">
           <Button asChild>
-            <Link href="/sign-in">Log-in with another account</Link>
+            <Link href="/sign-in">Entrar com outra conta</Link>
           </Button>
-          <p>or</p>
+          <p>ou</p>
           <TryAgain />
         </div>
       </CardContent>

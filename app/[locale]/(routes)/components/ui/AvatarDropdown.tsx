@@ -48,22 +48,22 @@ const AvatarDropdown = ({ avatar, userId, name, email }: Props) => {
 
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => router.push("/projects/dashboard")}>
-          Todo dashboard
+          Painel de Tarefas
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => router.push(`/crm/dashboard/${userId}`)}
         >
-          Sales dashboard
+          Painel de Vendas
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => router.push("/profile")}>
           <Settings className="w-4 h-4 inline-block mr-2 stroke-current text-muted-foreground" />
-          <span>Profile settings</span>
+          <span>Configurações do perfil</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={async () => { await signOut(); window.location.href = "/sign-in"; }}>
           <LogOut className="w-4 h-4 inline-block mr-2 stroke-current text-muted-foreground" />
-          <span>Sign out</span>
+          <span>Sair</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

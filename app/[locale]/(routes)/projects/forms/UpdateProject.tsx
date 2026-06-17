@@ -73,7 +73,7 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`Project: ${data.title}, update successfully`);
+        toast.success(`Projeto: ${data.title}, atualizado com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);
@@ -98,11 +98,11 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project name</FormLabel>
+                  <FormLabel>Nome do projeto</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isLoading}
-                      placeholder="Enter project name"
+                      placeholder="Digite o nome do projeto"
                       {...field}
                     />
                   </FormControl>
@@ -115,12 +115,12 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project description</FormLabel>
+                  <FormLabel>Descrição do projeto</FormLabel>
                   <FormControl>
                     <Textarea
                       rows={10}
                       disabled={isLoading}
-                      placeholder="Enter project description"
+                      placeholder="Digite a descrição do projeto"
                       {...field}
                     />
                   </FormControl>
@@ -133,19 +133,19 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
               name="visibility"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project visibility</FormLabel>
+                  <FormLabel>Visibilidade do projeto</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select projects visibility" />
+                        <SelectValue placeholder="Selecione a visibilidade do projeto" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value={"public"}>{`Public`}</SelectItem>
-                      <SelectItem value={"private"}>{`Private`}</SelectItem>
+                      <SelectItem value={"public"}>{`Público`}</SelectItem>
+                      <SelectItem value={"private"}>{`Privado`}</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -155,13 +155,13 @@ const UpdateProjectForm = ({ initialData, openEdit }: Props) => {
           </div>
           <div className="flex w-full justify-end space-x-2 pt-2">
             <DialogTrigger asChild>
-              <Button variant={"destructive"}>Cancel</Button>
+              <Button variant={"destructive"}>Cancelar</Button>
             </DialogTrigger>
             <Button type="submit" disabled={isLoading}>
               {isLoading ? (
                 <Icons.spinner className="animate-spin" />
               ) : (
-                "Update"
+                "Atualizar"
               )}
             </Button>
           </div>

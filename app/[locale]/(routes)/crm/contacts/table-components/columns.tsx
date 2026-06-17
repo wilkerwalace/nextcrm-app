@@ -20,14 +20,14 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
+        aria-label="Selecionar todos"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
+        aria-label="Selecionar linha"
         onClick={(e) => e.stopPropagation()}
       />
     ),
@@ -37,7 +37,7 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     accessorKey: "created_on",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date created" />
+      <DataTableColumnHeader column={column} title="Data de criação" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -50,12 +50,12 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Atribuído a" />
     ),
     cell: ({ row }) => (
       <div className="w-[150px]">
         {(row.getValue("assigned_to_user") as { name?: string } | null)?.name ??
-          "Unassigned"}
+          "Não atribuído"}
       </div>
     ),
     enableSorting: true,
@@ -64,11 +64,11 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     accessorKey: "assigned_account",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned account" />
+      <DataTableColumnHeader column={column} title="Empresa atribuída" />
     ),
     cell: ({ row }) => (
       <div className="min-w-[150px]">
-        {(row.original as any).assigned_accounts?.name ?? "Unassigned"}
+        {(row.original as any).assigned_accounts?.name ?? "Não atribuído"}
       </div>
     ),
     enableSorting: false,
@@ -77,7 +77,7 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     accessorKey: "first_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("first_name")}</div>,
     enableSorting: true,
@@ -86,7 +86,7 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     accessorKey: "last_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Sure name" />
+      <DataTableColumnHeader column={column} title="Sobrenome" />
     ),
     cell: ({ row }) => (
       <Link href={`/crm/contacts/${row.original.id}`} data-testid="contact-row-name">
@@ -108,7 +108,7 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
   {
     accessorKey: "mobile_phone",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Mobile" />
+      <DataTableColumnHeader column={column} title="Celular" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("mobile_phone")}</div>,
     enableSorting: true,
@@ -120,7 +120,7 @@ export const createColumns = (contactTypes: ConfigItem[] = []): ColumnDef<Opport
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => (
-      <div className="">{row.original.status ? "Active" : "Inactive"}</div>
+      <div className="">{row.original.status ? "Ativo" : "Inativo"}</div>
     ),
     enableSorting: true,
     enableHiding: true,

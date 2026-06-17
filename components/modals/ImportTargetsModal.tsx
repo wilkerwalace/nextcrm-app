@@ -34,27 +34,27 @@ interface TargetField {
 }
 
 const TARGET_FIELDS: TargetField[] = [
-  { key: "last_name", label: "Last Name", required: false },
-  { key: "first_name", label: "First Name", required: false },
-  { key: "email", label: "Email", required: false },
-  { key: "mobile_phone", label: "Mobile Phone", required: false },
-  { key: "office_phone", label: "Office Phone", required: false },
-  { key: "company", label: "Company", required: false },
-  { key: "position", label: "Position", required: false },
-  { key: "company_website", label: "Company Website", required: false },
-  { key: "personal_website", label: "Personal Website", required: false },
+  { key: "last_name", label: "Sobrenome", required: false },
+  { key: "first_name", label: "Nome", required: false },
+  { key: "email", label: "E-mail", required: false },
+  { key: "mobile_phone", label: "Celular", required: false },
+  { key: "office_phone", label: "Telefone comercial", required: false },
+  { key: "company", label: "Empresa", required: false },
+  { key: "position", label: "Cargo", required: false },
+  { key: "company_website", label: "Site da empresa", required: false },
+  { key: "personal_website", label: "Site pessoal", required: false },
   { key: "social_linkedin", label: "LinkedIn", required: false },
   { key: "social_x", label: "X / Twitter", required: false },
   { key: "social_instagram", label: "Instagram", required: false },
   { key: "social_facebook", label: "Facebook", required: false },
-  { key: "personal_email", label: "Personal Email", required: false },
-  { key: "company_email",  label: "Company Email",  required: false },
-  { key: "company_phone",  label: "Company Phone",  required: false },
-  { key: "city",           label: "City",           required: false },
-  { key: "country",        label: "Country",        required: false },
-  { key: "industry",       label: "Industry",       required: false },
-  { key: "employees",      label: "Employees",      required: false },
-  { key: "description",    label: "Description",    required: false },
+  { key: "personal_email", label: "E-mail pessoal", required: false },
+  { key: "company_email",  label: "E-mail da empresa",  required: false },
+  { key: "company_phone",  label: "Telefone da empresa",  required: false },
+  { key: "city",           label: "Cidade",           required: false },
+  { key: "country",        label: "País",          required: false },
+  { key: "industry",       label: "Setor",       required: false },
+  { key: "employees",      label: "Funcionários",      required: false },
+  { key: "description",    label: "Descrição",    required: false },
 ];
 
 const SKIP_VALUE = "__skip__";
@@ -153,7 +153,7 @@ const ImportTargetsModal = () => {
 
       if (!row.last_name && !row.company) {
         skipped++;
-        if (skipReasons.length < 3) skipReasons.push(`Row ${i + 2}: missing Last Name or Company`);
+        if (skipReasons.length < 3) skipReasons.push(`Linha ${i + 2}: sobrenome ou empresa ausente`);
         continue;
       }
       valid++;
@@ -180,12 +180,12 @@ const ImportTargetsModal = () => {
 
     try {
       const { imported, skipped, errors } = await importTargets(formData);
-      toast.success(`Imported: ${imported}, Skipped: ${skipped}${errors.length > 0 ? `. Errors: ${errors.slice(0, 3).join("; ")}` : ""}`);
+      toast.success(`Importados: ${imported}, Ignorados: ${skipped}${errors.length > 0 ? `. Erros: ${errors.slice(0, 3).join("; ")}` : ""}`);
       setOpen(false);
       resetState();
       router.refresh();
     } catch (error: any) {
-      toast.error(error?.message || "Something went wrong");
+      toast.error(error?.message || "Algo deu errado");
     } finally {
       setIsLoading(false);
     }
@@ -198,21 +198,21 @@ const ImportTargetsModal = () => {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <Upload className="h-4 w-4 mr-2" />
-          Import CSV
+          Importar CSV
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            Import Targets from CSV
+            Importar alvos de CSV
             <span className="ml-2 text-sm font-normal text-muted-foreground">
-              Step {step === "upload" ? 1 : step === "mapping" ? 2 : 3} of 3
+              Etapa {step === "upload" ? 1 : step === "mapping" ? 2 : 3} de 3
             </span>
           </DialogTitle>
           <DialogDescription>
-            {step === "upload" && "Select a CSV file to import targets."}
-            {step === "mapping" && "Map your CSV columns to target fields. AI has pre-filled suggestions — adjust as needed."}
-            {step === "preview" && "Review the import summary before proceeding."}
+            {step === "upload" && "Selecione um arquivo CSV para importar alvos."}
+            {step === "mapping" && "Mapeie as colunas do seu CSV para os campos de alvo. A IA pré-preencheu sugestões — ajuste conforme necessário."}
+            {step === "preview" && "Revise o resumo da importação antes de prosseguir."}
           </DialogDescription>
         </DialogHeader>
 
@@ -231,11 +231,11 @@ const ImportTargetsModal = () => {
                 variant="outline"
                 onClick={() => fileInputRef.current?.click()}
               >
-                Select CSV file
+                Selecionar arquivo CSV
               </Button>
               {selectedFile && (
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Selected: {selectedFile.name}
+                  Selecionado: {selectedFile.name}
                 </p>
               )}
             </div>
@@ -248,13 +248,13 @@ const ImportTargetsModal = () => {
             {isSuggesting ? (
               <div className="flex items-center gap-2 text-muted-foreground py-8 justify-center">
                 <Loader2 className="h-5 w-5 animate-spin" />
-                <span>AI is suggesting column mappings…</span>
+                <span>A IA está sugerindo os mapeamentos de colunas…</span>
               </div>
             ) : (
               <div className="space-y-1">
                 <div className="grid grid-cols-2 gap-2 text-xs font-medium text-muted-foreground px-1 pb-1">
-                  <span>CRM Field</span>
-                  <span>CSV Column</span>
+                  <span>Campo do CRM</span>
+                  <span>Coluna do CSV</span>
                 </div>
                 {TARGET_FIELDS.map((field) => (
                   <div key={field.key} className="grid grid-cols-2 gap-2 items-center">
@@ -271,10 +271,10 @@ const ImportTargetsModal = () => {
                       }
                     >
                       <SelectTrigger className="h-8 text-sm">
-                        <SelectValue placeholder="— skip —" />
+                        <SelectValue placeholder="— ignorar —" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value={SKIP_VALUE}>— skip —</SelectItem>
+                        <SelectItem value={SKIP_VALUE}>— ignorar —</SelectItem>
                         {csvHeaders.map((h) => (
                           <SelectItem key={h} value={h}>
                             {h}
@@ -285,7 +285,7 @@ const ImportTargetsModal = () => {
                   </div>
                 ))}
                 <p className="text-xs text-muted-foreground pt-1">
-                  <span className="text-destructive">*</span> last_name or company is required per row.
+                  <span className="text-destructive">*</span> sobrenome ou empresa é obrigatório por linha.
                 </p>
               </div>
             )}
@@ -297,15 +297,15 @@ const ImportTargetsModal = () => {
           <div className="space-y-4 py-2">
             <div className="rounded-md border p-4 space-y-1">
               <p className="text-sm font-medium">
-                Ready to import{" "}
+                Pronto para importar{" "}
                 <span className="text-green-600 dark:text-green-400">
-                  {preview.valid} row{preview.valid !== 1 ? "s" : ""}
+                  {preview.valid} linha{preview.valid !== 1 ? "s" : ""}
                 </span>
                 {preview.skipped > 0 && (
                   <>
                     {" "}— {" "}
                     <span className="text-yellow-600 dark:text-yellow-400">
-                      {preview.skipped} row{preview.skipped !== 1 ? "s" : ""} will be skipped
+                      {preview.skipped} linha{preview.skipped !== 1 ? "s" : ""} {preview.skipped !== 1 ? "serão" : "será"} ignorada{preview.skipped !== 1 ? "s" : ""}
                     </span>
                   </>
                 )}
@@ -317,14 +317,14 @@ const ImportTargetsModal = () => {
                     <li key={i}>{r}</li>
                   ))}
                   {preview.skipped > preview.skipReasons.length && (
-                    <li>…and {preview.skipped - preview.skipReasons.length} more</li>
+                    <li>…e mais {preview.skipped - preview.skipReasons.length}</li>
                   )}
                 </ul>
               )}
             </div>
             {preview.valid === 0 && (
               <p className="text-sm text-destructive">
-                No valid rows to import. Go back and adjust your column mapping.
+                Nenhuma linha válida para importar. Volte e ajuste o mapeamento de colunas.
               </p>
             )}
           </div>
@@ -333,20 +333,20 @@ const ImportTargetsModal = () => {
         <DialogFooter className="flex gap-2 sm:gap-0">
           {step === "upload" && (
             <Button variant="outline" onClick={() => handleOpenChange(false)}>
-              Cancel
+              Cancelar
             </Button>
           )}
 
           {step === "mapping" && (
             <>
               <Button variant="outline" onClick={() => setStep("upload")}>
-                Back
+                Voltar
               </Button>
               <Button
                 onClick={() => setStep("preview")}
                 disabled={isSuggesting}
               >
-                Next
+                Próximo
               </Button>
             </>
           )}
@@ -354,7 +354,7 @@ const ImportTargetsModal = () => {
           {step === "preview" && (
             <>
               <Button variant="outline" onClick={() => setStep("mapping")} disabled={isLoading}>
-                Back
+                Voltar
               </Button>
               <Button
                 onClick={handleImport}
@@ -363,10 +363,10 @@ const ImportTargetsModal = () => {
                 {isLoading ? (
                   <>
                     <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    Importing…
+                    Importando…
                   </>
                 ) : (
-                  "Import"
+                  "Importar"
                 )}
               </Button>
             </>

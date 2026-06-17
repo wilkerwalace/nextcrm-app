@@ -30,11 +30,11 @@ interface Props {
 }
 
 const STATUS_BADGE: Record<string, { label: string; variant: "default" | "secondary" | "destructive" | "outline" }> = {
-  COMPLETED: { label: "Enriched", variant: "default" },
-  RUNNING:   { label: "Running", variant: "secondary" },
-  PENDING:   { label: "Pending", variant: "outline" },
-  FAILED:    { label: "Failed", variant: "destructive" },
-  SKIPPED:   { label: "Skipped", variant: "outline" },
+  COMPLETED: { label: "Enriquecido", variant: "default" },
+  RUNNING:   { label: "Em execução", variant: "secondary" },
+  PENDING:   { label: "Pendente", variant: "outline" },
+  FAILED:    { label: "Falhou", variant: "destructive" },
+  SKIPPED:   { label: "Ignorado", variant: "outline" },
 };
 
 export function TargetContactsTable({ targetId, contacts: initialContacts }: Props) {
@@ -57,9 +57,9 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
       setContacts((prev) => [...prev, created]);
       setOpen(false);
       setForm({ name: "", email: "", phone: "", linkedinUrl: "" });
-      toast.success("Contact added");
+      toast.success("Contato adicionado");
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to add contact");
+      toast.error(err instanceof Error ? err.message : "Falha ao adicionar contato");
     } finally {
       setSaving(false);
     }
@@ -74,27 +74,27 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
       setContacts((prev) =>
         prev.map((c) => c.id === contactId ? { ...c, enrichStatus: "RUNNING" } : c)
       );
-      toast.success("Enrichment started — you'll be notified when done");
+      toast.success("Enriquecimento iniciado — você será notificado quando concluir");
     } catch {
-      toast.error("Failed to start enrichment");
+      toast.error("Falha ao iniciar o enriquecimento");
     }
   }
 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium">Contacts</h3>
+        <h3 className="text-sm font-medium">Contatos</h3>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button variant="outline" size="sm">Add Contact</Button>
+            <Button variant="outline" size="sm">Adicionar Contato</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add Contact</DialogTitle>
+              <DialogTitle>Adicionar Contato</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleAddContact} className="space-y-4">
               <div className="space-y-1">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">Nome</Label>
                 <Input
                   id="name"
                   value={form.name}
@@ -103,7 +103,7 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">E-mail</Label>
                 <Input
                   id="email"
                   type="email"
@@ -113,7 +113,7 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="phone">Phone</Label>
+                <Label htmlFor="phone">Telefone</Label>
                 <Input
                   id="phone"
                   value={form.phone}
@@ -122,7 +122,7 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
+                <Label htmlFor="linkedinUrl">URL do LinkedIn</Label>
                 <Input
                   id="linkedinUrl"
                   value={form.linkedinUrl}
@@ -131,7 +131,7 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
                 />
               </div>
               <Button type="submit" disabled={saving} className="w-full">
-                {saving ? "Adding…" : "Add Contact"}
+                {saving ? "Adicionando…" : "Adicionar Contato"}
               </Button>
             </form>
           </DialogContent>
@@ -140,16 +140,16 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
 
       {contacts.length === 0 ? (
         <p className="text-sm text-muted-foreground">
-          No contacts yet. Run enrichment to discover C-level contacts, or add one manually.
+          Nenhum contato ainda. Execute o enriquecimento para descobrir contatos de alto nível ou adicione um manualmente.
         </p>
       ) : (
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Title</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Phone</TableHead>
+              <TableHead>Nome</TableHead>
+              <TableHead>Cargo</TableHead>
+              <TableHead>E-mail</TableHead>
+              <TableHead>Telefone</TableHead>
               <TableHead>LinkedIn</TableHead>
               <TableHead>Status</TableHead>
               <TableHead></TableHead>
@@ -172,7 +172,7 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
                         rel="noopener noreferrer"
                         className="text-sm text-blue-600 hover:underline"
                       >
-                        View
+                        Ver
                       </a>
                     ) : "—"}
                   </TableCell>
@@ -186,7 +186,7 @@ export function TargetContactsTable({ targetId, contacts: initialContacts }: Pro
                         size="sm"
                         onClick={() => handleEnrichContact(contact.id)}
                       >
-                        Enrich
+                        Enriquecer
                       </Button>
                     )}
                   </TableCell>

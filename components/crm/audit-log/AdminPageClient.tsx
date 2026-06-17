@@ -36,12 +36,12 @@ export function AdminAuditLogClient(props: Props) {
           result = await restoreContract(entityId);
           break;
         default:
-          result = { error: "Unknown entity type" };
+          result = { error: "Tipo de entidade desconhecido" };
       }
       if (result.error) {
         toast.error(result.error);
       } else {
-        toast.success("Record restored successfully");
+        toast.success("Registro restaurado com sucesso");
         router.refresh();
       }
     });

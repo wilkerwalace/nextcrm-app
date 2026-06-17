@@ -52,19 +52,19 @@ export function InvoiceActions({
     try {
       if (action === "issue") {
         await issueInvoice({ invoiceId });
-        toast.success("Invoice issued");
+        toast.success("Fatura emitida");
         router.refresh();
       } else if (action === "cancel") {
         await cancelInvoice(invoiceId);
-        toast.success("Invoice cancelled");
+        toast.success("Fatura cancelada");
         router.refresh();
       } else {
         const result = await duplicateInvoice(invoiceId);
-        toast.success("Invoice duplicated");
+        toast.success("Fatura duplicada");
         router.push(`/invoices/${result.id}`);
       }
     } catch {
-      toast.error(`Failed to ${action} invoice`);
+      toast.error("Falha ao executar a ação na fatura");
     } finally {
       setLoading(null);
     }
@@ -74,7 +74,7 @@ export function InvoiceActions({
     setLoading("regenerate");
     const res = await regenerateInvoicePdf(invoiceId);
     if (res.ok) {
-      toast.success("PDF regenerated");
+      toast.success("PDF gerado novamente");
       router.refresh();
     } else {
       toast.error(res.error);
@@ -89,7 +89,7 @@ export function InvoiceActions({
           <Link href={`/invoices/${invoiceId}/edit`}>
             <Button variant="outline" size="sm">
               <Pencil className="mr-2 h-4 w-4" />
-              Edit
+              Editar
             </Button>
           </Link>
           <Button
@@ -99,20 +99,20 @@ export function InvoiceActions({
             disabled={loading === "issue"}
           >
             <CheckCircle className="mr-2 h-4 w-4" />
-            {loading === "issue" ? "Issuing..." : "Issue"}
+            {loading === "issue" ? "Emitindo..." : "Emitir"}
           </Button>
           <Button
             variant="destructive"
             size="sm"
             onClick={() => {
-              if (confirm("Cancel this draft invoice?")) {
+              if (confirm("Cancelar este rascunho de fatura?")) {
                 handleAction("cancel");
               }
             }}
             disabled={loading === "cancel"}
           >
             <Ban className="mr-2 h-4 w-4" />
-            Cancel
+            Cancelar
           </Button>
         </>
       )}
@@ -139,7 +139,7 @@ export function InvoiceActions({
         disabled={loading === "duplicate"}
       >
         <Copy className="mr-2 h-4 w-4" />
-        Duplicate
+        Duplicar
       </Button>
 
       <a
@@ -149,7 +149,7 @@ export function InvoiceActions({
       >
         <Button variant="outline" size="sm">
           <FileDown className="mr-2 h-4 w-4" />
-          Download PDF
+          Baixar PDF
         </Button>
       </a>
 
@@ -159,10 +159,10 @@ export function InvoiceActions({
           size="sm"
           onClick={handleRegenerate}
           disabled={loading === "regenerate"}
-          title="Re-render PDF using current company settings"
+          title="Gerar o PDF novamente usando as configurações atuais da empresa"
         >
           <RefreshCw className="mr-2 h-4 w-4" />
-          {loading === "regenerate" ? "Regenerating..." : "Regenerate PDF"}
+          {loading === "regenerate" ? "Gerando..." : "Gerar PDF novamente"}
         </Button>
       )}
     </div>

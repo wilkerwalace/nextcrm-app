@@ -59,7 +59,7 @@ const NewSectionForm = ({ boardId, onClose }: NewSectionFormProps) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`New section: ${data.title}, created successfully`);
+        toast.success(`Nova seção: ${data.title}, criada com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);
@@ -87,7 +87,7 @@ const NewSectionForm = ({ boardId, onClose }: NewSectionFormProps) => {
                 <FormControl>
                   <Input
                     disabled={isLoading}
-                    placeholder="Enter section name"
+                    placeholder="Digite o nome da seção"
                     {...field}
                   />
                 </FormControl>
@@ -98,7 +98,7 @@ const NewSectionForm = ({ boardId, onClose }: NewSectionFormProps) => {
         </div>
         <div className="flex w-full justify-end space-x-2 pt-2">
           <DialogClose asChild>
-            <Button variant={"destructive"}>Cancel</Button>
+            <Button variant={"destructive"}>Cancelar</Button>
           </DialogClose>
           <Button type="submit" disabled={isLoading}>
             {isLoading ? (
@@ -106,7 +106,7 @@ const NewSectionForm = ({ boardId, onClose }: NewSectionFormProps) => {
                 <Icons.spinner className="animate-spin" />
               </div>
             ) : (
-              <span>Create</span>
+              <span>Criar</span>
             )}
           </Button>
         </div>

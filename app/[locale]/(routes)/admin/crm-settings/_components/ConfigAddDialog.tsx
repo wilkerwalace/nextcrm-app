@@ -23,11 +23,11 @@ export function ConfigAddDialog({ configType, label }: Props) {
     setLoading(true);
     try {
       await createConfigValue(configType, name);
-      toast.success(`${label} added`);
+      toast.success(`${label} adicionado`);
       setName("");
       setOpen(false);
     } catch (err: any) {
-      toast.error(err.message ?? "Failed to add");
+      toast.error(err.message ?? "Falha ao adicionar");
     } finally {
       setLoading(false);
     }
@@ -37,20 +37,20 @@ export function ConfigAddDialog({ configType, label }: Props) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant="outline">
-          <Plus className="h-4 w-4 mr-1" /> Add {label}
+          <Plus className="h-4 w-4 mr-1" /> Adicionar {label}
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add {label}</DialogTitle>
+          <DialogTitle>Adicionar {label}</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-1">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Nome</Label>
             <Input id="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required />
           </div>
           <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Adding…" : "Add"}
+            {loading ? "Adicionando…" : "Adicionar"}
           </Button>
         </form>
       </DialogContent>

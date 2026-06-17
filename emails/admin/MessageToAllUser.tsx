@@ -25,7 +25,7 @@ export const MessageToAllUsers = ({
   message,
   username,
 }: VercelInviteUserEmailProps) => {
-  const previewText = "Message to all users from:" + baseUrl;
+  const previewText = "Mensagem para todos os usuários de:" + baseUrl;
 
   return (
     <Html>
@@ -38,18 +38,18 @@ export const MessageToAllUsers = ({
               {title}
             </Heading>
             <Text className="text-black text-sm leading-[24px]">
-              <strong>Message from {baseUrl} Admin</strong>
+              <strong>Mensagem do Administrador de {baseUrl}</strong>
             </Text>
             <Text className="text-black text-sm leading-[24px]">
-              {"Hello " + username + ","}
+              {"Olá " + username + ","}
             </Text>
             <Markdown>{message}</Markdown>
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
             <Text className="text-black text-xs text-muted-foreground">
-              You received this email because you are a user of the{" "}
-              {process.env.NEXT_PUBLIC_APP_NAME} app:{" "}
-              {process.env.NEXT_PUBLIC_APP_URL}. If you think you received this
-              email by mistake, please contact us at info@nextcrm.dev
+              Você recebeu este e-mail porque é um usuário do aplicativo{" "}
+              {process.env.NEXT_PUBLIC_APP_NAME}:{" "}
+              {process.env.NEXT_PUBLIC_APP_URL}. Se você acha que recebeu este
+              e-mail por engano, entre em contato conosco em info@nextcrm.dev
             </Text>
           </Container>
         </Body>

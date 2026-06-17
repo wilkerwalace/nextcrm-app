@@ -56,16 +56,16 @@ const EmailRoute = async ({
 
   if (connectedAccounts.length === 0) {
     return (
-      <Container title={t("emails")} description="Your connected mailboxes">
+      <Container title={t("emails")} description="Suas caixas de e-mail conectadas">
         <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
           <p className="text-muted-foreground text-sm">
-            You don&apos;t have any mailbox registered yet.
+            Você ainda não tem nenhuma caixa de e-mail registrada.
           </p>
           <Link
             href="/profile"
             className="text-sm font-medium underline underline-offset-4"
           >
-            Go to your profile to set up your first mailbox
+            Acesse seu perfil para configurar sua primeira caixa de e-mail
           </Link>
         </div>
       </Container>
@@ -83,7 +83,7 @@ const EmailRoute = async ({
   return (
     <Container
       title={t("emails")}
-      description="Your connected mailboxes"
+      description="Suas caixas de e-mail conectadas"
     >
       <Suspense fallback={<EmailsSkeleton />}>
         <MailComponent

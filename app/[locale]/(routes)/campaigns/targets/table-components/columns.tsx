@@ -15,14 +15,14 @@ export const columns: ColumnDef<Target>[] = [
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
+        aria-label="Selecionar todos"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
+        aria-label="Selecionar linha"
         onClick={(e) => e.stopPropagation()}
       />
     ),
@@ -32,7 +32,7 @@ export const columns: ColumnDef<Target>[] = [
   {
     accessorKey: "created_on",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date created" />
+      <DataTableColumnHeader column={column} title="Data de criação" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -45,7 +45,7 @@ export const columns: ColumnDef<Target>[] = [
   {
     accessorKey: "first_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="First name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("first_name")}</div>,
     enableSorting: true,
@@ -54,7 +54,7 @@ export const columns: ColumnDef<Target>[] = [
   {
     accessorKey: "last_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last name" />
+      <DataTableColumnHeader column={column} title="Sobrenome" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("last_name")}</div>,
     enableSorting: true,
@@ -72,7 +72,7 @@ export const columns: ColumnDef<Target>[] = [
   {
     accessorKey: "mobile_phone",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Mobile" />
+      <DataTableColumnHeader column={column} title="Celular" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("mobile_phone")}</div>,
     enableSorting: true,
@@ -81,7 +81,7 @@ export const columns: ColumnDef<Target>[] = [
   {
     accessorKey: "company",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Company" />
+      <DataTableColumnHeader column={column} title="Empresa" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("company")}</div>,
     enableSorting: true,
@@ -90,7 +90,7 @@ export const columns: ColumnDef<Target>[] = [
   {
     accessorKey: "position",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Position" />
+      <DataTableColumnHeader column={column} title="Cargo" />
     ),
     cell: ({ row }) => <div className="">{row.getValue("position")}</div>,
     enableSorting: true,
@@ -102,7 +102,7 @@ export const columns: ColumnDef<Target>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => (
-      <div className="">{row.original.status ? "Active" : "Inactive"}</div>
+      <div className="">{row.original.status ? "Ativo" : "Inativo"}</div>
     ),
     enableSorting: true,
     enableHiding: true,

@@ -93,7 +93,7 @@ export function AccountDataTable<TData, TValue>({
 
       {hide ? (
         <div className="flex gap-2">
-          This content is hidden now. Click on <PanelTopOpen /> to show content
+          Este conteúdo está oculto agora. Clique em <PanelTopOpen /> para exibir o conteúdo
         </div>
       ) : (
         <>
@@ -141,7 +141,7 @@ export function AccountDataTable<TData, TValue>({
                       colSpan={columns.length}
                       className="h-24 text-center"
                     >
-                      No results.
+                      Nenhum resultado.
                     </TableCell>
                   </TableRow>
                 )}

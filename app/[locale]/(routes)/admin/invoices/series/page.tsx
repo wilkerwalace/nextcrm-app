@@ -11,7 +11,7 @@ export default async function InvoiceSeriesPage() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Invoice Series</CardTitle>
+          <CardTitle>Séries de Faturas</CardTitle>
         </CardHeader>
         <CardContent>
           <SeriesTable series={JSON.parse(JSON.stringify(series))} />

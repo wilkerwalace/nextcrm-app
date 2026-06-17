@@ -14,35 +14,35 @@ export const labels = [
   },
   {
     value: "feature",
-    label: "Feature",
+    label: "Funcionalidade",
   },
   {
     value: "documentation",
-    label: "Documentation",
+    label: "Documentação",
   },
 ];
 
 export const statuses = [
   {
     value: "ACTIVE",
-    label: "Active",
+    label: "Ativo",
     icon: QuestionMarkCircledIcon,
   },
   {
     value: "PENDING",
-    label: "Pending",
+    label: "Pendente",
     icon: CircleIcon,
   },
   {
     value: "COMPLETE",
-    label: "Complete",
+    label: "Concluído",
     icon: StopwatchIcon,
   },
 ];
 
 export const priorities = [
   {
-    label: "Low",
+    label: "Baixa",
     value: "low",
     icon: ArrowDownIcon,
   },
@@ -52,12 +52,12 @@ export const priorities = [
     icon: ArrowRightIcon,
   },
   {
-    label: "High",
+    label: "Alta",
     value: "high",
     icon: ArrowUpIcon,
   },
   {
-    label: "Critical",
+    label: "Crítica",
     value: "critical",
     icon: ArrowUpIcon,
   },

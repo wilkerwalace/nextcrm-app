@@ -60,7 +60,7 @@ const LineItemsTable = ({
     if (result?.error) {
       toast.error(result.error);
     } else {
-      toast.success("Line item removed");
+      toast.success("Item removido");
       router.refresh();
     }
   };
@@ -68,7 +68,7 @@ const LineItemsTable = ({
   if (!items || items.length === 0) {
     return (
       <p className="text-sm text-muted-foreground py-4">
-        No line items yet. Add one to get started.
+        Nenhum item ainda. Adicione um para começar.
       </p>
     );
   }
@@ -80,11 +80,11 @@ const LineItemsTable = ({
       <TableHeader>
         <TableRow>
           <TableHead className="w-10">#</TableHead>
-          <TableHead>Product</TableHead>
-          <TableHead className="w-16 text-right">Qty</TableHead>
-          <TableHead className="w-28 text-right">Unit Price</TableHead>
-          <TableHead className="w-28 text-right">Discount</TableHead>
-          <TableHead className="w-28 text-right">Line Total</TableHead>
+          <TableHead>Produto</TableHead>
+          <TableHead className="w-16 text-right">Qtd</TableHead>
+          <TableHead className="w-28 text-right">Preço Unitário</TableHead>
+          <TableHead className="w-28 text-right">Desconto</TableHead>
+          <TableHead className="w-28 text-right">Total do Item</TableHead>
           <TableHead className="w-20"></TableHead>
         </TableRow>
       </TableHeader>

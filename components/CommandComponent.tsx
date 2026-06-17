@@ -102,7 +102,7 @@ export function CommandComponent() {
             </CommandItem>
           </CommandGroup> */}
           {docResults.length > 0 && (
-            <CommandGroup heading="Documents">
+            <CommandGroup heading="Documentos">
               {docResults.map((doc) => (
                 <CommandItem
                   key={doc.id}

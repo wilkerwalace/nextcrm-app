@@ -30,8 +30,8 @@ export function AccountDetailActions({ account }: AccountDetailActionsProps) {
       <Sheet open={updateOpen} onOpenChange={setUpdateOpen}>
         <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Update Account - {account?.name}</SheetTitle>
-            <SheetDescription>Update account details</SheetDescription>
+            <SheetTitle>Atualizar empresa - {account?.name}</SheetTitle>
+            <SheetDescription>Atualizar dados da empresa</SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">
             <UpdateAccountForm initialData={account} open={setUpdateOpen} />
@@ -47,12 +47,12 @@ export function AccountDetailActions({ account }: AccountDetailActionsProps) {
             data-testid="account-detail-actions-btn"
           >
             <MoreHorizontal className="h-5 w-5 text-muted-foreground" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

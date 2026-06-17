@@ -12,7 +12,7 @@ export default async function EditTemplatePage({ params }: Props) {
   if (!template) {
     return (
       <div className="flex flex-col gap-6 p-6">
-        <p className="text-muted-foreground">Template not found.</p>
+        <p className="text-muted-foreground">Modelo não encontrado.</p>
       </div>
     );
   }
@@ -20,9 +20,9 @@ export default async function EditTemplatePage({ params }: Props) {
   return (
     <div className="flex flex-col gap-6 p-6">
       <div>
-        <h1 className="text-2xl font-bold">Edit Template</h1>
+        <h1 className="text-2xl font-bold">Editar Modelo</h1>
         <p className="text-muted-foreground">
-          Update your campaign email template
+          Atualize o modelo de e-mail da sua campanha
         </p>
       </div>
       <TemplateEditorForm

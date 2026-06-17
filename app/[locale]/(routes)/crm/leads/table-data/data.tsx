@@ -7,17 +7,17 @@ import {
 export const statuses = [
   {
     value: "NEW",
-    label: "New",
+    label: "Novo",
     icon: QuestionMarkCircledIcon,
   },
   {
     value: "IN_PROGRESS",
-    label: "In progress",
+    label: "Em andamento",
     icon: StopwatchIcon,
   },
   {
     value: "COMPLETED",
-    label: "Completed",
+    label: "Concluído",
     icon: StopwatchIcon,
   },
 ];

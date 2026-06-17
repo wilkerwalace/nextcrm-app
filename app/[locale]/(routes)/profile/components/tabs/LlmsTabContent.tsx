@@ -21,19 +21,19 @@ const PROVIDER_META: Record<
 > = {
   OPENAI: {
     label: "OpenAI",
-    description: "Used for GPT-4 enrichment and embeddings",
+    description: "Usado para enriquecimento com GPT-4 e embeddings",
   },
   FIRECRAWL: {
     label: "Firecrawl",
-    description: "Used for web scraping during enrichment",
+    description: "Usado para coleta de dados da web durante o enriquecimento",
   },
   ANTHROPIC: {
     label: "Anthropic",
-    description: "Claude models",
+    description: "Modelos Claude",
   },
   GROQ: {
     label: "Groq",
-    description: "Fast inference",
+    description: "Inferência rápida",
   },
 };
 
@@ -44,16 +44,16 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
 
   const handleSave = () => {
     if (!value.trim()) {
-      toast.error("Please enter an API key.");
+      toast.error("Insira uma chave de API.");
       return;
     }
     startTransition(async () => {
       try {
         await upsertUserApiKey(status.provider, value.trim());
-        toast.success(`${meta.label} API key saved.`);
+        toast.success(`Chave de API do ${meta.label} salva.`);
         setValue("");
       } catch {
-        toast.error(`Failed to save ${meta.label} API key.`);
+        toast.error(`Falha ao salvar a chave de API do ${meta.label}.`);
       }
     });
   };
@@ -62,9 +62,9 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
     startTransition(async () => {
       try {
         await deleteUserApiKey(status.provider);
-        toast.success(`${meta.label} API key removed.`);
+        toast.success(`Chave de API do ${meta.label} removida.`);
       } catch {
-        toast.error(`Failed to remove ${meta.label} API key.`);
+        toast.error(`Falha ao remover a chave de API do ${meta.label}.`);
       }
     });
   };
@@ -82,7 +82,7 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
 
       {status.higherTierActive && (
         <p className="text-xs text-muted-foreground mb-3 italic">
-          A system-wide key is active — your key is not in use.
+          Uma chave global do sistema está ativa — sua chave não está em uso.
           {status.maskedKey && (
             <span className="ml-1 font-mono">{status.maskedKey}</span>
           )}
@@ -91,7 +91,7 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
 
       {!status.higherTierActive && status.maskedKey && (
         <p className="text-xs text-muted-foreground mb-3">
-          Current key:{" "}
+          Chave atual:{" "}
           <span className="font-mono">{status.maskedKey}</span>
         </p>
       )}
@@ -99,7 +99,7 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
       <div className="flex items-center gap-3">
         <Input
           type="password"
-          placeholder={`Enter ${meta.label} API key`}
+          placeholder={`Insira a chave de API do ${meta.label}`}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           disabled={isPending}
@@ -110,7 +110,7 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
           onClick={handleSave}
           disabled={isPending}
         >
-          Save
+          Salvar
         </Button>
         {status.source === "USER_SET" && (
           <Button
@@ -119,7 +119,7 @@ function ProviderRow({ status }: { status: UserProviderStatus }) {
             onClick={handleRemove}
             disabled={isPending}
           >
-            Remove
+            Remover
           </Button>
         )}
       </div>

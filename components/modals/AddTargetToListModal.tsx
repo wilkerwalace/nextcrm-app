@@ -54,7 +54,7 @@ const AddTargetToListModal = ({
         setTargets(all.filter((t) => !existingTargetIds.includes(t.id)));
       })
       .catch(() => {
-        toast.error("Failed to load targets");
+        toast.error("Falha ao carregar alvos");
       })
       .finally(() => setIsFetching(false));
   }, [open]);
@@ -97,7 +97,7 @@ const AddTargetToListModal = ({
       toast.error(result.error);
       return;
     }
-    toast.success(`Added ${selected.length} target(s) to the list`);
+    toast.success(`${selected.length} alvo(s) adicionado(s) à lista`);
     setSelected([]);
     setSearch("");
     onOpenChange(false);
@@ -108,14 +108,14 @@ const AddTargetToListModal = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Add Targets to List</DialogTitle>
+          <DialogTitle>Adicionar alvos à lista</DialogTitle>
           <DialogDescription>
-            Select targets to add to this list. Already-added targets are not shown.
+            Selecione os alvos para adicionar a esta lista. Alvos já adicionados não são exibidos.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-3">
           <Input
-            placeholder="Search by name, email or company..."
+            placeholder="Buscar por nome, e-mail ou empresa..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             disabled={isFetching}
@@ -129,14 +129,14 @@ const AddTargetToListModal = ({
                 checked={allFilteredSelected ? true : someFilteredSelected ? "indeterminate" : false}
                 onCheckedChange={toggleAll}
               />
-              <span className="text-sm font-medium">Select all ({filtered.length})</span>
+              <span className="text-sm font-medium">Selecionar todos ({filtered.length})</span>
             </div>
           )}
           <ScrollArea className="h-72 rounded-md border p-2">
             {isFetching ? (
-              <p className="text-sm text-muted-foreground p-2">Loading targets...</p>
+              <p className="text-sm text-muted-foreground p-2">Carregando alvos...</p>
             ) : filtered.length === 0 ? (
-              <p className="text-sm text-muted-foreground p-2">No targets available.</p>
+              <p className="text-sm text-muted-foreground p-2">Nenhum alvo disponível.</p>
             ) : (
               <div className="space-y-1">
                 {filtered.map((t) => (
@@ -154,7 +154,7 @@ const AddTargetToListModal = ({
                         {t.first_name} {t.last_name}
                       </p>
                       <p className="text-xs text-muted-foreground truncate">
-                        {t.email || t.company || "No contact info"}
+                        {t.email || t.company || "Sem informações de contato"}
                       </p>
                     </div>
                     {t.company && (
@@ -166,7 +166,7 @@ const AddTargetToListModal = ({
             )}
           </ScrollArea>
           {selected.length > 0 && (
-            <p className="text-xs text-muted-foreground">{selected.length} target(s) selected</p>
+            <p className="text-xs text-muted-foreground">{selected.length} alvo(s) selecionado(s)</p>
           )}
         </div>
         <DialogFooter>
@@ -175,13 +175,13 @@ const AddTargetToListModal = ({
             onClick={() => onOpenChange(false)}
             disabled={isLoading}
           >
-            Cancel
+            Cancelar
           </Button>
           <Button
             onClick={handleSubmit}
             disabled={isLoading || selected.length === 0}
           >
-            {isLoading ? "Adding..." : `Add Selected (${selected.length})`}
+            {isLoading ? "Adicionando..." : `Adicionar selecionados (${selected.length})`}
           </Button>
         </DialogFooter>
       </DialogContent>

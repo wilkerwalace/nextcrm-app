@@ -38,7 +38,7 @@ export function LoginComponent() {
         callbackURL: "/",
       });
     } catch (error) {
-      toast.error("Something went wrong with Google sign-in.");
+      toast.error("Algo deu errado ao entrar com o Google.");
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +46,7 @@ export function LoginComponent() {
 
   const sendOtp = async () => {
     if (!email) {
-      toast.error("Please enter your email address.");
+      toast.error("Por favor, informe seu endereço de e-mail.");
       return;
     }
     setIsLoading(true);
@@ -56,13 +56,13 @@ export function LoginComponent() {
         type: "sign-in",
       });
       if (error) {
-        toast.error(error.message || "Failed to send verification code.");
+        toast.error(error.message || "Falha ao enviar o código de verificação.");
         return;
       }
       setStep("otp");
-      toast.success("Verification code sent to your email.");
+      toast.success("Código de verificação enviado para seu e-mail.");
     } catch (error) {
-      toast.error("Failed to send verification code.");
+      toast.error("Falha ao enviar o código de verificação.");
     } finally {
       setIsLoading(false);
     }
@@ -70,7 +70,7 @@ export function LoginComponent() {
 
   const verifyOtp = async () => {
     if (otp.length !== 6) {
-      toast.error("Please enter the 6-digit code.");
+      toast.error("Por favor, informe o código de 6 dígitos.");
       return;
     }
     setIsLoading(true);
@@ -80,13 +80,13 @@ export function LoginComponent() {
         otp,
       });
       if (error) {
-        toast.error(error.message || "Invalid or expired code.");
+        toast.error(error.message || "Código inválido ou expirado.");
         return;
       }
-      toast.success("Login successful.");
+      toast.success("Login realizado com sucesso.");
       window.location.href = "/";
     } catch (error) {
-      toast.error("Verification failed.");
+      toast.error("Falha na verificação.");
     } finally {
       setIsLoading(false);
     }
@@ -95,8 +95,8 @@ export function LoginComponent() {
   return (
     <Card className="shadow-lg my-5">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Login</CardTitle>
-        <CardDescription>Choose your sign-in method</CardDescription>
+        <CardTitle className="text-2xl">Entrar</CardTitle>
+        <CardDescription>Escolha seu método de login</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <Button
@@ -106,7 +106,7 @@ export function LoginComponent() {
           className="w-full"
         >
           <Icons.google className="mr-2 h-4 w-4" />
-          Continue with Google
+          Continuar com o Google
         </Button>
 
         <div className="relative">
@@ -115,7 +115,7 @@ export function LoginComponent() {
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-background px-2 text-muted-foreground">
-              Or continue with email
+              Ou continue com e-mail
             </span>
           </div>
         </div>
@@ -123,7 +123,7 @@ export function LoginComponent() {
         {step === "email" && (
           <div className="grid gap-3">
             <div className="grid gap-1.5">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 type="email"
@@ -136,7 +136,7 @@ export function LoginComponent() {
             </div>
             <Button onClick={sendOtp} disabled={isLoading || !email}>
               <MailIcon className="mr-2 h-4 w-4" />
-              Send verification code
+              Enviar código de verificação
             </Button>
           </div>
         )}
@@ -144,7 +144,7 @@ export function LoginComponent() {
         {step === "otp" && (
           <div className="grid gap-3">
             <p className="text-sm text-muted-foreground">
-              Enter the 6-digit code sent to <strong>{email}</strong>
+              Digite o código de 6 dígitos enviado para <strong>{email}</strong>
             </p>
             <div className="flex justify-center">
               <InputOTP
@@ -164,7 +164,7 @@ export function LoginComponent() {
               </InputOTP>
             </div>
             <Button onClick={verifyOtp} disabled={isLoading || otp.length !== 6}>
-              Verify and sign in
+              Verificar e entrar
             </Button>
             <Button
               variant="ghost"
@@ -175,7 +175,7 @@ export function LoginComponent() {
               }}
               disabled={isLoading}
             >
-              Use a different email
+              Usar outro e-mail
             </Button>
           </div>
         )}

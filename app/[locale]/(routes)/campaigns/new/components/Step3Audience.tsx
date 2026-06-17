@@ -47,7 +47,7 @@ export function Step3Audience({
 
   const handleNext = () => {
     if (selected.size === 0) {
-      setError("Select at least one target list");
+      setError("Selecione pelo menos uma lista de alvos");
       return;
     }
     onNext({ target_list_ids: Array.from(selected) });
@@ -56,7 +56,7 @@ export function Step3Audience({
   return (
     <div className="flex flex-col gap-4 max-w-lg">
       <Input
-        placeholder="Search target lists..."
+        placeholder="Buscar listas de alvos..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -73,27 +73,27 @@ export function Step3Audience({
             />
             <span className="text-sm">{l.name}</span>
             <span className="text-xs text-muted-foreground ml-auto">
-              {l._count.targets} targets
+              {l._count.targets} alvos
             </span>
           </label>
         ))}
         {filtered.length === 0 && (
           <p className="text-sm text-muted-foreground p-2">
-            No target lists found.
+            Nenhuma lista de alvos encontrada.
           </p>
         )}
       </div>
       {selected.size > 0 && (
         <p className="text-sm text-muted-foreground">
-          ~{totalRecipients} recipients selected across {selected.size} list(s)
+          ~{totalRecipients} destinatários selecionados em {selected.size} lista(s)
         </p>
       )}
       {error && <p className="text-sm text-destructive">{error}</p>}
       <div className="flex justify-between">
         <Button variant="outline" onClick={onBack}>
-          ← Back
+          ← Voltar
         </Button>
-        <Button onClick={handleNext}>Next →</Button>
+        <Button onClick={handleNext}>Avançar →</Button>
       </div>
     </div>
   );

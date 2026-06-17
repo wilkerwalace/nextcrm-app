@@ -61,7 +61,7 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
         setSubject(result.subject);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "AI generation failed");
+      setError(err instanceof Error ? err.message : "Falha na geração por IA");
     } finally {
       setIsGenerating(false);
     }
@@ -69,11 +69,11 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
 
   const handleSave = async () => {
     if (!name.trim()) {
-      setError("Template name is required");
+      setError("O nome do modelo é obrigatório");
       return;
     }
     if (!subject.trim()) {
-      setError("Subject line is required");
+      setError("O assunto é obrigatório");
       return;
     }
     setIsSaving(true);
@@ -98,7 +98,7 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
       }
       router.push("/campaigns/templates");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to save template");
+      setError(err instanceof Error ? err.message : "Falha ao salvar o modelo");
     } finally {
       setIsSaving(false);
     }
@@ -115,32 +115,32 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
       {/* Basic fields */}
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="name">Template Name *</Label>
+          <Label htmlFor="name">Nome do Modelo *</Label>
           <Input
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. Welcome Email"
+            placeholder="ex.: E-mail de Boas-vindas"
             required
           />
         </div>
         <div className="flex flex-col gap-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description">Descrição</Label>
           <Textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Optional description"
+            placeholder="Descrição opcional"
             rows={2}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <Label htmlFor="subject">Subject Line *</Label>
+          <Label htmlFor="subject">Assunto *</Label>
           <Input
             id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            placeholder="e.g. Hi {{first_name}}, a quick note from us"
+            placeholder="ex.: Olá {{first_name}}, um recado rápido para você"
             required
           />
         </div>
@@ -148,14 +148,14 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
 
       {/* AI Generation */}
       <div className="flex flex-col gap-3 rounded-md border p-4 bg-muted/30">
-        <h3 className="font-semibold text-sm">Generate with AI</h3>
+        <h3 className="font-semibold text-sm">Gerar com IA</h3>
         <div className="flex flex-col gap-2">
-          <Label htmlFor="ai-prompt">Describe the email you want</Label>
+          <Label htmlFor="ai-prompt">Descreva o e-mail que você deseja</Label>
           <Textarea
             id="ai-prompt"
             value={aiPrompt}
             onChange={(e) => setAiPrompt(e.target.value)}
-            placeholder="e.g. A warm outreach email introducing our SaaS product to a B2B prospect, focusing on ROI benefits"
+            placeholder="ex.: Um e-mail de prospecção acolhedor apresentando nosso produto SaaS a um prospect B2B, focando nos benefícios de ROI"
             rows={3}
           />
         </div>
@@ -165,27 +165,27 @@ export default function TemplateEditorForm({ initialData, templateId }: Props) {
           onClick={handleGenerate}
           disabled={isGenerating || !aiPrompt.trim()}
         >
-          {isGenerating ? "Generating..." : "Generate"}
+          {isGenerating ? "Gerando..." : "Gerar"}
         </Button>
       </div>
 
       {/* TipTap Editor */}
       <div className="flex flex-col gap-2">
-        <Label>Email Body</Label>
+        <Label>Corpo do E-mail</Label>
         <TipTapEditor content={contentHtml} onChange={handleEditorChange} />
       </div>
 
       {/* Actions */}
       <div className="flex gap-3">
         <Button onClick={handleSave} disabled={isSaving}>
-          {isSaving ? "Saving..." : isEditing ? "Update Template" : "Save Template"}
+          {isSaving ? "Salvando..." : isEditing ? "Atualizar Modelo" : "Salvar Modelo"}
         </Button>
         <Button
           type="button"
           variant="outline"
           onClick={() => router.push("/campaigns/templates")}
         >
-          Cancel
+          Cancelar
         </Button>
       </div>
     </div>

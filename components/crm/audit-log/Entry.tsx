@@ -5,12 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const ACTION_LABELS: Record<string, string> = {
-  created: "created",
-  updated: "updated",
-  deleted: "deleted",
-  restored: "restored",
-  relation_added: "linked",
-  relation_removed: "unlinked",
+  created: "criado",
+  updated: "atualizado",
+  deleted: "excluído",
+  restored: "restaurado",
+  relation_added: "vinculado",
+  relation_removed: "desvinculado",
 };
 
 const ACTION_VARIANTS: Record<string, "default" | "destructive" | "secondary" | "outline"> = {
@@ -41,7 +41,7 @@ interface EntryProps {
 }
 
 export function AuditEntry({ entry, showRestore, onRestore }: EntryProps) {
-  const userName = entry.user?.name ?? "System";
+  const userName = entry.user?.name ?? "Sistema";
   const initials = userName.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
 
   return (
@@ -74,7 +74,7 @@ export function AuditEntry({ entry, showRestore, onRestore }: EntryProps) {
         )}
         {showRestore && entry.action === "deleted" && onRestore && (
           <Button size="sm" variant="outline" className="mt-2 h-7 text-xs" onClick={onRestore}>
-            Restore
+            Restaurar
           </Button>
         )}
       </div>

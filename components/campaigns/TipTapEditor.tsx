@@ -106,7 +106,7 @@ export function TipTapEditor({ content, onChange }: Props) {
           variant="ghost"
           size="sm"
           onClick={() => {
-            const url = window.prompt("Enter URL");
+            const url = window.prompt("Informe a URL");
             if (url) editor.chain().focus().setLink({ href: url }).run();
           }}
           className={editor.isActive("link") ? "bg-muted" : ""}
@@ -121,7 +121,7 @@ export function TipTapEditor({ content, onChange }: Props) {
       />
       {/* Merge tag hint */}
       <div className="px-4 pb-2 text-xs text-muted-foreground">
-        Available merge tags:{" "}
+        Variáveis de mesclagem disponíveis:{" "}
         {"{{first_name}} {{last_name}} {{email}} {{company}} {{position}}"}
       </div>
     </div>

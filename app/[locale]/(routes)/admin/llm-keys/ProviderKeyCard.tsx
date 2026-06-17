@@ -16,9 +16,9 @@ const PROVIDER_META: Record<
   { name: string; subtitle: string; envVar: string }
 > = {
   OPENAI: { name: "OpenAI", subtitle: "GPT-4 · Embeddings", envVar: "OPENAI_API_KEY" },
-  FIRECRAWL: { name: "Firecrawl", subtitle: "Web scraping", envVar: "FIRECRAWL_API_KEY" },
-  ANTHROPIC: { name: "Anthropic", subtitle: "Claude models", envVar: "ANTHROPIC_API_KEY" },
-  GROQ: { name: "Groq", subtitle: "Fast inference", envVar: "GROQ_API_KEY" },
+  FIRECRAWL: { name: "Firecrawl", subtitle: "Coleta de dados web", envVar: "FIRECRAWL_API_KEY" },
+  ANTHROPIC: { name: "Anthropic", subtitle: "Modelos Claude", envVar: "ANTHROPIC_API_KEY" },
+  GROQ: { name: "Groq", subtitle: "Inferência rápida", envVar: "GROQ_API_KEY" },
 };
 
 interface ProviderKeyCardProps {
@@ -39,9 +39,9 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
         await upsertSystemApiKey(status.provider, keyValue.trim());
         setKeyValue("");
         setEditing(false);
-        toast.success(`${meta.name} key saved`);
+        toast.success(`Chave ${meta.name} salva`);
       } catch {
-        toast.error("Failed to save key");
+        toast.error("Falha ao salvar a chave");
       }
     });
   }
@@ -50,9 +50,9 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
     startTransition(async () => {
       try {
         await deleteSystemApiKey(status.provider);
-        toast.success(`${meta.name} key removed`);
+        toast.success(`Chave ${meta.name} removida`);
       } catch {
-        toast.error("Failed to remove key");
+        toast.error("Falha ao remover a chave");
       }
     });
   }
@@ -77,17 +77,17 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
           <div className="shrink-0">
             {isEnv && (
               <Badge variant="outline" className="border-amber-500 text-amber-600 bg-amber-500/10">
-                ENV active
+                ENV ativa
               </Badge>
             )}
             {isSet && (
               <Badge variant="outline" className="border-green-500 text-green-600 bg-green-500/10">
-                System-wide
+                Global do sistema
               </Badge>
             )}
             {isNotConfigured && (
               <Badge variant="outline" className="text-muted-foreground">
-                Not configured
+                Não configurada
               </Badge>
             )}
           </div>
@@ -103,7 +103,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
         {/* ENV read-only note */}
         {isEnv && (
           <p className="text-xs text-muted-foreground">
-            Set via <code className="bg-muted px-1 rounded">{meta.envVar}</code> — read-only
+            Definida via <code className="bg-muted px-1 rounded">{meta.envVar}</code> — somente leitura
           </p>
         )}
 
@@ -116,7 +116,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
               onClick={() => setEditing(true)}
               disabled={isPending}
             >
-              Edit
+              Editar
             </Button>
             <Button
               variant="ghost"
@@ -125,7 +125,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
               onClick={handleRemove}
               disabled={isPending}
             >
-              Remove
+              Remover
             </Button>
           </div>
         )}
@@ -139,7 +139,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
             onClick={() => setEditing(true)}
             disabled={isPending}
           >
-            + Add key
+            + Adicionar chave
           </Button>
         )}
 
@@ -148,7 +148,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
           <div className="flex gap-2">
             <Input
               type="password"
-              placeholder="Paste API key…"
+              placeholder="Cole a API Key…"
               value={keyValue}
               onChange={(e) => setKeyValue(e.target.value)}
               className="flex-1 font-mono text-sm"
@@ -162,7 +162,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
               }}
             />
             <Button size="sm" onClick={handleSave} disabled={isPending || !keyValue.trim()}>
-              Save
+              Salvar
             </Button>
             <Button
               variant="ghost"
@@ -173,7 +173,7 @@ export function ProviderKeyCard({ status }: ProviderKeyCardProps) {
               }}
               disabled={isPending}
             >
-              Cancel
+              Cancelar
             </Button>
           </div>
         )}

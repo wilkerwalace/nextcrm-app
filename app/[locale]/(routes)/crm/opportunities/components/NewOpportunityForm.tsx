@@ -101,7 +101,7 @@ export function NewOpportunityForm({
   const formSchema = z.object({
     name: z.string().min(1, t("nameRequired")),
     close_date: z.date({
-      message: "A expected close date is required.",
+      message: "A data prevista de fechamento é obrigatória.",
     }),
     description: z.string(),
     type: z.string(),
@@ -179,7 +179,7 @@ export function NewOpportunityForm({
                   <FormControl>
                     <Input
                       disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
+                      placeholder="Nova funcionalidade"
                       {...field}
                     />
                   </FormControl>
@@ -237,7 +237,7 @@ export function NewOpportunityForm({
                   <FormControl>
                     <Textarea
                       disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
+                      placeholder="Nova funcionalidade"
                       {...field}
                     />
                   </FormControl>
@@ -410,12 +410,12 @@ export function NewOpportunityForm({
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Choose account " />
+                            <SelectValue placeholder="Escolha a empresa" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="flex overflow-y-auto h-56">
                           <Input
-                            placeholder="Search account..."
+                            placeholder="Buscar empresa..."
                             onChange={(e) =>
                               setSearchAccountValue(e.target.value)
                             }
@@ -436,19 +436,19 @@ export function NewOpportunityForm({
                   name="contact"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Assigned Contact</FormLabel>
+                      <FormLabel>Contato atribuído</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a user to assign the account" />
+                            <SelectValue placeholder="Selecione um contato" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="flex overflow-y-auto h-56">
                           <Input
-                            placeholder="Search contact..."
+                            placeholder="Buscar contato..."
                             onChange={(e) =>
                               setSearchContactValue(e.target.value)
                             }
@@ -469,14 +469,14 @@ export function NewOpportunityForm({
                   name="campaign"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>From campaign</FormLabel>
+                      <FormLabel>Da campanha</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a campaign" />
+                            <SelectValue placeholder="Selecione uma campanha" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="flex overflow-y-auto h-56">

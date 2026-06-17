@@ -40,10 +40,10 @@ export function BatchActionsBar({ table, accounts }: BatchActionsBarProps) {
       setLoading(true);
       await bulkDeleteDocuments(selectedIds);
       table.toggleAllRowsSelected(false);
-      toast.success(`${count} document(s) deleted`);
+      toast.success(`${count} documento(s) excluído(s)`);
       router.refresh();
     } catch {
-      toast.error("Failed to delete documents");
+      toast.error("Falha ao excluir documentos");
     } finally {
       setLoading(false);
       setDeleteOpen(false);
@@ -53,20 +53,20 @@ export function BatchActionsBar({ table, accounts }: BatchActionsBarProps) {
   const handleChangeType = async (type: string) => {
     try {
       await bulkChangeType(selectedIds, type as DocumentSystemType);
-      toast.success(`Type updated for ${count} document(s)`);
+      toast.success(`Tipo atualizado para ${count} documento(s)`);
       router.refresh();
     } catch {
-      toast.error("Failed to update type");
+      toast.error("Falha ao atualizar o tipo");
     }
   };
 
   const handleLinkAccount = async (accountId: string) => {
     try {
       await bulkLinkToAccount(selectedIds, accountId);
-      toast.success(`${count} document(s) linked to account`);
+      toast.success(`${count} documento(s) vinculado(s) à empresa`);
       router.refresh();
     } catch {
-      toast.error("Failed to link documents");
+      toast.error("Falha ao vincular documentos");
     }
   };
 
@@ -79,11 +79,11 @@ export function BatchActionsBar({ table, accounts }: BatchActionsBarProps) {
         loading={loading}
       />
       <div className="flex items-center gap-3 rounded-md border bg-muted/50 px-4 py-2 text-sm">
-        <span className="font-medium">{count} selected</span>
+        <span className="font-medium">{count} selecionado(s)</span>
 
         <Select onValueChange={handleLinkAccount}>
           <SelectTrigger className="h-8 w-[160px]">
-            <SelectValue placeholder="Link to Account" />
+            <SelectValue placeholder="Vincular à empresa" />
           </SelectTrigger>
           <SelectContent>
             {accounts.map((a) => (
@@ -96,13 +96,13 @@ export function BatchActionsBar({ table, accounts }: BatchActionsBarProps) {
 
         <Select onValueChange={handleChangeType}>
           <SelectTrigger className="h-8 w-[140px]">
-            <SelectValue placeholder="Change Type" />
+            <SelectValue placeholder="Alterar tipo" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="RECEIPT">Receipt</SelectItem>
-            <SelectItem value="CONTRACT">Contract</SelectItem>
-            <SelectItem value="OFFER">Offer</SelectItem>
-            <SelectItem value="OTHER">Other</SelectItem>
+            <SelectItem value="RECEIPT">Recibo</SelectItem>
+            <SelectItem value="CONTRACT">Contrato</SelectItem>
+            <SelectItem value="OFFER">Proposta</SelectItem>
+            <SelectItem value="OTHER">Outro</SelectItem>
           </SelectContent>
         </Select>
 
@@ -111,7 +111,7 @@ export function BatchActionsBar({ table, accounts }: BatchActionsBarProps) {
           size="sm"
           onClick={() => setDeleteOpen(true)}
         >
-          Delete
+          Excluir
         </Button>
       </div>
     </>

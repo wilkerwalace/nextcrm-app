@@ -7,12 +7,12 @@ const TargetViewPage = async (props: any) => {
   const { targetId } = params;
   const target: any = await getTarget(targetId);
 
-  if (!target) return <div>Target not found</div>;
+  if (!target) return <div>Alvo não encontrado</div>;
 
   return (
     <Container
-      title={`Target detail view: ${target?.first_name || ""} ${target?.last_name}`}
-      description="Everything you need to know about this target"
+      title={`Detalhes do alvo: ${target?.first_name || ""} ${target?.last_name}`}
+      description="Tudo o que você precisa saber sobre este alvo"
     >
       <div className="space-y-5">
         <BasicView data={target} />

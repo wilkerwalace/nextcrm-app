@@ -15,7 +15,7 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "createdAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Created" />
+      <DataTableColumnHeader column={column} title="Criado" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -28,7 +28,7 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "updatedAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last update" />
+      <DataTableColumnHeader column={column} title="Última atualização" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -41,13 +41,13 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "customerSignedDate",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Customer signed" />
+      <DataTableColumnHeader column={column} title="Assinado pelo cliente" />
     ),
     cell: ({ row }) => (
       <div className="w-[150px]">
         {row.getValue("customerSignedDate")
           ? moment(row.getValue("customerSignedDate")).format("YY-MM-DD")
-          : "Not signed yet"}
+          : "Ainda não assinado"}
       </div>
     ),
     enableSorting: false,
@@ -56,7 +56,7 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title="Título" />
     ),
 
     cell: ({ row }) => <div className="w-[150px]">{row.getValue("title")}</div>,
@@ -66,14 +66,14 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Responsável" />
     ),
 
     cell: ({ row }) => (
       <div className="w-[150px]">
         {row.original.assigned_to_user
           ? row.original.assigned_to_user.name
-          : "Unassigned"}
+          : "Não atribuído"}
       </div>
     ),
     enableSorting: true,
@@ -82,14 +82,14 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "company",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Company" />
+      <DataTableColumnHeader column={column} title="Empresa" />
     ),
 
     cell: ({ row }) => (
       <div className="">
         {row.original.assigned_account
           ? row.original.assigned_account.name
-          : "Unassigned"}
+          : "Não atribuído"}
       </div>
     ),
     enableSorting: false,

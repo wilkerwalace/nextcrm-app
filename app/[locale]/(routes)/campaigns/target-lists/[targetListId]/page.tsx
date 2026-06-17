@@ -7,12 +7,12 @@ const TargetListViewPage = async (props: any) => {
   const { targetListId } = params;
   const targetList: any = await getTargetList(targetListId);
 
-  if (!targetList) return <div>Target list not found</div>;
+  if (!targetList) return <div>Lista de alvos não encontrada</div>;
 
   return (
     <Container
-      title={`Target List: ${targetList?.name}`}
-      description="View and manage targets in this list"
+      title={`Lista de Alvos: ${targetList?.name}`}
+      description="Visualize e gerencie os alvos desta lista"
     >
       <div className="space-y-5">
         <BasicView data={targetList} />

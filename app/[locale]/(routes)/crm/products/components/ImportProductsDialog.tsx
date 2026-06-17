@@ -122,7 +122,7 @@ export function ImportProductsDialog() {
       const res = await importProducts(formData);
       setResult(res);
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Import failed";
+      const message = err instanceof Error ? err.message : "Falha na importação";
       setResult({ imported: 0, skipped: 0, errors: [message] });
     } finally {
       setIsImporting(false);
@@ -134,15 +134,15 @@ export function ImportProductsDialog() {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <Upload className="mr-2 h-4 w-4" />
-          Import
+          Importar
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Import Products from CSV</DialogTitle>
+          <DialogTitle>Importar produtos de CSV</DialogTitle>
           <DialogDescription>
-            Upload a CSV file to bulk import products. Download the template to
-            see the expected format.
+            Envie um arquivo CSV para importar produtos em massa. Baixe o modelo
+            para ver o formato esperado.
           </DialogDescription>
         </DialogHeader>
 
@@ -150,7 +150,7 @@ export function ImportProductsDialog() {
           {/* Template download */}
           <Button variant="outline" size="sm" onClick={downloadTemplate}>
             <Download className="mr-2 h-4 w-4" />
-            Download CSV Template
+            Baixar modelo CSV
           </Button>
 
           {/* File input */}
@@ -190,7 +190,7 @@ export function ImportProductsDialog() {
                 </TableBody>
               </Table>
               <p className="px-3 py-2 text-xs text-muted-foreground">
-                Showing first {preview.length} row(s) of preview
+                Exibindo as primeiras {preview.length} linha(s) da pré-visualização
               </p>
             </div>
           )}
@@ -198,7 +198,7 @@ export function ImportProductsDialog() {
           {/* Import button */}
           {file && !result && (
             <Button onClick={handleImport} disabled={isImporting}>
-              {isImporting ? "Importing..." : "Confirm Import"}
+              {isImporting ? "Importando..." : "Confirmar importação"}
             </Button>
           )}
 
@@ -209,7 +209,7 @@ export function ImportProductsDialog() {
                 <div className="flex items-center gap-2 text-green-600">
                   <CheckCircle className="h-5 w-5" />
                   <span className="text-sm font-medium">
-                    {result.imported} product(s) imported successfully
+                    {result.imported} produto(s) importado(s) com sucesso
                   </span>
                 </div>
               )}
@@ -217,7 +217,7 @@ export function ImportProductsDialog() {
                 <div className="flex items-center gap-2 text-yellow-600">
                   <AlertTriangle className="h-5 w-5" />
                   <span className="text-sm font-medium">
-                    {result.skipped} row(s) skipped
+                    {result.skipped} linha(s) ignorada(s)
                   </span>
                 </div>
               )}
@@ -226,7 +226,7 @@ export function ImportProductsDialog() {
                   <div className="flex items-center gap-2 text-red-600">
                     <XCircle className="h-5 w-5" />
                     <span className="text-sm font-medium">
-                      {result.errors.length} error(s)
+                      {result.errors.length} erro(s)
                     </span>
                   </div>
                   <div className="max-h-40 overflow-y-auto rounded-md border bg-red-50 p-3 dark:bg-red-950/20">
@@ -240,7 +240,7 @@ export function ImportProductsDialog() {
               )}
 
               <Button variant="outline" onClick={handleClose}>
-                Done
+                Concluído
               </Button>
             </div>
           )}

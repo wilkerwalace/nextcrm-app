@@ -86,7 +86,7 @@ export function NavUser({ user }: NavUserProps) {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={avatarUrl} alt={user.name || "User"} />
+                <AvatarImage src={avatarUrl} alt={user.name || "Usuário"} />
                 <AvatarFallback className="rounded-lg">
                   {userInitials}
                 </AvatarFallback>
@@ -107,7 +107,7 @@ export function NavUser({ user }: NavUserProps) {
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={avatarUrl} alt={user.name || "User"} />
+                  <AvatarImage src={avatarUrl} alt={user.name || "Usuário"} />
                   <AvatarFallback className="rounded-lg">
                     {userInitials}
                   </AvatarFallback>
@@ -121,23 +121,23 @@ export function NavUser({ user }: NavUserProps) {
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/projects/dashboard")}>
               <LayoutDashboard className="mr-2 h-4 w-4" />
-              Todo Dashboard
+              Painel de Tarefas
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => router.push(`/crm/dashboard/${user.id}`)}
             >
               <BadgeDollarSign className="mr-2 h-4 w-4" />
-              Sales Dashboard
+              Painel de Vendas
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/profile")}>
               <Settings className="mr-2 h-4 w-4" />
-              Profile Settings
+              Configurações do Perfil
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={async () => { await signOut(); window.location.href = "/sign-in"; }}>
               <LogOut className="mr-2 h-4 w-4" />
-              Logout
+              Sair
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

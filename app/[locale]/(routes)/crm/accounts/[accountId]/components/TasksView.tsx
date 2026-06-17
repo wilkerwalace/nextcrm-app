@@ -48,7 +48,7 @@ const AccountsTasksView = ({ data, account }: TasksViewProps) => {
               onClick={() => router.push("/projects/tasks")}
               className="cursor-pointer"
             >
-              Tasks
+              Tarefas
             </CardTitle>
             <CardDescription></CardDescription>
           </div>
@@ -64,10 +64,10 @@ const AccountsTasksView = ({ data, account }: TasksViewProps) => {
               </SheetTrigger>
               <SheetContent className="w-full overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>Create new Task</SheetTitle>
+                  <SheetTitle>Criar nova tarefa</SheetTitle>
                   <SheetDescription>
-                    Create a new task for this account with assigned user, due
-                    date, and priority
+                    Crie uma nova tarefa para esta empresa com responsável, data
+                    de vencimento e prioridade
                   </SheetDescription>
                 </SheetHeader>
                 <div className="mt-6 space-y-4">
@@ -84,7 +84,7 @@ const AccountsTasksView = ({ data, account }: TasksViewProps) => {
       </CardHeader>
       <CardContent>
         {!data || data.length === 0 ? (
-          "No assigned tasks found"
+          "Nenhuma tarefa atribuída encontrada"
         ) : (
           <TasksDataTable data={data} columns={columns} />
         )}

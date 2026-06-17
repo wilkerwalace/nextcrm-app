@@ -38,14 +38,14 @@ export const columns: ColumnDef<DocumentRow>[] = [
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
+        aria-label="Selecionar todos"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
+        aria-label="Selecionar linha"
       />
     ),
     enableSorting: false,
@@ -54,7 +54,7 @@ export const columns: ColumnDef<DocumentRow>[] = [
   {
     accessorKey: "createdAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date" />
+      <DataTableColumnHeader column={column} title="Data" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px] text-muted-foreground text-sm">
@@ -66,7 +66,7 @@ export const columns: ColumnDef<DocumentRow>[] = [
   {
     accessorKey: "document_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Document" />
+      <DataTableColumnHeader column={column} title="Documento" />
     ),
     cell: ({ row }) => {
       const mimeLabel = getMimeLabel(row.original.document_file_mimeType);
@@ -83,7 +83,7 @@ export const columns: ColumnDef<DocumentRow>[] = [
             </span>
             {isProcessing ? (
               <span className="text-xs text-muted-foreground italic">
-                Generating summary...
+                Gerando resumo...
               </span>
             ) : summary ? (
               <span className="text-xs text-muted-foreground line-clamp-1">
@@ -98,7 +98,7 @@ export const columns: ColumnDef<DocumentRow>[] = [
   {
     accessorKey: "document_system_type",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
+      <DataTableColumnHeader column={column} title="Tipo" />
     ),
     cell: ({ row }) => {
       const type = row.getValue("document_system_type") as string | null;
@@ -114,7 +114,7 @@ export const columns: ColumnDef<DocumentRow>[] = [
   {
     id: "account",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Account" />
+      <DataTableColumnHeader column={column} title="Empresa" />
     ),
     cell: ({ row }) => {
       const accounts = row.original.accounts;
@@ -139,11 +139,11 @@ export const columns: ColumnDef<DocumentRow>[] = [
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Responsável" />
     ),
     cell: ({ row }) => (
       <div className="w-[120px] text-sm">
-        {(row.getValue("assigned_to_user") as { name: string | null } | null)?.name ?? "Unassigned"}
+        {(row.getValue("assigned_to_user") as { name: string | null } | null)?.name ?? "Sem responsável"}
       </div>
     ),
     enableSorting: false,

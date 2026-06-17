@@ -40,7 +40,7 @@ const EditLineItemForm = ({
 
   const { execute, fieldErrors, isLoading } = useAction(action, {
     onSuccess: () => {
-      toast.success("Line item updated");
+      toast.success("Item atualizado");
       onOpenChange(false);
       router.refresh();
     },
@@ -75,14 +75,14 @@ const EditLineItemForm = ({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="max-w-3xl overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>Edit Line Item</SheetTitle>
-          <SheetDescription>Update the line item details</SheetDescription>
+          <SheetTitle>Editar Item</SheetTitle>
+          <SheetDescription>Atualize os detalhes do item</SheetDescription>
         </SheetHeader>
         <div className="mt-6 space-y-4">
           <form action={onAction} className="space-y-4">
             <FormInput
               id="name"
-              label="Name"
+              label="Nome"
               type="text"
               errors={fieldErrors}
               defaultValue={item.name}
@@ -90,14 +90,14 @@ const EditLineItemForm = ({
             <div className="grid grid-cols-2 gap-4">
               <FormInput
                 id="quantity"
-                label="Quantity"
+                label="Quantidade"
                 type="number"
                 errors={fieldErrors}
                 defaultValue={String(item.quantity)}
               />
               <FormInput
                 id="unit_price"
-                label="Unit Price"
+                label="Preço Unitário"
                 type="text"
                 errors={fieldErrors}
                 defaultValue={String(item.unit_price)}
@@ -106,16 +106,16 @@ const EditLineItemForm = ({
 
             <div className="space-y-2">
               <label className="text-xs font-semibold text-neutral-700">
-                Discount Type
+                Tipo de Desconto
               </label>
               <select
                 className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                 value={discountType}
                 onChange={(e) => setDiscountType(e.target.value)}
               >
-                <option value="NONE">None</option>
-                <option value="PERCENTAGE">Percentage (%)</option>
-                <option value="FIXED">Fixed Amount</option>
+                <option value="NONE">Nenhum</option>
+                <option value="PERCENTAGE">Porcentagem (%)</option>
+                <option value="FIXED">Valor Fixo</option>
               </select>
             </div>
 
@@ -124,8 +124,8 @@ const EditLineItemForm = ({
                 id="discount_value"
                 label={
                   discountType === "PERCENTAGE"
-                    ? "Discount (%)"
-                    : "Discount Amount"
+                    ? "Desconto (%)"
+                    : "Valor do Desconto"
                 }
                 type="text"
                 errors={fieldErrors}
@@ -135,7 +135,7 @@ const EditLineItemForm = ({
 
             <FormTextarea
               id="description"
-              label="Description"
+              label="Descrição"
               errors={fieldErrors}
               defaultValue={item.description || ""}
             />
@@ -144,7 +144,7 @@ const EditLineItemForm = ({
               {isLoading ? (
                 <Loader2 className="h-6 w-6 animate-spin" />
               ) : (
-                "Save Changes"
+                "Salvar Alterações"
               )}
             </FormSubmit>
           </form>

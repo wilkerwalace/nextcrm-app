@@ -12,21 +12,21 @@ interface ActivityLogProps {
 }
 
 const ACTION_LABELS: Record<string, string> = {
-  CREATED: "Invoice created",
-  ISSUED: "Invoice issued",
-  SENT: "Invoice sent by email",
-  PAYMENT_ADDED: "Payment recorded",
-  PAYMENT_DELETED: "Payment deleted",
-  CANCELLED: "Invoice cancelled",
-  DUPLICATED: "Invoice duplicated",
-  UPDATED: "Invoice updated",
-  STATUS_CHANGED: "Status changed",
+  CREATED: "Fatura criada",
+  ISSUED: "Fatura emitida",
+  SENT: "Fatura enviada por e-mail",
+  PAYMENT_ADDED: "Pagamento registrado",
+  PAYMENT_DELETED: "Pagamento excluído",
+  CANCELLED: "Fatura cancelada",
+  DUPLICATED: "Fatura duplicada",
+  UPDATED: "Fatura atualizada",
+  STATUS_CHANGED: "Status alterado",
 };
 
 export function ActivityLog({ activities }: ActivityLogProps) {
   if (activities.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground py-4">No activity yet</p>
+      <p className="text-sm text-muted-foreground py-4">Nenhuma atividade ainda</p>
     );
   }
 

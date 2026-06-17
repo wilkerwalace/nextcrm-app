@@ -11,7 +11,7 @@ export async function SecurityTabContent({ userId: _userId }: Props) {
         {t("cards.changePassword")}
       </h3>
       <p className="text-sm text-muted-foreground">
-        Password management is handled via your identity provider.
+        O gerenciamento de senha é feito pelo seu provedor de identidade.
       </p>
     </div>
   );

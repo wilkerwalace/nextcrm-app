@@ -20,8 +20,8 @@ export default function UploadFileModal({
   isOpen,
   onClose,
   children,
-  title = "Upload File",
-  description = "Select a file to upload",
+  title = "Enviar arquivo",
+  description = "Selecione um arquivo para enviar",
 }: ModalProps) {
   const onChange = (open: boolean) => {
     if (!open) {

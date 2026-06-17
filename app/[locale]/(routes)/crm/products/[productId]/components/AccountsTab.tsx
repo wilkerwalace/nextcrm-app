@@ -55,7 +55,7 @@ export function AccountsTab({
   if (!assignments || assignments.length === 0) {
     return (
       <div className="py-10 text-center text-muted-foreground">
-        No accounts assigned to this product yet.
+        Nenhuma empresa atribuída a este produto ainda.
       </div>
     );
   }
@@ -64,13 +64,13 @@ export function AccountsTab({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Account</TableHead>
+          <TableHead>Empresa</TableHead>
           <TableHead>Status</TableHead>
-          <TableHead className="text-right">Qty</TableHead>
-          <TableHead className="text-right">Price</TableHead>
-          <TableHead>Start Date</TableHead>
-          <TableHead>End Date</TableHead>
-          <TableHead>Renewal Date</TableHead>
+          <TableHead className="text-right">Qtd</TableHead>
+          <TableHead className="text-right">Preço</TableHead>
+          <TableHead>Data de início</TableHead>
+          <TableHead>Data de término</TableHead>
+          <TableHead>Data de renovação</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

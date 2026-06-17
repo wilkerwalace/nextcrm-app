@@ -109,7 +109,7 @@ export function EnrichTargetDrawer({
         setStep("select");
         return;
       }
-      toast.error(err.error ?? "Failed to start enrichment");
+      toast.error(err.error ?? "Falha ao iniciar o enriquecimento");
       setStep("select");
       return;
     }
@@ -170,12 +170,12 @@ export function EnrichTargetDrawer({
     });
 
     if (res.ok) {
-      toast.success("Target enriched successfully");
+      toast.success("Alvo enriquecido com sucesso");
       onApplied();
       handleClose(false);
     } else {
       const err = await res.json();
-      toast.error(err.error ?? "Failed to apply enrichment");
+      toast.error(err.error ?? "Falha ao aplicar o enriquecimento");
     }
     setApplying(false);
   };
@@ -191,16 +191,16 @@ export function EnrichTargetDrawer({
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-orange-500" />
-            Enrich with AI
+            Enriquecer com IA
           </SheetTitle>
           <SheetDescription>
-            Firecrawl searches the web to fill in missing target details.
+            O Firecrawl pesquisa na web para preencher detalhes faltantes do alvo.
           </SheetDescription>
         </SheetHeader>
 
         {scenario === "none" && (
           <div className="mt-4 rounded-md border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive">
-            Add an email or company name to this target to enable enrichment.
+            Adicione um e-mail ou nome de empresa a este alvo para habilitar o enriquecimento.
           </div>
         )}
 
@@ -209,17 +209,17 @@ export function EnrichTargetDrawer({
             <div className="flex items-center gap-2">
               {scenario === "personal" ? (
                 <Badge variant="secondary" className="flex items-center gap-1">
-                  <User className="h-3 w-3" /> Personal search
+                  <User className="h-3 w-3" /> Pesquisa pessoal
                 </Badge>
               ) : (
                 <Badge variant="secondary" className="flex items-center gap-1">
-                  <Building2 className="h-3 w-3" /> Company search
+                  <Building2 className="h-3 w-3" /> Pesquisa de empresa
                 </Badge>
               )}
               <span className="text-xs text-muted-foreground">
                 {scenario === "personal"
-                  ? "Using email to find contact & company info"
-                  : "Using company name to find company details"}
+                  ? "Usando o e-mail para encontrar informações do contato e da empresa"
+                  : "Usando o nome da empresa para encontrar detalhes da empresa"}
               </span>
             </div>
             <EnrichFieldSelector
@@ -252,7 +252,7 @@ export function EnrichTargetDrawer({
               <div ref={scrollRef} />
             </ScrollArea>
             <Button variant="outline" size="sm" onClick={handleCancel}>
-              Cancel
+              Cancelar
             </Button>
           </div>
         )}
@@ -260,16 +260,16 @@ export function EnrichTargetDrawer({
         {step === "diff" && result && (
           <div className="mt-4 space-y-4">
             <p className="text-sm text-muted-foreground">
-              Review enriched data. Uncheck any fields you don&apos;t want to apply.
+              Revise os dados enriquecidos. Desmarque os campos que não deseja aplicar.
             </p>
             <ScrollArea className="h-[380px]">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-muted-foreground text-xs">
                     <th className="text-left pb-2 w-6"></th>
-                    <th className="text-left pb-2">Field</th>
-                    <th className="text-left pb-2">Current</th>
-                    <th className="text-left pb-2">Enriched</th>
+                    <th className="text-left pb-2">Campo</th>
+                    <th className="text-left pb-2">Atual</th>
+                    <th className="text-left pb-2">Enriquecido</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -292,11 +292,11 @@ export function EnrichTargetDrawer({
                         <td className="py-2 pr-2 font-medium capitalize whitespace-nowrap">
                           {fieldName.replace(/_/g, " ")}
                           <div className="text-xs text-muted-foreground font-normal">
-                            {Math.round(enrichment.confidence * 100)}% confident
+                            {Math.round(enrichment.confidence * 100)}% de confiança
                           </div>
                         </td>
                         <td className="py-2 pr-2 text-muted-foreground max-w-[100px] truncate">
-                          {currentValue ?? <span className="italic text-xs">empty</span>}
+                          {currentValue ?? <span className="italic text-xs">vazio</span>}
                         </td>
                         <td className="py-2">
                           <div className="font-medium">{String(enrichment.value)}</div>
@@ -304,7 +304,7 @@ export function EnrichTargetDrawer({
                             <a href={enrichment.source} target="_blank" rel="noopener noreferrer"
                               className="text-xs text-blue-500 inline-flex items-center gap-0.5 mt-0.5">
                               <ExternalLink className="h-3 w-3" />
-                              Source
+                              Fonte
                             </a>
                           )}
                         </td>
@@ -322,11 +322,11 @@ export function EnrichTargetDrawer({
                 onClick={handleApply}
               >
                 <CheckCircle className="h-4 w-4 mr-1" />
-                {applying ? "Applying…" : `Apply ${selectedApply.size} fields`}
+                {applying ? "Aplicando…" : `Aplicar ${selectedApply.size} campos`}
               </Button>
               <Button variant="outline" onClick={() => handleClose(false)}>
                 <XCircle className="h-4 w-4 mr-1" />
-                Discard
+                Descartar
               </Button>
             </div>
           </div>

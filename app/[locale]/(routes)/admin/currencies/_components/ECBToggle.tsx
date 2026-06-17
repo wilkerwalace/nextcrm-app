@@ -12,15 +12,15 @@ export function ECBToggle({ initialEnabled }: { initialEnabled: boolean }) {
     try {
       await setEcbAutoUpdate(checked);
       setEnabled(checked);
-      toast.success(`ECB auto-update ${checked ? "enabled" : "disabled"}`);
+      toast.success(`Atualização automática do ECB ${checked ? "ativada" : "desativada"}`);
     } catch {
-      toast.error("Failed to update ECB setting");
+      toast.error("Falha ao atualizar a configuração do ECB");
     }
   };
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-sm text-muted-foreground">ECB Auto-Update</span>
+      <span className="text-sm text-muted-foreground">Atualização Automática do ECB</span>
       <Switch checked={enabled} onCheckedChange={handleToggle} />
     </div>
   );

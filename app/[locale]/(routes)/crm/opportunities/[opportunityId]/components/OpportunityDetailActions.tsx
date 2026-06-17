@@ -42,8 +42,8 @@ export function OpportunityDetailActions({
       <Sheet open={updateOpen} onOpenChange={setUpdateOpen}>
         <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Update Opportunity - {opportunity?.name}</SheetTitle>
-            <SheetDescription>Update opportunity details</SheetDescription>
+            <SheetTitle>Atualizar oportunidade - {opportunity?.name}</SheetTitle>
+            <SheetDescription>Atualizar detalhes da oportunidade</SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">
             <UpdateOpportunityForm
@@ -66,12 +66,12 @@ export function OpportunityDetailActions({
             data-testid="opportunity-detail-actions-btn"
           >
             <MoreHorizontal className="h-5 w-5 text-muted-foreground" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

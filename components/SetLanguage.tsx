@@ -39,7 +39,7 @@ import { setLanguage } from "@/actions/user/set-language";
 
 const FormSchema = z.object({
   language: z.string({
-    message: "Please select a language.",
+    message: "Selecione um idioma.",
   }),
 });
 
@@ -120,16 +120,16 @@ export function SetLanguage({ userId }: Props) {
                         ? languages.find(
                             (language) => language.value === field.value
                           )?.label
-                        : "Select language"}
+                        : "Selecionar idioma"}
                       <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search language ..." />
+                    <CommandInput placeholder="Buscar idioma ..." />
                     <CommandList>
-                      <CommandEmpty>No language found.</CommandEmpty>
+                      <CommandEmpty>Nenhum idioma encontrado.</CommandEmpty>
                       <CommandGroup>
                         {languages.map((language) => (
                           <CommandItem

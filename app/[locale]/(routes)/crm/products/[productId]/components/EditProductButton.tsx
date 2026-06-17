@@ -38,7 +38,7 @@ export function EditProductButton({
     <>
       <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
         <Pencil className="mr-2 h-4 w-4" />
-        Edit
+        Editar
       </Button>
       <UpdateProductForm
         onOpen={open}

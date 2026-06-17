@@ -27,7 +27,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
   const [addOpen, setAddOpen] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
 
-  if (!data) return <div>Target list not found</div>;
+  if (!data) return <div>Lista de alvos não encontrada</div>;
 
   const existingTargetIds: string[] = (data.targets ?? []).map((t: any) => t.target_id);
 
@@ -39,7 +39,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
       toast.error(result.error);
       return;
     }
-    toast.success("Target removed from list");
+    toast.success("Alvo removido da lista");
     router.refresh();
   };
 
@@ -60,7 +60,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Users className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Description</p>
+                  <p className="text-sm font-medium leading-none">Descrição</p>
                   <p className="text-sm text-muted-foreground">
                     {data.description || "N/A"}
                   </p>
@@ -71,7 +71,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">Status</p>
                   <p className="text-sm text-muted-foreground">
-                    {data.status ? "Active" : "Inactive"}
+                    {data.status ? "Ativo" : "Inativo"}
                   </p>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created by</p>
+                  <p className="text-sm font-medium leading-none">Criado por</p>
                   <p className="text-sm text-muted-foreground">
                     {data.crate_by_user?.name || "N/A"}
                   </p>
@@ -89,7 +89,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created on</p>
+                  <p className="text-sm font-medium leading-none">Criado em</p>
                   <p className="text-sm text-muted-foreground">
                     {data.created_on
                       ? moment(data.created_on).format("MMM DD YYYY")
@@ -105,15 +105,15 @@ export function BasicView({ data }: TargetListBasicViewProps) {
       <Card>
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
-            <CardTitle>Targets ({data.targets?.length || 0})</CardTitle>
+            <CardTitle>Alvos ({data.targets?.length || 0})</CardTitle>
             <Button size="sm" variant="outline" onClick={() => setAddOpen(true)}>
-              + Add Target
+              + Adicionar Alvo
             </Button>
           </div>
         </CardHeader>
         <CardContent>
           {!data.targets || data.targets.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No targets in this list yet.</p>
+            <p className="text-sm text-muted-foreground">Nenhum alvo nesta lista ainda.</p>
           ) : (
             <div className="space-y-2">
               {data.targets.map((t: any) => (
@@ -130,7 +130,7 @@ export function BasicView({ data }: TargetListBasicViewProps) {
                       {t.target?.first_name} {t.target?.last_name}
                     </Link>
                     <p className="text-xs text-muted-foreground">
-                      {t.target?.email || t.target?.mobile_phone || "No contact info"}
+                      {t.target?.email || t.target?.mobile_phone || "Sem informações de contato"}
                     </p>
                   </div>
                   {t.target?.company && (

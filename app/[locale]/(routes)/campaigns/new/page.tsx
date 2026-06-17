@@ -15,8 +15,8 @@ export default async function NewCampaignPage() {
   return (
     <div className="flex flex-col gap-6 p-6">
       <div>
-        <h1 className="text-2xl font-bold">New Campaign</h1>
-        <p className="text-muted-foreground">Create an email campaign</p>
+        <h1 className="text-2xl font-bold">Nova Campanha</h1>
+        <p className="text-muted-foreground">Crie uma campanha de e-mail</p>
       </div>
       <WizardShell templates={templates} targetLists={targetLists} />
     </div>

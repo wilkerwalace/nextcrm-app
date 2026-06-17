@@ -7,12 +7,12 @@ import {
 export const statuses = [
   {
     value: "Active",
-    label: "Active",
+    label: "Ativo",
     icon: QuestionMarkCircledIcon,
   },
   {
     value: "IN_PROGRESS",
-    label: "In progress",
+    label: "Em andamento",
     icon: StopwatchIcon,
   },
 ];

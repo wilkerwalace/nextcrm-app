@@ -438,7 +438,7 @@ export function UpdateAccountForm({
                     <FormControl>
                       <Textarea
                         disabled={form.formState.isSubmitting}
-                        placeholder="Description"
+                        placeholder="Descrição"
                         {...field}
                       />
                     </FormControl>

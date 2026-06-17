@@ -35,7 +35,7 @@ export function SendEmailDialog({
 
   const handleSend = async () => {
     if (!to) {
-      toast.error("Email address is required");
+      toast.error("O endereço de e-mail é obrigatório");
       return;
     }
     setSending(true);
@@ -46,11 +46,11 @@ export function SendEmailDialog({
         subject: subject || undefined,
         message: message || undefined,
       });
-      toast.success("Invoice sent by email");
+      toast.success("Fatura enviada por e-mail");
       setOpen(false);
       router.refresh();
     } catch {
-      toast.error("Failed to send email");
+      toast.error("Falha ao enviar o e-mail");
     } finally {
       setSending(false);
     }
@@ -61,16 +61,16 @@ export function SendEmailDialog({
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <Send className="mr-2 h-4 w-4" />
-          Send by Email
+          Enviar por e-mail
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Send Invoice by Email</DialogTitle>
+          <DialogTitle>Enviar fatura por e-mail</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label>To</Label>
+            <Label>Para</Label>
             <Input
               type="email"
               value={to}
@@ -79,24 +79,24 @@ export function SendEmailDialog({
             />
           </div>
           <div className="space-y-2">
-            <Label>Subject (optional)</Label>
+            <Label>Assunto (opcional)</Label>
             <Input
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              placeholder="Custom subject line"
+              placeholder="Assunto personalizado"
             />
           </div>
           <div className="space-y-2">
-            <Label>Message (optional)</Label>
+            <Label>Mensagem (opcional)</Label>
             <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Optional message to include"
+              placeholder="Mensagem opcional a incluir"
               rows={3}
             />
           </div>
           <Button onClick={handleSend} disabled={sending || !to}>
-            {sending ? "Sending..." : "Send"}
+            {sending ? "Enviando..." : "Enviar"}
           </Button>
         </div>
       </DialogContent>

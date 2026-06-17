@@ -98,7 +98,7 @@ const NewTaskDialog = ({ boards }: Props) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`New task: ${data.title}, created successfully`);
+        toast.success(`Nova tarefa: ${data.title}, criada com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);
@@ -194,7 +194,7 @@ const NewTaskDialog = ({ boards }: Props) => {
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a expected close date</span>
+                                <span>Escolha uma data de conclusão prevista</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>

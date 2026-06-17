@@ -15,7 +15,7 @@ export default async function CurrenciesPage() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Currencies</CardTitle>
+          <CardTitle>Moedas</CardTitle>
         </CardHeader>
         <CardContent>
           <CurrencyTable currencies={currencies} />
@@ -24,7 +24,7 @@ export default async function CurrenciesPage() {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Exchange Rates</CardTitle>
+          <CardTitle>Taxas de Câmbio</CardTitle>
           <ECBToggle initialEnabled={ecbEnabled} />
         </CardHeader>
         <CardContent>

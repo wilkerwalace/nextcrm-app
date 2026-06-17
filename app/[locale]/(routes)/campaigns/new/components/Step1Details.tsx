@@ -31,7 +31,7 @@ export function Step1Details({ initialData, onNext }: Props) {
 
   const handleNext = () => {
     if (!name.trim()) {
-      setError("Campaign name is required");
+      setError("O nome da campanha é obrigatório");
       return;
     }
     onNext({
@@ -45,7 +45,7 @@ export function Step1Details({ initialData, onNext }: Props) {
   return (
     <div className="flex flex-col gap-4 max-w-lg">
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="name">Campaign Name *</Label>
+        <Label htmlFor="name">Nome da Campanha *</Label>
         <Input
           id="name"
           value={name}
@@ -53,30 +53,30 @@ export function Step1Details({ initialData, onNext }: Props) {
             setName(e.target.value);
             setError("");
           }}
-          placeholder="e.g. Q2 Product Outreach"
+          placeholder="ex.: Prospecção de Produto do 2º Trimestre"
         />
         {error && <p className="text-sm text-destructive">{error}</p>}
       </div>
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="description">Description</Label>
+        <Label htmlFor="description">Descrição</Label>
         <Textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Optional description..."
+          placeholder="Descrição opcional..."
         />
       </div>
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="fromName">From Name</Label>
+        <Label htmlFor="fromName">Nome do Remetente</Label>
         <Input
           id="fromName"
           value={fromName}
           onChange={(e) => setFromName(e.target.value)}
-          placeholder="e.g. Jane from Acme"
+          placeholder="ex.: Joana da Acme"
         />
       </div>
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="replyTo">Reply-to Email</Label>
+        <Label htmlFor="replyTo">E-mail de Resposta</Label>
         <Input
           id="replyTo"
           value={replyTo}
@@ -85,7 +85,7 @@ export function Step1Details({ initialData, onNext }: Props) {
         />
       </div>
       <div className="flex justify-end">
-        <Button onClick={handleNext}>Next →</Button>
+        <Button onClick={handleNext}>Avançar →</Button>
       </div>
     </div>
   );

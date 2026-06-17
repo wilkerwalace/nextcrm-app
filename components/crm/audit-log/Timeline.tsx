@@ -28,7 +28,7 @@ export function AuditTimeline({ entityType, entityId, initialData, role, onResto
   };
 
   if (entries.length === 0) {
-    return <p className="text-sm text-muted-foreground py-4">No history yet.</p>;
+    return <p className="text-sm text-muted-foreground py-4">Nenhum histórico ainda.</p>;
   }
 
   return (
@@ -51,7 +51,7 @@ export function AuditTimeline({ entityType, entityId, initialData, role, onResto
           onClick={loadMore}
           disabled={isPending}
         >
-          {isPending ? "Loading..." : "Load more"}
+          {isPending ? "Carregando..." : "Carregar mais"}
         </Button>
       )}
     </div>

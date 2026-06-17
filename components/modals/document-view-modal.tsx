@@ -44,14 +44,14 @@ const DocumentViewModal = ({
           <div className="relative h-full p-10">
             {imageUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img alt="Image preview" src={imageUrl} className="object-contain w-full h-full" />
+              <img alt="Pré-visualização da imagem" src={imageUrl} className="object-contain w-full h-full" />
             ) : (
-              <p className="text-muted-foreground">No preview available</p>
+              <p className="text-muted-foreground">Pré-visualização indisponível</p>
             )}
           </div>
           <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
             <Button disabled={loading} variant={"outline"} onClick={onClose}>
-              Cancel
+              Cancelar
             </Button>
           </div>
         </div>
@@ -73,7 +73,7 @@ const DocumentViewModal = ({
           />
           <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
             <Button disabled={loading} variant={"outline"} onClick={onClose}>
-              Cancel
+              Cancelar
             </Button>
           </div>
         </div>
@@ -83,13 +83,13 @@ const DocumentViewModal = ({
     return (
       <ModalDocumentView isOpen={isOpen} onClose={onClose}>
         <div className="flex flex-col h-full ">
-          This format can not be previewed. Please download the file to view it.
+          Este formato não pode ser pré-visualizado. Baixe o arquivo para visualizá-lo.
           <Button>
-            <Link href={document.document_file_url}> Download</Link>
+            <Link href={document.document_file_url}> Baixar</Link>
           </Button>
           <div className="pt-6 space-x-2 flex items-center justify-end w-full ">
             <Button disabled={loading} variant={"outline"} onClick={onClose}>
-              Cancel
+              Cancelar
             </Button>
           </div>
         </div>

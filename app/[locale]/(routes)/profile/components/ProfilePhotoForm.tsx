@@ -72,7 +72,7 @@ export function ProfilePhotoForm({ data }: ProfileFormProps) {
           className="rounded-full object-cover border border-border"
         />
         {pendingAvatar !== null && (
-          <span className="text-xs text-muted-foreground">Preview</span>
+          <span className="text-xs text-muted-foreground">Pré-visualização</span>
         )}
       </div>
       <div className="flex flex-col gap-3">
@@ -83,10 +83,10 @@ export function ProfilePhotoForm({ data }: ProfileFormProps) {
         {pendingAvatar !== null && (
           <div className="flex gap-2">
             <Button onClick={handleSave} disabled={saving} size="sm">
-              {saving ? "Saving..." : "Save photo"}
+              {saving ? "Salvando..." : "Salvar foto"}
             </Button>
             <Button onClick={handleCancel} variant="outline" size="sm" disabled={saving}>
-              Cancel
+              Cancelar
             </Button>
           </div>
         )}

@@ -91,7 +91,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
         {/* Left: Customer & dates */}
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-base">Details</CardTitle>
+            <CardTitle className="text-base">Detalhes</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="grid grid-cols-2 gap-2">
@@ -104,7 +104,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
             </div>
             {billing.street && (
               <div className="grid grid-cols-2 gap-2">
-                <span className="text-muted-foreground">Address</span>
+                <span className="text-muted-foreground">Endereço</span>
                 <span>
                   {billing.street}
                   {billing.city ? `, ${billing.city}` : ""}
@@ -146,7 +146,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
         {/* Right: Totals */}
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-base">Financial Summary</CardTitle>
+            <CardTitle className="text-base">Resumo financeiro</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="grid grid-cols-2 gap-2">
@@ -161,7 +161,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
             </div>
             {parseFloat(invoice.discountTotal.toString()) > 0 && (
               <div className="grid grid-cols-2 gap-2">
-                <span className="text-muted-foreground">Discount</span>
+                <span className="text-muted-foreground">Desconto</span>
                 <span className="font-mono text-red-600">
                   -
                   {formatCurrency(
@@ -173,7 +173,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
               </div>
             )}
             <div className="grid grid-cols-2 gap-2">
-              <span className="text-muted-foreground">VAT</span>
+              <span className="text-muted-foreground">Impostos</span>
               <span className="font-mono">
                 {formatCurrency(
                   invoice.vatTotal.toString(),
@@ -184,7 +184,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
             </div>
             <Separator />
             <div className="grid grid-cols-2 gap-2 font-semibold">
-              <span>Grand Total</span>
+              <span>Total geral</span>
               <span className="font-mono">
                 {formatCurrency(
                   invoice.grandTotal.toString(),
@@ -194,7 +194,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
               </span>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <span className="text-muted-foreground">Paid</span>
+              <span className="text-muted-foreground">Pago</span>
               <span className="font-mono text-green-600">
                 {formatCurrency(
                   invoice.paidTotal.toString(),
@@ -204,7 +204,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
               </span>
             </div>
             <div className="grid grid-cols-2 gap-2 font-semibold">
-              <span>Balance Due</span>
+              <span>Saldo devedor</span>
               <span className="font-mono">
                 {formatCurrency(
                   invoice.balanceDue.toString(),
@@ -217,7 +217,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
               <>
                 <Separator />
                 <div className="grid grid-cols-2 gap-2">
-                  <span className="text-muted-foreground">Bank</span>
+                  <span className="text-muted-foreground">Banco</span>
                   <span>{invoice.bankName}</span>
                 </div>
                 {invoice.iban && (
@@ -357,7 +357,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
       {/* Payments */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">Payments</CardTitle>
+          <CardTitle className="text-base">Pagamentos</CardTitle>
         </CardHeader>
         <CardContent>
           <PaymentList
@@ -371,7 +371,7 @@ export default async function InvoiceDetailPage({ params }: Props) {
       {/* Activity */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">Activity</CardTitle>
+          <CardTitle className="text-base">Atividade</CardTitle>
         </CardHeader>
         <CardContent>
           <ActivityLog

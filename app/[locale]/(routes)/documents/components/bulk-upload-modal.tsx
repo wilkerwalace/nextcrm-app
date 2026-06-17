@@ -101,7 +101,7 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
         body: item.file,
         headers: { "Content-Type": item.file.type },
       });
-      if (!uploadRes.ok) throw new Error(`Upload failed: ${uploadRes.status}`);
+      if (!uploadRes.ok) throw new Error(`Falha no envio: ${uploadRes.status}`);
 
       updateFile(index, { progress: 70 });
 
@@ -119,7 +119,7 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
     } catch (err) {
       updateFile(index, {
         status: "error",
-        error: err instanceof Error ? err.message : "Upload failed",
+        error: err instanceof Error ? err.message : "Falha no envio",
       });
     }
   };
@@ -175,12 +175,12 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
       <DialogTrigger asChild>
         <Button>
           <Plus className="mr-2 h-4 w-4" />
-          Upload Documents
+          Enviar documentos
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
-          <DialogTitle>Upload Documents</DialogTitle>
+          <DialogTitle>Enviar documentos</DialogTitle>
         </DialogHeader>
 
         <div
@@ -190,9 +190,9 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
           }`}
         >
           <input {...getInputProps()} />
-          <p className="font-medium">Drop files here or click to browse</p>
+          <p className="font-medium">Solte os arquivos aqui ou clique para navegar</p>
           <p className="text-sm text-muted-foreground mt-1">
-            PDF, DOCX, DOC, TXT, Images — up to 64MB each
+            PDF, DOCX, DOC, TXT, Imagens — até 64MB cada
           </p>
         </div>
 
@@ -214,13 +214,13 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
                       className="text-primary underline"
                       onClick={() => uploadAnyway(index)}
                     >
-                      Upload anyway
+                      Enviar mesmo assim
                     </button>
                     <button
                       className="text-muted-foreground underline"
                       onClick={() => skipFile(index)}
                     >
-                      Skip
+                      Ignorar
                     </button>
                   </span>
                 )}
@@ -230,13 +230,13 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
                   </span>
                 )}
                 {item.status === "uploaded" && (
-                  <span className="text-xs text-green-600">Uploaded</span>
+                  <span className="text-xs text-green-600">Enviado</span>
                 )}
                 {item.status === "error" && (
                   <span className="text-xs text-red-600">{item.error}</span>
                 )}
                 {item.status === "skipped" && (
-                  <span className="text-xs text-muted-foreground">Skipped</span>
+                  <span className="text-xs text-muted-foreground">Ignorado</span>
                 )}
               </div>
             ))}
@@ -246,11 +246,11 @@ export function BulkUploadModal({ accountId }: BulkUploadModalProps) {
         {queue.length > 0 && (
           <div className="flex justify-between items-center mt-4">
             <span className="text-sm text-muted-foreground">
-              {uploadedCount}/{queue.length} uploaded
+              {uploadedCount}/{queue.length} enviados
             </span>
             {hasQueued && (
               <Button onClick={processQueue} disabled={isProcessing}>
-                {isProcessing ? "Uploading..." : "Upload All"}
+                {isProcessing ? "Enviando..." : "Enviar todos"}
               </Button>
             )}
           </div>

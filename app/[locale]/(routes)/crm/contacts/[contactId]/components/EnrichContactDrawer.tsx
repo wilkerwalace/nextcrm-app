@@ -90,7 +90,7 @@ export function EnrichContactDrawer({
         setStep("select");
         return;
       }
-      toast.error(err.error ?? "Failed to start enrichment");
+      toast.error(err.error ?? "Falha ao iniciar o enriquecimento");
       setStep("select");
       return;
     }
@@ -152,12 +152,12 @@ export function EnrichContactDrawer({
     });
 
     if (res.ok) {
-      toast.success("Contact enriched successfully");
+      toast.success("Contato enriquecido com sucesso");
       onApplied();
       handleClose(false);
     } else {
       const err = await res.json();
-      toast.error(err.error ?? "Failed to apply enrichment");
+      toast.error(err.error ?? "Falha ao aplicar o enriquecimento");
     }
     setApplying(false);
   };
@@ -171,18 +171,18 @@ export function EnrichContactDrawer({
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-orange-500" />
-            Enrich with AI
+            Enriquecer com IA
           </SheetTitle>
           <SheetDescription>
             {noEmail
-              ? "Add an email to this contact to enable enrichment."
-              : "Firecrawl searches the web to fill in missing contact details."}
+              ? "Adicione um e-mail a este contato para habilitar o enriquecimento."
+              : "O Firecrawl pesquisa na web para preencher os detalhes faltantes do contato."}
           </SheetDescription>
         </SheetHeader>
 
         {noEmail && (
           <div className="mt-4 text-sm text-muted-foreground">
-            No email address found on this contact.
+            Nenhum endereço de e-mail encontrado neste contato.
           </div>
         )}
 
@@ -214,7 +214,7 @@ export function EnrichContactDrawer({
               <div ref={scrollRef} />
             </ScrollArea>
             <Button variant="outline" size="sm" onClick={handleCancel}>
-              Cancel
+              Cancelar
             </Button>
           </div>
         )}
@@ -222,16 +222,16 @@ export function EnrichContactDrawer({
         {step === "diff" && result && (
           <div className="mt-4 space-y-4">
             <p className="text-sm text-muted-foreground">
-              Review enriched data. Uncheck any fields you don&apos;t want to apply.
+              Revise os dados enriquecidos. Desmarque os campos que não deseja aplicar.
             </p>
             <ScrollArea className="h-[380px]">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-muted-foreground text-xs">
                     <th className="text-left pb-2 w-6"></th>
-                    <th className="text-left pb-2">Field</th>
-                    <th className="text-left pb-2 text-muted-foreground">Current</th>
-                    <th className="text-left pb-2">Enriched</th>
+                    <th className="text-left pb-2">Campo</th>
+                    <th className="text-left pb-2 text-muted-foreground">Atual</th>
+                    <th className="text-left pb-2">Enriquecido</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -254,11 +254,11 @@ export function EnrichContactDrawer({
                         <td className="py-2 pr-2 font-medium capitalize whitespace-nowrap">
                           {fieldName.replace(/_/g, " ")}
                           <div className="text-xs text-muted-foreground font-normal">
-                            {Math.round(enrichment.confidence * 100)}% confident
+                            {Math.round(enrichment.confidence * 100)}% de confiança
                           </div>
                         </td>
                         <td className="py-2 pr-2 text-muted-foreground max-w-[100px] truncate">
-                          {currentValue ?? <span className="italic text-xs">empty</span>}
+                          {currentValue ?? <span className="italic text-xs">vazio</span>}
                         </td>
                         <td className="py-2">
                           <div className="font-medium">{String(enrichment.value)}</div>
@@ -266,7 +266,7 @@ export function EnrichContactDrawer({
                             <a href={enrichment.source} target="_blank" rel="noopener noreferrer"
                               className="text-xs text-blue-500 inline-flex items-center gap-0.5 mt-0.5">
                               <ExternalLink className="h-3 w-3" />
-                              Source
+                              Fonte
                             </a>
                           )}
                         </td>
@@ -284,11 +284,11 @@ export function EnrichContactDrawer({
                 onClick={handleApply}
               >
                 <CheckCircle className="h-4 w-4 mr-1" />
-                {applying ? "Applying…" : `Apply ${selectedApply.size} fields`}
+                {applying ? "Aplicando…" : `Aplicar ${selectedApply.size} campos`}
               </Button>
               <Button variant="outline" onClick={() => handleClose(false)}>
                 <XCircle className="h-4 w-4 mr-1" />
-                Discard
+                Descartar
               </Button>
             </div>
           </div>

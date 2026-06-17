@@ -64,7 +64,7 @@ export function UpdateOpportunityForm({
     id: z.uuid(),
     name: z.string().min(1, t("nameRequired")),
     close_date: z.date({
-      message: "A expected close date is required.",
+      message: "A data prevista de fechamento é obrigatória.",
     }),
     description: z.string().nullable().optional(),
     type: z.string().nullable().optional(),
@@ -130,7 +130,7 @@ export function UpdateOpportunityForm({
                   <FormControl>
                     <Input
                       disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
+                      placeholder="Nova funcionalidade"
                       {...field}
                     />
                   </FormControl>
@@ -188,7 +188,7 @@ export function UpdateOpportunityForm({
                   <FormControl>
                     <Textarea
                       disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
+                      placeholder="Nova funcionalidade"
                       {...field}
                     />
                   </FormControl>
@@ -359,7 +359,7 @@ export function UpdateOpportunityForm({
                         <AccountSearchCombobox
                           value={field.value ?? ""}
                           onChange={field.onChange}
-                          placeholder="Choose account"
+                          placeholder="Escolha a empresa"
                           disabled={form.formState.isSubmitting}
                         />
                       </FormControl>
@@ -372,11 +372,11 @@ export function UpdateOpportunityForm({
                   name="contact"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Assigned Contact</FormLabel>
+                      <FormLabel>Contato atribuído</FormLabel>
                       <FormControl>
                         <Input
                           disabled={form.formState.isSubmitting}
-                          placeholder="Contact ID"
+                          placeholder="ID do contato"
                           {...field}
                         />
                       </FormControl>
@@ -389,14 +389,14 @@ export function UpdateOpportunityForm({
                   name="campaign"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>From campaign</FormLabel>
+                      <FormLabel>Da campanha</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a campaign" />
+                            <SelectValue placeholder="Selecione uma campanha" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="flex overflow-y-auto h-56">

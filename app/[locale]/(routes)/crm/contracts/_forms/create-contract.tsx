@@ -88,7 +88,7 @@ const CreateContractForm = ({
     <FormSheet
       trigger={"+"}
       title={t("createButton")}
-      description="Create a new contract with specified terms, dates, and assigned users"
+      description="Crie um novo contrato com termos, datas e usuários atribuídos"
       onClose={closeRef}
     >
       <form action={onAction} className="space-y-4">

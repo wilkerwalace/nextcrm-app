@@ -13,12 +13,12 @@ export const columnsTask: ColumnDef<Task>[] = [
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Atribuído a" />
     ),
 
     cell: ({ row }) => (
       <div className="w-[150px]">
-        {row.original.assigned_to_user?.name ?? "Unassigned"}
+        {row.original.assigned_to_user?.name ?? "Não atribuído"}
       </div>
     ),
     enableSorting: false,
@@ -27,7 +27,7 @@ export const columnsTask: ColumnDef<Task>[] = [
   {
     accessorKey: "document_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Document name" />
+      <DataTableColumnHeader column={column} title="Nome do documento" />
     ),
     cell: ({ row }) => {
       const label = labels.find(

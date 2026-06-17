@@ -24,7 +24,7 @@ const ProductPage = async (props: ProductDetailPageProps) => {
     getAllCrmData(),
   ]);
 
-  if (!product) return <div>Product not found</div>;
+  if (!product) return <div>Produto não encontrado</div>;
 
   // Serialize decimal values for client components
   const serializedProduct = serializeDecimals(product);
@@ -59,7 +59,7 @@ const ProductPage = async (props: ProductDetailPageProps) => {
 
   return (
     <Container
-      title={`Product: ${product.name}`}
+      title={`Produto: ${product.name}`}
       description={`Status: ${product.status}`}
     >
       <div className="flex justify-end mb-4">
@@ -71,11 +71,11 @@ const ProductPage = async (props: ProductDetailPageProps) => {
       </div>
       <Tabs defaultValue="basic">
         <TabsList>
-          <TabsTrigger value="basic">Basic</TabsTrigger>
+          <TabsTrigger value="basic">Básico</TabsTrigger>
           <TabsTrigger value="accounts">
-            Accounts ({serializedAssignments.length})
+            Empresas ({serializedAssignments.length})
           </TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="basic">
           <BasicView

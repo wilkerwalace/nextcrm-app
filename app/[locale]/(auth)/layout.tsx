@@ -38,7 +38,7 @@ const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
           <GithubIcon className="size-5" />
         </Link>
         <div className="flex items-center border rounded-md p-2 ">
-          <span className="sr-only">Github stars</span>
+          <span className="sr-only">Estrelas no Github</span>
           {githubStars}
           <Star className="size-4" />
         </div>

@@ -45,10 +45,10 @@ export function DocumentDetailPanel({
   const handleRetry = async () => {
     try {
       await retryEnrichment(document.id);
-      toast.success("Enrichment re-triggered");
+      toast.success("Enriquecimento reiniciado");
       router.refresh();
     } catch {
-      toast.error("Failed to retry enrichment");
+      toast.error("Falha ao reiniciar o enriquecimento");
     }
   };
 
@@ -65,7 +65,7 @@ export function DocumentDetailPanel({
             <ProcessingStatusBadge status={document.processing_status} />
             {document.processing_status === "FAILED" && (
               <Button variant="outline" size="sm" onClick={handleRetry}>
-                Retry
+                Tentar novamente
               </Button>
             )}
           </div>
@@ -73,7 +73,7 @@ export function DocumentDetailPanel({
           {/* Summary */}
           {document.summary && (
             <div>
-              <h4 className="text-sm font-medium mb-1">Summary</h4>
+              <h4 className="text-sm font-medium mb-1">Resumo</h4>
               <p className="text-sm text-muted-foreground">{document.summary}</p>
             </div>
           )}
@@ -83,21 +83,21 @@ export function DocumentDetailPanel({
           {/* Metadata */}
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
-              <span className="text-muted-foreground">Type</span>
+              <span className="text-muted-foreground">Tipo</span>
               <div>
                 <Badge variant="outline">{document.document_system_type ?? "OTHER"}</Badge>
               </div>
             </div>
             <div>
-              <span className="text-muted-foreground">Version</span>
+              <span className="text-muted-foreground">Versão</span>
               <div>{document.version}</div>
             </div>
             <div>
-              <span className="text-muted-foreground">Created</span>
+              <span className="text-muted-foreground">Criado em</span>
               <div>{document.createdAt ? moment(document.createdAt).format("MMM D, YYYY") : "—"}</div>
             </div>
             <div>
-              <span className="text-muted-foreground">Account</span>
+              <span className="text-muted-foreground">Empresa</span>
               <div>{document.accounts?.[0]?.account?.name ?? "—"}</div>
             </div>
           </div>
@@ -107,7 +107,7 @@ export function DocumentDetailPanel({
           {/* Version History */}
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h4 className="text-sm font-medium">Version History</h4>
+              <h4 className="text-sm font-medium">Histórico de versões</h4>
             </div>
             <div className="space-y-2">
               {versions.map((v) => (
@@ -118,14 +118,14 @@ export function DocumentDetailPanel({
                   <div className="flex items-center gap-2">
                     {v.version === document.version && (
                       <Badge variant="default" className="text-xs">
-                        Current
+                        Atual
                       </Badge>
                     )}
-                    <span>Version {v.version}</span>
+                    <span>Versão {v.version}</span>
                   </div>
                   <span className="text-muted-foreground text-xs">
                     {v.createdAt ? moment(v.createdAt).format("MMM D, YYYY") : ""}{" "}
-                    {v.created_by?.name ? `by ${v.created_by.name}` : ""}
+                    {v.created_by?.name ? `por ${v.created_by.name}` : ""}
                   </span>
                 </div>
               ))}

@@ -63,7 +63,7 @@ const ResendCard = async () => {
       <CardHeader className="text-lg">
         <CardTitle>Resend.com - API Key</CardTitle>
         <CardDescription className="text-xs">
-          <p>ENV API key:</p>
+          <p>API Key do ambiente (ENV):</p>
           <p>
             {process.env.RESEND_API_KEY ? (
               <CopyKeyComponent
@@ -71,10 +71,10 @@ const ResendCard = async () => {
                 message="Resend - API Key"
               />
             ) : (
-              "not enabled"
+              "não habilitada"
             )}
           </p>
-          <p>API key from DB:</p>
+          <p>API Key do banco de dados:</p>
           <p>
             {resend_key?.serviceKey ? (
               <CopyKeyComponent
@@ -82,7 +82,7 @@ const ResendCard = async () => {
                 message="Resend - API Key"
               />
             ) : (
-              "not enabled"
+              "não habilitada"
             )}
           </p>
         </CardDescription>
@@ -91,11 +91,11 @@ const ResendCard = async () => {
         <form action={setSMTP}>
           <div>
             <input type="hidden" name="id" value={resend_key?.id} />
-            <Input type="text" name="serviceKey" placeholder="Your API key" />
+            <Input type="text" name="serviceKey" placeholder="Sua API Key" />
           </div>
           <div className="flex justify-end pt-2 gap-2">
-            <Button type={"reset"}>Reset</Button>
-            <Button type="submit">Set Resend key</Button>
+            <Button type={"reset"}>Limpar</Button>
+            <Button type="submit">Salvar chave Resend</Button>
           </div>
         </form>
       </CardContent>

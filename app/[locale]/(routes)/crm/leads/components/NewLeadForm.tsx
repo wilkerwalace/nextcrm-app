@@ -211,7 +211,7 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, on
                   <FormControl>
                     <Textarea
                       disabled={form.formState.isSubmitting}
-                      placeholder="New NextCRM functionality"
+                      placeholder="Nova funcionalidade do NextCRM"
                       {...field}
                     />
                   </FormControl>
@@ -228,7 +228,7 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, on
                     <FormLabel>{t("leadSource")}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select source…" /></SelectTrigger>
+                        <SelectTrigger><SelectValue placeholder="Selecione a origem…" /></SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {leadSources.map((s) => (
@@ -264,10 +264,10 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, on
                 name="lead_status_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Lead Status</FormLabel>
+                    <FormLabel>Status do Lead</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select status…" /></SelectTrigger>
+                        <SelectTrigger><SelectValue placeholder="Selecione o status…" /></SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {leadStatuses.map((s) => (
@@ -284,10 +284,10 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, on
                 name="lead_type_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Lead Type</FormLabel>
+                    <FormLabel>Tipo de Lead</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
+                        <SelectTrigger><SelectValue placeholder="Selecione o tipo…" /></SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {leadTypes.map((lt) => (
@@ -310,7 +310,7 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, on
                     <FormControl>
                       <Input
                         disabled={form.formState.isSubmitting}
-                        placeholder="Social networks"
+                        placeholder="Redes sociais"
                         {...field}
                       />
                     </FormControl>

@@ -65,10 +65,10 @@ export function TeamConversations({
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success("Success");
+        toast.success("Sucesso");
       }
     } catch (error) {
-      toast.error("Something went wrong while sending comment to the DB");
+      toast.error("Algo deu errado ao enviar o comentário");
     } finally {
       form.reset({
         comment: "",
@@ -93,7 +93,7 @@ export function TeamConversations({
                 <FormControl>
                   <Input
                     disabled={isLoading}
-                    placeholder="Your comment ..."
+                    placeholder="Seu comentário ..."
                     {...field}
                   />
                 </FormControl>
@@ -103,15 +103,15 @@ export function TeamConversations({
           />
 
           <Button className="w-[80px]" disabled={isLoading} type="submit">
-            Add
+            Adicionar
           </Button>
         </form>
       </Form>
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Team conversation</CardTitle>
+          <CardTitle>Conversa da equipe</CardTitle>
           <CardDescription>
-            Invite your team members to collaborate.
+            Convide os membros da sua equipe para colaborar.
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-6">

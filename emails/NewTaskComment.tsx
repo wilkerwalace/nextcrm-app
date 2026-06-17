@@ -36,7 +36,7 @@ export const NewTaskCommentEmail = ({
 }: VercelInviteUserEmailProps) => {
   const previewText =
     userLanguage === "en"
-      ? `New task comment from ${process.env.NEXT_PUBLIC_APP_NAME} app`
+      ? `Novo comentário em tarefa do aplicativo ${process.env.NEXT_PUBLIC_APP_NAME}`
       : `Nový komentář k úkolu z aplikace  ${process.env.NEXT_PUBLIC_APP_NAME}`;
 
   return (
@@ -48,28 +48,28 @@ export const NewTaskCommentEmail = ({
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
             <Heading className="text-black text-2xl font-normal text-center p-0 my-[30px] mx-0">
               {userLanguage === "en"
-                ? "There is new comment on task you are watching"
+                ? "Há um novo comentário em uma tarefa que você está acompanhando"
                 : "Na úkolu, který sledujete, je nový komentář"}
             </Heading>
             <Text className="text-black text-sm leading-[24px]">
               {userLanguage === "en"
-                ? `Hello ${username},`
+                ? `Olá ${username},`
                 : `Dobrý den ${username},`}
             </Text>
             <Text className="text-black text-sm leading-[24px]">
               <strong>{commentFromUser}</strong>
               {userLanguage === "en"
-                ? ` has leave a comment in Project - (Board) you are watching. `
+                ? ` deixou um comentário no Projeto - (Quadro) que você está acompanhando. `
                 : ` zanechal(a) komentář v Projektu - (Boardu), který sledujete. `}
             </Text>
             <Text className="text-black text-sm leading-[24px]">
-              {userLanguage === "en" ? `Comment: ` : `Komentář: `}
+              {userLanguage === "en" ? `Comentário: ` : `Komentář: `}
               <strong>{comment}</strong>
             </Text>
             <Text className="text-black text-sm leading-[24px]">
               {userLanguage === "en"
                 ? `
-              Details you can find here: `
+              Você pode encontrar os detalhes aqui: `
                 : `
               Podrobnosti najdete zde: `}
 
@@ -80,18 +80,18 @@ export const NewTaskCommentEmail = ({
                 className="bg-slate-800 rounded-md text-white  py-3 px-4 text-xs font-semibold no-underline text-center"
                 href={`${process.env.NEXT_PUBLIC_APP_URL}/projects/tasks/viewtask/${taskId}`}
               >
-                {userLanguage === "en" ? "View task detail" : "Zobrazit úkol"}
+                {userLanguage === "en" ? "Ver detalhes da tarefa" : "Zobrazit úkol"}
               </Button>
             </Section>
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
             <Text className="text-[#666666] text-xs leading-[24px]">
               {userLanguage === "en"
-                ? `This message was intended for - `
+                ? `Esta mensagem era destinada a - `
                 : `Tato zpráva  byla určeno pro - `}
               <span className="text-black">{username}</span>.
               <span className="text-black"></span>.
               {userLanguage === "en"
-                ? "If you were not expecting this message, you can ignore this email. If you are concerned about your account&apos;s safety, please reply to this email to get in touch with us."
+                ? "Se você não esperava esta mensagem, pode ignorar este e-mail. Se estiver preocupado com a segurança da sua conta, responda a este e-mail para entrar em contato conosco."
                 : "Pokud jste tuto zprávu neočekávali, můžete tento e-mail ignorovat. Pokud se obáváte o bezpečnost svého účtu, odpovězte na tento e-mail, abyste se s námi spojili."}
             </Text>
           </Container>

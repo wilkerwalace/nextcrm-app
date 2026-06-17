@@ -57,7 +57,7 @@ const AccountProductsView = ({
     if (result?.error) {
       toast.error(result.error);
     } else {
-      toast.success("Assignment cancelled");
+      toast.success("Atribuição cancelada");
       router.refresh();
     }
   };
@@ -81,7 +81,7 @@ const AccountProductsView = ({
         <div className="flex justify-between">
           <CardTitle>
             <Link href="/crm/products" className="hover:underline">
-              Products
+              Produtos
             </Link>
           </CardTitle>
           <div className="flex space-x-2">
@@ -102,18 +102,18 @@ const AccountProductsView = ({
       </CardHeader>
       <CardContent>
         {!data || data.length === 0 ? (
-          "No products assigned to this account"
+          "Nenhum produto atribuído a esta empresa"
         ) : (
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Product</TableHead>
-                <TableHead>Type</TableHead>
+                <TableHead>Produto</TableHead>
+                <TableHead>Tipo</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Qty</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Start</TableHead>
-                <TableHead>End</TableHead>
+                <TableHead>Qtd</TableHead>
+                <TableHead>Preço</TableHead>
+                <TableHead>Início</TableHead>
+                <TableHead>Término</TableHead>
                 <TableHead></TableHead>
               </TableRow>
             </TableHeader>
@@ -125,7 +125,7 @@ const AccountProductsView = ({
                       href={`/crm/products/${item.product?.id || item.productId}`}
                       className="hover:underline font-medium"
                     >
-                      {item.product?.name || "Unknown"}
+                      {item.product?.name || "Desconhecido"}
                     </Link>
                   </TableCell>
                   <TableCell>{item.product?.type || "-"}</TableCell>
@@ -151,7 +151,7 @@ const AccountProductsView = ({
                         size="sm"
                         onClick={() => handleCancel(item.id)}
                       >
-                        Cancel
+                        Cancelar
                       </Button>
                     )}
                   </TableCell>

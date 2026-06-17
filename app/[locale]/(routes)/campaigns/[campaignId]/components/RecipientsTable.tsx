@@ -38,10 +38,10 @@ export default function RecipientsTable({ sends }: { sends: Send[] }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold">Recipients</h2>
+      <h2 className="text-lg font-semibold">Destinatários</h2>
       <div className="flex gap-2">
         <Input
-          placeholder="Search name or email..."
+          placeholder="Buscar nome ou e-mail..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="max-w-xs"
@@ -53,7 +53,7 @@ export default function RecipientsTable({ sends }: { sends: Send[] }) {
         >
           {["all", "queued", "sent", "delivered", "bounced", "failed"].map((s) => (
             <option key={s} value={s}>
-              {s === "all" ? "All statuses" : s.charAt(0).toUpperCase() + s.slice(1)}
+              {s === "all" ? "Todos os status" : s.charAt(0).toUpperCase() + s.slice(1)}
             </option>
           ))}
         </select>
@@ -62,7 +62,7 @@ export default function RecipientsTable({ sends }: { sends: Send[] }) {
         <table className="w-full text-sm">
           <thead className="bg-muted/50">
             <tr>
-              {["Name", "Email", "Status", "Opened", "Clicked", "Bounced"].map((h) => (
+              {["Nome", "E-mail", "Status", "Aberto", "Clicado", "Devolvido"].map((h) => (
                 <th
                   key={h}
                   className="px-3 py-2 text-left font-medium text-muted-foreground"
@@ -95,7 +95,7 @@ export default function RecipientsTable({ sends }: { sends: Send[] }) {
                   colSpan={6}
                   className="px-3 py-8 text-center text-muted-foreground"
                 >
-                  No recipients found.
+                  Nenhum destinatário encontrado.
                 </td>
               </tr>
             )}
@@ -103,7 +103,7 @@ export default function RecipientsTable({ sends }: { sends: Send[] }) {
         </table>
       </div>
       <p className="text-xs text-muted-foreground">
-        {filtered.length} of {sends.length} recipients
+        {filtered.length} de {sends.length} destinatários
       </p>
     </div>
   );

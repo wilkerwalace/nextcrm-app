@@ -16,7 +16,7 @@ const SupportComponent = () => {
         align={"end"}
       >
         <div className="flex w-full justify-between items-center gap-2">
-          <span className="text-sm">Need help? Join us on</span>
+          <span className="text-sm">Precisa de ajuda? Junte-se a nós no</span>
           <Button asChild variant={"secondary"}>
             <Link
               className="border rounded-md p-2"
@@ -28,7 +28,7 @@ const SupportComponent = () => {
           </Button>
         </div>
         <div className="flex w-full justify-between items-center gap-2">
-          <span className="text-sm "> Find a bug? Create an issue on</span>
+          <span className="text-sm "> Encontrou um bug? Crie uma issue no</span>
           <Button asChild variant={"secondary"}>
             <Link
               className="border rounded-md p-2"

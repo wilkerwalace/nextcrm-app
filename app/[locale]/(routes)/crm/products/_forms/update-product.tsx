@@ -54,7 +54,7 @@ const UpdateProductForm = ({
 
   const { execute, fieldErrors, isLoading } = useAction(updateProduct, {
     onSuccess: () => {
-      toast.success("Product updated successfully");
+      toast.success("Produto atualizado com sucesso");
       setOpen(false);
       router.refresh();
     },
@@ -110,15 +110,15 @@ const UpdateProductForm = ({
 
   return (
     <FormSheetNoTrigger
-      title="Update Product"
-      description="Update the product details"
+      title="Atualizar produto"
+      description="Atualize os detalhes do produto"
       open={onOpen}
       setOpen={setOpen}
     >
       <form action={onAction} className="space-y-4">
         <FormInput
           id="name"
-          label="Name"
+          label="Nome"
           type="text"
           errors={fieldErrors}
           defaultValue={product.name}
@@ -132,11 +132,11 @@ const UpdateProductForm = ({
         />
         <FormSelect
           id="type"
-          label="Type"
+          label="Tipo"
           type="hidden"
           data={[
-            { id: "PRODUCT", name: "Product" },
-            { id: "SERVICE", name: "Service" },
+            { id: "PRODUCT", name: "Produto" },
+            { id: "SERVICE", name: "Serviço" },
           ]}
           errors={fieldErrors}
           defaultValue={product.type}
@@ -146,9 +146,9 @@ const UpdateProductForm = ({
           label="Status"
           type="hidden"
           data={[
-            { id: "DRAFT", name: "Draft" },
-            { id: "ACTIVE", name: "Active" },
-            { id: "ARCHIVED", name: "Archived" },
+            { id: "DRAFT", name: "Rascunho" },
+            { id: "ACTIVE", name: "Ativo" },
+            { id: "ARCHIVED", name: "Arquivado" },
           ]}
           errors={fieldErrors}
           defaultValue={product.status}
@@ -156,14 +156,14 @@ const UpdateProductForm = ({
         <div className="grid grid-cols-2 gap-4">
           <FormInput
             id="unit_price"
-            label="Unit Price"
+            label="Preço unitário"
             type="text"
             errors={fieldErrors}
             defaultValue={String(product.unit_price)}
           />
           <FormInput
             id="unit_cost"
-            label="Unit Cost"
+            label="Custo unitário"
             type="text"
             errors={fieldErrors}
             defaultValue={product.unit_cost != null ? String(product.unit_cost) : ""}
@@ -171,7 +171,7 @@ const UpdateProductForm = ({
         </div>
         <FormSelect
           id="currency"
-          label="Currency"
+          label="Moeda"
           type="hidden"
           data={currencies.map((c) => ({
             id: c.code,
@@ -183,14 +183,14 @@ const UpdateProductForm = ({
         <div className="grid grid-cols-2 gap-4">
           <FormInput
             id="tax_rate"
-            label="Tax Rate (%)"
+            label="Alíquota de imposto (%)"
             type="text"
             errors={fieldErrors}
             defaultValue={product.tax_rate != null ? String(product.tax_rate) : ""}
           />
           <FormInput
             id="unit"
-            label="Unit"
+            label="Unidade"
             type="text"
             errors={fieldErrors}
             defaultValue={product.unit ?? ""}
@@ -198,7 +198,7 @@ const UpdateProductForm = ({
         </div>
         <FormSelect
           id="categoryId"
-          label="Category"
+          label="Categoria"
           type="hidden"
           data={categories.map((c) => ({ id: c.id, name: c.name }))}
           errors={fieldErrors}
@@ -210,18 +210,18 @@ const UpdateProductForm = ({
             checked={isRecurring}
             onCheckedChange={(checked) => setIsRecurring(checked === true)}
           />
-          <Label htmlFor="is_recurring">Recurring billing</Label>
+          <Label htmlFor="is_recurring">Cobrança recorrente</Label>
         </div>
         {isRecurring && (
           <FormSelect
             id="billing_period"
-            label="Billing Period"
+            label="Período de cobrança"
             type="hidden"
             data={[
-              { id: "MONTHLY", name: "Monthly" },
-              { id: "QUARTERLY", name: "Quarterly" },
-              { id: "ANNUALLY", name: "Annually" },
-              { id: "ONE_TIME", name: "One Time" },
+              { id: "MONTHLY", name: "Mensal" },
+              { id: "QUARTERLY", name: "Trimestral" },
+              { id: "ANNUALLY", name: "Anual" },
+              { id: "ONE_TIME", name: "Único" },
             ]}
             errors={fieldErrors}
             defaultValue={product.billing_period ?? ""}
@@ -229,7 +229,7 @@ const UpdateProductForm = ({
         )}
         <FormTextarea
           id="description"
-          label="Description"
+          label="Descrição"
           errors={fieldErrors}
           defaultValue={product.description ?? ""}
         />
@@ -237,7 +237,7 @@ const UpdateProductForm = ({
           {isLoading ? (
             <Loader2 className="h-6 w-6 animate-spin" />
           ) : (
-            "Update"
+            "Atualizar"
           )}
         </FormSubmit>
       </form>

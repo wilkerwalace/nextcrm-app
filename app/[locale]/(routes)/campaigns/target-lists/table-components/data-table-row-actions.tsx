@@ -43,7 +43,7 @@ export function DataTableRowActions<TData>({
       toast.error(result.error);
       return;
     }
-    toast.success("Target list has been deleted");
+    toast.success("Lista de alvos excluída");
     router.refresh();
   };
 
@@ -62,18 +62,18 @@ export function DataTableRowActions<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem
             onClick={() => router.push(`/crm/target-lists/${targetList?.id}`)}
           >
-            View
+            Ver
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

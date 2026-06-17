@@ -55,11 +55,11 @@ export function DataTableRowActionsTasks<TData>({
       if (result?.error) {
         toast.success(result.error);
       } else {
-        toast.success("Document was disconnected from task");
+        toast.success("Documento desconectado da tarefa");
       }
     } catch (error) {
       console.error(error);
-      toast.success("Something went wrong, while disconnecting document from task");
+      toast.success("Algo deu errado ao desconectar o documento da tarefa");
     } finally {
       router.refresh();
       setLoading(false);
@@ -81,15 +81,15 @@ export function DataTableRowActionsTasks<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[260px]">
           <DropdownMenuItem onClick={onDisconnect}>
-            Disconnect from task
+            Desconectar da tarefa
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            View
+            Ver
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

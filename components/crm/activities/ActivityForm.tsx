@@ -72,11 +72,11 @@ export function ActivityForm({ open, onOpenChange, entityType, entityId, activit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) {
-      toast.error("Title is required");
+      toast.error("O título é obrigatório");
       return;
     }
     if (!date) {
-      toast.error("Date is required");
+      toast.error("A data é obrigatória");
       return;
     }
 
@@ -110,7 +110,7 @@ export function ActivityForm({ open, onOpenChange, entityType, entityId, activit
     if (result.error) {
       toast.error(result.error);
     } else if (result.data) {
-      toast.success(isEdit ? "Activity updated" : "Activity logged");
+      toast.success(isEdit ? "Atividade atualizada" : "Atividade registrada");
       onSaved(result.data as ActivityWithLinks);
       onOpenChange(false);
     }
@@ -120,37 +120,37 @@ export function ActivityForm({ open, onOpenChange, entityType, entityId, activit
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="sm:max-w-[480px] overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>{isEdit ? "Edit Activity" : "Log Activity"}</SheetTitle>
+          <SheetTitle>{isEdit ? "Editar atividade" : "Registrar atividade"}</SheetTitle>
         </SheetHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-1">
-            <Label htmlFor="activity-type">Type</Label>
+            <Label htmlFor="activity-type">Tipo</Label>
             <Select value={type} onValueChange={(v) => setType(v as ActivityType)}>
               <SelectTrigger id="activity-type">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="call">Call</SelectItem>
-                <SelectItem value="meeting">Meeting</SelectItem>
-                <SelectItem value="note">Note</SelectItem>
-                <SelectItem value="email">Email</SelectItem>
+                <SelectItem value="call">Ligação</SelectItem>
+                <SelectItem value="meeting">Reunião</SelectItem>
+                <SelectItem value="note">Nota</SelectItem>
+                <SelectItem value="email">E-mail</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="activity-title">Title *</Label>
+            <Label htmlFor="activity-title">Título *</Label>
             <Input
               id="activity-title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Brief description"
+              placeholder="Descrição breve"
               required
             />
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="activity-date">Date & Time *</Label>
+            <Label htmlFor="activity-date">Data e hora *</Label>
             <Input
               id="activity-date"
               type="datetime-local"
@@ -167,68 +167,68 @@ export function ActivityForm({ open, onOpenChange, entityType, entityId, activit
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="scheduled">Scheduled</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
-                <SelectItem value="cancelled">Cancelled</SelectItem>
+                <SelectItem value="scheduled">Agendada</SelectItem>
+                <SelectItem value="completed">Concluída</SelectItem>
+                <SelectItem value="cancelled">Cancelada</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {showDuration && (
             <div className="space-y-1">
-              <Label htmlFor="activity-duration">Duration (minutes)</Label>
+              <Label htmlFor="activity-duration">Duração (minutos)</Label>
               <Input
                 id="activity-duration"
                 type="number"
                 min="1"
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-                placeholder="e.g. 30"
+                placeholder="ex. 30"
               />
             </div>
           )}
 
           {showOutcome && (
             <div className="space-y-1">
-              <Label htmlFor="activity-outcome">Outcome</Label>
+              <Label htmlFor="activity-outcome">Resultado</Label>
               <Input
                 id="activity-outcome"
                 value={outcome}
                 onChange={(e) => setOutcome(e.target.value)}
-                placeholder="Result of the call / meeting"
+                placeholder="Resultado da ligação / reunião"
               />
             </div>
           )}
 
           {showEmailSubject && (
             <div className="space-y-1">
-              <Label htmlFor="activity-email-subject">Email Subject</Label>
+              <Label htmlFor="activity-email-subject">Assunto do e-mail</Label>
               <Input
                 id="activity-email-subject"
                 value={emailSubject}
                 onChange={(e) => setEmailSubject(e.target.value)}
-                placeholder="Subject line"
+                placeholder="Linha de assunto"
               />
             </div>
           )}
 
           <div className="space-y-1">
-            <Label htmlFor="activity-description">Notes</Label>
+            <Label htmlFor="activity-description">Notas</Label>
             <Textarea
               id="activity-description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Additional notes..."
+              placeholder="Notas adicionais..."
               rows={4}
             />
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
+              Cancelar
             </Button>
             <Button type="submit" disabled={saving}>
-              {saving ? "Saving..." : isEdit ? "Save changes" : "Log activity"}
+              {saving ? "Salvando..." : isEdit ? "Salvar alterações" : "Registrar atividade"}
             </Button>
           </div>
         </form>

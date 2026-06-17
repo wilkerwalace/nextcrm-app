@@ -19,13 +19,13 @@ export function RetryEnrichmentButton({ contactId, fields }: RetryEnrichmentButt
       const res = await fetch("/api/crm/contacts/enrich-bulk", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contactIds: [contactId], fields: fields.map((name) => ({ name, displayName: name, description: `Find ${name}`, type: "string", required: false })) }),
+        body: JSON.stringify({ contactIds: [contactId], fields: fields.map((name) => ({ name, displayName: name, description: `Encontrar ${name}`, type: "string", required: false })) }),
       });
       if (res.ok) {
-        toast.success("Retry queued. Refresh to see updated status.");
+        toast.success("Nova tentativa na fila. Atualize para ver o status atualizado.");
       } else {
         const err = await res.json();
-        toast.error(err.error ?? "Failed to retry");
+        toast.error(err.error ?? "Falha ao tentar novamente");
       }
     } finally {
       setLoading(false);
@@ -35,7 +35,7 @@ export function RetryEnrichmentButton({ contactId, fields }: RetryEnrichmentButt
   return (
     <Button variant="ghost" size="sm" onClick={handleRetry} disabled={loading}>
       <RotateCcw className={`h-3 w-3 mr-1 ${loading ? "animate-spin" : ""}`} />
-      Retry
+      Tentar novamente
     </Button>
   );
 }

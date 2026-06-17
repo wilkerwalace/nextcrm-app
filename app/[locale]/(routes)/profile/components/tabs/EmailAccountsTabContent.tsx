@@ -7,7 +7,7 @@ export async function EmailAccountsTabContent() {
     <div className="space-y-4">
       <div className="rounded-lg border border-border bg-card p-5">
         <h3 className="mb-4 text-sm font-semibold text-card-foreground">
-          Email Accounts
+          Contas de e-mail
         </h3>
         <EmailAccountsList accounts={accounts} />
       </div>

@@ -15,7 +15,7 @@ const CopyKeyComponent = ({
 }) => {
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success(message + " - " + "copied to clipboard");
+    toast.success(message + " - " + "copiado para a área de transferência");
   };
 
   return (
@@ -23,7 +23,7 @@ const CopyKeyComponent = ({
       className="flex gap-2 items-center"
       onClick={() => onCopy(keyValue || "")}
     >
-      {keyValue ? keyValue : envValue ? envValue : "Not set"}
+      {keyValue ? keyValue : envValue ? envValue : "Não definido"}
       <Copy className="w-4 h-4" />
     </p>
   );

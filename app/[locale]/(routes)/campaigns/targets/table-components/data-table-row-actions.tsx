@@ -46,7 +46,7 @@ export function DataTableRowActions<TData>({
       toast.error(result.error);
       return;
     }
-    toast.success("Target has been deleted");
+    toast.success("O alvo foi excluído");
     router.refresh();
   };
 
@@ -60,11 +60,11 @@ export function DataTableRowActions<TData>({
       />
       <RightViewModalNoTrigger
         title={
-          "Update Target - " +
+          "Atualizar Alvo - " +
           (target?.first_name ? target.first_name + " " : "") +
           target?.last_name
         }
-        description="Update target details"
+        description="Atualizar detalhes do alvo"
         open={updateOpen}
         setOpen={setUpdateOpen}
       >
@@ -77,21 +77,21 @@ export function DataTableRowActions<TData>({
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem
             onClick={() => router.push(`/crm/targets/${target?.id}`)}
           >
-            View
+            Visualizar
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

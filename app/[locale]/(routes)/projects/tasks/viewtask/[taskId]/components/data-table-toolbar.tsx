@@ -23,7 +23,7 @@ export function DataTableToolbar<TData>({
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Document name ..."
+          placeholder="Nome do documento ..."
           value={
             (table.getColumn("document_name")?.getFilterValue() as string) ?? ""
           }
@@ -42,7 +42,7 @@ export function DataTableToolbar<TData>({
         {table.getColumn("priority") && (
           <DataTableFacetedFilter
             column={table.getColumn("priority")}
-            title="Priority"
+            title="Prioridade"
             options={priorities}
           />
         )}
@@ -52,7 +52,7 @@ export function DataTableToolbar<TData>({
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
           >
-            Reset
+            Redefinir
             <Cross2Icon className="ml-2 h-4 w-4" />
           </Button>
         )}

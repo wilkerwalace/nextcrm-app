@@ -45,7 +45,7 @@ export async function BasicView({ data }: OppsViewProps) {
   const defaultCurrency = await getDefaultCurrency();
   const displayCurrency = cookieStore.get("display_currency")?.value || defaultCurrency;
   const rates = await getExchangeRates();
-  if (!data) return <div>Opportunity not found</div>;
+  if (!data) return <div>Oportunidade não encontrada</div>;
 
   const fromCurrency = data.currency || "EUR";
   const budgetAmount = new Decimal(data.budget?.toString() ?? "0");
@@ -75,7 +75,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <CoinsIcon className="mt-px h-5 w-5" />
             <div className="space-y-1">
               <p className="text-sm font-medium leading-none">
-                Opportunity amount
+                Valor da oportunidade
               </p>
               <p className="text-sm text-muted-foreground">
                 {displayBudget
@@ -88,25 +88,25 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <SquareStack className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Sales stage</p>
+              <p className="text-sm font-medium leading-none">Estágio de venda</p>
               <p className="text-sm text-muted-foreground">
                 {data.assigned_sales_stage?.name
                   ? data.assigned_sales_stage?.name
-                  : "Not assigned"}
+                  : "Não atribuído"}
               </p>
             </div>
           </div>
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <Combine className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Next step</p>
+              <p className="text-sm font-medium leading-none">Próximo passo</p>
               <p className="text-sm text-muted-foreground">{data.next_step}</p>
             </div>
           </div>
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <ClipboardList className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Description</p>
+              <p className="text-sm font-medium leading-none">Descrição</p>
               <p className="text-sm text-muted-foreground">
                 {data.description}
               </p>
@@ -115,7 +115,7 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <User className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Assigned to</p>
+              <p className="text-sm font-medium leading-none">Atribuído a</p>
               <p className="text-sm text-muted-foreground">
                 {data.assigned_to_user.name}
               </p>
@@ -126,11 +126,11 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <Landmark className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Account name</p>
+              <p className="text-sm font-medium leading-none">Nome da empresa</p>
               <p className="text-sm text-muted-foreground">
                 {data.assigned_account?.name
                   ? data.assigned_account?.name
-                  : "Not assigned"}
+                  : "Não atribuído"}
               </p>
             </div>
           </div>
@@ -138,7 +138,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <CalendarDays className="mt-px h-5 w-5" />
             <div className="space-y-1">
               <p className="text-sm font-medium leading-none">
-                Expected close date
+                Data prevista de fechamento
               </p>
               <p className="text-sm text-muted-foreground">
                 {moment(data.close_date).format("MMM DD YYYY")}
@@ -148,13 +148,13 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <CalendarDays className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Date created</p>
+              <p className="text-sm font-medium leading-none">Data de criação</p>
               <p className="text-sm text-muted-foreground">
                 {moment(data.createdAt).format("MMM DD YYYY")}
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Created by</p>
+              <p className="text-sm font-medium leading-none">Criado por</p>
               <p className="text-sm text-muted-foreground">
                 {users.find((user) => user.id === data.createdBy)?.name}
               </p>
@@ -163,13 +163,13 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <CalendarDays className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Last update</p>
+              <p className="text-sm font-medium leading-none">Última atualização</p>
               <p className="text-sm text-muted-foreground">
                 {moment(data.updatedAt).format("MMM DD YYYY")}
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Last update by</p>
+              <p className="text-sm font-medium leading-none">Última atualização por</p>
               <p className="text-sm text-muted-foreground">
                 {users.find((user) => user.id === data.updatedBy)?.name}
               </p>
@@ -178,7 +178,7 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <List className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Type</p>
+              <p className="text-sm font-medium leading-none">Tipo</p>
               <p className="text-sm text-muted-foreground">
                 {data.assigned_type?.name ? data.assigned_type?.name : "N/A"}
               </p>
@@ -187,18 +187,18 @@ export async function BasicView({ data }: OppsViewProps) {
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <Landmark className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Lead source</p>
+              <p className="text-sm font-medium leading-none">Origem do lead</p>
               <p className="text-sm text-muted-foreground">
-                Will be added in the future
+                Será adicionado no futuro
               </p>
             </div>
           </div>
           <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
             <Clapperboard className="mt-px h-5 w-5" />
             <div className="space-y-1">
-              <p className="text-sm font-medium leading-none">Campaign</p>
+              <p className="text-sm font-medium leading-none">Campanha</p>
               <p className="text-sm text-muted-foreground">
-                Will be added in the future
+                Será adicionado no futuro
               </p>
             </div>
           </div>

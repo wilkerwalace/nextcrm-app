@@ -31,10 +31,10 @@ export function EnrichButton({ contactId, contactEmail, contactCurrentData }: En
         size="sm"
         onClick={() => setOpen(true)}
         disabled={!contactEmail}
-        title={!contactEmail ? "Add an email to enable enrichment" : "Enrich with AI"}
+        title={!contactEmail ? "Adicione um e-mail para habilitar o enriquecimento" : "Enriquecer com IA"}
       >
         <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
-        Enrich with AI
+        Enriquecer com IA
       </Button>
       <EnrichContactDrawer
         contactId={contactId}

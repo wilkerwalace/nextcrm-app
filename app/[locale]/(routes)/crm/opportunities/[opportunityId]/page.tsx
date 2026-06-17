@@ -54,17 +54,17 @@ const OpportunityView = async (
     ? serializeDecimalsList(opportunity.lineItems as any[])
     : [];
 
-  if (!opportunity) return <div>Opportunity not found</div>;
+  if (!opportunity) return <div>Oportunidade não encontrada</div>;
 
   return (
     <Container
-      title={`Opportunity ${opportunity.name} - detail view`}
-      description={"Description - " + opportunity.description}
+      title={`Oportunidade ${opportunity.name} - visão detalhada`}
+      description={"Descrição - " + opportunity.description}
     >
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <div className="space-y-5">

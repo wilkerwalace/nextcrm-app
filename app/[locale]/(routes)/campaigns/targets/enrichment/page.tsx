@@ -27,11 +27,11 @@ const STATUS_VARIANTS: Record<string, "default" | "secondary" | "destructive" | 
 };
 
 const STATUS_LABELS: Record<string, string> = {
-  PENDING:   "Pending",
-  RUNNING:   "Running",
-  COMPLETED: "Completed",
-  FAILED:    "Failed",
-  SKIPPED:   "Skipped",
+  PENDING:   "Pendente",
+  RUNNING:   "Em execução",
+  COMPLETED: "Concluído",
+  FAILED:    "Falhou",
+  SKIPPED:   "Ignorado",
 };
 
 export default async function TargetEnrichmentJobsPage() {
@@ -56,29 +56,29 @@ export default async function TargetEnrichmentJobsPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-orange-500" />
-          <h1 className="text-2xl font-semibold">Target Enrichment Jobs</h1>
+          <h1 className="text-2xl font-semibold">Tarefas de Enriquecimento de Alvos</h1>
         </div>
         <Link href="." className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           <RefreshCw className="h-4 w-4" />
-          Refresh
+          Atualizar
         </Link>
       </div>
 
       <Card>
         <CardHeader className="pb-2">
           <CardTitle className="text-base">
-            {records.length} enrichment job{records.length !== 1 ? "s" : ""}
+            {records.length} tarefa{records.length !== 1 ? "s" : ""} de enriquecimento
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Target</TableHead>
+                <TableHead>Alvo</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Fields</TableHead>
-                <TableHead>Started</TableHead>
-                <TableHead>By</TableHead>
+                <TableHead>Campos</TableHead>
+                <TableHead>Iniciado</TableHead>
+                <TableHead>Por</TableHead>
                 <TableHead></TableHead>
               </TableRow>
             </TableHeader>
@@ -86,7 +86,7 @@ export default async function TargetEnrichmentJobsPage() {
               {records.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
-                    No enrichment jobs yet. Start one from the targets list.
+                    Nenhuma tarefa de enriquecimento ainda. Inicie uma a partir da lista de alvos.
                   </TableCell>
                 </TableRow>
               )}

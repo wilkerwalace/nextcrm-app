@@ -38,7 +38,7 @@ const AddLineItemForm = ({
 
   const { execute, fieldErrors, isLoading } = useAction(action, {
     onSuccess: () => {
-      toast.success("Line item added");
+      toast.success("Item adicionado");
       closeRef.current?.click();
       router.refresh();
       setDiscountType("NONE");
@@ -80,21 +80,21 @@ const AddLineItemForm = ({
   return (
     <FormSheet
       trigger={"+"}
-      title="Add Line Item"
-      description="Add a product or custom line item"
+      title="Adicionar Item"
+      description="Adicione um produto ou item personalizado"
       onClose={closeRef}
     >
       <form action={onAction} className="space-y-4">
         <div className="space-y-2">
           <label className="text-xs font-semibold text-neutral-700">
-            Product (optional)
+            Produto (opcional)
           </label>
           <select
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
             value={selectedProductId}
             onChange={(e) => setSelectedProductId(e.target.value)}
           >
-            <option value="">-- Select a product --</option>
+            <option value="">-- Selecione um produto --</option>
             {products.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.name}
@@ -106,7 +106,7 @@ const AddLineItemForm = ({
 
         <FormInput
           id="name"
-          label="Name"
+          label="Nome"
           type="text"
           errors={fieldErrors}
           defaultValue={selectedProduct?.name || ""}
@@ -123,14 +123,14 @@ const AddLineItemForm = ({
         <div className="grid grid-cols-2 gap-4">
           <FormInput
             id="quantity"
-            label="Quantity"
+            label="Quantidade"
             type="number"
             errors={fieldErrors}
             defaultValue="1"
           />
           <FormInput
             id="unit_price"
-            label="Unit Price"
+            label="Preço Unitário"
             type="text"
             errors={fieldErrors}
             defaultValue={
@@ -142,16 +142,16 @@ const AddLineItemForm = ({
 
         <div className="space-y-2">
           <label className="text-xs font-semibold text-neutral-700">
-            Discount Type
+            Tipo de Desconto
           </label>
           <select
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
             value={discountType}
             onChange={(e) => setDiscountType(e.target.value)}
           >
-            <option value="NONE">None</option>
-            <option value="PERCENTAGE">Percentage (%)</option>
-            <option value="FIXED">Fixed Amount</option>
+            <option value="NONE">Nenhum</option>
+            <option value="PERCENTAGE">Porcentagem (%)</option>
+            <option value="FIXED">Valor Fixo</option>
           </select>
         </div>
 
@@ -160,8 +160,8 @@ const AddLineItemForm = ({
             id="discount_value"
             label={
               discountType === "PERCENTAGE"
-                ? "Discount (%)"
-                : "Discount Amount"
+                ? "Desconto (%)"
+                : "Valor do Desconto"
             }
             type="text"
             errors={fieldErrors}
@@ -171,7 +171,7 @@ const AddLineItemForm = ({
 
         <FormTextarea
           id="description"
-          label="Description"
+          label="Descrição"
           errors={fieldErrors}
         />
 
@@ -179,7 +179,7 @@ const AddLineItemForm = ({
           {isLoading ? (
             <Loader2 className="h-6 w-6 animate-spin" />
           ) : (
-            "Add Line Item"
+            "Adicionar Item"
           )}
         </FormSubmit>
       </form>

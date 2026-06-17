@@ -93,19 +93,19 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!mail}>
                 <Archive className="h-4 w-4" />
-                <span className="sr-only">Archive</span>
+                <span className="sr-only">Arquivar</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Archive</TooltipContent>
+            <TooltipContent>Arquivar</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!mail}>
                 <ArchiveX className="h-4 w-4" />
-                <span className="sr-only">Move to junk</span>
+                <span className="sr-only">Mover para spam</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Move to junk</TooltipContent>
+            <TooltipContent>Mover para spam</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -116,10 +116,10 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                 onClick={handleDelete}
               >
                 <Trash2 className="h-4 w-4" />
-                <span className="sr-only">Move to trash</span>
+                <span className="sr-only">Mover para a lixeira</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Move to trash</TooltipContent>
+            <TooltipContent>Mover para a lixeira</TooltipContent>
           </Tooltip>
           <Separator orientation="vertical" className="mx-1 h-6" />
           <Tooltip>
@@ -128,19 +128,19 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size="icon" disabled={!mail}>
                     <Clock className="h-4 w-4" />
-                    <span className="sr-only">Snooze</span>
+                    <span className="sr-only">Adiar</span>
                   </Button>
                 </TooltipTrigger>
               </PopoverTrigger>
               <PopoverContent className="flex w-[535px] p-0">
                 <div className="flex flex-col gap-2 border-r px-2 py-4">
-                  <div className="px-4 text-sm font-medium">Snooze until</div>
+                  <div className="px-4 text-sm font-medium">Adiar até</div>
                   <div className="grid min-w-[250px] gap-1">
                     <Button
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      Later today{" "}
+                      Mais tarde hoje{" "}
                       <span className="ml-auto text-muted-foreground">
                         {format(addHours(today, 4), "E, h:m b")}
                       </span>
@@ -149,7 +149,7 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      Tomorrow
+                      Amanhã
                       <span className="ml-auto text-muted-foreground">
                         {format(addDays(today, 1), "E, h:m b")}
                       </span>
@@ -158,7 +158,7 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      This weekend
+                      Neste fim de semana
                       <span className="ml-auto text-muted-foreground">
                         {format(nextSaturday(today), "E, h:m b")}
                       </span>
@@ -167,7 +167,7 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      Next week
+                      Próxima semana
                       <span className="ml-auto text-muted-foreground">
                         {format(addDays(today, 7), "E, h:m b")}
                       </span>
@@ -179,7 +179,7 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                 </div>
               </PopoverContent>
             </Popover>
-            <TooltipContent>Snooze</TooltipContent>
+            <TooltipContent>Adiar</TooltipContent>
           </Tooltip>
         </div>
         <div className="ml-auto flex items-center gap-2">
@@ -192,21 +192,21 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                 trigger={
                   <Button variant="ghost" size="icon" disabled={!mail}>
                     <Reply className="h-4 w-4" />
-                    <span className="sr-only">Reply</span>
+                    <span className="sr-only">Responder</span>
                   </Button>
                 }
               />
             </TooltipTrigger>
-            <TooltipContent>Reply</TooltipContent>
+            <TooltipContent>Responder</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!mail}>
                 <ReplyAll className="h-4 w-4" />
-                <span className="sr-only">Reply all</span>
+                <span className="sr-only">Responder a todos</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Reply all</TooltipContent>
+            <TooltipContent>Responder a todos</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -217,12 +217,12 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                 trigger={
                   <Button variant="ghost" size="icon" disabled={!mail}>
                     <Forward className="h-4 w-4" />
-                    <span className="sr-only">Forward</span>
+                    <span className="sr-only">Encaminhar</span>
                   </Button>
                 }
               />
             </TooltipTrigger>
-            <TooltipContent>Forward</TooltipContent>
+            <TooltipContent>Encaminhar</TooltipContent>
           </Tooltip>
         </div>
         <Separator orientation="vertical" className="mx-2 h-6" />
@@ -230,14 +230,14 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" disabled={!mail}>
               <MoreVertical className="h-4 w-4" />
-              <span className="sr-only">More</span>
+              <span className="sr-only">Mais</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Mark as unread</DropdownMenuItem>
-            <DropdownMenuItem>Star thread</DropdownMenuItem>
-            <DropdownMenuItem>Add label</DropdownMenuItem>
-            <DropdownMenuItem>Mute thread</DropdownMenuItem>
+            <DropdownMenuItem>Marcar como não lido</DropdownMenuItem>
+            <DropdownMenuItem>Marcar conversa com estrela</DropdownMenuItem>
+            <DropdownMenuItem>Adicionar marcador</DropdownMenuItem>
+            <DropdownMenuItem>Silenciar conversa</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -252,18 +252,18 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
               </Avatar>
               <div className="grid gap-1">
                 <div className="font-semibold">
-                  {fullEmail?.fromName ?? fullEmail?.fromEmail ?? "(unknown)"}
+                  {fullEmail?.fromName ?? fullEmail?.fromEmail ?? "(desconhecido)"}
                 </div>
                 <div className="line-clamp-1 text-xs">
-                  {fullEmail?.subject ?? "(no subject)"}
+                  {fullEmail?.subject ?? "(sem assunto)"}
                 </div>
                 <div className="line-clamp-1 text-xs">
-                  <span className="font-medium">From:</span>{" "}
+                  <span className="font-medium">De:</span>{" "}
                   {fullEmail?.fromEmail ?? ""}
                 </div>
                 {Array.isArray(fullEmail?.toRecipients) && fullEmail.toRecipients.length > 0 && (
                   <div className="line-clamp-1 text-xs">
-                    <span className="font-medium">To:</span>{" "}
+                    <span className="font-medium">Para:</span>{" "}
                     {(fullEmail.toRecipients as { name?: string; email: string }[])
                       .map((r) => r.name ?? r.email).join(", ")}
                   </div>
@@ -292,11 +292,11 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
                 referrerPolicy="no-referrer"
                 className="w-full border-0"
                 style={{ height: "600px", maxHeight: "600px" }}
-                title="Email body"
+                title="Corpo do e-mail"
               />
             ) : (
               <pre className="whitespace-pre-wrap p-4 text-sm font-sans">
-                {fullEmail?.bodyText ?? (fullEmail ? "(No content)" : "Loading...")}
+                {fullEmail?.bodyText ?? (fullEmail ? "(Sem conteúdo)" : "Carregando...")}
               </pre>
             )}
           </div>
@@ -306,18 +306,18 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
               <div className="grid gap-4">
                 <Textarea
                   className="p-4"
-                  placeholder={`Reply to ${fullEmail?.fromName ?? fullEmail?.fromEmail ?? "..."}...`}
+                  placeholder={`Responder a ${fullEmail?.fromName ?? fullEmail?.fromEmail ?? "..."}...`}
                 />
                 <div className="flex items-center">
                   <Label
                     htmlFor="mute"
                     className="flex items-center gap-2 text-xs font-normal"
                   >
-                    <Switch id="mute" aria-label="Mute thread" /> Mute this
-                    thread
+                    <Switch id="mute" aria-label="Silenciar conversa" /> Silenciar
+                    esta conversa
                   </Label>
                   <Button size="sm" className="ml-auto">
-                    Send
+                    Enviar
                   </Button>
                 </div>
               </div>
@@ -326,7 +326,7 @@ export function MailDisplay({ mail, activeAccountId }: MailDisplayProps) {
         </div>
       ) : (
         <div className="p-8 text-center text-muted-foreground">
-          No message selected
+          Nenhuma mensagem selecionada
         </div>
       )}
     </div>

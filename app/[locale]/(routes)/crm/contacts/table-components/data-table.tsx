@@ -94,7 +94,7 @@ export function ContactsDataTable<TData, TValue>({
 
       {hide ? (
         <div className="flex gap-2">
-          This content is hidden now. Click on <PanelTopOpen /> to show content
+          Este conteúdo está oculto agora. Clique em <PanelTopOpen /> para exibir o conteúdo
         </div>
       ) : (
         <>
@@ -103,7 +103,7 @@ export function ContactsDataTable<TData, TValue>({
             <>
               <div className="flex items-center gap-2 py-2 px-1 bg-muted/50 rounded-md border">
                 <span className="text-sm text-muted-foreground">
-                  {table.getSelectedRowModel().rows.length} selected
+                  {table.getSelectedRowModel().rows.length} selecionados
                 </span>
                 <Button
                   size="sm"
@@ -111,7 +111,7 @@ export function ContactsDataTable<TData, TValue>({
                   onClick={() => setBulkEnrichOpen(true)}
                 >
                   <Sparkles className="h-4 w-4 mr-1 text-orange-500" />
-                  Enrich {table.getSelectedRowModel().rows.length} contacts
+                  Enriquecer {table.getSelectedRowModel().rows.length} contatos
                 </Button>
               </div>
               <BulkEnrichModal
@@ -164,7 +164,7 @@ export function ContactsDataTable<TData, TValue>({
                       colSpan={columns.length}
                       className="h-24 text-center"
                     >
-                      No results.
+                      Nenhum resultado.
                     </TableCell>
                   </TableRow>
                 )}

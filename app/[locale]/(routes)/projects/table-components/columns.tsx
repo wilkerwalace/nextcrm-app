@@ -15,7 +15,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "date_created",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date Created" />
+      <DataTableColumnHeader column={column} title="Data de criação" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -28,12 +28,12 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "assigned_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Atribuído a" />
     ),
 
     cell: ({ row }) => (
       <div className="w-[150px]">
-        {row.original.assigned_user.name ?? "Unassigned"}
+        {row.original.assigned_user.name ?? "Não atribuído"}
       </div>
     ),
     enableSorting: true,
@@ -43,7 +43,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => (
       <Link href={`/projects/boards/${row.original.id}`}>
@@ -54,7 +54,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "description",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Description" />
+      <DataTableColumnHeader column={column} title="Descrição" />
     ),
     cell: ({ row }) => (
       <div className="w-[300px]">{row.getValue("description")}</div>
@@ -63,7 +63,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "visibility",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Visibility" />
+      <DataTableColumnHeader column={column} title="Visibilidade" />
     ),
     cell: ({ row }) => {
       const status = visibility.find(

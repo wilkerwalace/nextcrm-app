@@ -52,7 +52,7 @@ export default function CampaignDetail({ campaign }: { campaign: CampaignWithDat
               type="submit"
               className="px-3 py-1.5 text-sm border rounded-md hover:bg-muted"
             >
-              Pause
+              Pausar
             </button>
           </form>
         )}
@@ -61,11 +61,11 @@ export default function CampaignDetail({ campaign }: { campaign: CampaignWithDat
       {/* Stats row */}
       <div className="grid grid-cols-5 gap-4">
         {[
-          { label: "Sent", value: totalSent },
-          { label: "Delivered", value: delivered },
-          { label: "Open Rate", value: `${openRate}%` },
-          { label: "Click Rate", value: `${clickRate}%` },
-          { label: "Bounced", value: bounced },
+          { label: "Enviados", value: totalSent },
+          { label: "Entregues", value: delivered },
+          { label: "Taxa de Abertura", value: `${openRate}%` },
+          { label: "Taxa de Cliques", value: `${clickRate}%` },
+          { label: "Devolvidos", value: bounced },
         ].map(({ label, value }) => (
           <div key={label} className="bg-muted/30 rounded-lg p-4 text-center">
             <div className="text-2xl font-bold">{value}</div>

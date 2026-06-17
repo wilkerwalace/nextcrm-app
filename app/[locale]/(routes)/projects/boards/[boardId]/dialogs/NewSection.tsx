@@ -70,7 +70,7 @@ const NewSectionDialog = ({ boardId }: Props) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`New section: ${data.title}, created successfully`);
+        toast.success(`Nova seção: ${data.title}, criada com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);

@@ -32,7 +32,7 @@ const CreateProductForm = ({
 
   const { execute, fieldErrors, isLoading } = useAction(createProduct, {
     onSuccess: () => {
-      toast.success("Product created successfully");
+      toast.success("Produto criado com sucesso");
       closeRef.current?.click();
       router.refresh();
     },
@@ -82,14 +82,14 @@ const CreateProductForm = ({
   return (
     <FormSheet
       trigger={"+"}
-      title="Create Product"
-      description="Add a new product or service to your catalog"
+      title="Criar produto"
+      description="Adicione um novo produto ou serviço ao seu catálogo"
       onClose={closeRef}
     >
       <form action={onAction} className="space-y-4">
         <FormInput
           id="name"
-          label="Name"
+          label="Nome"
           type="text"
           errors={fieldErrors}
         />
@@ -101,11 +101,11 @@ const CreateProductForm = ({
         />
         <FormSelect
           id="type"
-          label="Type"
+          label="Tipo"
           type="hidden"
           data={[
-            { id: "PRODUCT", name: "Product" },
-            { id: "SERVICE", name: "Service" },
+            { id: "PRODUCT", name: "Produto" },
+            { id: "SERVICE", name: "Serviço" },
           ]}
           errors={fieldErrors}
         />
@@ -114,9 +114,9 @@ const CreateProductForm = ({
           label="Status"
           type="hidden"
           data={[
-            { id: "DRAFT", name: "Draft" },
-            { id: "ACTIVE", name: "Active" },
-            { id: "ARCHIVED", name: "Archived" },
+            { id: "DRAFT", name: "Rascunho" },
+            { id: "ACTIVE", name: "Ativo" },
+            { id: "ARCHIVED", name: "Arquivado" },
           ]}
           errors={fieldErrors}
           defaultValue="DRAFT"
@@ -124,20 +124,20 @@ const CreateProductForm = ({
         <div className="grid grid-cols-2 gap-4">
           <FormInput
             id="unit_price"
-            label="Unit Price"
+            label="Preço unitário"
             type="text"
             errors={fieldErrors}
           />
           <FormInput
             id="unit_cost"
-            label="Unit Cost"
+            label="Custo unitário"
             type="text"
             errors={fieldErrors}
           />
         </div>
         <FormSelect
           id="currency"
-          label="Currency"
+          label="Moeda"
           type="hidden"
           data={currencies.map((c) => ({
             id: c.code,
@@ -148,20 +148,20 @@ const CreateProductForm = ({
         <div className="grid grid-cols-2 gap-4">
           <FormInput
             id="tax_rate"
-            label="Tax Rate (%)"
+            label="Alíquota de imposto (%)"
             type="text"
             errors={fieldErrors}
           />
           <FormInput
             id="unit"
-            label="Unit"
+            label="Unidade"
             type="text"
             errors={fieldErrors}
           />
         </div>
         <FormSelect
           id="categoryId"
-          label="Category"
+          label="Categoria"
           type="hidden"
           data={categories.map((c) => ({ id: c.id, name: c.name }))}
           errors={fieldErrors}
@@ -172,32 +172,32 @@ const CreateProductForm = ({
             checked={isRecurring}
             onCheckedChange={(checked) => setIsRecurring(checked === true)}
           />
-          <Label htmlFor="is_recurring">Recurring billing</Label>
+          <Label htmlFor="is_recurring">Cobrança recorrente</Label>
         </div>
         {isRecurring && (
           <FormSelect
             id="billing_period"
-            label="Billing Period"
+            label="Período de cobrança"
             type="hidden"
             data={[
-              { id: "MONTHLY", name: "Monthly" },
-              { id: "QUARTERLY", name: "Quarterly" },
-              { id: "ANNUALLY", name: "Annually" },
-              { id: "ONE_TIME", name: "One Time" },
+              { id: "MONTHLY", name: "Mensal" },
+              { id: "QUARTERLY", name: "Trimestral" },
+              { id: "ANNUALLY", name: "Anual" },
+              { id: "ONE_TIME", name: "Único" },
             ]}
             errors={fieldErrors}
           />
         )}
         <FormTextarea
           id="description"
-          label="Description"
+          label="Descrição"
           errors={fieldErrors}
         />
         <FormSubmit className="w-full">
           {isLoading ? (
             <Loader2 className="h-6 w-6 animate-spin" />
           ) : (
-            "Create"
+            "Criar"
           )}
         </FormSubmit>
       </form>

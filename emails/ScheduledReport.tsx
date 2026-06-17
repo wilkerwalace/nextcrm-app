@@ -6,14 +6,14 @@ export default function ScheduledReport({ reportName = "Report", dateRange = "" 
   return (
     <Html>
       <Head />
-      <Preview>Your scheduled report: {reportName}</Preview>
+      <Preview>Seu relatório agendado: {reportName}</Preview>
       <Body style={{ fontFamily: "sans-serif", padding: "20px" }}>
         <Container>
           <Heading as="h2">{reportName}</Heading>
-          {dateRange && <Text style={{ color: "#666" }}>Date range: {dateRange}</Text>}
+          {dateRange && <Text style={{ color: "#666" }}>Período: {dateRange}</Text>}
           <Hr />
-          <Text>Your scheduled report is attached to this email.</Text>
-          <Text style={{ color: "#999", fontSize: "12px" }}>This is an automated report from AMZC CRM.</Text>
+          <Text>Seu relatório agendado está anexado a este e-mail.</Text>
+          <Text style={{ color: "#999", fontSize: "12px" }}>Este é um relatório automático do AMZC CRM.</Text>
         </Container>
       </Body>
     </Html>

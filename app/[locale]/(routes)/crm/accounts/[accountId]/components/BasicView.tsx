@@ -37,7 +37,7 @@ interface OppsViewProps {
 export async function BasicView({ data }: OppsViewProps) {
   //console.log(data, "data");
   const users = await prismadb.users.findMany();
-  if (!data) return <div>Opportunity not found</div>;
+  if (!data) return <div>Empresa não encontrada</div>;
   return (
     <div className="pb-3 space-y-5">
       {/*      <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -60,7 +60,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Annual revenue
+                    Receita anual
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.annual_revenue}
@@ -70,7 +70,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Landmark className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Company ID</p>
+                  <p className="text-sm font-medium leading-none">ID da empresa</p>
                   <p className="text-sm text-muted-foreground">
                     {data.company_id}
                   </p>
@@ -79,9 +79,9 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Percent className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">VAT number</p>
+                  <p className="text-sm font-medium leading-none">Número de VAT</p>
                   <p className="text-sm text-muted-foreground">
-                    {data.vat ? data.vat : "Not assigned"}
+                    {data.vat ? data.vat : "Não informado"}
                   </p>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <File className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Description
+                    Descrição
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.description}
@@ -100,7 +100,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <div className="flex mt-px gap-5">
                   <EnvelopeClosedIcon className="mt-px h-5 w-5" />
                   <div className="space-y-1">
-                    <p className="text-sm font-medium leading-none">Email</p>
+                    <p className="text-sm font-medium leading-none">E-mail</p>
 
                     <Link
                       href={`mailto:${data.email}`}
@@ -116,7 +116,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Globe2 className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Website</p>
+                  <p className="text-sm font-medium leading-none">Site</p>
                   <p className="text-sm text-muted-foreground">
                     {data?.website ? (
                       <Link href={data.website}>{data.website}</Link>
@@ -130,7 +130,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <Phone className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Office phone
+                    Telefone comercial
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.office_phone}
@@ -150,23 +150,23 @@ export async function BasicView({ data }: OppsViewProps) {
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Assigned to
+                    Responsável
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {data.assigned_to_user?.name ?? "Unassigned"}
+                    {data.assigned_to_user?.name ?? "Sem responsável"}
                   </p>
                 </div>
               </div>
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created</p>
+                  <p className="text-sm font-medium leading-none">Criado em</p>
                   <p className="text-sm text-muted-foreground">
                     {moment(data.created_on).format("MMM DD YYYY")}
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created by</p>
+                  <p className="text-sm font-medium leading-none">Criado por</p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.createdBy)?.name}
                   </p>
@@ -176,7 +176,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Last update
+                    Última atualização
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {moment(data.updatedAt).format("MMM DD YYYY")}
@@ -184,7 +184,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Last update by
+                    Atualizado por
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.updatedBy)?.name}
@@ -201,14 +201,14 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Type</p>
+                  <p className="text-sm font-medium leading-none">Tipo</p>
                   <p className="text-sm text-muted-foreground">{data.type}</p>
                 </div>
               </div>
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Member of</p>
+                  <p className="text-sm font-medium leading-none">Membro de</p>
                   <p className="text-sm text-muted-foreground">
                     {data.member_of}
                   </p>
@@ -217,7 +217,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Industry</p>
+                  <p className="text-sm font-medium leading-none">Setor</p>
                   <p className="text-sm text-muted-foreground">
                     {data.industry}
                   </p>
@@ -230,13 +230,13 @@ export async function BasicView({ data }: OppsViewProps) {
       <div className="grid grid-cols-2 gap-3 w-full">
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Billing Address</CardTitle>
+            <CardTitle>Endereço de cobrança</CardTitle>
           </CardHeader>
           <CardContent className="gap-1">
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Billing street
+                  Logradouro de cobrança
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.billing_street}
@@ -246,7 +246,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Billing postal code
+                  CEP de cobrança
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.billing_postal_code}
@@ -255,7 +255,7 @@ export async function BasicView({ data }: OppsViewProps) {
             </div>
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Billing city</p>
+                <p className="text-sm font-medium leading-none">Cidade de cobrança</p>
                 <p className="text-sm text-muted-foreground">
                   {data.billing_city}
                 </p>
@@ -264,7 +264,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Billing state
+                  Estado de cobrança
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.billing_state}
@@ -274,7 +274,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Billing country
+                  País de cobrança
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.billing_country}
@@ -285,13 +285,13 @@ export async function BasicView({ data }: OppsViewProps) {
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle>Shipping Address</CardTitle>
+            <CardTitle>Endereço de entrega</CardTitle>
           </CardHeader>
           <CardContent className="gap-1">
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Shipping street
+                  Logradouro de entrega
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.shipping_street}
@@ -301,7 +301,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Shipping postal code
+                  CEP de entrega
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.shipping_postal_code}
@@ -311,7 +311,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Shipping city
+                  Cidade de entrega
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.shipping_city}
@@ -321,7 +321,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Shipping state
+                  Estado de entrega
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.shipping_state}
@@ -331,7 +331,7 @@ export async function BasicView({ data }: OppsViewProps) {
             <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Shipping country
+                  País de entrega
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {data.shipping_country}

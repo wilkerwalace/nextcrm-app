@@ -370,7 +370,7 @@ export function NewAccountForm({ industries, onFinish }: Props) {
                     <FormControl>
                       <Textarea
                         disabled={form.formState.isSubmitting}
-                        placeholder="Description"
+                        placeholder="Descrição"
                         {...field}
                       />
                     </FormControl>

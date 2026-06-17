@@ -48,14 +48,14 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
     if ("error" in result) {
       toast.error(result.error);
     } else {
-      toast.success("Converted! Account and Contact created.");
+      toast.success("Convertido! Empresa e Contato criados.");
       router.refresh();
     }
   };
 
   const formSchema = z.object({
     first_name: z.string().optional(),
-    last_name: z.string().min(1, "Last name is required"),
+    last_name: z.string().min(1, "O sobrenome é obrigatório"),
     email: z.string().optional(),
     mobile_phone: z.string().optional(),
     office_phone: z.string().optional(),
@@ -114,7 +114,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
     if (result?.error) {
       form.setError("root.serverError", { message: result.error });
     } else {
-      toast.success("Target updated successfully");
+      toast.success("Alvo atualizado com sucesso");
       setOpen(false);
     }
   };
@@ -128,7 +128,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="first_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
                 </FormControl>
@@ -141,7 +141,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="last_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last name *</FormLabel>
+                <FormLabel>Sobrenome *</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
                 </FormControl>
@@ -156,7 +156,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>E-mail</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
                 </FormControl>
@@ -169,7 +169,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="mobile_phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Mobile phone</FormLabel>
+                <FormLabel>Celular</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
                 </FormControl>
@@ -184,7 +184,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="office_phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Office phone</FormLabel>
+                <FormLabel>Telefone comercial</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
                 </FormControl>
@@ -197,7 +197,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="position"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>Cargo</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
                 </FormControl>
@@ -212,7 +212,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company</FormLabel>
+                <FormLabel>Empresa</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="Acme Corp" {...field} />
                 </FormControl>
@@ -225,7 +225,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
             name="company_website"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company website</FormLabel>
+                <FormLabel>Site da empresa</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="https://acme.com" {...field} />
                 </FormControl>
@@ -239,7 +239,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
           name="personal_website"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Personal website</FormLabel>
+              <FormLabel>Site pessoal</FormLabel>
               <FormControl>
                 <Input disabled={form.formState.isSubmitting} placeholder="https://johndoe.com" {...field} />
               </FormControl>
@@ -305,33 +305,33 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         </div>
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="personal_email" render={({ field }) => (
-            <FormItem><FormLabel>Personal Email</FormLabel>
+            <FormItem><FormLabel>E-mail pessoal</FormLabel>
               <FormControl><Input placeholder="john@personal.com" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="company_email" render={({ field }) => (
-            <FormItem><FormLabel>Company Email</FormLabel>
+            <FormItem><FormLabel>E-mail da empresa</FormLabel>
               <FormControl><Input placeholder="info@company.com" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
         </div>
         <FormField control={form.control} name="company_phone" render={({ field }) => (
-          <FormItem><FormLabel>Company Phone</FormLabel>
+          <FormItem><FormLabel>Telefone da empresa</FormLabel>
             <FormControl><Input placeholder="+1 800 000 0000" {...field} value={field.value ?? ''} /></FormControl>
             <FormMessage />
           </FormItem>
         )} />
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="city" render={({ field }) => (
-            <FormItem><FormLabel>City</FormLabel>
+            <FormItem><FormLabel>Cidade</FormLabel>
               <FormControl><Input placeholder="Prague" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="country" render={({ field }) => (
-            <FormItem><FormLabel>Country</FormLabel>
+            <FormItem><FormLabel>País</FormLabel>
               <FormControl><Input placeholder="Czech Republic" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
@@ -339,21 +339,21 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         </div>
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="industry" render={({ field }) => (
-            <FormItem><FormLabel>Industry</FormLabel>
+            <FormItem><FormLabel>Setor</FormLabel>
               <FormControl><Input placeholder="SaaS" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="employees" render={({ field }) => (
-            <FormItem><FormLabel>Employees</FormLabel>
+            <FormItem><FormLabel>Funcionários</FormLabel>
               <FormControl><Input placeholder="50-200" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
         </div>
         <FormField control={form.control} name="description" render={({ field }) => (
-          <FormItem><FormLabel>Description</FormLabel>
-            <FormControl><Input placeholder="Short company description" {...field} value={field.value ?? ''} /></FormControl>
+          <FormItem><FormLabel>Descrição</FormLabel>
+            <FormControl><Input placeholder="Breve descrição da empresa" {...field} value={field.value ?? ''} /></FormControl>
             <FormMessage />
           </FormItem>
         )} />
@@ -363,7 +363,7 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
           render={({ field }) => (
             <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
               <div className="space-y-0.5">
-                <FormLabel className="text-base">Is target active?</FormLabel>
+                <FormLabel className="text-base">O alvo está ativo?</FormLabel>
               </div>
               <FormControl>
                 <Switch
@@ -381,28 +381,28 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         )}
         {initialData?.converted_at ? (
           <div className="rounded-md border p-3 bg-muted text-sm text-muted-foreground">
-            Converted to Account + Contact on {new Date(initialData.converted_at).toLocaleDateString()}
+            Convertido em Empresa + Contato em {new Date(initialData.converted_at).toLocaleDateString()}
           </div>
         ) : (
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button type="button" variant="outline" disabled={converting}>
-                Convert to Account
+                Converter em Empresa
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Convert to Account + Contact?</AlertDialogTitle>
+                <AlertDialogTitle>Converter em Empresa + Contato?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This creates a new Account from &quot;{initialData?.company || initialData?.last_name}&quot;
-                  and a new Contact for &quot;{initialData?.first_name} {initialData?.last_name}&quot;.
-                  The target will be marked as converted.
+                  Isto cria uma nova Empresa a partir de &quot;{initialData?.company || initialData?.last_name}&quot;
+                  e um novo Contato para &quot;{initialData?.first_name} {initialData?.last_name}&quot;.
+                  O alvo será marcado como convertido.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction onClick={handleConvert} disabled={converting}>
-                  {converting ? "Converting..." : "Convert"}
+                  {converting ? "Convertendo..." : "Converter"}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -410,9 +410,9 @@ export function UpdateTargetForm({ initialData, setOpen }: UpdateTargetFormProps
         )}
         <Button disabled={form.formState.isSubmitting} type="submit" className="w-full">
           {form.formState.isSubmitting ? (
-            <span className="flex items-center animate-pulse">Saving data ...</span>
+            <span className="flex items-center animate-pulse">Salvando dados ...</span>
           ) : (
-            "Update target"
+            "Atualizar alvo"
           )}
         </Button>
       </form>

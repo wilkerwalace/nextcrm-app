@@ -47,7 +47,7 @@ const InvoicesView = ({
               onClick={() => router.push("/invoices")}
               className="cursor-pointer"
             >
-              Invoices
+              Faturas
             </CardTitle>
             <CardDescription></CardDescription>
           </div>
@@ -55,7 +55,7 @@ const InvoicesView = ({
             <Link href={`/invoices/new?accountId=${accountId}`}>
               <Button size="sm">
                 <Plus className="mr-2 h-4 w-4" />
-                New invoice
+                Nova fatura
               </Button>
             </Link>
           )}
@@ -64,7 +64,7 @@ const InvoicesView = ({
       </CardHeader>
       <CardContent>
         {!data || data.length === 0 ? (
-          "No assigned invoices found"
+          "Nenhuma fatura atribuída encontrada"
         ) : (
           <InvoicesTable
             invoices={data}

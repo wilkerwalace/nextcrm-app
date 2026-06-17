@@ -90,28 +90,28 @@ export function AppSidebar({
   const isExpanded = state === "expanded";
 
   const navItems = [
-    getDashboardMenuItem({ title: dict?.dashboard || "Dashboard" }),
+    getDashboardMenuItem({ title: dict?.dashboard || "Painel" }),
     getCrmMenuItem({ localizations: dict.crm }),
     getCampaignsMenuItem({
       localizations: {
-        title: "Campaigns",
-        campaigns: "All Campaigns",
-        templates: "Templates",
-        targets: "Targets",
-        targetLists: "Target Lists",
+        title: "Campanhas",
+        campaigns: "Todas as Campanhas",
+        templates: "Modelos",
+        targets: "Alvos",
+        targetLists: "Listas de Alvos",
       },
     }),
-    getProjectsMenuItem({ title: dict?.projects || "Projects" }),
-    getEmailsMenuItem({ title: dict?.emails || "Emails" }),
-    getReportsMenuItem({ title: dict?.reports || "Reports" }),
-    getDocumentsMenuItem({ title: dict?.documents || "Documents" }),
-    getInvoicesMenuItem({ title: dict?.invoices || "Invoices" }),
+    getProjectsMenuItem({ title: dict?.projects || "Projetos" }),
+    getEmailsMenuItem({ title: dict?.emails || "E-mails" }),
+    getReportsMenuItem({ title: dict?.reports || "Relatórios" }),
+    getDocumentsMenuItem({ title: dict?.documents || "Documentos" }),
+    getInvoicesMenuItem({ title: dict?.invoices || "Faturas" }),
   ];
 
   // Administration: admin users only
   if (session?.user?.role === "admin") {
     navItems.push(
-      getAdministrationMenuItem({ title: dict?.settings || "Administration" }),
+      getAdministrationMenuItem({ title: dict?.settings || "Administração" }),
     );
   }
 

@@ -38,11 +38,11 @@ const ModalDropzone = ({ buttonLabel, fileType }: Props) => {
         size: 0, // size not available from presigned URL flow
         mimeType: MIME_MAP[fileType] ?? "application/octet-stream",
       });
-      toast.success("Document uploaded successfully");
+      toast.success("Documento enviado com sucesso");
       setOpen(false);
       router.refresh();
     } catch (err) {
-      toast.error("Failed to save document");
+      toast.error("Falha ao salvar o documento");
     }
   };
 

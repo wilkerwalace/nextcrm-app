@@ -31,7 +31,7 @@ const DocumentsView = ({ data, accountId }: DocumentsViewProps) => {
               onClick={() => router.push("/documents")}
               className="cursor-pointer"
             >
-              Documents
+              Documentos
             </CardTitle>
             <CardDescription></CardDescription>
           </div>
@@ -43,7 +43,7 @@ const DocumentsView = ({ data, accountId }: DocumentsViewProps) => {
       </CardHeader>
       <CardContent>
         {!data || data.length === 0 ? (
-          "No assigned documents found"
+          "Nenhum documento atribuído encontrado"
         ) : (
           <DocumentsDataTable data={data} columns={columns} />
         )}

@@ -19,17 +19,17 @@ const LeadDetailPage = async (props: LeadDetailPageProps) => {
   const { leadId } = params;
   const lead: any = await getLead(leadId);
 
-  if (!lead) return <div>Lead not found</div>;
+  if (!lead) return <div>Lead não encontrado</div>;
 
   return (
     <Container
       title={`Lead: ${lead?.firstName} ${lead?.lastName}`}
-      description={"Everything you need to know about sales potential"}
+      description={"Tudo o que você precisa saber sobre o potencial de vendas"}
     >
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <div className="space-y-5">

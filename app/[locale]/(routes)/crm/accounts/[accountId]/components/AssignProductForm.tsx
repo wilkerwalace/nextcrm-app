@@ -31,7 +31,7 @@ const AssignProductForm = ({
 
   const { execute, fieldErrors, isLoading } = useAction(assignProduct, {
     onSuccess: () => {
-      toast.success("Product assigned successfully");
+      toast.success("Produto atribuído com sucesso");
       closeRef.current?.click();
       router.refresh();
     },
@@ -73,34 +73,34 @@ const AssignProductForm = ({
   return (
     <FormSheet
       trigger={"+"}
-      title="Assign Product"
-      description="Assign a product or service to this account"
+      title="Atribuir produto"
+      description="Atribua um produto ou serviço a esta empresa"
       onClose={closeRef}
     >
       <form action={onAction} className="space-y-4">
         <FormSelect
           id="productId"
-          label="Product"
+          label="Produto"
           type="hidden"
           data={products.map((p) => ({ id: p.id, name: p.name }))}
           errors={fieldErrors}
         />
         <FormInput
           id="quantity"
-          label="Quantity"
+          label="Quantidade"
           type="number"
           defaultValue="1"
           errors={fieldErrors}
         />
         <FormInput
           id="custom_price"
-          label="Custom Price (optional)"
+          label="Preço personalizado (opcional)"
           type="text"
           errors={fieldErrors}
         />
         <FormSelect
           id="currency"
-          label="Currency"
+          label="Moeda"
           type="hidden"
           data={currencies.map((c) => ({
             id: c.code,
@@ -113,33 +113,33 @@ const AssignProductForm = ({
           label="Status"
           type="hidden"
           data={[
-            { id: "ACTIVE", name: "Active" },
-            { id: "PENDING", name: "Pending" },
+            { id: "ACTIVE", name: "Ativo" },
+            { id: "PENDING", name: "Pendente" },
           ]}
           errors={fieldErrors}
           defaultValue="ACTIVE"
         />
         <FormDatePicker
           id="start_date"
-          label="Start Date"
+          label="Data de início"
           errors={fieldErrors}
         />
         <FormDatePicker
           id="end_date"
-          label="End Date (optional)"
+          label="Data de término (opcional)"
           errors={fieldErrors}
         />
         <FormDatePicker
           id="renewal_date"
-          label="Renewal Date (optional)"
+          label="Data de renovação (opcional)"
           errors={fieldErrors}
         />
-        <FormTextarea id="notes" label="Notes" errors={fieldErrors} />
+        <FormTextarea id="notes" label="Notas" errors={fieldErrors} />
         <FormSubmit className="w-full">
           {isLoading ? (
             <Loader2 className="h-6 w-6 animate-spin" />
           ) : (
-            "Assign"
+            "Atribuir"
           )}
         </FormSubmit>
       </form>

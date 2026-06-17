@@ -4,9 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import type { SearchResult } from "@/actions/fulltext/unified-search";
 
 const matchTypeLabel: Record<SearchResult["matchType"], string> = {
-  keyword: "Keyword",
-  semantic: "Semantic",
-  both: "Best Match",
+  keyword: "Palavra-chave",
+  semantic: "Semântico",
+  both: "Melhor correspondência",
 };
 
 const matchTypeVariant: Record<

@@ -37,9 +37,9 @@ export function ContactDetailActions({
         <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
           <SheetHeader>
             <SheetTitle>
-              Update Contact - {contact?.first_name} {contact?.last_name}
+              Atualizar Contato - {contact?.first_name} {contact?.last_name}
             </SheetTitle>
-            <SheetDescription>Update contact details</SheetDescription>
+            <SheetDescription>Atualizar detalhes do contato</SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">
             <UpdateContactForm
@@ -59,12 +59,12 @@ export function ContactDetailActions({
             data-testid="contact-detail-actions-btn"
           >
             <MoreHorizontal className="h-5 w-5 text-muted-foreground" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

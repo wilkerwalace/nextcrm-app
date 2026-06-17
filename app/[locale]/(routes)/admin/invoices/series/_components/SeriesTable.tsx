@@ -88,26 +88,26 @@ export function SeriesTable({ series }: SeriesTableProps) {
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());
-      toast.success(editId ? "Series updated" : "Series created");
+      toast.success(editId ? "Série atualizada" : "Série criada");
       setOpen(false);
       resetForm();
       router.refresh();
     } catch {
-      toast.error("Failed to save series");
+      toast.error("Falha ao salvar a série");
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this series?")) return;
+    if (!confirm("Excluir esta série?")) return;
     try {
       const res = await fetch(`/api/admin/invoices/series/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error(await res.text());
-      toast.success("Series deleted");
+      toast.success("Série excluída");
       router.refresh();
     } catch {
-      toast.error("Failed to delete series");
+      toast.error("Falha ao excluir a série");
     }
   };
 
@@ -116,12 +116,12 @@ export function SeriesTable({ series }: SeriesTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Prefix Template</TableHead>
-            <TableHead>Reset Policy</TableHead>
-            <TableHead>Default</TableHead>
-            <TableHead>Active</TableHead>
-            <TableHead className="w-20">Actions</TableHead>
+            <TableHead>Nome</TableHead>
+            <TableHead>Modelo de Prefixo</TableHead>
+            <TableHead>Política de Reinício</TableHead>
+            <TableHead>Padrão</TableHead>
+            <TableHead>Ativa</TableHead>
+            <TableHead className="w-20">Ações</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -132,8 +132,8 @@ export function SeriesTable({ series }: SeriesTableProps) {
                 {s.prefixTemplate}
               </TableCell>
               <TableCell>{s.resetPolicy}</TableCell>
-              <TableCell>{s.isDefault ? "Yes" : "No"}</TableCell>
-              <TableCell>{s.active ? "Active" : "Inactive"}</TableCell>
+              <TableCell>{s.isDefault ? "Sim" : "Não"}</TableCell>
+              <TableCell>{s.active ? "Ativa" : "Inativa"}</TableCell>
               <TableCell>
                 <div className="flex gap-1">
                   <Button
@@ -161,7 +161,7 @@ export function SeriesTable({ series }: SeriesTableProps) {
                 colSpan={6}
                 className="text-center text-muted-foreground"
               >
-                No series configured
+                Nenhuma série configurada
               </TableCell>
             </TableRow>
           )}
@@ -177,37 +177,37 @@ export function SeriesTable({ series }: SeriesTableProps) {
       >
         <DialogTrigger asChild>
           <Button variant="outline" size="sm" className="mt-4">
-            + Add Series
+            + Adicionar Série
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              {editId ? "Edit Series" : "Add Series"}
+              {editId ? "Editar Série" : "Adicionar Série"}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label>Name</Label>
+              <Label>Nome</Label>
               <Input
-                placeholder="e.g. Standard Invoices"
+                placeholder="ex.: Faturas Padrão"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <Label>Prefix Template</Label>
+              <Label>Modelo de Prefixo</Label>
               <Input
-                placeholder="e.g. INV-{YYYY}-"
+                placeholder="ex.: INV-{YYYY}-"
                 value={prefixTemplate}
                 onChange={(e) => setPrefixTemplate(e.target.value)}
               />
               <p className="text-xs text-muted-foreground">
-                Use {"{YYYY}"} for year, {"{MM}"} for month
+                Use {"{YYYY}"} para o ano, {"{MM}"} para o mês
               </p>
             </div>
             <div className="space-y-2">
-              <Label>Reset Policy</Label>
+              <Label>Política de Reinício</Label>
               <Select value={resetPolicy} onValueChange={setResetPolicy}>
                 <SelectTrigger>
                   <SelectValue />
@@ -223,17 +223,17 @@ export function SeriesTable({ series }: SeriesTableProps) {
             </div>
             <div className="flex items-center gap-2">
               <Switch checked={isDefault} onCheckedChange={setIsDefault} />
-              <Label>Default</Label>
+              <Label>Padrão</Label>
             </div>
             <div className="flex items-center gap-2">
               <Switch checked={active} onCheckedChange={setActive} />
-              <Label>Active</Label>
+              <Label>Ativa</Label>
             </div>
             <Button
               onClick={handleSave}
               disabled={!name || !prefixTemplate}
             >
-              {editId ? "Update" : "Create"}
+              {editId ? "Atualizar" : "Criar"}
             </Button>
           </div>
         </DialogContent>

@@ -77,7 +77,7 @@ const NewProjectDialog = () => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`New project: ${data.title}, created successfully`);
+        toast.success(`Novo projeto: ${data.title}, criado com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);

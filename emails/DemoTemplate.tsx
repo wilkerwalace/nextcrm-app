@@ -8,6 +8,6 @@ export const DemoTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   firstName,
 }) => (
   <div>
-    <h1>Welcome, {firstName}!</h1>
+    <h1>Bem-vindo, {firstName}!</h1>
   </div>
 );

@@ -77,7 +77,7 @@ export function Step4Schedule({
 
   const handleSubmit = async () => {
     if (!sendNow && !scheduledAt) {
-      setError("Pick a date or choose Send Now");
+      setError("Escolha uma data ou selecione Enviar agora");
       return;
     }
     await onSubmit({
@@ -91,7 +91,7 @@ export function Step4Schedule({
     <div className="flex flex-col gap-6 max-w-lg">
       {/* Send timing */}
       <div className="flex flex-col gap-3">
-        <Label>When to send</Label>
+        <Label>Quando enviar</Label>
         <div className="flex gap-4">
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -102,7 +102,7 @@ export function Step4Schedule({
                 setError("");
               }}
             />
-            <span className="text-sm">Send now</span>
+            <span className="text-sm">Enviar agora</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -113,7 +113,7 @@ export function Step4Schedule({
                 setError("");
               }}
             />
-            <span className="text-sm">Schedule for later</span>
+            <span className="text-sm">Agendar para depois</span>
           </label>
         </div>
         {!sendNow && (
@@ -127,28 +127,28 @@ export function Step4Schedule({
 
       {/* Follow-ups */}
       <div className="flex flex-col gap-3">
-        <Label>Follow-up Steps</Label>
+        <Label>Etapas de Acompanhamento</Label>
         {followUps.length === 0 && (
           <p className="text-sm text-muted-foreground">
-            No follow-ups. Add one below.
+            Nenhum acompanhamento. Adicione um abaixo.
           </p>
         )}
         {followUps.map((fu, i) => (
           <div key={i} className="border rounded-md p-3 flex flex-col gap-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">Follow-up {i + 1}</span>
+              <span className="text-sm font-medium">Acompanhamento {i + 1}</span>
               <Button
                 type="button"
                 variant="ghost"
                 size="sm"
                 onClick={() => removeFollowUp(i)}
               >
-                Remove
+                Remover
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label className="text-xs">Delay (days after previous)</Label>
+                <Label className="text-xs">Atraso (dias após o anterior)</Label>
                 <Input
                   type="number"
                   min={1}
@@ -161,7 +161,7 @@ export function Step4Schedule({
                 />
               </div>
               <div>
-                <Label className="text-xs">Send to</Label>
+                <Label className="text-xs">Enviar para</Label>
                 <select
                   className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
                   value={fu.send_to}
@@ -171,13 +171,13 @@ export function Step4Schedule({
                     })
                   }
                 >
-                  <option value="all">All recipients</option>
-                  <option value="non_openers">Non-openers only</option>
+                  <option value="all">Todos os destinatários</option>
+                  <option value="non_openers">Apenas quem não abriu</option>
                 </select>
               </div>
             </div>
             <div>
-              <Label className="text-xs">Template</Label>
+              <Label className="text-xs">Modelo</Label>
               <select
                 className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
                 value={fu.template_id}
@@ -193,17 +193,17 @@ export function Step4Schedule({
               </select>
             </div>
             <div>
-              <Label className="text-xs">Subject</Label>
+              <Label className="text-xs">Assunto</Label>
               <Input
                 value={fu.subject}
                 onChange={(e) => updateFollowUp(i, { subject: e.target.value })}
-                placeholder="Follow-up subject line..."
+                placeholder="Assunto do acompanhamento..."
               />
             </div>
           </div>
         ))}
         <Button type="button" variant="outline" onClick={addFollowUp}>
-          + Add follow-up
+          + Adicionar acompanhamento
         </Button>
       </div>
 
@@ -211,10 +211,10 @@ export function Step4Schedule({
 
       <div className="flex justify-between">
         <Button variant="outline" onClick={onBack}>
-          ← Back
+          ← Voltar
         </Button>
         <Button onClick={handleSubmit} disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Submit Campaign"}
+          {isSubmitting ? "Enviando..." : "Enviar Campanha"}
         </Button>
       </div>
     </div>

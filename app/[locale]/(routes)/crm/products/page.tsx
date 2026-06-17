@@ -18,8 +18,8 @@ const ProductsPage = async () => {
 
   return (
     <Container
-      title="Products"
-      description="Manage your product and service catalog"
+      title="Produtos"
+      description="Gerencie seu catálogo de produtos e serviços"
     >
       <Suspense fallback={<CrmTableSkeleton />}>
         <ProductsView

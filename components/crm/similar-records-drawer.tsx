@@ -21,10 +21,10 @@ import type { SimilarityResult, SimilarRecord } from "@/actions/crm/similarity/g
 type EntityType = "account" | "contact" | "lead" | "opportunity";
 
 const ENTITY_LABELS: Record<EntityType, string> = {
-  account: "Accounts",
-  contact: "Contacts",
+  account: "Empresas",
+  contact: "Contatos",
   lead: "Leads",
-  opportunity: "Opportunities",
+  opportunity: "Oportunidades",
 };
 
 async function fetchSimilar(entityType: EntityType, recordId: string): Promise<SimilarityResult> {
@@ -80,7 +80,7 @@ export function SimilarRecordsDrawer({
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Similar {label}</DrawerTitle>
+          <DrawerTitle>{label} similares</DrawerTitle>
         </DrawerHeader>
 
         <div className="px-4 pb-6 space-y-2">
@@ -94,13 +94,13 @@ export function SimilarRecordsDrawer({
 
           {!isPending && result?.status === "no_embedding" && (
             <p className="text-sm text-muted-foreground py-4 text-center">
-              Still generating similarity data. Check back shortly.
+              Ainda gerando dados de similaridade. Volte em breve.
             </p>
           )}
 
           {!isPending && result?.status === "error" && (
             <div className="text-sm text-destructive py-4 text-center space-y-2">
-              <p>Failed to load similar records.</p>
+              <p>Falha ao carregar registros similares.</p>
               <Button
                 variant="outline"
                 size="sm"
@@ -112,14 +112,14 @@ export function SimilarRecordsDrawer({
                   });
                 }}
               >
-                Retry
+                Tentar novamente
               </Button>
             </div>
           )}
 
           {!isPending && result?.status === "ok" && result.records.length === 0 && (
             <p className="text-sm text-muted-foreground py-4 text-center">
-              No similar {label.toLowerCase()} found yet.
+              Nenhum registro de {label.toLowerCase()} similar encontrado ainda.
             </p>
           )}
 
@@ -138,7 +138,7 @@ export function SimilarRecordsDrawer({
                   )}
                 </div>
                 <Badge variant={similarityBadgeVariant(record.similarity)}>
-                  {Math.round(record.similarity * 100)}% match
+                  {Math.round(record.similarity * 100)}% de correspondência
                 </Badge>
               </button>
             ))}

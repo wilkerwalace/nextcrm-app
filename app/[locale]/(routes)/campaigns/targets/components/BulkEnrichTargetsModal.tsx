@@ -34,14 +34,14 @@ export function BulkEnrichTargetsModal({ targetIds, open, onOpenChange }: BulkEn
         body: JSON.stringify({ targetIds, fields }),
       });
       if (res.ok) {
-        toast.success(`Enrichment started for ${targetIds.length} targets. Check the Enrichment Jobs page for progress.`);
+        toast.success(`Enriquecimento iniciado para ${targetIds.length} alvos. Acompanhe o progresso na página de Tarefas de Enriquecimento.`);
         onOpenChange(false);
       } else {
         const err = await res.json();
         if (res.status === 402 || err.error === "NO_API_KEY") {
           setShowNoApiKeyDialog(true);
         } else {
-          toast.error(err.error ?? "Failed to start bulk enrichment");
+          toast.error(err.error ?? "Falha ao iniciar o enriquecimento em massa");
         }
       }
     } finally {
@@ -54,10 +54,10 @@ export function BulkEnrichTargetsModal({ targetIds, open, onOpenChange }: BulkEn
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[480px]">
         <DialogHeader>
-          <DialogTitle>Enrich {targetIds.length} targets</DialogTitle>
+          <DialogTitle>Enriquecer {targetIds.length} alvos</DialogTitle>
           <DialogDescription>
-            Select fields to enrich. Firecrawl will run in the background.
-            Only empty fields will be filled — existing data is never overwritten.
+            Selecione os campos a enriquecer. O Firecrawl será executado em segundo plano.
+            Apenas os campos vazios serão preenchidos — os dados existentes nunca são sobrescritos.
           </DialogDescription>
         </DialogHeader>
         <EnrichFieldSelector

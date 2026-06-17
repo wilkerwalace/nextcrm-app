@@ -33,7 +33,7 @@ const CRMTaskPage = async (props: TaskPageProps) => {
     <div className="flex flex-col md:flex-row w-full px-2 space-x-2 ">
       <div className="flex flex-col w-full md:w-2/3">
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight py-5">
-          Task details
+          Detalhes da tarefa
         </h4>
         <div className="w-full border rounded-lg mb-5">
           {/*          <pre>
@@ -43,10 +43,10 @@ const CRMTaskPage = async (props: TaskPageProps) => {
             <thead>
               <tr>
                 <th className="py-2 px-4 border-b font-semibold">
-                  <span className="flex justify-start">Property</span>
+                  <span className="flex justify-start">Propriedade</span>
                 </th>
                 <th className="py-2 px-4 border-b font-semibold">
-                  <span className="flex justify-start">Value</span>
+                  <span className="flex justify-start">Valor</span>
                 </th>
               </tr>
             </thead>
@@ -56,25 +56,25 @@ const CRMTaskPage = async (props: TaskPageProps) => {
                 <td className="py-2 px-4 border-b">{task.id}</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Date created</td>
+                <td className="py-2 px-4 border-b">Data de criação</td>
                 <td className="py-2 px-4 border-b">
                   {moment(task.createdAt).format("YYYY-MM-DD")}
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Date due</td>
+                <td className="py-2 px-4 border-b">Data de vencimento</td>
                 <td className="py-2 px-4 border-b">
                   {moment(task.dueDateAt).format("YYYY-MM-DD")}
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Date modified</td>
+                <td className="py-2 px-4 border-b">Data de modificação</td>
                 <td className="py-2 px-4 border-b">
                   {moment(task.lastEditedAt).format("YYYY-MM-DD")}
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Priority</td>
+                <td className="py-2 px-4 border-b">Prioridade</td>
                 <td className="py-2 px-4 border-b">
                   <Badge
                     variant={
@@ -86,17 +86,17 @@ const CRMTaskPage = async (props: TaskPageProps) => {
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Title</td>
+                <td className="py-2 px-4 border-b">Título</td>
                 <td className="py-2 px-4 border-b">{task.title}</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Content</td>
+                <td className="py-2 px-4 border-b">Conteúdo</td>
                 <td className="py-2 px-4 border-b">{task.content}</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b">Assigned to</td>
+                <td className="py-2 px-4 border-b">Atribuído a</td>
                 <td className="py-2 px-4 border-b">
-                  {task.assigned_user?.name || "Not assigned"}
+                  {task.assigned_user?.name || "Não atribuído"}
                 </td>
               </tr>
             </tbody>
@@ -106,12 +106,12 @@ const CRMTaskPage = async (props: TaskPageProps) => {
           <code>{JSON.stringify(taskDocuments, null, 2)}</code>
         </pre> */}
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight py-5">
-          Task documents ({taskDocuments.length})
+          Documentos da tarefa ({taskDocuments.length})
         </h4>
         <TaskDataTable data={taskDocuments} columns={columnsTask} />
         <Separator />
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight py-5">
-          Available documents ({documents.length})
+          Documentos disponíveis ({documents.length})
         </h4>
         <TaskDataTable data={documents} columns={columns} />
       </div>

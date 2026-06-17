@@ -23,31 +23,31 @@ export function CurrencyTable({ currencies }: { currencies: CurrencyValue[] }) {
   const handleToggle = async (code: string, enabled: boolean) => {
     try {
       await toggleCurrency(code, enabled);
-      toast.success(`Currency ${code} ${enabled ? "enabled" : "disabled"}`);
+      toast.success(`Moeda ${code} ${enabled ? "ativada" : "desativada"}`);
     } catch {
-      toast.error("Failed to update currency");
+      toast.error("Falha ao atualizar a moeda");
     }
   };
 
   const handleSetDefault = async (code: string) => {
     try {
       await setDefaultCurrency(code);
-      toast.success(`${code} set as default currency`);
+      toast.success(`${code} definida como moeda padrão`);
     } catch {
-      toast.error("Failed to set default currency");
+      toast.error("Falha ao definir a moeda padrão");
     }
   };
 
   const handleCreate = async () => {
     try {
       await createCurrency({ code: newCode, name: newName, symbol: newSymbol });
-      toast.success(`Currency ${newCode} added`);
+      toast.success(`Moeda ${newCode} adicionada`);
       setAdding(false);
       setNewCode("");
       setNewName("");
       setNewSymbol("");
     } catch (e: any) {
-      toast.error(e.message || "Failed to add currency");
+      toast.error(e.message || "Falha ao adicionar a moeda");
     }
   };
 
@@ -56,11 +56,11 @@ export function CurrencyTable({ currencies }: { currencies: CurrencyValue[] }) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Code</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead>Symbol</TableHead>
-            <TableHead>Enabled</TableHead>
-            <TableHead>Default</TableHead>
+            <TableHead>Código</TableHead>
+            <TableHead>Nome</TableHead>
+            <TableHead>Símbolo</TableHead>
+            <TableHead>Ativada</TableHead>
+            <TableHead>Padrão</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -91,17 +91,17 @@ export function CurrencyTable({ currencies }: { currencies: CurrencyValue[] }) {
       </Table>
       <Dialog open={adding} onOpenChange={setAdding}>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm" className="mt-4">+ Add Currency</Button>
+          <Button variant="outline" size="sm" className="mt-4">+ Adicionar Moeda</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Currency</DialogTitle>
+            <DialogTitle>Adicionar Moeda</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
-            <Input placeholder="Code (e.g. GBP)" value={newCode} onChange={(e) => setNewCode(e.target.value.toUpperCase())} maxLength={3} />
-            <Input placeholder="Name (e.g. British Pound)" value={newName} onChange={(e) => setNewName(e.target.value)} />
-            <Input placeholder="Symbol (e.g. £)" value={newSymbol} onChange={(e) => setNewSymbol(e.target.value)} maxLength={5} />
-            <Button onClick={handleCreate} disabled={!newCode || !newName || !newSymbol}>Add</Button>
+            <Input placeholder="Código (ex.: GBP)" value={newCode} onChange={(e) => setNewCode(e.target.value.toUpperCase())} maxLength={3} />
+            <Input placeholder="Nome (ex.: Libra Esterlina)" value={newName} onChange={(e) => setNewName(e.target.value)} />
+            <Input placeholder="Símbolo (ex.: £)" value={newSymbol} onChange={(e) => setNewSymbol(e.target.value)} maxLength={5} />
+            <Button onClick={handleCreate} disabled={!newCode || !newName || !newSymbol}>Adicionar</Button>
           </div>
         </DialogContent>
       </Dialog>

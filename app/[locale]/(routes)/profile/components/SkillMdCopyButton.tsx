@@ -32,7 +32,7 @@ export function SkillMdCopyButton() {
       ) : (
         <Copy className="h-4 w-4" />
       )}
-      {copied ? "Copied!" : "Copy MCP Config"}
+      {copied ? "Copiado!" : "Copiar configuração MCP"}
     </button>
   );
 }

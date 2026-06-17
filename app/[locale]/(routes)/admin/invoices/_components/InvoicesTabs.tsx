@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { label: "Settings", href: "/admin/invoices/settings" },
-  { label: "Series", href: "/admin/invoices/series" },
-  { label: "Tax Rates", href: "/admin/invoices/tax-rates" },
+  { label: "Configurações", href: "/admin/invoices/settings" },
+  { label: "Séries", href: "/admin/invoices/series" },
+  { label: "Alíquotas de Imposto", href: "/admin/invoices/tax-rates" },
 ];
 
 export function InvoicesTabs() {
@@ -15,7 +15,7 @@ export function InvoicesTabs() {
 
   return (
     <div className="border-b">
-      <nav className="flex gap-1 -mb-px" aria-label="Invoice sections">
+      <nav className="flex gap-1 -mb-px" aria-label="Seções de faturas">
         {tabs.map(({ label, href }) => {
           const isActive = pathname.endsWith(href) || pathname.includes(href + "/");
           return (

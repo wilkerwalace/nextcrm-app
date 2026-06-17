@@ -72,7 +72,7 @@ export function TotalsPanel({ lineItems, currency, locale }: TotalsPanelProps) {
   return (
     <Card>
       <CardHeader className="pb-3">
-        <CardTitle className="text-base">Totals</CardTitle>
+        <CardTitle className="text-base">Totais</CardTitle>
       </CardHeader>
       <CardContent className="space-y-2 text-sm">
         <div className="flex justify-between">
@@ -81,7 +81,7 @@ export function TotalsPanel({ lineItems, currency, locale }: TotalsPanelProps) {
         </div>
         {totals.discountTotal > 0 && (
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Discount</span>
+            <span className="text-muted-foreground">Desconto</span>
             <span className="font-mono text-red-600">
               -{fmt(totals.discountTotal)}
             </span>
@@ -89,7 +89,7 @@ export function TotalsPanel({ lineItems, currency, locale }: TotalsPanelProps) {
         )}
         {totals.vatBreakdown.map((b) => (
           <div key={b.rate} className="flex justify-between">
-            <span className="text-muted-foreground">VAT {b.rate}%</span>
+            <span className="text-muted-foreground">Imposto {b.rate}%</span>
             <span className="font-mono">{fmt(b.vat)}</span>
           </div>
         ))}

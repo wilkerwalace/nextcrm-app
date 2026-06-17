@@ -67,7 +67,7 @@ export function ComposeModal({
       setOpen(false);
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Send failed");
+      setError(err instanceof Error ? err.message : "Falha ao enviar");
     } finally {
       setSending(false);
     }
@@ -76,34 +76,34 @@ export function ComposeModal({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {trigger ?? <Button size="sm">Compose</Button>}
+        {trigger ?? <Button size="sm">Escrever</Button>}
       </DialogTrigger>
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>
-            {mode === "reply" ? "Reply" : mode === "forward" ? "Forward" : "New Email"}
+            {mode === "reply" ? "Responder" : mode === "forward" ? "Encaminhar" : "Novo e-mail"}
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-3">
           <div className="space-y-1">
-            <Label>To</Label>
-            <Input value={to} onChange={(e) => setTo(e.target.value)} placeholder="recipient@example.com" />
+            <Label>Para</Label>
+            <Input value={to} onChange={(e) => setTo(e.target.value)} placeholder="destinatario@exemplo.com" />
           </div>
           <div className="space-y-1">
             <Label>CC</Label>
-            <Input value={cc} onChange={(e) => setCc(e.target.value)} placeholder="cc@example.com" />
+            <Input value={cc} onChange={(e) => setCc(e.target.value)} placeholder="cc@exemplo.com" />
           </div>
           <div className="space-y-1">
-            <Label>Subject</Label>
+            <Label>Assunto</Label>
             <Input value={subject} onChange={(e) => setSubject(e.target.value)} />
           </div>
           <div className="space-y-1">
-            <Label>Message</Label>
+            <Label>Mensagem</Label>
             <Textarea value={body} onChange={(e) => setBody(e.target.value)} rows={8} />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
           <Button onClick={handleSend} disabled={sending} className="w-full">
-            {sending ? "Sending…" : "Send"}
+            {sending ? "Enviando…" : "Enviar"}
           </Button>
         </div>
       </DialogContent>

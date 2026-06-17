@@ -35,7 +35,7 @@ export function PaymentList({ payments, currency, locale }: PaymentListProps) {
   if (payments.length === 0) {
     return (
       <p className="text-sm text-muted-foreground py-4">
-        No payments recorded
+        Nenhum pagamento registrado
       </p>
     );
   }
@@ -44,11 +44,11 @@ export function PaymentList({ payments, currency, locale }: PaymentListProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Date</TableHead>
-          <TableHead>Amount</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead>Reference</TableHead>
-          <TableHead>Note</TableHead>
+          <TableHead>Data</TableHead>
+          <TableHead>Valor</TableHead>
+          <TableHead>Método</TableHead>
+          <TableHead>Referência</TableHead>
+          <TableHead>Observação</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

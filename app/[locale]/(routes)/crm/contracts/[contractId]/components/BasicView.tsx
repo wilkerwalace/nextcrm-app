@@ -33,15 +33,15 @@ const statusVariant: Record<string, "default" | "secondary" | "destructive"> = {
 };
 
 const statusLabel: Record<string, string> = {
-  NOTSTARTED: "Not Started",
-  INPROGRESS: "In Progress",
-  SIGNED: "Signed",
+  NOTSTARTED: "Não iniciado",
+  INPROGRESS: "Em andamento",
+  SIGNED: "Assinado",
 };
 
 export async function BasicView({ data }: BasicViewProps) {
   const users = await prismadb.users.findMany();
 
-  if (!data) return <div>Contract not found</div>;
+  if (!data) return <div>Contrato não encontrado</div>;
 
   const formatDate = (date: Date | null | undefined) =>
     date ? moment(date).format("MMM DD, YYYY") : "N/A";
@@ -72,7 +72,7 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Value</p>
+                  <p className="text-sm font-medium leading-none">Valor</p>
                   <p className="text-sm text-muted-foreground">
                     {formatValue(data.value)}
                   </p>
@@ -82,7 +82,7 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <List className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Type</p>
+                  <p className="text-sm font-medium leading-none">Tipo</p>
                   <p className="text-sm text-muted-foreground">
                     {data.type ?? "N/A"}
                   </p>
@@ -92,7 +92,7 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Start Date</p>
+                  <p className="text-sm font-medium leading-none">Data de início</p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.startDate)}
                   </p>
@@ -102,7 +102,7 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">End Date</p>
+                  <p className="text-sm font-medium leading-none">Data de término</p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.endDate)}
                   </p>
@@ -113,7 +113,7 @@ export async function BasicView({ data }: BasicViewProps) {
                 <Bell className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Renewal Reminder
+                    Lembrete de renovação
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.renewalReminderDate)}
@@ -124,7 +124,7 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <FileText className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Description</p>
+                  <p className="text-sm font-medium leading-none">Descrição</p>
                   <p className="text-sm text-muted-foreground">
                     {data.description ?? "N/A"}
                   </p>
@@ -138,7 +138,7 @@ export async function BasicView({ data }: BasicViewProps) {
                 <PenLine className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Customer Signed Date
+                    Data de assinatura do cliente
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.customerSignedDate)}
@@ -150,7 +150,7 @@ export async function BasicView({ data }: BasicViewProps) {
                 <PenLine className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Company Signed Date
+                    Data de assinatura da empresa
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.companySignedDate)}
@@ -162,7 +162,7 @@ export async function BasicView({ data }: BasicViewProps) {
                 <Building2 className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Assigned Account
+                    Empresa atribuída
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.assigned_account ? (
@@ -182,7 +182,7 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Assigned To</p>
+                  <p className="text-sm font-medium leading-none">Responsável</p>
                   <p className="text-sm text-muted-foreground">
                     {data.assigned_to_user?.name ?? "N/A"}
                   </p>
@@ -192,13 +192,13 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created</p>
+                  <p className="text-sm font-medium leading-none">Criado</p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.createdAt)}
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created by</p>
+                  <p className="text-sm font-medium leading-none">Criado por</p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.createdBy)?.name ??
                       "N/A"}
@@ -209,13 +209,13 @@ export async function BasicView({ data }: BasicViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Last Update</p>
+                  <p className="text-sm font-medium leading-none">Última atualização</p>
                   <p className="text-sm text-muted-foreground">
                     {formatDate(data.updatedAt)}
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Updated by</p>
+                  <p className="text-sm font-medium leading-none">Atualizado por</p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.updatedBy)?.name ??
                       "N/A"}

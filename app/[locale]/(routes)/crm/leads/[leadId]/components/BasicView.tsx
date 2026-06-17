@@ -41,7 +41,7 @@ export async function BasicView({ data }: OppsViewProps) {
   const users = await prismadb.users.findMany();
   const crmData = await getAllCrmData();
   const { leadSources, leadStatuses, leadTypes } = crmData;
-  if (!data) return <div>Opportunity not found</div>;
+  if (!data) return <div>Oportunidade não encontrada</div>;
   return (
     <div className="pb-3 space-y-5">
       {/*      <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -68,7 +68,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Name</p>
+                  <p className="text-sm font-medium leading-none">Nome</p>
                   <p className="text-sm text-muted-foreground">
                     {data.firstName} {data.lastName}
                   </p>
@@ -78,7 +78,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <Landmark className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Company name
+                    Nome da empresa
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.company}
@@ -88,7 +88,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Medal className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Job title</p>
+                  <p className="text-sm font-medium leading-none">Cargo</p>
                   <p className="text-sm text-muted-foreground">
                     {data.jobTitle ? data.jobTitle : "N/A"}
                   </p>
@@ -98,7 +98,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <File className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Description
+                    Descrição
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.description}
@@ -109,7 +109,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <div className="flex mt-px gap-5">
                   <EnvelopeClosedIcon className="mt-px h-5 w-5" />
                   <div className="space-y-1">
-                    <p className="text-sm font-medium leading-none">Email</p>
+                    <p className="text-sm font-medium leading-none">E-mail</p>
                     {data?.email ? (
                       <Link
                         href={`mailto:${data.email}`}
@@ -138,7 +138,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <Phone className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Phone</p>
+                  <p className="text-sm font-medium leading-none">Telefone</p>
                   <p className="text-sm text-muted-foreground">{data.phone}</p>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <User className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Assigned to
+                    Responsável
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.assigned_to)?.name}
@@ -158,13 +158,13 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created</p>
+                  <p className="text-sm font-medium leading-none">Criado em</p>
                   <p className="text-sm text-muted-foreground">
                     {moment(data.created_on).format("MMM DD YYYY")}
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Created by</p>
+                  <p className="text-sm font-medium leading-none">Criado por</p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.createdBy)?.name}
                   </p>
@@ -174,7 +174,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <CalendarDays className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Last update
+                    Última atualização
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {moment(data.updatedAt).format("MMM DD YYYY")}
@@ -182,7 +182,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Last update by
+                    Atualizado por
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {users.find((user) => user.id === data.updatedBy)?.name}
@@ -199,7 +199,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">Type</p>
+                  <p className="text-sm font-medium leading-none">Tipo</p>
                   <p className="text-sm text-muted-foreground">{data.lead_type?.name ?? "—"}</p>
                 </div>
               </div>
@@ -207,7 +207,7 @@ export async function BasicView({ data }: OppsViewProps) {
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    Lead source
+                    Origem do lead
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {data.lead_source?.name ?? "—"}
@@ -217,7 +217,7 @@ export async function BasicView({ data }: OppsViewProps) {
               <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
                 <CoinsIcon className="mt-px h-5 w-5" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">refered_by</p>
+                  <p className="text-sm font-medium leading-none">Indicado por</p>
                   <p className="text-sm text-muted-foreground">
                     {data.refered_by}
                   </p>

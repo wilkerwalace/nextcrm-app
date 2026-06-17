@@ -33,16 +33,22 @@ const TYPE_ICONS = {
 } as const;
 
 const TYPE_LABELS = {
-  call: "Call",
-  meeting: "Meeting",
-  note: "Note",
-  email: "Email",
+  call: "Ligação",
+  meeting: "Reunião",
+  note: "Nota",
+  email: "E-mail",
 } as const;
 
 const STATUS_VARIANTS = {
   scheduled: "outline",
   completed: "default",
   cancelled: "secondary",
+} as const;
+
+const STATUS_LABELS = {
+  scheduled: "Agendada",
+  completed: "Concluída",
+  cancelled: "Cancelada",
 } as const;
 
 interface Props {
@@ -66,7 +72,7 @@ export function ActivityEntry({ activity, onDeleted, onUpdated, entityType, enti
     if (result.error) {
       toast.error(result.error);
     } else {
-      toast.success("Activity deleted");
+      toast.success("Atividade excluída");
       onDeleted(activity.id);
     }
   };
@@ -85,7 +91,7 @@ export function ActivityEntry({ activity, onDeleted, onUpdated, entityType, enti
                 {TYPE_LABELS[activity.type]}
               </Badge>
               <Badge variant={STATUS_VARIANTS[activity.status]} className="text-xs">
-                {activity.status}
+                {STATUS_LABELS[activity.status] ?? activity.status}
               </Badge>
             </div>
           </div>
@@ -116,15 +122,15 @@ export function ActivityEntry({ activity, onDeleted, onUpdated, entityType, enti
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Delete activity?</AlertDialogTitle>
+                  <AlertDialogTitle>Excluir atividade?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This will permanently delete &ldquo;{activity.title}&rdquo;. This action cannot
-                    be undone.
+                    Isto excluirá permanentemente &ldquo;{activity.title}&rdquo;. Esta ação não
+                    pode ser desfeita.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleDelete}>Excluir</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
@@ -137,7 +143,7 @@ export function ActivityEntry({ activity, onDeleted, onUpdated, entityType, enti
         )}
         {activity.outcome && (
           <p className="text-xs text-muted-foreground mt-1">
-            <span className="font-medium">Outcome:</span> {activity.outcome}
+            <span className="font-medium">Resultado:</span> {activity.outcome}
           </p>
         )}
       </div>

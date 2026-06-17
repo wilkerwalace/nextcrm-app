@@ -62,7 +62,7 @@ export function ApiTokens() {
   }
 
   async function handleRevoke(tokenId: string) {
-    if (!confirm("Revoke this token? This cannot be undone.")) return;
+    if (!confirm("Revogar este token? Esta ação não pode ser desfeita.")) return;
     await deleteApiToken(tokenId);
     await load();
   }
@@ -81,16 +81,16 @@ export function ApiTokens() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>API Tokens</CardTitle>
+        <CardTitle>Tokens de API</CardTitle>
         <CardDescription>
-          Generate tokens to connect AI agents via MCP. Token prefix: <code>nxtc__</code>
+          Gere tokens para conectar agentes de IA via MCP. Prefixo do token: <code>nxtc__</code>
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Generate form */}
         <div className="flex gap-2">
           <Input
-            placeholder="Token name (e.g. Claude Desktop)"
+            placeholder="Nome do token (ex.: Claude Desktop)"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="max-w-xs"
@@ -100,10 +100,10 @@ export function ApiTokens() {
             value={expiresAt}
             onChange={(e) => setExpiresAt(e.target.value)}
             className="max-w-[160px]"
-            title="Optional expiry date"
+            title="Data de expiração opcional"
           />
           <Button onClick={handleCreate} disabled={loading || !name.trim()}>
-            {loading ? "Generating…" : "Generate"}
+            {loading ? "Gerando…" : "Gerar"}
           </Button>
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
@@ -113,10 +113,10 @@ export function ApiTokens() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Prefix</TableHead>
-                <TableHead>Created</TableHead>
-                <TableHead>Expires</TableHead>
+                <TableHead>Nome</TableHead>
+                <TableHead>Prefixo</TableHead>
+                <TableHead>Criado em</TableHead>
+                <TableHead>Expira em</TableHead>
                 <TableHead />
               </TableRow>
             </TableHeader>
@@ -129,11 +129,11 @@ export function ApiTokens() {
                   </TableCell>
                   <TableCell>{new Date(t.createdAt).toLocaleDateString()}</TableCell>
                   <TableCell>
-                    {t.expiresAt ? new Date(t.expiresAt).toLocaleDateString() : "Never"}
+                    {t.expiresAt ? new Date(t.expiresAt).toLocaleDateString() : "Nunca"}
                   </TableCell>
                   <TableCell>
                     <Button variant="destructive" size="sm" onClick={() => handleRevoke(t.id)}>
-                      Revoke
+                      Revogar
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -146,9 +146,9 @@ export function ApiTokens() {
         <Dialog open={!!newToken} onOpenChange={() => setNewToken(null)}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Token Created</DialogTitle>
+              <DialogTitle>Token criado</DialogTitle>
               <DialogDescription>
-                Copy this token now. It will not be shown again.
+                Copie este token agora. Ele não será exibido novamente.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-3">
@@ -156,7 +156,7 @@ export function ApiTokens() {
                 {newToken}
               </code>
               <Button onClick={handleCopy} className="w-full">
-                {copied ? "Copied!" : "Copy to clipboard"}
+                {copied ? "Copiado!" : "Copiar para a área de transferência"}
               </Button>
             </div>
           </DialogContent>

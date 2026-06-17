@@ -22,7 +22,7 @@ export const createColumns = (
   {
     accessorKey: "createdAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Expected close" />
+      <DataTableColumnHeader column={column} title="Fechamento previsto" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -35,7 +35,7 @@ export const createColumns = (
   {
     accessorKey: "updatedAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last update" />
+      <DataTableColumnHeader column={column} title="Última atualização" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -48,7 +48,7 @@ export const createColumns = (
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Responsável" />
     ),
 
     cell: ({ row }) => (
@@ -56,7 +56,7 @@ export const createColumns = (
         {
           //@ts-ignore
           //TODO: fix this
-          row.getValue("assigned_to_user")?.name ?? "Unassigned"
+          row.getValue("assigned_to_user")?.name ?? "Não atribuído"
         }
       </div>
     ),
@@ -66,7 +66,7 @@ export const createColumns = (
   {
     accessorKey: "company",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Company" />
+      <DataTableColumnHeader column={column} title="Empresa" />
     ),
 
     cell: ({ row }) => (
@@ -74,7 +74,7 @@ export const createColumns = (
         {
           //@ts-ignore
           //TODO: fix this
-          row.getValue("company") ?? "Unassigned"
+          row.getValue("company") ?? "Não atribuído"
         }
       </div>
     ),
@@ -84,7 +84,7 @@ export const createColumns = (
   {
     accessorKey: "firstName",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
 
     cell: ({ row }) => (
@@ -110,7 +110,7 @@ export const createColumns = (
   {
     accessorKey: "phone",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Phone" />
+      <DataTableColumnHeader column={column} title="Telefone" />
     ),
 
     cell: ({ row }) => <div className="w-[150px]">{row.getValue("phone")}</div>,

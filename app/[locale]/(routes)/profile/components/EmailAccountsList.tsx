@@ -83,7 +83,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
     });
     setDiscovering(false);
     if (!result.ok) {
-      setDiscoverError(result.error ?? "Failed to list folders");
+      setDiscoverError(result.error ?? "Falha ao listar pastas");
       return;
     }
     setFolders(result.folders);
@@ -100,7 +100,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
       password: form.password,
     });
     setTesting(false);
-    setTestResult(result.ok ? "✓ Connection successful" : `✗ ${result.error}`);
+    setTestResult(result.ok ? "✓ Conexão bem-sucedida" : `✗ ${result.error}`);
   }
 
   async function handleCreate() {
@@ -114,7 +114,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
   }
 
   async function handleDelete(id: string) {
-    if (!confirm("Delete this email account and all synced emails?")) return;
+    if (!confirm("Excluir esta conta de e-mail e todos os e-mails sincronizados?")) return;
     await deleteEmailAccount(id);
     refresh();
   }
@@ -137,7 +137,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
   return (
     <div className="space-y-3">
       {accounts.length === 0 && (
-        <p className="text-sm text-muted-foreground">No email accounts connected.</p>
+        <p className="text-sm text-muted-foreground">Nenhuma conta de e-mail conectada.</p>
       )}
       {accounts.map((acc) => (
         <div
@@ -151,7 +151,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
             </p>
             {acc.lastSyncedAt && (
               <p className="text-xs text-muted-foreground">
-                Last synced: {new Date(acc.lastSyncedAt).toLocaleString()}
+                Última sincronização: {new Date(acc.lastSyncedAt).toLocaleString()}
               </p>
             )}
           </div>
@@ -161,7 +161,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
               className="cursor-pointer"
               onClick={() => handleToggle(acc.id, acc.isActive)}
             >
-              {acc.isActive ? "Active" : "Inactive"}
+              {acc.isActive ? "Ativa" : "Inativa"}
             </Badge>
             <Button
               variant="ghost"
@@ -170,7 +170,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
               onClick={() => handleSync(acc.id)}
             >
               <RefreshCw className="mr-1 h-3 w-3" />
-              {syncingId === acc.id ? "Syncing…" : "Sync"}
+              {syncingId === acc.id ? "Sincronizando…" : "Sincronizar"}
             </Button>
             <Button
               variant="ghost"
@@ -178,7 +178,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
               className="text-destructive hover:text-destructive"
               onClick={() => handleDelete(acc.id)}
             >
-              Delete
+              Excluir
             </Button>
           </div>
         </div>
@@ -197,13 +197,13 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
       >
         <DialogTrigger asChild>
           <Button variant="outline" size="sm">
-            Add Email Account
+            Adicionar conta de e-mail
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>
-              {provider === "gmail" ? "Connect Gmail Account" : "Connect IMAP Account"}
+              {provider === "gmail" ? "Conectar conta do Gmail" : "Conectar conta IMAP"}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
@@ -222,7 +222,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
                   <path fill="#FBBC05" d="M10.7 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.7-4.5l-7-5.4A23.5 23.5 0 0 0 .5 24c0 3.8.9 7.3 2.7 10.4l7-5.9z"/>
                   <path fill="#34A853" d="M24 46.5c5.6 0 10.3-1.8 13.7-5l-7-5.4c-1.9 1.2-4.2 2-6.7 2-6.3 0-11.6-4.5-13.3-10.5l-7 5.4C7 41.8 14.8 46.5 24 46.5z"/>
                 </svg>
-                Connect Gmail
+                Conectar Gmail
               </Button>
               <Button
                 type="button"
@@ -241,19 +241,19 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
                   }));
                 }}
               >
-                Other IMAP
+                Outro IMAP
               </Button>
             </div>
 
             {/* All fields except sentFolderName and password */}
             {(
               [
-                { key: "label", label: "Label (e.g. Work Gmail)", type: "text" },
-                { key: "imapHost", label: "IMAP Host", type: "text" },
-                { key: "imapPort", label: "IMAP Port", type: "number" },
-                { key: "smtpHost", label: "SMTP Host", type: "text" },
-                { key: "smtpPort", label: "SMTP Port", type: "number" },
-                { key: "username", label: "Username / Email", type: "email" },
+                { key: "label", label: "Rótulo (ex.: Gmail do trabalho)", type: "text" },
+                { key: "imapHost", label: "Servidor IMAP", type: "text" },
+                { key: "imapPort", label: "Porta IMAP", type: "number" },
+                { key: "smtpHost", label: "Servidor SMTP", type: "text" },
+                { key: "smtpPort", label: "Porta SMTP", type: "number" },
+                { key: "username", label: "Usuário / E-mail", type: "email" },
               ] as const
             ).map(({ key, label, type }) => (
               <div key={key} className="space-y-1">
@@ -272,16 +272,16 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
               <Alert className="border-blue-200 bg-blue-50 text-blue-900 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-100">
                 <Info className="h-4 w-4 shrink-0" />
                 <AlertDescription className="text-xs leading-relaxed">
-                  Gmail requires a <strong>16-character App Password</strong> — your regular Gmail password won&apos;t work.{" "}
+                  O Gmail exige uma <strong>Senha de app de 16 caracteres</strong> — sua senha normal do Gmail não funciona.{" "}
                   <a
                     href="https://myaccount.google.com/apppasswords"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium underline underline-offset-2"
                   >
-                    Create one here
+                    Crie uma aqui
                   </a>{" "}
-                  (Google Account → Security → App Passwords). Enter it below.
+                  (Conta do Google → Segurança → Senhas de app). Insira-a abaixo.
                 </AlertDescription>
               </Alert>
             )}
@@ -289,7 +289,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
             {/* Password field */}
             <div className="space-y-1">
               <Label htmlFor="password">
-                {provider === "gmail" ? "App Password (16 characters)" : "Password"}
+                {provider === "gmail" ? "Senha de app (16 caracteres)" : "Senha"}
               </Label>
               <Input
                 id="password"
@@ -303,7 +303,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
             {/* Sent Folder Name with Discover */}
             <div className="space-y-1">
               <div className="flex items-center justify-between">
-                <Label htmlFor="sentFolderName">Sent Folder Name</Label>
+                <Label htmlFor="sentFolderName">Nome da pasta de enviados</Label>
                 <Button
                   type="button"
                   variant="ghost"
@@ -312,7 +312,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
                   disabled={discovering || !form.imapHost || !form.username || !form.password}
                   onClick={handleDiscover}
                 >
-                  {discovering ? "Discovering…" : "Discover folders"}
+                  {discovering ? "Descobrindo…" : "Descobrir pastas"}
                 </Button>
               </div>
               {folders.length > 0 ? (
@@ -332,7 +332,7 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
                   type="text"
                   value={form.sentFolderName}
                   onChange={(e) => setForm((f) => ({ ...f, sentFolderName: e.target.value }))}
-                  placeholder='e.g. Sent or [Gmail]/Sent Mail'
+                  placeholder='ex.: Sent ou [Gmail]/Sent Mail'
                 />
               )}
               {discoverError && (
@@ -366,10 +366,10 @@ export function EmailAccountsList({ accounts }: { accounts: Account[] }) {
             )}
             <div className="flex gap-2 pt-2">
               <Button variant="outline" size="sm" onClick={handleTest} disabled={testing}>
-                {testing ? "Testing…" : "Test Connection"}
+                {testing ? "Testando…" : "Testar conexão"}
               </Button>
               <Button size="sm" onClick={handleCreate}>
-                Save
+                Salvar
               </Button>
             </div>
           </div>

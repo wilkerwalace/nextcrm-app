@@ -13,7 +13,7 @@ export const columns: ColumnDef<Account>[] = [
   {
     accessorKey: "createdAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Created" />
+      <DataTableColumnHeader column={column} title="Criado em" />
     ),
     cell: ({ row }) => (
       <div className="">
@@ -26,13 +26,13 @@ export const columns: ColumnDef<Account>[] = [
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Responsável" />
     ),
 
     cell: ({ row }) => (
       <div className="w-[150px]">
         {(row.getValue("assigned_to_user") as { name?: string } | null)?.name ??
-          "Unassigned"}
+          "Sem responsável"}
       </div>
     ),
     enableSorting: true,
@@ -41,7 +41,7 @@ export const columns: ColumnDef<Account>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
 
     cell: ({ row }) => (
@@ -65,7 +65,7 @@ export const columns: ColumnDef<Account>[] = [
   {
     accessorKey: "contacts",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Account contact" />
+      <DataTableColumnHeader column={column} title="Contato da empresa" />
     ),
 
     cell: ({ row }) => (

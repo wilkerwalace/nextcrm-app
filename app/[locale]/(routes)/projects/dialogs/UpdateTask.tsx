@@ -103,7 +103,7 @@ const UpdateTaskDialog = ({
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`Task: ${data.title}, updated successfully`);
+        toast.success(`Tarefa: ${data.title}, atualizada com sucesso`);
       }
     } catch (error: any) {
       toast.error(error?.message);
@@ -142,11 +142,11 @@ const UpdateTaskDialog = ({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Task - Id: {initialData.id}</FormLabel>
+                  <FormLabel>Tarefa - Id: {initialData.id}</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isLoading}
-                      placeholder="Enter task name"
+                      placeholder="Digite o nome da tarefa"
                       {...field}
                     />
                   </FormControl>
@@ -159,11 +159,11 @@ const UpdateTaskDialog = ({
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Task description</FormLabel>
+                  <FormLabel>Descrição da tarefa</FormLabel>
                   <FormControl>
                     <Textarea
                       disabled={isLoading}
-                      placeholder="Enter task description"
+                      placeholder="Digite a descrição da tarefa"
                       {...field}
                     />
                   </FormControl>
@@ -176,7 +176,7 @@ const UpdateTaskDialog = ({
               name="dueDateAt"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Due date</FormLabel>
+                  <FormLabel>Data de vencimento</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -190,7 +190,7 @@ const UpdateTaskDialog = ({
                           {field.value ? (
                             format(field.value, "PPP")
                           ) : (
-                            <span>Pick a expected close date</span>
+                            <span>Escolha uma data de conclusão prevista</span>
                           )}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
@@ -217,12 +217,12 @@ const UpdateTaskDialog = ({
               name="user"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Assigned to</FormLabel>
+                  <FormLabel>Atribuído a</FormLabel>
                   <FormControl>
                     <UserSearchCombobox
                       value={field.value ?? ""}
                       onChange={field.onChange}
-                      placeholder="Select assigned user"
+                      placeholder="Selecione o usuário atribuído"
                       disabled={isLoading}
                     />
                   </FormControl>
@@ -236,21 +236,21 @@ const UpdateTaskDialog = ({
               name="priority"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Choose task priority</FormLabel>
+                  <FormLabel>Escolha a prioridade da tarefa</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select tasks priority" />
+                        <SelectValue placeholder="Selecione a prioridade da tarefa" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="low">Low</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="high">High</SelectItem>
-                      <SelectItem value="critical">Critical</SelectItem>
+                      <SelectItem value="low">Baixa</SelectItem>
+                      <SelectItem value="medium">Média</SelectItem>
+                      <SelectItem value="high">Alta</SelectItem>
+                      <SelectItem value="critical">Crítica</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -263,7 +263,7 @@ const UpdateTaskDialog = ({
               {isLoading ? (
                 <Icons.spinner className="animate-spin" />
               ) : (
-                "Update"
+                "Atualizar"
               )}
             </Button>
           </div>

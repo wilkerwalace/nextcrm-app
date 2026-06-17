@@ -49,16 +49,16 @@ export function ActivitiesView({ entityType, entityId, initialData }: Props) {
     <TooltipProvider>
       <Card>
         <CardHeader className="flex flex-row items-center justify-between py-3">
-          <CardTitle className="text-base">Activities</CardTitle>
+          <CardTitle className="text-base">Atividades</CardTitle>
           <Button size="sm" variant="outline" onClick={() => setCreateOpen(true)}>
             <Plus className="h-4 w-4 mr-1" />
-            Log activity
+            Registrar atividade
           </Button>
         </CardHeader>
         <CardContent className="pt-0">
           {activities.length === 0 ? (
             <p className="text-sm text-muted-foreground py-4 text-center">
-              No activities yet. Log a call, meeting, or note.
+              Nenhuma atividade ainda. Registre uma ligação, reunião ou nota.
             </p>
           ) : (
             <>
@@ -80,7 +80,7 @@ export function ActivitiesView({ entityType, entityId, initialData }: Props) {
                     onClick={loadMore}
                     disabled={isPending}
                   >
-                    {isPending ? "Loading..." : "Load more"}
+                    {isPending ? "Carregando..." : "Carregar mais"}
                   </Button>
                 </div>
               )}

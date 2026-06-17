@@ -26,8 +26,8 @@ const AlertModal = ({
   onClose,
   onConfirm,
   loading,
-  title = "Are you sure?",
-  description = "This action cannot be undone.",
+  title = "Tem certeza?",
+  description = "Esta ação não pode ser desfeita.",
 }: AlertModalProps) => {
   const onChange = (open: boolean) => {
     if (!open) {
@@ -50,10 +50,10 @@ const AlertModal = ({
             variant="outline"
             onClick={onClose}
           >
-            Cancel
+            Cancelar
           </Button>
           <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-            {loading ? <Icons.spinner className="animate-spin" /> : "Continue"}
+            {loading ? <Icons.spinner className="animate-spin" /> : "Continuar"}
           </Button>
         </DialogFooter>
       </DialogContent>

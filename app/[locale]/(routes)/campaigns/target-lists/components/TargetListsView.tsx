@@ -26,7 +26,7 @@ const TargetListsView = ({ data }: any) => {
               onClick={() => router.push("/crm/target-lists")}
               className="cursor-pointer"
             >
-              Target Lists
+              Listas de Alvos
             </CardTitle>
             <CardDescription></CardDescription>
           </div>
@@ -39,7 +39,7 @@ const TargetListsView = ({ data }: any) => {
 
       <CardContent>
         {!data || data.length === 0 ? (
-          "No target lists found"
+          "Nenhuma lista de alvos encontrada"
         ) : (
           <TargetListsDataTable data={data} columns={columns} />
         )}

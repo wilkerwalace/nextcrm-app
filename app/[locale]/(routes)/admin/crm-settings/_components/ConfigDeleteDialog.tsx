@@ -21,16 +21,16 @@ export function ConfigDeleteDialog({ configType, item, allValues, open, onOpenCh
 
   async function handleDelete() {
     if (item.usageCount > 0 && !replacementId) {
-      toast.error("Select a replacement before deleting");
+      toast.error("Selecione um substituto antes de excluir");
       return;
     }
     setLoading(true);
     try {
       await deleteConfigValue(configType, item.id, item.usageCount > 0 ? replacementId : undefined);
-      toast.success("Deleted");
+      toast.success("Excluído");
       onOpenChange(false);
     } catch (err: any) {
-      toast.error(err.message ?? "Failed to delete");
+      toast.error(err.message ?? "Falha ao excluir");
     } finally {
       setLoading(false);
     }
@@ -40,17 +40,17 @@ export function ConfigDeleteDialog({ configType, item, allValues, open, onOpenCh
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete &quot;{item.name}&quot;</DialogTitle>
+          <DialogTitle>Excluir &quot;{item.name}&quot;</DialogTitle>
           {item.usageCount > 0 && (
             <DialogDescription>
-              {item.usageCount} record{item.usageCount !== 1 ? "s" : ""} use this value. Choose a replacement before deleting.
+              {item.usageCount} registro{item.usageCount !== 1 ? "s" : ""} usa{item.usageCount !== 1 ? "m" : ""} este valor. Escolha um substituto antes de excluir.
             </DialogDescription>
           )}
         </DialogHeader>
         {item.usageCount > 0 && (
           <div className="py-2">
             <Select onValueChange={setReplacementId}>
-              <SelectTrigger><SelectValue placeholder="Select replacement…" /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Selecione um substituto…" /></SelectTrigger>
               <SelectContent>
                 {others.map((o) => (
                   <SelectItem key={o.id} value={o.id}>{o.name}</SelectItem>
@@ -60,13 +60,13 @@ export function ConfigDeleteDialog({ configType, item, allValues, open, onOpenCh
           </div>
         )}
         <div className="flex gap-2 justify-end pt-2">
-          <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
+          <Button variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
           <Button
             variant="destructive"
             onClick={handleDelete}
             disabled={loading || (item.usageCount > 0 && !replacementId)}
           >
-            {loading ? "Deleting…" : item.usageCount > 0 ? "Reassign & Delete" : "Delete"}
+            {loading ? "Excluindo…" : item.usageCount > 0 ? "Reatribuir e Excluir" : "Excluir"}
           </Button>
         </div>
       </DialogContent>

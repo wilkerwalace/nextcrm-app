@@ -26,16 +26,16 @@ const PasswordResetDialog = ({ open2, setOpen2 }: Props) => {
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Edit contact</DialogTitle>
+          <DialogTitle>Editar contato</DialogTitle>
           <DialogDescription>
-            Make changes to the contact information here.
+            Faça alterações nas informações do contato aqui.
           </DialogDescription>
         </DialogHeader>
 
         <div className="mt-6 space-y-4">
           {/* TODO: Add password reset form here */}
           <p className="text-sm text-muted-foreground">
-            Password reset form to be implemented.
+            Formulário de redefinição de senha a ser implementado.
           </p>
         </div>
       </DialogContent>

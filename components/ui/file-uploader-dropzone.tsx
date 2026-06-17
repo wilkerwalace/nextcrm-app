@@ -38,7 +38,7 @@ export const FileUploaderDropzone = ({ uploader, onUploadSuccess }: Props) => {
       accept={config.accept}
       maxSizeMB={config.maxSizeMB}
       onUploadComplete={(url, key) => onUploadSuccess?.(url, key)}
-      onUploadError={(err) => toast.error(`Upload error: ${err}`)}
+      onUploadError={(err) => toast.error(`Erro no envio: ${err}`)}
     />
   );
 };

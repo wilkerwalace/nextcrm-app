@@ -51,16 +51,16 @@ const UpdateContractForm = ({
   }, []);
 
   const contractStatuses = [
-    { id: "NOTSTARTED", name: "Not started" },
-    { id: "INPROGRESS", name: "In progress" },
-    { id: "SIGNED", name: "Signed" },
+    { id: "NOTSTARTED", name: "Não iniciado" },
+    { id: "INPROGRESS", name: "Em andamento" },
+    { id: "SIGNED", name: "Assinado" },
   ];
 
   const valueString = data && data.value ? data.value.toString() : "";
 
   const { execute, fieldErrors, isLoading } = useAction(updateContract, {
     onSuccess: () => {
-      toast.success("Contract updated successfully!");
+      toast.success("Contrato atualizado com sucesso!");
       setOpen(false);
       router.refresh();
     },
@@ -109,8 +109,8 @@ const UpdateContractForm = ({
 
   return (
     <FormSheetNoTrigger
-      title="Update contract"
-      description="Update contract details, dates, status, and assignments"
+      title="Atualizar contrato"
+      description="Atualize os detalhes, datas, status e atribuições do contrato"
       open={onOpen}
       setOpen={setOpen}
     >
@@ -122,21 +122,21 @@ const UpdateContractForm = ({
         <form action={onAction} className="space-y-4">
           <FormInput
             id="title"
-            label="Title"
+            label="Título"
             type="text"
             errors={fieldErrors}
             defaultValue={data.title}
           />
           <FormInput
             id="value"
-            label="Value"
+            label="Valor"
             type="text"
             errors={fieldErrors}
             defaultValue={valueString}
           />
           <FormSelect
             id="currency"
-            label="Currency"
+            label="Moeda"
             type="hidden"
             data={currencies.map((c) => ({
               id: c.code,
@@ -147,42 +147,42 @@ const UpdateContractForm = ({
           />
           <FormDatePicker
             id="startDate"
-            label="Start Date"
+            label="Data de início"
             type="hidden"
             errors={fieldErrors}
             defaultValue={data.startDate}
           />
           <FormDatePicker
             id="endDate"
-            label="End Date"
+            label="Data de término"
             type="hidden"
             errors={fieldErrors}
             defaultValue={data.endDate}
           />
           <FormDatePicker
             id="renewalReminderDate"
-            label="Renewal Reminder Date"
+            label="Data de lembrete de renovação"
             type="hidden"
             errors={fieldErrors}
             defaultValue={data.renewalReminderDate}
           />
           <FormDatePicker
             id="customerSignedDate"
-            label="Customer Signed Date"
+            label="Data de assinatura do cliente"
             type="hidden"
             errors={fieldErrors}
             defaultValue={data.customerSignedDate}
           />
           <FormDatePicker
             id="companySignedDate"
-            label="Company Signed Date"
+            label="Data de assinatura da empresa"
             type="hidden"
             errors={fieldErrors}
             defaultValue={data.companySignedDate}
           />
           <FormTextarea
             id="description"
-            label="Description"
+            label="Descrição"
             errors={fieldErrors}
             defaultValue={data.description}
           />
@@ -196,7 +196,7 @@ const UpdateContractForm = ({
           />
           <FormSelect
             id="account"
-            label="Account"
+            label="Empresa"
             type="hidden"
             data={accounts}
             errors={fieldErrors}
@@ -204,12 +204,12 @@ const UpdateContractForm = ({
           />
           <div className="space-y-2">
             <label className="text-xs font-semibold text-neutral-700">
-              Assigned To
+              Responsável
             </label>
             <UserSearchCombobox
               value={assignedTo}
               onChange={setAssignedTo}
-              placeholder="Select assigned user"
+              placeholder="Selecione o usuário responsável"
               name="assigned_to"
             />
           </div>
@@ -217,7 +217,7 @@ const UpdateContractForm = ({
             {isLoading ? (
               <Loader2 className="h-6 w-6 animate-spin" />
             ) : (
-              "Update"
+              "Atualizar"
             )}
           </FormSubmit>
         </form>

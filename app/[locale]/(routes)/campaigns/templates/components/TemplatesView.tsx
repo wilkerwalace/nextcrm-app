@@ -87,7 +87,7 @@ function TemplateRowActions({ row }: { row: { original: Template } }) {
     await deleteTemplate(template.id);
     setLoading(false);
     setOpen(false);
-    toast.success("Template has been deleted");
+    toast.success("Modelo excluído com sucesso");
     router.refresh();
   };
 
@@ -106,7 +106,7 @@ function TemplateRowActions({ row }: { row: { original: Template } }) {
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
@@ -115,11 +115,11 @@ function TemplateRowActions({ row }: { row: { original: Template } }) {
               router.push(`/campaigns/templates/${template.id}`)
             }
           >
-            Edit
+            Editar
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -131,7 +131,7 @@ function TemplateRowActions({ row }: { row: { original: Template } }) {
 const columns: ColumnDef<Template>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Nome",
     cell: ({ row }) => (
       <Link
         href={`/campaigns/templates/${row.original.id}`}
@@ -145,7 +145,7 @@ const columns: ColumnDef<Template>[] = [
   },
   {
     accessorKey: "subject_default",
-    header: "Subject Default",
+    header: "Assunto Padrão",
     cell: ({ row }) => (
       <div className="">{row.getValue("subject_default") ?? "—"}</div>
     ),
@@ -154,7 +154,7 @@ const columns: ColumnDef<Template>[] = [
   },
   {
     id: "created_by_name",
-    header: "Created By",
+    header: "Criado por",
     cell: ({ row }) => (
       <div className="">{row.original.created_by_user?.name ?? "—"}</div>
     ),
@@ -163,7 +163,7 @@ const columns: ColumnDef<Template>[] = [
   },
   {
     accessorKey: "created_on",
-    header: "Created On",
+    header: "Criado em",
     cell: ({ row }) => (
       <div className="w-[90px]">
         {row.getValue("created_on")
@@ -223,7 +223,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
               onClick={() => router.push("/campaigns/templates")}
               className="cursor-pointer"
             >
-              Templates
+              Modelos
             </CardTitle>
             <CardDescription></CardDescription>
           </div>
@@ -232,7 +232,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
               size="sm"
               onClick={() => router.push("/campaigns/templates/new")}
             >
-              + New Template
+              + Novo Modelo
             </Button>
           </div>
         </div>
@@ -241,14 +241,14 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
 
       <CardContent>
         {!data || data.length === 0 ? (
-          "No templates found"
+          "Nenhum modelo encontrado"
         ) : (
           <div className="space-y-4">
             {/* Toolbar */}
             <div className="flex items-center justify-between">
               <div className="flex flex-1 items-center space-x-2">
                 <Input
-                  placeholder="Filter by name ..."
+                  placeholder="Filtrar por nome ..."
                   value={
                     (table.getColumn("name")?.getFilterValue() as string) ?? ""
                   }
@@ -263,7 +263,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                     onClick={() => table.resetColumnFilters()}
                     className="h-8 px-2 lg:px-3"
                   >
-                    Reset
+                    Limpar
                     <Cross2Icon className="ml-2 h-4 w-4" />
                   </Button>
                 )}
@@ -312,7 +312,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                         colSpan={columns.length}
                         className="h-24 text-center"
                       >
-                        No results.
+                        Nenhum resultado.
                       </TableCell>
                     </TableRow>
                   )}
@@ -323,12 +323,12 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
             {/* Pagination */}
             <div className="flex items-center justify-between px-2">
               <div className="flex-1 text-sm text-muted-foreground">
-                {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                {table.getFilteredRowModel().rows.length} row(s) selected.
+                {table.getFilteredSelectedRowModel().rows.length} de{" "}
+                {table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
               </div>
               <div className="flex items-center space-x-6 lg:space-x-8">
                 <div className="flex items-center space-x-2">
-                  <p className="text-sm font-medium">Rows per page</p>
+                  <p className="text-sm font-medium">Linhas por página</p>
                   <Select
                     value={`${table.getState().pagination.pageSize}`}
                     onValueChange={(value) => {
@@ -350,7 +350,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                   </Select>
                 </div>
                 <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-                  Page {table.getState().pagination.pageIndex + 1} of{" "}
+                  Página {table.getState().pagination.pageIndex + 1} de{" "}
                   {table.getPageCount()}
                 </div>
                 <div className="flex items-center space-x-2">
@@ -360,7 +360,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                     onClick={() => table.setPageIndex(0)}
                     disabled={!table.getCanPreviousPage()}
                   >
-                    <span className="sr-only">Go to first page</span>
+                    <span className="sr-only">Ir para a primeira página</span>
                     <DoubleArrowLeftIcon className="h-4 w-4" />
                   </Button>
                   <Button
@@ -369,7 +369,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
                   >
-                    <span className="sr-only">Go to previous page</span>
+                    <span className="sr-only">Ir para a página anterior</span>
                     <ChevronLeftIcon className="h-4 w-4" />
                   </Button>
                   <Button
@@ -378,7 +378,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
                   >
-                    <span className="sr-only">Go to next page</span>
+                    <span className="sr-only">Ir para a próxima página</span>
                     <ChevronRightIcon className="h-4 w-4" />
                   </Button>
                   <Button
@@ -389,7 +389,7 @@ const TemplatesView = ({ data }: { data: Template[] }) => {
                     }
                     disabled={!table.getCanNextPage()}
                   >
-                    <span className="sr-only">Go to last page</span>
+                    <span className="sr-only">Ir para a última página</span>
                     <DoubleArrowRightIcon className="h-4 w-4" />
                   </Button>
                 </div>

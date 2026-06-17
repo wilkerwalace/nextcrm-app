@@ -110,7 +110,7 @@ export function MailComponent({
               isCollapsed={isCollapsed}
               links={[
                 {
-                  title: "Compose",
+                  title: "Escrever",
                   icon: PenBox,
                   variant: "ghost",
                   href: "#",
@@ -122,13 +122,13 @@ export function MailComponent({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Inbox",
+                title: "Caixa de entrada",
                 icon: Inbox,
                 variant: activeFolder === "INBOX" ? "default" : "ghost",
                 href: folderHref("INBOX"),
               },
               {
-                title: "Sent",
+                title: "Enviados",
                 icon: Send,
                 variant: activeFolder === "SENT" ? "default" : "ghost",
                 href: folderHref("SENT"),
@@ -141,20 +141,20 @@ export function MailComponent({
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
               <h1 className="text-xl font-bold">
-                {activeFolder === "SENT" ? "Sent" : "Inbox"}
+                {activeFolder === "SENT" ? "Enviados" : "Caixa de entrada"}
               </h1>
               <TabsList className="ml-auto">
                 <TabsTrigger
                   value="all"
                   className="text-zinc-600 dark:text-zinc-200"
                 >
-                  All mail
+                  Todos
                 </TabsTrigger>
                 <TabsTrigger
                   value="unread"
                   className="text-zinc-600 dark:text-zinc-200"
                 >
-                  Unread
+                  Não lidos
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -163,7 +163,7 @@ export function MailComponent({
               <form>
                 <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search" className="pl-8" />
+                  <Input placeholder="Buscar" className="pl-8" />
                 </div>
               </form>
             </div>

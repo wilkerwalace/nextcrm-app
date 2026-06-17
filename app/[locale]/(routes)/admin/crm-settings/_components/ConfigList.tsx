@@ -21,19 +21,19 @@ export function ConfigList({ configType, label, values }: Props) {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <p className="text-sm text-muted-foreground">{values.length} value{values.length !== 1 ? "s" : ""}</p>
+        <p className="text-sm text-muted-foreground">{values.length} valor{values.length !== 1 ? "es" : ""}</p>
         <ConfigAddDialog configType={configType} label={label} />
       </div>
       <div className="divide-y rounded-md border">
         {values.length === 0 && (
-          <p className="px-4 py-3 text-sm text-muted-foreground">No values yet.</p>
+          <p className="px-4 py-3 text-sm text-muted-foreground">Nenhum valor ainda.</p>
         )}
         {values.map((item) => (
           <div key={item.id} className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
               <span className="text-sm font-medium">{item.name}</span>
               {item.usageCount > 0 && (
-                <Badge variant="secondary">{item.usageCount} in use</Badge>
+                <Badge variant="secondary">{item.usageCount} em uso</Badge>
               )}
             </div>
             <div className="flex gap-1">
@@ -44,7 +44,7 @@ export function ConfigList({ configType, label, values }: Props) {
                 size="icon"
                 variant="ghost"
                 disabled={values.length <= 1}
-                title={values.length <= 1 ? "Cannot delete the last value" : undefined}
+                title={values.length <= 1 ? "Não é possível excluir o último valor" : undefined}
                 onClick={() => setDeleteItem(item)}
               >
                 <Trash2 className="h-4 w-4 text-destructive" />

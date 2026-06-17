@@ -106,7 +106,7 @@ function CampaignRowActions({ row }: { row: { original: Campaign } }) {
     await deleteCampaign(campaign.id);
     setLoading(false);
     setOpen(false);
-    toast.success("Campaign has been deleted");
+    toast.success("Campanha excluída");
     router.refresh();
   };
 
@@ -125,18 +125,18 @@ function CampaignRowActions({ row }: { row: { original: Campaign } }) {
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
             <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem
             onClick={() => router.push(`/campaigns/${campaign.id}`)}
           >
-            View
+            Ver
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            Delete
+            Excluir
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -148,7 +148,7 @@ function CampaignRowActions({ row }: { row: { original: Campaign } }) {
 const columns: ColumnDef<Campaign>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Nome",
     cell: ({ row }) => (
       <Link
         href={`/campaigns/${row.original.id}`}
@@ -178,7 +178,7 @@ const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: "scheduled_at",
-    header: "Scheduled At",
+    header: "Agendada para",
     cell: ({ row }) => (
       <div className="w-[100px]">
         {row.getValue("scheduled_at")
@@ -191,7 +191,7 @@ const columns: ColumnDef<Campaign>[] = [
   },
   {
     id: "recipients",
-    header: "Recipients",
+    header: "Destinatários",
     cell: ({ row }) => (
       <div className="text-right tabular-nums">
         {row.original._count?.sends ?? 0}
@@ -202,7 +202,7 @@ const columns: ColumnDef<Campaign>[] = [
   },
   {
     id: "template_name",
-    header: "Template",
+    header: "Modelo",
     cell: ({ row }) => (
       <div>{row.original.template?.name ?? "—"}</div>
     ),
@@ -260,7 +260,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
       <CardHeader className="pb-3">
         <div className="flex justify-between">
           <div>
-            <CardTitle>All Campaigns</CardTitle>
+            <CardTitle>Todas as Campanhas</CardTitle>
             <CardDescription></CardDescription>
           </div>
         </div>
@@ -273,7 +273,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
           <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center space-x-2">
               <Input
-                placeholder="Filter by name ..."
+                placeholder="Filtrar por nome ..."
                 value={
                   (table.getColumn("name")?.getFilterValue() as string) ?? ""
                 }
@@ -292,7 +292,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                 <SelectContent>
                   {STATUS_OPTIONS.map((s) => (
                     <SelectItem key={s} value={s}>
-                      {s === "All" ? "All Statuses" : s.charAt(0).toUpperCase() + s.slice(1)}
+                      {s === "All" ? "Todos os Status" : s.charAt(0).toUpperCase() + s.slice(1)}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -306,7 +306,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                   }}
                   className="h-8 px-2 lg:px-3"
                 >
-                  Reset
+                  Limpar
                   <Cross2Icon className="ml-2 h-4 w-4" />
                 </Button>
               )}
@@ -355,7 +355,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                       colSpan={columns.length}
                       className="h-24 text-center"
                     >
-                      No campaigns found.
+                      Nenhuma campanha encontrada.
                     </TableCell>
                   </TableRow>
                 )}
@@ -366,12 +366,12 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
           {/* Pagination */}
           <div className="flex items-center justify-between px-2">
             <div className="flex-1 text-sm text-muted-foreground">
-              {table.getFilteredSelectedRowModel().rows.length} of{" "}
-              {table.getFilteredRowModel().rows.length} row(s) selected.
+              {table.getFilteredSelectedRowModel().rows.length} de{" "}
+              {table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
             </div>
             <div className="flex items-center space-x-6 lg:space-x-8">
               <div className="flex items-center space-x-2">
-                <p className="text-sm font-medium">Rows per page</p>
+                <p className="text-sm font-medium">Linhas por página</p>
                 <Select
                   value={`${table.getState().pagination.pageSize}`}
                   onValueChange={(value) => {
@@ -393,7 +393,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                 </Select>
               </div>
               <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-                Page {table.getState().pagination.pageIndex + 1} of{" "}
+                Página {table.getState().pagination.pageIndex + 1} de{" "}
                 {table.getPageCount()}
               </div>
               <div className="flex items-center space-x-2">
@@ -403,7 +403,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                   onClick={() => table.setPageIndex(0)}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  <span className="sr-only">Go to first page</span>
+                  <span className="sr-only">Ir para a primeira página</span>
                   <DoubleArrowLeftIcon className="h-4 w-4" />
                 </Button>
                 <Button
@@ -412,7 +412,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  <span className="sr-only">Go to previous page</span>
+                  <span className="sr-only">Ir para a página anterior</span>
                   <ChevronLeftIcon className="h-4 w-4" />
                 </Button>
                 <Button
@@ -421,7 +421,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
                 >
-                  <span className="sr-only">Go to next page</span>
+                  <span className="sr-only">Ir para a próxima página</span>
                   <ChevronRightIcon className="h-4 w-4" />
                 </Button>
                 <Button
@@ -432,7 +432,7 @@ const CampaignsView = ({ data }: { data: Campaign[] }) => {
                   }
                   disabled={!table.getCanNextPage()}
                 >
-                  <span className="sr-only">Go to last page</span>
+                  <span className="sr-only">Ir para a última página</span>
                   <DoubleArrowRightIcon className="h-4 w-4" />
                 </Button>
               </div>

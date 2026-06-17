@@ -27,17 +27,17 @@ const ContactViewPage = async (props: any) => {
 
   //  console.log(accounts, "accounts");
 
-  if (!contact) return <div>Contact not found</div>;
+  if (!contact) return <div>Contato não encontrado</div>;
 
   return (
     <Container
-      title={`Contact detail view: ${contact?.first_name} ${contact?.last_name}`}
-      description={"Everything you need to know about sales potential"}
+      title={`Detalhes do contato: ${contact?.first_name} ${contact?.last_name}`}
+      description={"Tudo o que você precisa saber sobre o potencial de vendas"}
     >
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <div className="space-y-5">

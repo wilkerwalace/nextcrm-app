@@ -11,7 +11,7 @@ export const columns: ColumnDef<TargetList>[] = [
   {
     accessorKey: "created_on",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date created" />
+      <DataTableColumnHeader column={column} title="Data de criação" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -24,7 +24,7 @@ export const columns: ColumnDef<TargetList>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => <div className="font-medium">{row.getValue("name")}</div>,
     enableSorting: true,
@@ -33,7 +33,7 @@ export const columns: ColumnDef<TargetList>[] = [
   {
     accessorKey: "description",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Description" />
+      <DataTableColumnHeader column={column} title="Descrição" />
     ),
     cell: ({ row }) => (
       <div className="max-w-[300px] truncate">{row.getValue("description")}</div>
@@ -44,7 +44,7 @@ export const columns: ColumnDef<TargetList>[] = [
   {
     accessorKey: "_count",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Targets" />
+      <DataTableColumnHeader column={column} title="Alvos" />
     ),
     cell: ({ row }) => (
       <div className="">
@@ -60,7 +60,7 @@ export const columns: ColumnDef<TargetList>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => (
-      <div className="">{row.original.status ? "Active" : "Inactive"}</div>
+      <div className="">{row.original.status ? "Ativo" : "Inativo"}</div>
     ),
     enableSorting: true,
     enableHiding: true,

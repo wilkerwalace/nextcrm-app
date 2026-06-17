@@ -75,26 +75,26 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());
-      toast.success(editId ? "Tax rate updated" : "Tax rate created");
+      toast.success(editId ? "Alíquota atualizada" : "Alíquota criada");
       setOpen(false);
       resetForm();
       router.refresh();
     } catch {
-      toast.error("Failed to save tax rate");
+      toast.error("Falha ao salvar a alíquota");
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this tax rate?")) return;
+    if (!confirm("Excluir esta alíquota?")) return;
     try {
       const res = await fetch(`/api/admin/invoices/tax-rates/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error(await res.text());
-      toast.success("Tax rate deleted");
+      toast.success("Alíquota excluída");
       router.refresh();
     } catch {
-      toast.error("Failed to delete tax rate");
+      toast.error("Falha ao excluir a alíquota");
     }
   };
 
@@ -103,11 +103,11 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Rate %</TableHead>
-            <TableHead>Default</TableHead>
-            <TableHead>Active</TableHead>
-            <TableHead className="w-20">Actions</TableHead>
+            <TableHead>Nome</TableHead>
+            <TableHead>Alíquota %</TableHead>
+            <TableHead>Padrão</TableHead>
+            <TableHead>Ativa</TableHead>
+            <TableHead className="w-20">Ações</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -115,8 +115,8 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
             <TableRow key={r.id} className={!r.active ? "opacity-50" : ""}>
               <TableCell className="font-medium">{r.name}</TableCell>
               <TableCell>{r.rate}%</TableCell>
-              <TableCell>{r.isDefault ? "Yes" : "No"}</TableCell>
-              <TableCell>{r.active ? "Active" : "Inactive"}</TableCell>
+              <TableCell>{r.isDefault ? "Sim" : "Não"}</TableCell>
+              <TableCell>{r.active ? "Ativa" : "Inativa"}</TableCell>
               <TableCell>
                 <div className="flex gap-1">
                   <Button
@@ -141,7 +141,7 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
           {rates.length === 0 && (
             <TableRow>
               <TableCell colSpan={5} className="text-center text-muted-foreground">
-                No tax rates configured
+                Nenhuma alíquota configurada
               </TableCell>
             </TableRow>
           )}
@@ -157,47 +157,47 @@ export function TaxRatesTable({ rates }: TaxRatesTableProps) {
       >
         <DialogTrigger asChild>
           <Button variant="outline" size="sm" className="mt-4">
-            + Add Tax Rate
+            + Adicionar Alíquota
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              {editId ? "Edit Tax Rate" : "Add Tax Rate"}
+              {editId ? "Editar Alíquota" : "Adicionar Alíquota"}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label>Name</Label>
+              <Label>Nome</Label>
               <Input
-                placeholder="e.g. Standard VAT"
+                placeholder="ex.: ICMS Padrão"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <Label>Rate %</Label>
+              <Label>Alíquota %</Label>
               <Input
                 type="number"
                 step="0.01"
-                placeholder="e.g. 21"
+                placeholder="ex.: 21"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
               />
             </div>
             <div className="flex items-center gap-2">
               <Switch checked={isDefault} onCheckedChange={setIsDefault} />
-              <Label>Default</Label>
+              <Label>Padrão</Label>
             </div>
             <div className="flex items-center gap-2">
               <Switch checked={active} onCheckedChange={setActive} />
-              <Label>Active</Label>
+              <Label>Ativa</Label>
             </div>
             <Button
               onClick={handleSave}
               disabled={!name || !rate}
             >
-              {editId ? "Update" : "Create"}
+              {editId ? "Atualizar" : "Criar"}
             </Button>
           </div>
         </DialogContent>

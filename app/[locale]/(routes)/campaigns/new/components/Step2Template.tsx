@@ -58,7 +58,7 @@ export function Step2Template({
       setSubject(result.subject);
     } catch (e: unknown) {
       setError(
-        e instanceof Error ? e.message : "Generation failed"
+        e instanceof Error ? e.message : "Falha na geração"
       );
     } finally {
       setIsGenerating(false);
@@ -73,11 +73,11 @@ export function Step2Template({
 
   const handleNext = () => {
     if (!subject.trim()) {
-      setError("Subject line is required");
+      setError("O assunto é obrigatório");
       return;
     }
     if (!html.trim()) {
-      setError("Email content is required");
+      setError("O conteúdo do e-mail é obrigatório");
       return;
     }
     onNext({
@@ -92,14 +92,14 @@ export function Step2Template({
     <div className="flex flex-col gap-4">
       <Tabs defaultValue="ai">
         <TabsList>
-          <TabsTrigger value="ai">Generate with AI</TabsTrigger>
-          <TabsTrigger value="existing">Choose Existing</TabsTrigger>
+          <TabsTrigger value="ai">Gerar com IA</TabsTrigger>
+          <TabsTrigger value="existing">Escolher Existente</TabsTrigger>
         </TabsList>
         <TabsContent value="ai" className="flex flex-col gap-3 pt-3">
           <Textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Describe your email campaign..."
+            placeholder="Descreva sua campanha de e-mail..."
             rows={3}
           />
           <Button
@@ -108,7 +108,7 @@ export function Step2Template({
             onClick={handleGenerate}
             disabled={isGenerating || !prompt.trim()}
           >
-            {isGenerating ? "Generating..." : "Generate"}
+            {isGenerating ? "Gerando..." : "Gerar"}
           </Button>
         </TabsContent>
         <TabsContent value="existing" className="pt-3">
@@ -127,7 +127,7 @@ export function Step2Template({
             ))}
             {templates.length === 0 && (
               <p className="text-sm text-muted-foreground p-2">
-                No templates yet.
+                Nenhum modelo ainda.
               </p>
             )}
           </div>
@@ -135,19 +135,19 @@ export function Step2Template({
       </Tabs>
 
       <div className="flex flex-col gap-1.5">
-        <Label>Subject Line *</Label>
+        <Label>Assunto *</Label>
         <Input
           value={subject}
           onChange={(e) => {
             setSubject(e.target.value);
             setError("");
           }}
-          placeholder="Your email subject..."
+          placeholder="O assunto do seu e-mail..."
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label>Email Content</Label>
+        <Label>Conteúdo do E-mail</Label>
         <TipTapEditor
           content={html}
           onChange={(newHtml, newJson) => {
@@ -162,9 +162,9 @@ export function Step2Template({
 
       <div className="flex justify-between">
         <Button variant="outline" onClick={onBack}>
-          ← Back
+          ← Voltar
         </Button>
-        <Button onClick={handleNext}>Next →</Button>
+        <Button onClick={handleNext}>Avançar →</Button>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "dueDateAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Due date" />
+      <DataTableColumnHeader column={column} title="Data de vencimento" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -28,7 +28,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "assigned_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Responsável" />
     ),
 
     cell: ({ row }) => (
@@ -36,7 +36,7 @@ export const columns: ColumnDef<Task>[] = [
         {
           //@ts-ignore
           //TODO: fix this
-          row.getValue("assigned_user")?.name ?? "Unassigned"
+          row.getValue("assigned_user")?.name ?? "Sem responsável"
         }
       </div>
     ),
@@ -46,7 +46,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => {
       const label = labels.find(
@@ -93,7 +93,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "priority",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
+      <DataTableColumnHeader column={column} title="Prioridade" />
     ),
     cell: ({ row }) => {
       const priority = priorities.find(

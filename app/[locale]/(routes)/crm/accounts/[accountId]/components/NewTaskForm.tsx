@@ -80,10 +80,10 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`New task: ${data.title}, created successfully`);
+        toast.success(`Nova tarefa: ${data.title}, criada com sucesso`);
       }
     } catch (error: any) {
-      toast.error(error?.message ?? "Something went wrong while creating the task");
+      toast.error(error?.message ?? "Algo deu errado ao criar a tarefa");
     } finally {
       setIsLoading(false);
       onFinish();
@@ -112,11 +112,11 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>New task name</FormLabel>
+                      <FormLabel>Nome da nova tarefa</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isLoading}
-                          placeholder="Enter task name"
+                          placeholder="Digite o nome da tarefa"
                           {...field}
                         />
                       </FormControl>
@@ -129,11 +129,11 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   name="content"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Task description</FormLabel>
+                      <FormLabel>Descrição da tarefa</FormLabel>
                       <FormControl>
                         <Textarea
                           disabled={isLoading}
-                          placeholder="Enter task description"
+                          placeholder="Digite a descrição da tarefa"
                           {...field}
                         />
                       </FormControl>
@@ -146,7 +146,7 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   name="dueDateAt"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Task due date</FormLabel>
+                      <FormLabel>Data de vencimento da tarefa</FormLabel>
                       <FormControl>
                         <Popover>
                           <PopoverTrigger asChild>
@@ -160,7 +160,7 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Escolha uma data</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>
@@ -184,12 +184,12 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   name="user"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Assigned to</FormLabel>
+                      <FormLabel>Responsável</FormLabel>
                       <FormControl>
                         <UserSearchCombobox
                           value={field.value ?? ""}
                           onChange={field.onChange}
-                          placeholder="Select assigned user"
+                          placeholder="Selecione o responsável"
                           disabled={isLoading}
                         />
                       </FormControl>
@@ -202,21 +202,21 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
                   name="priority"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Choose task priority</FormLabel>
+                      <FormLabel>Escolha a prioridade da tarefa</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select tasks priority" />
+                            <SelectValue placeholder="Selecione a prioridade da tarefa" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
-                          <SelectItem value="critical">Critical</SelectItem>
+                          <SelectItem value="low">Baixa</SelectItem>
+                          <SelectItem value="medium">Média</SelectItem>
+                          <SelectItem value="high">Alta</SelectItem>
+                          <SelectItem value="critical">Crítica</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -226,9 +226,9 @@ const NewTaskForm = ({ account, onFinish }: NewTaskFormProps) => {
               </div>
               <div className="flex w-full justify-end space-x-2 pt-2">
                 <SheetTrigger asChild>
-                  <Button variant={"destructive"}>Close</Button>
+                  <Button variant={"destructive"}>Fechar</Button>
                 </SheetTrigger>
-                <Button type="submit">Create</Button>
+                <Button type="submit">Criar</Button>
               </div>
             </form>
           </Form>

@@ -47,15 +47,15 @@ export function AdminFilters({
         onValueChange={(v) => apply({ entityType: v === "all" ? "" : v })}
       >
         <SelectTrigger className="w-40">
-          <SelectValue placeholder="Entity type" />
+          <SelectValue placeholder="Tipo de entidade" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All entities</SelectItem>
-          <SelectItem value="account">Account</SelectItem>
-          <SelectItem value="contact">Contact</SelectItem>
+          <SelectItem value="all">Todas as entidades</SelectItem>
+          <SelectItem value="account">Empresa</SelectItem>
+          <SelectItem value="contact">Contato</SelectItem>
           <SelectItem value="lead">Lead</SelectItem>
-          <SelectItem value="opportunity">Opportunity</SelectItem>
-          <SelectItem value="contract">Contract</SelectItem>
+          <SelectItem value="opportunity">Oportunidade</SelectItem>
+          <SelectItem value="contract">Contrato</SelectItem>
         </SelectContent>
       </Select>
 
@@ -64,16 +64,16 @@ export function AdminFilters({
         onValueChange={(v) => apply({ action: v === "all" ? "" : v })}
       >
         <SelectTrigger className="w-40">
-          <SelectValue placeholder="Action" />
+          <SelectValue placeholder="Ação" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All actions</SelectItem>
-          <SelectItem value="created">Created</SelectItem>
-          <SelectItem value="updated">Updated</SelectItem>
-          <SelectItem value="deleted">Deleted</SelectItem>
-          <SelectItem value="restored">Restored</SelectItem>
-          <SelectItem value="relation_added">Relation added</SelectItem>
-          <SelectItem value="relation_removed">Relation removed</SelectItem>
+          <SelectItem value="all">Todas as ações</SelectItem>
+          <SelectItem value="created">Criado</SelectItem>
+          <SelectItem value="updated">Atualizado</SelectItem>
+          <SelectItem value="deleted">Excluído</SelectItem>
+          <SelectItem value="restored">Restaurado</SelectItem>
+          <SelectItem value="relation_added">Relação adicionada</SelectItem>
+          <SelectItem value="relation_removed">Relação removida</SelectItem>
         </SelectContent>
       </Select>
 
@@ -83,21 +83,21 @@ export function AdminFilters({
           className="w-36"
           value={dateFrom ?? ""}
           onChange={(e) => apply({ dateFrom: e.target.value })}
-          placeholder="From"
+          placeholder="De"
         />
-        <span className="text-muted-foreground text-sm">to</span>
+        <span className="text-muted-foreground text-sm">até</span>
         <Input
           type="date"
           className="w-36"
           value={dateTo ?? ""}
           onChange={(e) => apply({ dateTo: e.target.value })}
-          placeholder="To"
+          placeholder="Até"
         />
       </div>
 
       {(entityType || action || dateFrom || dateTo) && (
         <Button variant="ghost" size="sm" onClick={clear}>
-          Clear filters
+          Limpar filtros
         </Button>
       )}
     </div>

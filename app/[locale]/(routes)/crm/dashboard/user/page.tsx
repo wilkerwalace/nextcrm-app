@@ -43,15 +43,15 @@ const UserDashboardPage = async () => {
 
   return (
     <Container
-      title={`${session.user.name} — My Dashboard`}
-      description="Your personal CRM overview"
+      title={`${session.user.name} — Meu Painel`}
+      description="Sua visão geral pessoal do CRM"
     >
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Tasks
+              Total de Tarefas
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -61,7 +61,7 @@ const UserDashboardPage = async () => {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Open Tasks
+              Tarefas Abertas
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -71,7 +71,7 @@ const UserDashboardPage = async () => {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              My Leads
+              Meus Leads
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -81,7 +81,7 @@ const UserDashboardPage = async () => {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Active Opportunities
+              Oportunidades Ativas
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -96,19 +96,19 @@ const UserDashboardPage = async () => {
         {/* Tasks */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">My Tasks</CardTitle>
+            <CardTitle className="text-base">Minhas Tarefas</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             {tasks.length === 0 ? (
               <p className="text-sm text-muted-foreground px-6 pb-4">
-                No tasks assigned.
+                Nenhuma tarefa atribuída.
               </p>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Title</TableHead>
-                    <TableHead>Priority</TableHead>
+                    <TableHead>Título</TableHead>
+                    <TableHead>Prioridade</TableHead>
                     <TableHead>Status</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -156,20 +156,20 @@ const UserDashboardPage = async () => {
         {/* Opportunities */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">My Opportunities</CardTitle>
+            <CardTitle className="text-base">Minhas Oportunidades</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             {opportunities.length === 0 ? (
               <p className="text-sm text-muted-foreground px-6 pb-4">
-                No opportunities assigned.
+                Nenhuma oportunidade atribuída.
               </p>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Stage</TableHead>
-                    <TableHead>Budget</TableHead>
+                    <TableHead>Nome</TableHead>
+                    <TableHead>Estágio</TableHead>
+                    <TableHead>Orçamento</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -200,22 +200,22 @@ const UserDashboardPage = async () => {
         {/* Leads */}
         <Card className="md:col-span-2">
           <CardHeader>
-            <CardTitle className="text-base">My Leads</CardTitle>
+            <CardTitle className="text-base">Meus Leads</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             {leads.length === 0 ? (
               <p className="text-sm text-muted-foreground px-6 pb-4">
-                No leads assigned.
+                Nenhum lead atribuído.
               </p>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Company</TableHead>
-                    <TableHead>Email</TableHead>
+                    <TableHead>Nome</TableHead>
+                    <TableHead>Empresa</TableHead>
+                    <TableHead>E-mail</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead>Source</TableHead>
+                    <TableHead>Origem</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

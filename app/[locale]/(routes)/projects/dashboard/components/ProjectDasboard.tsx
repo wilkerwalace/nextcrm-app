@@ -73,9 +73,9 @@ const ProjectDashboardCockpit = ({
     try {
       await getTaskDone(taskId);
     } catch (error) {
-      toast.error("Error");
+      toast.error("Erro");
     } finally {
-      toast.success("Success");
+      toast.success("Sucesso");
       router.refresh();
     }
   };
@@ -87,7 +87,7 @@ const ProjectDashboardCockpit = ({
       <div className="w-full md:w-1/2">
         <div>
           <h2 className="font-bold text-lg ">
-            Tasks due Today ({dashboardData?.getTaskPastDue?.length})
+            Tarefas com vencimento hoje ({dashboardData?.getTaskPastDue?.length})
           </h2>
           {/*         <pre>
             <code>{JSON.stringify(dashboardData, null, 2)}</code>
@@ -98,7 +98,7 @@ const ProjectDashboardCockpit = ({
           <Card key={task.id} className="m-2">
             <CardHeader>
               <CardTitle className="text-xl">
-                {task.title === "" ? "Untitled" : task.title}
+                {task.title === "" ? "Sem título" : task.title}
               </CardTitle>
               <CardDescription>{task.content}</CardDescription>
             </CardHeader>
@@ -108,7 +108,7 @@ const ProjectDashboardCockpit = ({
                   task.dueDateAt < new Date() ? "text-red-500 text-xs" : ""
                 }
               >
-                Due date: {moment(task.dueDateAt).format("YYYY-MM-DD")}
+                Data de vencimento: {moment(task.dueDateAt).format("YYYY-MM-DD")}
               </div>
               <div>
                 <p
@@ -122,7 +122,7 @@ const ProjectDashboardCockpit = ({
                       : `text-slate-600`
                   }
                 >
-                  Priorita: {task.priority}
+                  Prioridade: {task.priority}
                 </p>
               </div>
             </CardContent>
@@ -130,7 +130,7 @@ const ProjectDashboardCockpit = ({
               <Link href={`/projects/tasks/viewtask/${task.id}`}>
                 <Badge variant={"outline"}>
                   <Eye className="w-4 h-4 mr-2" />
-                  <span>View task</span>
+                  <span>Ver tarefa</span>
                 </Badge>
               </Link>
               <Sheet>
@@ -142,9 +142,9 @@ const ProjectDashboardCockpit = ({
                 </SheetTrigger>
                 <SheetContent className="max-w-3xl overflow-y-auto">
                   <SheetHeader>
-                    <SheetTitle>Team conversation</SheetTitle>
+                    <SheetTitle>Conversa da equipe</SheetTitle>
                     <SheetDescription>
-                      Collaborate with your team on this task
+                      Colabore com sua equipe nesta tarefa
                     </SheetDescription>
                   </SheetHeader>
                   <div className="mt-6 space-y-4">
@@ -158,13 +158,13 @@ const ProjectDashboardCockpit = ({
                 className="cursor-pointer"
               >
                 <CheckSquare className="w-4 h-4 mr-2" />
-                <span>Mark as done</span>
+                <span>Marcar como concluída</span>
               </Badge>
 
               <FormSheet
-                trigger={"Edit"}
-                title="Update task"
-                description="Edit task details including title, description, due date, and priority"
+                trigger={"Editar"}
+                title="Atualizar tarefa"
+                description="Edite os detalhes da tarefa, incluindo título, descrição, data de vencimento e prioridade"
                 onClose={closeRef}
               >
                 <UpdateTaskDialog
@@ -183,7 +183,7 @@ const ProjectDashboardCockpit = ({
                     variant={"destructive"}
                     onClick={() => closeRef.current?.click()}
                   >
-                    Close
+                    Fechar
                   </Button>
                 </div>
               </FormSheet>
@@ -194,7 +194,7 @@ const ProjectDashboardCockpit = ({
       <div className="w-full pt-5 md:w-1/2 md:pt-0">
         <div>
           <h2 className="font-bold text-lg ">
-            Tasks due in 7 days (
+            Tarefas com vencimento em 7 dias (
             {dashboardData?.getTaskPastDueInSevenDays?.length})
           </h2>
         </div>
@@ -202,7 +202,7 @@ const ProjectDashboardCockpit = ({
           <Card key={task.id} className="m-2">
             <CardHeader>
               <CardTitle className="text-xl">
-                {task.title === "" ? "Untitled" : task.title}
+                {task.title === "" ? "Sem título" : task.title}
               </CardTitle>
               <CardDescription>{task.content}</CardDescription>
             </CardHeader>
@@ -214,7 +214,7 @@ const ProjectDashboardCockpit = ({
                     : "text-xs"
                 }
               >
-                Due date: {moment(task.dueDateAt).format("YYYY-MM-DD")}
+                Data de vencimento: {moment(task.dueDateAt).format("YYYY-MM-DD")}
               </div>
               <div>
                 <p
@@ -228,7 +228,7 @@ const ProjectDashboardCockpit = ({
                       : `text-slate-600`
                   }
                 >
-                  Priorita: {task.priority}
+                  Prioridade: {task.priority}
                 </p>
               </div>
             </CardContent>
@@ -236,7 +236,7 @@ const ProjectDashboardCockpit = ({
               <Link href={`/projects/tasks/viewtask/${task.id}`}>
                 <Badge variant={"outline"}>
                   <Eye className="w-4 h-4 mr-2" />
-                  <span>View task</span>
+                  <span>Ver tarefa</span>
                 </Badge>
               </Link>
 
@@ -250,9 +250,9 @@ const ProjectDashboardCockpit = ({
 
                 <SheetContent className="max-w-3xl overflow-y-auto">
                   <SheetHeader>
-                    <SheetTitle>Team conversation</SheetTitle>
+                    <SheetTitle>Conversa da equipe</SheetTitle>
                     <SheetDescription>
-                      Collaborate with your team on this task
+                      Colabore com sua equipe nesta tarefa
                     </SheetDescription>
                   </SheetHeader>
                   <div className="mt-6 space-y-4">
@@ -263,20 +263,20 @@ const ProjectDashboardCockpit = ({
 
               <Badge variant={"outline"} onClick={() => onDone(task.id)} className="cursor-pointer">
                 <CheckSquare className="w-4 h-4 mr-2" />
-                <span>Mark as done</span>
+                <span>Marcar como concluída</span>
               </Badge>
               <Sheet>
                 <SheetTrigger asChild>
                   <Badge variant={"outline"} className="cursor-pointer">
                     <Pencil className="w-4 h-4 mr-2" />
-                    <span>Edit</span>
+                    <span>Editar</span>
                   </Badge>
                 </SheetTrigger>
                 <SheetContent className="max-w-3xl overflow-y-auto">
                   <SheetHeader>
-                    <SheetTitle>Edit Task</SheetTitle>
+                    <SheetTitle>Editar tarefa</SheetTitle>
                     <SheetDescription>
-                      Update task details including title, description, due date, and priority
+                      Atualize os detalhes da tarefa, incluindo título, descrição, data de vencimento e prioridade
                     </SheetDescription>
                   </SheetHeader>
                   <div className="mt-6 space-y-4">

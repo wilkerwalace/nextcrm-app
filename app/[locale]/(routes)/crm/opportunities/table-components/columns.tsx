@@ -51,7 +51,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   {
     accessorKey: "close_date",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Expected close" />
+      <DataTableColumnHeader column={column} title="Fechamento previsto" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
@@ -64,7 +64,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Atribuído a" />
     ),
 
     cell: ({ row }) => (
@@ -72,7 +72,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
         {
           //@ts-ignore
           //TODO: fix this
-          row.getValue("assigned_to_user")?.name ?? "Unassigned"
+          row.getValue("assigned_to_user")?.name ?? "Não atribuído"
         }
       </div>
     ),
@@ -82,7 +82,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   {
     accessorKey: "assigned_account",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned account" />
+      <DataTableColumnHeader column={column} title="Empresa atribuída" />
     ),
 
     cell: ({ row }) => (
@@ -90,7 +90,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
         {
           //@ts-ignore
           //TODO: fix this
-          row.getValue("assigned_account")?.name ?? "Unassigned"
+          row.getValue("assigned_account")?.name ?? "Não atribuído"
         }
       </div>
     ),
@@ -100,7 +100,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
 
     cell: ({ row }) => (
@@ -114,7 +114,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   {
     accessorKey: "budget",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Budget" />
+      <DataTableColumnHeader column={column} title="Orçamento" />
     ),
 
     cell: ({ row }) => {
@@ -135,7 +135,7 @@ export const createColumns = (config: OpportunityConfig): ColumnDef<Opportunity>
   {
     accessorKey: "next_step",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Next step" />
+      <DataTableColumnHeader column={column} title="Próximo passo" />
     ),
 
     cell: ({ row }) => (

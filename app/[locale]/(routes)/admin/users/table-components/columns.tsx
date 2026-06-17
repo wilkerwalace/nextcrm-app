@@ -23,7 +23,7 @@ export const columns: ColumnDef<AdminUser>[] = [
   {
     accessorKey: "created_on",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date created" />
+      <DataTableColumnHeader column={column} title="Data de criação" />
     ),
     cell: ({ row }) => (
       <div className="w-[130px]">
@@ -36,7 +36,7 @@ export const columns: ColumnDef<AdminUser>[] = [
   {
     accessorKey: "lastLoginAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last login" />
+      <DataTableColumnHeader column={column} title="Último acesso" />
     ),
     cell: ({ row }) => (
       <div className="min-w-[150px]">
@@ -55,7 +55,7 @@ export const columns: ColumnDef<AdminUser>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
 
     cell: ({ row }) => <div className="">{row.getValue("name")}</div>,
@@ -75,7 +75,7 @@ export const columns: ColumnDef<AdminUser>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Role" />
+      <DataTableColumnHeader column={column} title="Função" />
     ),
 
     cell: ({ row }) => (
@@ -118,7 +118,7 @@ export const columns: ColumnDef<AdminUser>[] = [
   {
     accessorKey: "userLanguage",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Language" />
+      <DataTableColumnHeader column={column} title="Idioma" />
     ),
 
     cell: ({ row }) => <div className="">{row.getValue("userLanguage")}</div>,

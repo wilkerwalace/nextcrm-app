@@ -22,16 +22,16 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 const STATUS_LABELS: Record<string, string> = {
-  DRAFT: "Draft",
-  ISSUED: "Issued",
-  SENT: "Sent",
-  PARTIALLY_PAID: "Partially Paid",
-  PAID: "Paid",
-  OVERDUE: "Overdue",
-  CANCELLED: "Cancelled",
-  DISPUTED: "Disputed",
-  REFUNDED: "Refunded",
-  WRITTEN_OFF: "Written Off",
+  DRAFT: "Rascunho",
+  ISSUED: "Emitida",
+  SENT: "Enviada",
+  PARTIALLY_PAID: "Parcialmente paga",
+  PAID: "Paga",
+  OVERDUE: "Vencida",
+  CANCELLED: "Cancelada",
+  DISPUTED: "Contestada",
+  REFUNDED: "Reembolsada",
+  WRITTEN_OFF: "Baixada",
 };
 
 interface StatusBadgeProps {

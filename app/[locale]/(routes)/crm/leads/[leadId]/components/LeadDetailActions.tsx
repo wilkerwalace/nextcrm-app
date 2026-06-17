@@ -41,9 +41,9 @@ export function LeadDetailActions({
         <SheetContent className="w-full md:max-w-[771px] overflow-y-auto">
           <SheetHeader>
             <SheetTitle>
-              Update lead - {lead?.firstName} {lead?.lastName}
+              Atualizar lead - {lead?.firstName} {lead?.lastName}
             </SheetTitle>
-            <SheetDescription>Update lead details</SheetDescription>
+            <SheetDescription>Atualizar detalhes do lead</SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-4">
             <UpdateLeadForm
@@ -65,12 +65,12 @@ export function LeadDetailActions({
             data-testid="lead-detail-actions-btn"
           >
             <MoreHorizontal className="h-5 w-5 text-muted-foreground" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
-            Update
+            Atualizar
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -19,7 +19,7 @@ const ProfilePage = async () => {
   const data = await getUser();
 
   if (!data) {
-    return <div>No user data.</div>;
+    return <div>Nenhum dado de usuário.</div>;
   }
 
   const llmKeys = await getUserApiKeys();
@@ -28,7 +28,7 @@ const ProfilePage = async () => {
     <Container title={t("title")} description={t("description")}>
       <div className="rounded-lg border border-border overflow-hidden">
         <ProfileHero data={data} />
-        <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Loading...</div>}>
+        <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Carregando...</div>}>
           <ProfileTabs
             profileContent={<ProfileTabContent data={data} />}
             securityContent={<SecurityTabContent userId={data.id} />}

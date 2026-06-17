@@ -22,7 +22,7 @@ const ContractPage = async (props: ContractDetailPageProps) => {
     getAllCrmData(),
   ]);
 
-  if (!contract) return <div>Contract not found</div>;
+  if (!contract) return <div>Contrato não encontrado</div>;
 
   const activeProducts = allProducts
     .filter((p: any) => p.status === "ACTIVE")
@@ -47,13 +47,13 @@ const ContractPage = async (props: ContractDetailPageProps) => {
 
   return (
     <Container
-      title={`Contract: ${contract.title}`}
+      title={`Contrato: ${contract.title}`}
       description={`Status: ${contract.status}`}
     >
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <div className="space-y-5">

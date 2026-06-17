@@ -56,7 +56,7 @@ const LineItemsSection = ({
 
   const handleCopy = async () => {
     if (!selectedOpportunityId) {
-      toast.error("Please select an opportunity");
+      toast.error("Selecione uma oportunidade");
       return;
     }
     setIsCopying(true);
@@ -69,7 +69,7 @@ const LineItemsSection = ({
         toast.error(result.error);
       } else {
         toast.success(
-          `Copied ${result?.data?.copied || 0} line item(s) from opportunity`
+          `${result?.data?.copied || 0} item(ns) copiado(s) da oportunidade`
         );
         setCopyDialogOpen(false);
         setSelectedOpportunityId("");
@@ -85,28 +85,28 @@ const LineItemsSection = ({
       <Card>
         <CardHeader className="pb-3">
           <div className="flex justify-between">
-            <CardTitle>Line Items</CardTitle>
+            <CardTitle>Itens</CardTitle>
             <div className="flex space-x-2">
               {opportunities.length > 0 && (
                 <Dialog open={copyDialogOpen} onOpenChange={setCopyDialogOpen}>
                   <DialogTrigger asChild>
                     <Button variant="outline" size="sm" className="mb-5">
                       <Copy className="h-4 w-4 mr-1" />
-                      Copy from Opportunity
+                      Copiar da oportunidade
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
-                      <DialogTitle>Copy Line Items from Opportunity</DialogTitle>
+                      <DialogTitle>Copiar itens da oportunidade</DialogTitle>
                       <DialogDescription>
-                        Select an opportunity to copy its line items into this
-                        contract. Existing line items will not be removed.
+                        Selecione uma oportunidade para copiar seus itens para
+                        este contrato. Os itens existentes não serão removidos.
                       </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
                       <div className="space-y-2">
                         <label className="text-sm font-medium">
-                          Opportunity
+                          Oportunidade
                         </label>
                         <select
                           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
@@ -115,7 +115,7 @@ const LineItemsSection = ({
                             setSelectedOpportunityId(e.target.value)
                           }
                         >
-                          <option value="">-- Select an opportunity --</option>
+                          <option value="">-- Selecione uma oportunidade --</option>
                           {opportunities.map((opp) => (
                             <option key={opp.id} value={opp.id}>
                               {opp.name}
@@ -129,13 +129,13 @@ const LineItemsSection = ({
                         variant="outline"
                         onClick={() => setCopyDialogOpen(false)}
                       >
-                        Cancel
+                        Cancelar
                       </Button>
                       <Button onClick={handleCopy} disabled={isCopying}>
                         {isCopying ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
                         ) : (
-                          "Copy"
+                          "Copiar"
                         )}
                       </Button>
                     </DialogFooter>

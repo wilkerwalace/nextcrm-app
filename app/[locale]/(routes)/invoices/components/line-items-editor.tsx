@@ -111,12 +111,12 @@ export function LineItemsEditor({
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-[1fr_2fr_80px_100px_80px_120px_80px_40px] gap-2 text-xs font-medium text-muted-foreground">
-        <span>{l.product ?? "Product"}</span>
-        <span>{l.description ?? "Description"}</span>
-        <span>{l.quantity ?? "Qty"}</span>
-        <span>{l.unitPrice ?? "Unit Price"}</span>
-        <span>{l.discount ?? "Disc %"}</span>
-        <span>{l.taxRate ?? "Tax Rate"}</span>
+        <span>{l.product ?? "Produto"}</span>
+        <span>{l.description ?? "Descrição"}</span>
+        <span>{l.quantity ?? "Qtd"}</span>
+        <span>{l.unitPrice ?? "Preço unitário"}</span>
+        <span>{l.discount ?? "Desc %"}</span>
+        <span>{l.taxRate ?? "Alíquota"}</span>
         <span>{l.total ?? "Total"}</span>
         <span />
       </div>
@@ -141,7 +141,7 @@ export function LineItemsEditor({
               }
             >
               <SelectTrigger className="h-9 text-xs">
-                <SelectValue placeholder="Select..." />
+                <SelectValue placeholder="Selecionar..." />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">-</SelectItem>
@@ -159,7 +159,7 @@ export function LineItemsEditor({
               onChange={(e) =>
                 updateItem(index, { description: e.target.value })
               }
-              placeholder="Description"
+              placeholder="Descrição"
             />
 
             <Input
@@ -209,10 +209,10 @@ export function LineItemsEditor({
               }
             >
               <SelectTrigger className="h-9 text-xs">
-                <SelectValue placeholder="Tax..." />
+                <SelectValue placeholder="Imposto..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
+                <SelectItem value="none">Nenhum</SelectItem>
                 {taxRates.map((t) => (
                   <SelectItem key={t.id} value={t.id}>
                     {t.name} ({t.rate}%)
@@ -240,7 +240,7 @@ export function LineItemsEditor({
       })}
 
       <Button type="button" variant="outline" size="sm" onClick={addItem}>
-        + {l.addLine ?? "Add Line"}
+        + {l.addLine ?? "Adicionar item"}
       </Button>
     </div>
   );

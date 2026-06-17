@@ -16,7 +16,7 @@ export const columnsTask: ColumnDef<Task>[] = [
   {
     accessorKey: "assigned_to_user",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Assigned to" />
+      <DataTableColumnHeader column={column} title="Atribuído a" />
     ),
 
     cell: ({ row }) => (
@@ -24,7 +24,7 @@ export const columnsTask: ColumnDef<Task>[] = [
         {
           //@ts-ignore
           //TODO: fix this - must change schema but problem is if value is null now. You must change db
-          row.original.assigned_to_user.name ?? "Unassigned"
+          row.original.assigned_to_user.name ?? "Não atribuído"
         }
       </div>
     ),
@@ -34,7 +34,7 @@ export const columnsTask: ColumnDef<Task>[] = [
   {
     accessorKey: "document_name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Document name" />
+      <DataTableColumnHeader column={column} title="Nome do documento" />
     ),
     cell: ({ row }) => {
       const label = labels.find(

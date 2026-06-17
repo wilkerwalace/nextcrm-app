@@ -29,7 +29,7 @@ export function MinioUploader({
       if (!file) return;
 
       setUploading(true);
-      setProgress("Requesting upload URL...");
+      setProgress("Solicitando URL de envio...");
 
       try {
         // Step 1: Get presigned URL from our server
@@ -43,10 +43,10 @@ export function MinioUploader({
           }),
         });
 
-        if (!res.ok) throw new Error("Failed to get upload URL");
+        if (!res.ok) throw new Error("Falha ao obter a URL de envio");
         const { presignedUrl, fileUrl, key } = await res.json();
 
-        setProgress("Uploading...");
+        setProgress("Enviando...");
 
         // Step 2: PUT file directly to MinIO
         const uploadRes = await fetch(presignedUrl, {
@@ -55,12 +55,12 @@ export function MinioUploader({
           headers: { "Content-Type": file.type },
         });
 
-        if (!uploadRes.ok) throw new Error("Upload to storage failed");
+        if (!uploadRes.ok) throw new Error("Falha ao enviar para o armazenamento");
 
         setProgress(null);
         onUploadComplete(fileUrl, key);
       } catch (err) {
-        const msg = err instanceof Error ? err.message : "Upload failed";
+        const msg = err instanceof Error ? err.message : "Falha no envio";
         setProgress(null);
         onUploadError?.(msg);
       } finally {
@@ -97,9 +97,9 @@ export function MinioUploader({
         <>
           <UploadCloud className="h-8 w-8 text-muted-foreground" />
           <p className="text-sm text-muted-foreground">
-            {isDragActive ? "Drop file here" : "Drag & drop or click to upload"}
+            {isDragActive ? "Solte o arquivo aqui" : "Arraste e solte ou clique para enviar"}
           </p>
-          <p className="text-xs text-muted-foreground/60">Max {maxSizeMB}MB</p>
+          <p className="text-xs text-muted-foreground/60">Máx. {maxSizeMB}MB</p>
         </>
       )}
     </div>

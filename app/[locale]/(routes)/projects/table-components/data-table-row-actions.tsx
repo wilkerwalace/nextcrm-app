@@ -60,7 +60,7 @@ export function DataTableRowActions<TData>({
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`Project: ${project.title}, deleted successfully`);
+        toast.success(`Projeto: ${project.title}, excluído com sucesso`);
       }
     } catch (error) {
       toast.error(t("dataTable.deleteError"));
@@ -79,7 +79,7 @@ export function DataTableRowActions<TData>({
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`Project: ${project.title}, watched successfully`);
+        toast.success(`Projeto: ${project.title}, monitorado com sucesso`);
       }
     } catch (error) {
       toast.error(t("dataTable.watchError"));
@@ -96,7 +96,7 @@ export function DataTableRowActions<TData>({
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success(`Project: ${project.title}, You stop watching this project successfully`);
+        toast.success(`Projeto: ${project.title}, você parou de monitorar este projeto com sucesso`);
       }
     } catch (error) {
       toast.error(t("dataTable.watchError"));

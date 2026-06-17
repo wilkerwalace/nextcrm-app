@@ -69,7 +69,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
   const onSubmit = async (data: NewTargetFormValues) => {
     if (!data.last_name && !data.company) {
       form.setError("root.serverError", {
-        message: "Please provide either last name or company.",
+        message: "Informe o sobrenome ou a empresa.",
       });
       return;
     }
@@ -77,7 +77,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
     if (result?.error) {
       form.setError("root.serverError", { message: result.error });
     } else {
-      toast.success("Target created successfully");
+      toast.success("Alvo criado com sucesso");
       form.reset({ status: true });
       onFinish();
     }
@@ -92,7 +92,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="first_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="John" {...field} />
                 </FormControl>
@@ -105,7 +105,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="last_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last name</FormLabel>
+                <FormLabel>Sobrenome</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="Doe" {...field} />
                 </FormControl>
@@ -120,7 +120,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>E-mail</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="john@example.com" {...field} />
                 </FormControl>
@@ -133,7 +133,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="mobile_phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Mobile phone</FormLabel>
+                <FormLabel>Celular</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 890" {...field} />
                 </FormControl>
@@ -148,7 +148,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="office_phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Office phone</FormLabel>
+                <FormLabel>Telefone comercial</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="+1 234 567 891" {...field} />
                 </FormControl>
@@ -161,7 +161,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="position"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>Cargo</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="CEO" {...field} />
                 </FormControl>
@@ -176,7 +176,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company</FormLabel>
+                <FormLabel>Empresa</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="Acme Corp" {...field} />
                 </FormControl>
@@ -189,7 +189,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
             name="company_website"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company website</FormLabel>
+                <FormLabel>Site da empresa</FormLabel>
                 <FormControl>
                   <Input disabled={form.formState.isSubmitting} placeholder="https://acme.com" {...field} />
                 </FormControl>
@@ -203,7 +203,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
           name="personal_website"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Personal website</FormLabel>
+              <FormLabel>Site pessoal</FormLabel>
               <FormControl>
                 <Input disabled={form.formState.isSubmitting} placeholder="https://johndoe.com" {...field} />
               </FormControl>
@@ -269,33 +269,33 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="personal_email" render={({ field }) => (
-            <FormItem><FormLabel>Personal Email</FormLabel>
+            <FormItem><FormLabel>E-mail pessoal</FormLabel>
               <FormControl><Input placeholder="john@personal.com" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="company_email" render={({ field }) => (
-            <FormItem><FormLabel>Company Email</FormLabel>
+            <FormItem><FormLabel>E-mail da empresa</FormLabel>
               <FormControl><Input placeholder="info@company.com" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
         </div>
         <FormField control={form.control} name="company_phone" render={({ field }) => (
-          <FormItem><FormLabel>Company Phone</FormLabel>
+          <FormItem><FormLabel>Telefone da empresa</FormLabel>
             <FormControl><Input placeholder="+1 800 000 0000" {...field} value={field.value ?? ''} /></FormControl>
             <FormMessage />
           </FormItem>
         )} />
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="city" render={({ field }) => (
-            <FormItem><FormLabel>City</FormLabel>
+            <FormItem><FormLabel>Cidade</FormLabel>
               <FormControl><Input placeholder="Prague" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="country" render={({ field }) => (
-            <FormItem><FormLabel>Country</FormLabel>
+            <FormItem><FormLabel>País</FormLabel>
               <FormControl><Input placeholder="Czech Republic" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
@@ -303,21 +303,21 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <FormField control={form.control} name="industry" render={({ field }) => (
-            <FormItem><FormLabel>Industry</FormLabel>
+            <FormItem><FormLabel>Setor</FormLabel>
               <FormControl><Input placeholder="SaaS" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
           <FormField control={form.control} name="employees" render={({ field }) => (
-            <FormItem><FormLabel>Employees</FormLabel>
+            <FormItem><FormLabel>Funcionários</FormLabel>
               <FormControl><Input placeholder="50-200" {...field} value={field.value ?? ''} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />
         </div>
         <FormField control={form.control} name="description" render={({ field }) => (
-          <FormItem><FormLabel>Description</FormLabel>
-            <FormControl><Input placeholder="Short company description" {...field} value={field.value ?? ''} /></FormControl>
+          <FormItem><FormLabel>Descrição</FormLabel>
+            <FormControl><Input placeholder="Breve descrição da empresa" {...field} value={field.value ?? ''} /></FormControl>
             <FormMessage />
           </FormItem>
         )} />
@@ -327,7 +327,7 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
           render={({ field }) => (
             <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
               <div className="space-y-0.5">
-                <FormLabel className="text-base">Is target active?</FormLabel>
+                <FormLabel className="text-base">O alvo está ativo?</FormLabel>
               </div>
               <FormControl>
                 <Switch
@@ -345,9 +345,9 @@ export function NewTargetForm({ onFinish }: NewTargetFormProps) {
         )}
         <Button disabled={form.formState.isSubmitting} type="submit" className="w-full">
           {form.formState.isSubmitting ? (
-            <span className="flex items-center animate-pulse">Saving data ...</span>
+            <span className="flex items-center animate-pulse">Salvando dados ...</span>
           ) : (
-            "Create target"
+            "Criar alvo"
           )}
         </Button>
       </form>

@@ -39,7 +39,7 @@ const LineItemsSection = ({
       <Card>
         <CardHeader className="pb-3">
           <div className="flex justify-between">
-            <CardTitle>Line Items</CardTitle>
+            <CardTitle>Itens</CardTitle>
             <div className="flex space-x-2">
               <AddLineItemForm
                 products={products}

@@ -11,7 +11,7 @@ export default async function TaxRatesPage() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Tax Rates</CardTitle>
+          <CardTitle>Alíquotas de Imposto</CardTitle>
         </CardHeader>
         <CardContent>
           <TaxRatesTable rates={JSON.parse(JSON.stringify(rates))} />

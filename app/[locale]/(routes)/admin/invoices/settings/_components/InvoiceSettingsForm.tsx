@@ -139,7 +139,7 @@ export function InvoiceSettingsForm({
     startTransition(async () => {
       const res = await saveInvoiceSettings(payload);
       if (res.ok) {
-        toast.success("Settings saved");
+        toast.success("Configurações salvas");
         router.refresh();
       } else {
         toast.error(res.error);
@@ -152,17 +152,17 @@ export function InvoiceSettingsForm({
     <div className="space-y-6 max-w-2xl">
       <div className="space-y-4">
         <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-          Company Details
+          Dados da Empresa
         </h3>
         <div className="space-y-2">
-          <Label>Company Name <span className="text-destructive">*</span></Label>
+          <Label>Nome da Empresa <span className="text-destructive">*</span></Label>
           <Input
             value={companyName}
             onChange={(e) => {
               setCompanyName(e.target.value);
               clearError("companyName");
             }}
-            placeholder="e.g. Acme s.r.o."
+            placeholder="ex.: Acme Ltda."
             aria-invalid={!!errors.companyName}
           />
           {errors.companyName && (
@@ -170,14 +170,14 @@ export function InvoiceSettingsForm({
           )}
         </div>
         <div className="space-y-2">
-          <Label>Street Address <span className="text-destructive">*</span></Label>
+          <Label>Endereço <span className="text-destructive">*</span></Label>
           <Input
             value={companyAddress}
             onChange={(e) => {
               setCompanyAddress(e.target.value);
               clearError("companyAddress");
             }}
-            placeholder="e.g. Wenceslas Square 1"
+            placeholder="ex.: Av. Paulista, 1000"
             aria-invalid={!!errors.companyAddress}
           />
           {errors.companyAddress && (
@@ -186,7 +186,7 @@ export function InvoiceSettingsForm({
         </div>
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label>City <span className="text-destructive">*</span></Label>
+            <Label>Cidade <span className="text-destructive">*</span></Label>
             <Input
               value={companyCity}
               onChange={(e) => {
@@ -200,7 +200,7 @@ export function InvoiceSettingsForm({
             )}
           </div>
           <div className="space-y-2">
-            <Label>ZIP / Postal Code <span className="text-destructive">*</span></Label>
+            <Label>CEP <span className="text-destructive">*</span></Label>
             <Input
               value={companyZip}
               onChange={(e) => {
@@ -214,14 +214,14 @@ export function InvoiceSettingsForm({
             )}
           </div>
           <div className="space-y-2">
-            <Label>Country <span className="text-destructive">*</span></Label>
+            <Label>País <span className="text-destructive">*</span></Label>
             <Input
               value={companyCountry}
               onChange={(e) => {
                 setCompanyCountry(e.target.value);
                 clearError("companyCountry");
               }}
-              placeholder="e.g. Czech Republic"
+              placeholder="ex.: Brasil"
               aria-invalid={!!errors.companyCountry}
             />
             {errors.companyCountry && (
@@ -231,29 +231,29 @@ export function InvoiceSettingsForm({
         </div>
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label>VAT ID (DIČ)</Label>
+            <Label>Inscrição Estadual</Label>
             <Input
               value={companyVatId}
               onChange={(e) => setCompanyVatId(e.target.value)}
-              placeholder="e.g. CZ12345678"
+              placeholder="ex.: 123.456.789.110"
             />
           </div>
           <div className="space-y-2">
-            <Label>Tax ID</Label>
+            <Label>CNPJ</Label>
             <Input
               value={companyTaxId}
               onChange={(e) => setCompanyTaxId(e.target.value)}
             />
           </div>
           <div className="space-y-2">
-            <Label>Registration No. (IČO) <span className="text-destructive">*</span></Label>
+            <Label>Inscrição Municipal <span className="text-destructive">*</span></Label>
             <Input
               value={companyRegNo}
               onChange={(e) => {
                 setCompanyRegNo(e.target.value);
                 clearError("companyRegNo");
               }}
-              placeholder="e.g. 12345678"
+              placeholder="ex.: 12345678"
               aria-invalid={!!errors.companyRegNo}
             />
             {errors.companyRegNo && (
@@ -278,18 +278,18 @@ export function InvoiceSettingsForm({
             )}
           </div>
           <div className="space-y-2">
-            <Label>Phone</Label>
+            <Label>Telefone</Label>
             <Input
               value={companyPhone}
               onChange={(e) => setCompanyPhone(e.target.value)}
             />
           </div>
           <div className="space-y-2">
-            <Label>Website</Label>
+            <Label>Site</Label>
             <Input
               value={companyWebsite}
               onChange={(e) => setCompanyWebsite(e.target.value)}
-              placeholder="e.g. https://acme.com"
+              placeholder="ex.: https://acme.com.br"
             />
           </div>
         </div>
@@ -297,11 +297,11 @@ export function InvoiceSettingsForm({
 
       <div className="space-y-4 pt-4 border-t">
         <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-          Invoice Defaults
+          Padrões de Fatura
         </h3>
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label>Base Currency</Label>
+          <Label>Moeda Base</Label>
           <Select value={baseCurrency} onValueChange={setBaseCurrency}>
             <SelectTrigger>
               <SelectValue />
@@ -317,7 +317,7 @@ export function InvoiceSettingsForm({
         </div>
 
         <div className="space-y-2">
-          <Label>Default Due Days</Label>
+          <Label>Prazo de Vencimento Padrão (dias)</Label>
           <Input
             type="number"
             value={defaultDueDays}
@@ -329,10 +329,10 @@ export function InvoiceSettingsForm({
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label>Default Series</Label>
+          <Label>Série Padrão</Label>
           <Select value={defaultSeriesId} onValueChange={setDefaultSeriesId}>
             <SelectTrigger>
-              <SelectValue placeholder="Select series..." />
+              <SelectValue placeholder="Selecione a série..." />
             </SelectTrigger>
             <SelectContent>
               {series.map((s) => (
@@ -345,10 +345,10 @@ export function InvoiceSettingsForm({
         </div>
 
         <div className="space-y-2">
-          <Label>Default Tax Rate</Label>
+          <Label>Alíquota de Imposto Padrão</Label>
           <Select value={defaultTaxRateId} onValueChange={setDefaultTaxRateId}>
             <SelectTrigger>
-              <SelectValue placeholder="Select tax rate..." />
+              <SelectValue placeholder="Selecione a alíquota..." />
             </SelectTrigger>
             <SelectContent>
               {taxRates.map((t) => (
@@ -363,19 +363,19 @@ export function InvoiceSettingsForm({
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label>Bank Name</Label>
+          <Label>Nome do Banco</Label>
           <Input
             value={bankName}
             onChange={(e) => setBankName(e.target.value)}
-            placeholder="e.g. Komercni banka"
+            placeholder="ex.: Banco do Brasil"
           />
         </div>
         <div className="space-y-2">
-          <Label>Bank Account</Label>
+          <Label>Conta Bancária</Label>
           <Input
             value={bankAccount}
             onChange={(e) => setBankAccount(e.target.value)}
-            placeholder="e.g. 123456789/0100"
+            placeholder="ex.: 12345-6 / Ag. 0100"
           />
         </div>
       </div>
@@ -386,7 +386,7 @@ export function InvoiceSettingsForm({
           <Input
             value={iban}
             onChange={(e) => setIban(e.target.value)}
-            placeholder="e.g. CZ6508000000192000145399"
+            placeholder="ex.: CZ6508000000192000145399"
           />
         </div>
         <div className="space-y-2">
@@ -394,17 +394,17 @@ export function InvoiceSettingsForm({
           <Input
             value={swift}
             onChange={(e) => setSwift(e.target.value)}
-            placeholder="e.g. KOMBCZPP"
+            placeholder="ex.: KOMBCZPP"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <Label>Footer Text</Label>
+        <Label>Texto do Rodapé</Label>
         <Textarea
           value={footerText}
           onChange={(e) => setFooterText(e.target.value)}
-          placeholder="Text displayed at the bottom of invoices"
+          placeholder="Texto exibido no rodapé das faturas"
           rows={3}
         />
       </div>
@@ -412,7 +412,7 @@ export function InvoiceSettingsForm({
       </div>
 
       <Button onClick={handleSave} disabled={isPending}>
-        {isPending ? "Saving..." : "Save Settings"}
+        {isPending ? "Salvando..." : "Salvar Configurações"}
       </Button>
     </div>
   );
