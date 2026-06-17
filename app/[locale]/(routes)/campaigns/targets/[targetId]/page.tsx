@@ -1,5 +1,6 @@
 import Container from "@/app/[locale]/(routes)/components/ui/Container";
 import { BasicView } from "./components/BasicView";
+import DesignIdeaButton from "./components/DesignIdeaButton";
 import { getTarget } from "@/actions/crm/get-target";
 
 const TargetViewPage = async (props: any) => {
@@ -16,6 +17,14 @@ const TargetViewPage = async (props: any) => {
     >
       <div className="space-y-5">
         <BasicView data={target} />
+        <DesignIdeaButton
+          targetId={target.id}
+          existing={
+            ((target.notes as string[]) || [])
+              .find((n: string) => n.startsWith("💡 Ideia de design"))
+              ?.replace(/^💡 Ideia de design[^\n]*\n/, "") || null
+          }
+        />
       </div>
     </Container>
   );
