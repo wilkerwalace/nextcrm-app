@@ -1,6 +1,7 @@
 import { inngest } from "@/inngest/client";
 import { prismadb } from "@/lib/prisma";
 import { writeAuditLog } from "@/lib/audit-log";
+import { chatwootEnabled, mirrorIncoming } from "@/lib/integrations/chatwoot";
 
 export const ingestWhatsAppMessage = inngest.createFunction(
   { id: "whatsapp-ingest-message", name: "WhatsApp: ingerir mensagem (auto-lead)", triggers: [{ event: "whatsapp/message.received" }] },
@@ -83,6 +84,27 @@ export const ingestWhatsAppMessage = inngest.createFunction(
         timestamp: new Date(),
       },
     });
+
+    // espelha no Chatwoot (inbox de agentes/bot) — best-effort, se configurado
+    if (chatwootEnabled()) {
+      try {
+        const { contactSourceId, conversationId } = await mirrorIncoming({
+          number,
+          name: conv.name || pushName,
+          text,
+          contactSourceId: conv.chatwoot_contact_id,
+          conversationId: conv.chatwoot_conversation_id,
+        });
+        if (contactSourceId !== conv.chatwoot_contact_id || conversationId !== conv.chatwoot_conversation_id) {
+          await prismadb.whatsApp_Conversation.update({
+            where: { id: conv.id },
+            data: { chatwoot_contact_id: contactSourceId, chatwoot_conversation_id: conversationId },
+          });
+        }
+      } catch (e) {
+        console.error("[CHATWOOT_MIRROR]", (e as any)?.message || e);
+      }
+    }
 
     // atividade na timeline (best-effort)
     const ent = leadId
