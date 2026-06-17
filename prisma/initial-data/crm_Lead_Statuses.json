@@ -1,6 +1,14 @@
 [
-  { "name": "New" },
-  { "name": "Contacted" },
-  { "name": "Qualified" },
-  { "name": "Lost" }
+  {
+    "name": "Novo"
+  },
+  {
+    "name": "Contatado"
+  },
+  {
+    "name": "Qualificado"
+  },
+  {
+    "name": "Perdido"
+  }
 ]

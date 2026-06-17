@@ -8,8 +8,8 @@ const TAX_RATE_12_ID = "00000000-0000-4000-a000-000000000011";
 const TAX_RATE_0_ID = "00000000-0000-4000-a000-000000000012";
 
 const TAX_RATES = [
-  { id: TAX_RATE_21_ID, name: "Standard 21%", rate: 21, isDefault: true },
-  { id: TAX_RATE_12_ID, name: "Reduced 12%", rate: 12, isDefault: false },
+  { id: TAX_RATE_21_ID, name: "Padrão 21%", rate: 21, isDefault: true },
+  { id: TAX_RATE_12_ID, name: "Reduzida 12%", rate: 12, isDefault: false },
   { id: TAX_RATE_0_ID, name: "Zero 0%", rate: 0, isDefault: false },
 ];
 
@@ -17,10 +17,10 @@ export async function seedInvoices(prisma: PrismaClient) {
   console.log("Seeding invoice series...");
   await prisma.invoice_Series.upsert({
     where: { id: SERIES_ID },
-    update: { name: "Main", prefixTemplate: "INV-{YYYY}-{####}" },
+    update: { name: "Principal", prefixTemplate: "INV-{YYYY}-{####}" },
     create: {
       id: SERIES_ID,
-      name: "Main",
+      name: "Principal",
       prefixTemplate: "INV-{YYYY}-{####}",
       resetPolicy: "YEARLY",
       counter: 0,

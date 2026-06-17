@@ -1,22 +1,22 @@
 [
   {
     "v": 0,
-    "name": "Business from partners",
+    "name": "Negócio de parceiros",
     "order": 2
   },
   {
     "v": 0,
-    "name": "Upsale",
+    "name": "Venda adicional",
     "order": 3
   },
   {
     "v": 0,
-    "name": "New deal",
+    "name": "Novo negócio",
     "order": 1
   },
   {
     "v": 0,
-    "name": "Cross sale",
+    "name": "Venda cruzada",
     "order": 4
   }
 ]

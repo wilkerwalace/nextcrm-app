@@ -1,6 +1,14 @@
 [
-  { "name": "Customer" },
-  { "name": "Partner" },
-  { "name": "Vendor" },
-  { "name": "Prospect" }
+  {
+    "name": "Cliente"
+  },
+  {
+    "name": "Parceiro"
+  },
+  {
+    "name": "Fornecedor"
+  },
+  {
+    "name": "Prospect"
+  }
 ]

@@ -1,55 +1,55 @@
 [
   {
     "v": 0,
-    "name": "New",
+    "name": "Novo",
     "order": 0,
     "probability": 10
   },
   {
     "v": 0,
-    "name": "Need analysis",
+    "name": "Análise de necessidade",
     "order": 0,
     "probability": 25
   },
   {
     "v": 0,
-    "name": "Signing",
+    "name": "Assinatura",
     "probability": 95,
     "order": null
   },
   {
     "v": 0,
-    "name": "Offer sent",
+    "name": "Proposta enviada",
     "probability": 30,
     "order": null
   },
   {
     "v": 0,
-    "name": "Offer accepted",
+    "name": "Proposta aceita",
     "probability": 45,
     "order": null
   },
   {
     "v": 0,
-    "name": "Contract draft",
+    "name": "Minuta de contrato",
     "probability": 65,
     "order": null
   },
   {
     "v": 0,
-    "name": "Contract negotiation",
+    "name": "Negociação de contrato",
     "probability": 75,
     "order": null
   },
   {
     "v": 0,
-    "name": "Send for signing",
+    "name": "Enviar para assinatura",
     "probability": 80,
     "order": null
   },
   {
     "v": 0,
-    "name": "Realization of the project",
+    "name": "Execução do projeto",
     "probability": 100,
     "order": null
   }

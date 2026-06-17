@@ -1,8 +1,20 @@
 [
-  { "name": "Web" },
-  { "name": "Referral" },
-  { "name": "Cold Call" },
-  { "name": "Email Campaign" },
-  { "name": "Event" },
-  { "name": "Other" }
+  {
+    "name": "Site"
+  },
+  {
+    "name": "Indicação"
+  },
+  {
+    "name": "Ligação fria"
+  },
+  {
+    "name": "Campanha de e-mail"
+  },
+  {
+    "name": "Evento"
+  },
+  {
+    "name": "Outro"
+  }
 ]
