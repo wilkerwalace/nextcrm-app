@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, MessageCircle, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +19,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { UpdateContactForm } from "../../components/UpdateContactForm";
+import { sendWhatsApp } from "@/actions/whatsapp/send-message";
 
 type ConfigItem = { id: string; name: string };
 
@@ -30,6 +33,42 @@ export function ContactDetailActions({
   contactTypes,
 }: ContactDetailActionsProps) {
   const [updateOpen, setUpdateOpen] = useState(false);
+  const [waOpen, setWaOpen] = useState(false);
+  const [waText, setWaText] = useState("");
+  const [waSending, setWaSending] = useState(false);
+
+  const phone = (contact?.mobile_phone || contact?.office_phone) as string | undefined;
+
+  async function handleSendWhatsApp() {
+    if (!phone) {
+      toast.error("Este contato não tem telefone");
+      return;
+    }
+    if (!waText.trim()) {
+      toast.error("Escreva a mensagem");
+      return;
+    }
+    setWaSending(true);
+    try {
+      const res = await sendWhatsApp({
+        number: phone,
+        text: waText.trim(),
+        contactId: contact.id,
+        name: [contact.first_name, contact.last_name].filter(Boolean).join(" ") || undefined,
+      });
+      if ((res as any).error) {
+        toast.error((res as any).error);
+      } else {
+        toast.success("WhatsApp enviado");
+        setWaText("");
+        setWaOpen(false);
+      }
+    } catch (e: any) {
+      toast.error(e?.message || "Falha ao enviar");
+    } finally {
+      setWaSending(false);
+    }
+  }
 
   return (
     <>
@@ -51,6 +90,33 @@ export function ContactDetailActions({
         </SheetContent>
       </Sheet>
 
+      <Sheet open={waOpen} onOpenChange={setWaOpen}>
+        <SheetContent className="w-full md:max-w-[480px]">
+          <SheetHeader>
+            <SheetTitle>Enviar WhatsApp</SheetTitle>
+            <SheetDescription>
+              Para {contact?.first_name} {contact?.last_name} {phone ? `(${phone})` : ""}
+            </SheetDescription>
+          </SheetHeader>
+          <div className="mt-6 space-y-4">
+            {!phone && (
+              <p className="text-sm text-amber-600">Este contato não tem telefone cadastrado.</p>
+            )}
+            <Textarea
+              rows={5}
+              placeholder="Escreva sua mensagem..."
+              value={waText}
+              onChange={(e) => setWaText(e.target.value)}
+              disabled={!phone || waSending}
+            />
+            <Button onClick={handleSendWhatsApp} disabled={!phone || waSending}>
+              {waSending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageCircle className="mr-2 h-4 w-4" />}
+              Enviar
+            </Button>
+          </div>
+        </SheetContent>
+      </Sheet>
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -62,9 +128,12 @@ export function ContactDetailActions({
             <span className="sr-only">Abrir menu</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-[160px]">
+        <DropdownMenuContent align="end" className="w-[180px]">
           <DropdownMenuItem onClick={() => setUpdateOpen(true)}>
             Atualizar
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setWaOpen(true)} disabled={!phone}>
+            <MessageCircle className="mr-2 h-4 w-4" /> Enviar WhatsApp
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
