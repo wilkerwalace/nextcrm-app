@@ -19,6 +19,7 @@ export const getCampaignsMenuItem = ({ localizations }: Props): NavItem => {
       { title: localizations.campaigns, url: "/campaigns" },
       { title: localizations.templates, url: "/campaigns/templates" },
       { title: localizations.targets, url: "/campaigns/targets" },
+      { title: "Prospecção", url: "/campaigns/targets/prospeccao" },
       { title: localizations.targetLists, url: "/campaigns/target-lists" },
     ],
   };

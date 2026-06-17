@@ -1243,6 +1243,9 @@ model crm_Targets {
   employees        String?
   description      String?
 
+  // Prospecção (triagem por presença digital). Maior = melhor oportunidade.
+  prospect_score   Int?
+
   // Conversion tracking
   converted_at         DateTime?
   converted_account_id String?   @db.Uuid
