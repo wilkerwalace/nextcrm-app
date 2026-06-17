@@ -51,7 +51,7 @@ export async function connectInstance(
 ) {
   const subscribe =
     opts.subscribe ||
-    (process.env.WHATSAPP_SUBSCRIBE || "Message,Connected,Disconnected,QR")
+    (process.env.WHATSAPP_SUBSCRIBE || "MESSAGE,READ_RECEIPT")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);

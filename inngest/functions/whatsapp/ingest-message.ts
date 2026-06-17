@@ -13,6 +13,15 @@ export const ingestWhatsAppMessage = inngest.createFunction(
     };
     if (!number || !text) return { skipped: "sem número/texto" };
 
+    // idempotência: ignora se a mensagem já foi gravada
+    if (evolutionMessageId) {
+      const dup = await prismadb.whatsApp_Message.findFirst({
+        where: { evolutionMessageId, direction: "IN" },
+        select: { id: true },
+      });
+      if (dup) return { skipped: "duplicada" };
+    }
+
     // dono padrão (primeiro admin ativo)
     const owner = await prismadb.users.findFirst({
       where: { role: "admin", userStatus: "ACTIVE" },
