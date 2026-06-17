@@ -6,17 +6,16 @@ import { sendText, onlyDigits } from "@/lib/integrations/evolution";
 
 const INSTANCE_NAME = process.env.EVOLUTION_INSTANCE || "amzc";
 
-export const sendWhatsApp = async (input: {
+type SendInput = {
   number: string;
   text: string;
   leadId?: string;
   contactId?: string;
   name?: string;
-}) => {
-  const session = await getSession();
-  if (!session) return { error: "Não autenticado" };
-  const userId = (session.user as any).id as string;
+};
 
+/** Núcleo do envio (recebe userId explícito; reutilizado pela action e pelo MCP). */
+export async function sendWhatsAppCore(userId: string, input: SendInput) {
   const number = onlyDigits(input.number);
   const text = (input.text || "").trim();
   if (!number) return { error: "Número inválido" };
@@ -29,7 +28,6 @@ export const sendWhatsApp = async (input: {
     const r = await sendText(inst.token, number, text);
     const evoId = r?.data?.id || r?.data?.key?.id || r?.id || null;
 
-    // conversa (upsert por número) + mensagem OUT
     const conv = await prismadb.whatsApp_Conversation.upsert({
       where: { remoteNumber: number },
       update: {
@@ -60,7 +58,6 @@ export const sendWhatsApp = async (input: {
       },
     });
 
-    // timeline (atividade), best-effort, vinculada ao lead/contato
     const links: Array<{ entityType: string; entityId: string }> = [];
     if (input.leadId) links.push({ entityType: "lead", entityId: input.leadId });
     if (input.contactId) links.push({ entityType: "contact", entityId: input.contactId });
@@ -82,15 +79,22 @@ export const sendWhatsApp = async (input: {
           data: links.map((l) => ({ activityId: activity.id, entityType: l.entityType, entityId: l.entityId })),
           skipDuplicates: true,
         });
-      } catch {
-        /* atividade é opcional; não bloqueia o envio */
-      }
+      } catch {}
     }
-
-    if (input.leadId) revalidatePath("/[locale]/(routes)/crm/leads/[leadId]", "page");
-    if (input.contactId) revalidatePath("/[locale]/(routes)/crm/contacts/[contactId]", "page");
-    return { data: { ok: true } };
+    return { data: { ok: true, conversationId: conv.id } };
   } catch (e: any) {
     return { error: e?.message || "Falha ao enviar WhatsApp" };
   }
+}
+
+/** Action (UI): usa a sessão. */
+export const sendWhatsApp = async (input: SendInput) => {
+  const session = await getSession();
+  if (!session) return { error: "Não autenticado" };
+  const res = await sendWhatsAppCore((session.user as any).id, input);
+  if (!(res as any).error) {
+    if (input.leadId) revalidatePath("/[locale]/(routes)/crm/leads/[leadId]", "page");
+    if (input.contactId) revalidatePath("/[locale]/(routes)/crm/contacts/[contactId]", "page");
+  }
+  return res;
 };

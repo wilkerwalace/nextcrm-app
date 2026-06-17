@@ -58,7 +58,7 @@ export const getWhatsAppQr = async () => {
   try {
     const r = await getQr(inst.token);
     // a API pode retornar { data: { qrcode/base64 } } ou { qrcode }
-    const qr = r?.data?.qrcode || r?.data?.base64 || r?.qrcode || r?.base64 || r?.data?.code || null;
+    const qr = r?.data?.Qrcode || r?.data?.qrcode || r?.data?.QRCode || r?.data?.base64 || r?.qrcode || r?.base64 || r?.data?.code || null;
     return { data: { qr } };
   } catch (e: any) {
     return { error: e?.message || "Falha ao obter QR" };

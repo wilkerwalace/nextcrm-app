@@ -13,6 +13,7 @@ export { crmEmailAccountTools } from "./crm-email-accounts";
 export { campaignTools } from "./campaigns";
 export { projectTools } from "./projects";
 export { reportTools } from "./reports";
+export { crmWhatsappTools } from "./crm-whatsapp";
 
 import { crmAccountTools } from "./crm-accounts";
 import { crmContactTools } from "./crm-contacts";
@@ -29,6 +30,7 @@ import { crmEmailAccountTools } from "./crm-email-accounts";
 import { campaignTools } from "./campaigns";
 import { projectTools } from "./projects";
 import { reportTools } from "./reports";
+import { crmWhatsappTools } from "./crm-whatsapp";
 
 export const allTools = [
   ...crmAccountTools,
@@ -46,4 +48,5 @@ export const allTools = [
   ...campaignTools,
   ...projectTools,
   ...reportTools,
+  ...crmWhatsappTools,
 ];
