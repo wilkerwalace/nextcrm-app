@@ -7,6 +7,7 @@ import DocumentsView from "../../components/DocumentsView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HistoryTab } from "./components/HistoryTab";
 import { ActivitiesSection } from "./components/ActivitiesSection";
+import LeadFunnelPanel from "./components/LeadFunnelPanel";
 
 interface LeadDetailPageProps {
   params: Promise<{
@@ -29,6 +30,7 @@ const LeadDetailPage = async (props: LeadDetailPageProps) => {
       <Tabs defaultValue="overview">
         <TabsList>
           <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="funnel">Funil / BOT</TabsTrigger>
           <TabsTrigger value="history">Histórico</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
@@ -38,6 +40,9 @@ const LeadDetailPage = async (props: LeadDetailPageProps) => {
             <FindSimilarButton entityType="lead" recordId={leadId} />
             {/*         <DocumentsView data={lead?.documents} /> */}
           </div>
+        </TabsContent>
+        <TabsContent value="funnel">
+          <LeadFunnelPanel lead={lead} />
         </TabsContent>
         <TabsContent value="history">
           <HistoryTab leadId={leadId} />

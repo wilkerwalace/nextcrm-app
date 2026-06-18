@@ -101,6 +101,17 @@ model crm_Leads {
   deletedAt         DateTime?
   deletedBy         String?               @db.Uuid
 
+  // Funil de prospecção/proposta + BOT agente
+  recommendations    String? // análise/recomendações da IA (markdown) que o operador lê
+  recommendations_at DateTime?
+  proposal_images    String[] // URLs (MinIO) das imagens de proposta
+  preview_url        String? // link da prévia da landing/site
+  preview_slug       String? // slug em *.preview.amzc.tech
+  preview_domain     String? // domínio próprio do cliente (anexado depois)
+  bot_status         String?   @default("idle") // idle | draft | active | handoff
+  bot_draft          String? // rascunho da 1ª mensagem do bot aguardando aprovação
+  bot_drafted_at     DateTime?
+
   @@index([assigned_to])
   @@index([accountsIDs])
   @@index([createdBy])
