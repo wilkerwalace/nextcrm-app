@@ -23,6 +23,7 @@ import { enrichDocument } from "@/inngest/functions/documents/enrich-document";
 import { generateDocumentThumbnail } from "@/inngest/functions/documents/generate-thumbnail";
 import { syncExchangeRates } from "@/inngest/functions/ecb/sync-exchange-rates";
 import { ingestWhatsAppMessage } from "@/inngest/functions/whatsapp/ingest-message";
+import { whatsappBotReply } from "@/inngest/functions/whatsapp/bot-reply";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
@@ -50,5 +51,6 @@ export const { GET, POST, PUT } = serve({
     generateDocumentThumbnail,
     syncExchangeRates,
     ingestWhatsAppMessage,
+    whatsappBotReply,
   ],
 });

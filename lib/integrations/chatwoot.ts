@@ -17,8 +17,41 @@ const INBOX = process.env.CHATWOOT_INBOX_IDENTIFIER || "";
 const IDENTITY_KEY = process.env.CHATWOOT_IDENTITY_HMAC_KEY || "";
 const WEBHOOK_SECRET = process.env.CHATWOOT_WEBHOOK_SECRET || "";
 
+// API de agente (interna): posta mensagens de SAÍDA/notas como agente/bot.
+const AGENT_URL = (process.env.CHATWOOT_AGENT_URL || URL_BASE).replace(/\/$/, "");
+const AGENT_TOKEN = process.env.CHATWOOT_AGENT_TOKEN || "";
+const ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID || "1";
+
 export function chatwootEnabled() {
   return !!(URL_BASE && INBOX);
+}
+
+export function chatwootAgentEnabled() {
+  return !!(AGENT_URL && AGENT_TOKEN && ACCOUNT_ID);
+}
+
+/** Posta uma mensagem de SAÍDA (ou nota privada) numa conversa, como agente. */
+export async function postOutgoing(
+  conversationId: string,
+  content: string,
+  opts?: { privateNote?: boolean }
+) {
+  const res = await fetch(
+    `${AGENT_URL}/api/v1/accounts/${ACCOUNT_ID}/conversations/${conversationId}/messages`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", api_access_token: AGENT_TOKEN },
+      body: JSON.stringify({ content, message_type: "outgoing", private: !!opts?.privateNote }),
+      cache: "no-store",
+    }
+  );
+  const txt = await res.text();
+  if (!res.ok) throw new Error(`Chatwoot agent HTTP ${res.status}: ${txt.slice(0, 200)}`);
+  try {
+    return JSON.parse(txt);
+  } catch {
+    return { raw: txt };
+  }
 }
 
 /** Hash de identidade do contato (HMAC-SHA256 do identifier). */

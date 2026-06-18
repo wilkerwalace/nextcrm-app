@@ -106,6 +106,20 @@ export const ingestWhatsAppMessage = inngest.createFunction(
       }
     }
 
+    // se o BOT estiver ativo para este lead, responde automaticamente (via IA)
+    if (leadId) {
+      const lead = await prismadb.crm_Leads.findUnique({
+        where: { id: leadId },
+        select: { bot_status: true },
+      });
+      if (lead?.bot_status === "active") {
+        await inngest.send({
+          name: "whatsapp/bot.reply",
+          data: { leadId, conversationId: conv.id },
+        });
+      }
+    }
+
     // atividade na timeline (best-effort)
     const ent = leadId
       ? { entityType: "lead", entityId: leadId }
