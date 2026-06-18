@@ -21,6 +21,7 @@ import getDocumentsMenuItem from "./menu-items/Documents";
 import getInvoicesMenuItem from "./menu-items/Invoices";
 import getAdministrationMenuItem from "./menu-items/Administration";
 import getCampaignsMenuItem from "./menu-items/Campaigns";
+import getClientesMenuItem from "./menu-items/Clientes";
 
 /**
  * AppSidebar Component - Task Groups 1.2, 2.2-2.7, 3.1, 5.3, 5.4
@@ -101,6 +102,7 @@ export function AppSidebar({
         targetLists: "Listas de Alvos",
       },
     }),
+    getClientesMenuItem(),
     getProjectsMenuItem({ title: dict?.projects || "Projetos" }),
     getEmailsMenuItem({ title: dict?.emails || "E-mails" }),
     getReportsMenuItem({ title: dict?.reports || "Relatórios" }),

@@ -1970,3 +1970,63 @@ model WhatsApp_Message {
   @@index([conversationId])
   @@index([timestamp])
 }
+
+// ===== Plataforma multi-tenant: agentes de IA para os clientes =====
+model Client_Tenant {
+  id             String    @id @default(uuid()) @db.Uuid
+  name           String
+  slug           String    @unique
+  status         String    @default("active") // active | paused
+  contact_name   String?
+  contact_email  String?
+  contact_phone  String?
+  notes          String?
+  // canais
+  whatsapp_instance_id String? @db.Uuid // instância EvolutionGO dedicada (1 número por cliente)
+  widget_key     String?   @unique // chave pública do widget de chat
+  // agente de IA
+  agent_enabled  Boolean   @default(true)
+  agent_name     String?   @default("Assistente")
+  agent_persona  String? // instruções/sistema do agente
+  agent_greeting String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  createdBy      String?   @db.Uuid
+  deletedAt      DateTime?
+  appointments   Appointment[]
+  availability   Tenant_Availability[]
+
+  @@index([status])
+  @@index([deletedAt])
+}
+
+model Tenant_Availability {
+  id             String        @id @default(uuid()) @db.Uuid
+  clientTenantId String        @db.Uuid
+  tenant         Client_Tenant @relation(fields: [clientTenantId], references: [id], onDelete: Cascade)
+  weekday        Int // 0=domingo .. 6=sábado
+  start_time     String // "09:00"
+  end_time       String // "18:00"
+  slot_minutes   Int           @default(30)
+
+  @@index([clientTenantId])
+}
+
+model Appointment {
+  id               String        @id @default(uuid()) @db.Uuid
+  clientTenantId   String        @db.Uuid
+  tenant           Client_Tenant @relation(fields: [clientTenantId], references: [id], onDelete: Cascade)
+  customer_name    String?
+  customer_phone   String?
+  customer_email   String?
+  scheduled_at     DateTime
+  duration_minutes Int           @default(30)
+  status           String        @default("scheduled") // scheduled | confirmed | cancelled | done
+  notes            String?
+  source           String? // whatsapp | widget | manual
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([clientTenantId, scheduled_at])
+  @@index([status])
+}
