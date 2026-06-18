@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, Save, RefreshCw, Plus } from "lucide-react";
 import { updateTenant, regenWidgetKey } from "@/actions/clientes/tenants";
 import { setAvailability, createAppointment, updateAppointmentStatus } from "@/actions/clientes/agenda";
+import TenantWhatsAppConnect from "./TenantWhatsAppConnect";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
@@ -26,9 +27,7 @@ export default function TenantDetail({ tenant }: { tenant: any }) {
   const [savingAgent, setSavingAgent] = useState(false);
 
   // Canais
-  const [waInstance, setWaInstance] = useState(tenant.whatsapp_instance_id || "");
   const [widgetKey, setWidgetKey] = useState(tenant.widget_key || "");
-  const [savingCanais, setSavingCanais] = useState(false);
 
   // Agenda
   const initialAvail: Record<number, { start: string; end: string; slot: number; on: boolean }> = {};
@@ -61,17 +60,6 @@ export default function TenantDetail({ tenant }: { tenant: any }) {
       else toast.success("Agente salvo");
     } finally {
       setSavingAgent(false);
-    }
-  }
-
-  async function saveCanais() {
-    setSavingCanais(true);
-    try {
-      const r = await updateTenant({ id: tenant.id, whatsapp_instance_id: waInstance || null });
-      if ((r as any).error) toast.error((r as any).error);
-      else toast.success("Canais salvos");
-    } finally {
-      setSavingCanais(false);
     }
   }
 
@@ -279,19 +267,11 @@ export default function TenantDetail({ tenant }: { tenant: any }) {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label>Instância WhatsApp (EvolutionGO) — ID</Label>
-              <Input
-                value={waInstance}
-                onChange={(e) => setWaInstance(e.target.value)}
-                placeholder="ID da instância dedicada deste cliente"
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                1 número por cliente. A criação/QR da instância dedicada entra na próxima etapa.
-              </p>
+              <Label>WhatsApp dedicado (1 número por cliente)</Label>
+              <div className="mt-2">
+                <TenantWhatsAppConnect tenantId={tenant.id} />
+              </div>
             </div>
-            <Button size="sm" onClick={saveCanais} disabled={savingCanais}>
-              {savingCanais ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Save className="h-4 w-4 mr-2" />} Salvar
-            </Button>
 
             <div className="pt-2 border-t">
               <Label>Widget de chat (site/landing)</Label>

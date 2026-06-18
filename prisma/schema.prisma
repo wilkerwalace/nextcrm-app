@@ -1931,8 +1931,41 @@ model WhatsApp_Instance {
   status          String   @default("disconnected")
   numberConnected String?
   webhookSet      Boolean  @default(false)
+  clientTenantId  String?  @db.Uuid // se pertence a um cliente (multi-tenant); null = linha principal
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  @@index([clientTenantId])
+}
+
+model Tenant_Conversation {
+  id             String            @id @default(uuid()) @db.Uuid
+  clientTenantId String            @db.Uuid
+  remoteNumber   String // telefone (WhatsApp) ou id do visitante (widget)
+  channel        String            @default("whatsapp") // whatsapp | widget
+  name           String?
+  lastMessageAt  DateTime?
+  unreadCount    Int               @default(0)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  messages       Tenant_Message[]
+
+  @@unique([clientTenantId, remoteNumber])
+  @@index([clientTenantId])
+}
+
+model Tenant_Message {
+  id             String              @id @default(uuid()) @db.Uuid
+  conversationId String              @db.Uuid
+  conversation   Tenant_Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  direction      String // IN | OUT
+  content        String
+  externalId     String?
+  status         String?
+  timestamp      DateTime            @default(now())
+  createdAt      DateTime            @default(now())
+
+  @@index([conversationId])
 }
 
 model WhatsApp_Conversation {

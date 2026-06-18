@@ -24,6 +24,7 @@ import { generateDocumentThumbnail } from "@/inngest/functions/documents/generat
 import { syncExchangeRates } from "@/inngest/functions/ecb/sync-exchange-rates";
 import { ingestWhatsAppMessage } from "@/inngest/functions/whatsapp/ingest-message";
 import { whatsappBotReply } from "@/inngest/functions/whatsapp/bot-reply";
+import { tenantAgentMessage } from "@/inngest/functions/tenant/agent-message";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
@@ -52,5 +53,6 @@ export const { GET, POST, PUT } = serve({
     syncExchangeRates,
     ingestWhatsAppMessage,
     whatsappBotReply,
+    tenantAgentMessage,
   ],
 });

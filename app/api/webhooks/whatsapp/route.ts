@@ -64,15 +64,31 @@ export async function POST(req: NextRequest) {
   const msg = parseMessage(payload);
   // só processa mensagens de ENTRADA (não enviadas por nós) e com número
   if (msg && msg.number && !msg.fromMe && msg.text) {
-    await inngest.send({
-      name: "whatsapp/message.received",
-      data: {
-        number: msg.number,
-        text: msg.text,
-        pushName: msg.pushName,
-        evolutionMessageId: msg.evoId,
-      },
-    });
+    const tenantId = req.nextUrl.searchParams.get("tenant");
+    if (tenantId) {
+      // mensagem para a linha de um CLIENTE → agente do tenant
+      await inngest.send({
+        name: "tenant/message.received",
+        data: {
+          tenantId,
+          channel: "whatsapp",
+          number: msg.number,
+          text: msg.text,
+          pushName: msg.pushName,
+          externalId: msg.evoId,
+        },
+      });
+    } else {
+      await inngest.send({
+        name: "whatsapp/message.received",
+        data: {
+          number: msg.number,
+          text: msg.text,
+          pushName: msg.pushName,
+          evolutionMessageId: msg.evoId,
+        },
+      });
+    }
   }
 
   return NextResponse.json({ ok: true });
