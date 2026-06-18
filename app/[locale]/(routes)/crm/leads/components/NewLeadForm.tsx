@@ -44,7 +44,7 @@ export function NewLeadForm({ accounts, leadSources, leadStatuses, leadTypes, on
 
   const formSchema = z.object({
     first_name: z.string().optional(),
-    last_name: z.string().min(1, t("lastNameRequired")).max(30),
+    last_name: z.string().min(1, t("lastNameRequired")).max(60),
     company: z.string().optional(),
     jobTitle: z.string().optional(),
     email: z.string().email(t("emailInvalid")).or(z.literal("")).optional(),

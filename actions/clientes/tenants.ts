@@ -28,13 +28,21 @@ export const listTenants = async () => {
 export const getTenant = async (id: string) => {
   const session = await getSession();
   if (!session) return null;
-  return prismadb.client_Tenant.findFirst({
+  const data = await prismadb.client_Tenant.findFirst({
     where: { id, deletedAt: null },
     include: {
       availability: { orderBy: [{ weekday: "asc" }, { start_time: "asc" }] },
       appointments: { orderBy: { scheduled_at: "desc" }, take: 100 },
     },
   });
+  if (!data) return null;
+  const conversations = await prismadb.tenant_Conversation.findMany({
+    where: { clientTenantId: id },
+    orderBy: { lastMessageAt: "desc" },
+    take: 50,
+    include: { _count: { select: { messages: true } } },
+  });
+  return { ...data, conversations };
 };
 
 export const createTenant = async (input: {

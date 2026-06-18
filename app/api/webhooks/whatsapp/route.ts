@@ -10,6 +10,7 @@ function parseMessage(payload: any): {
   fromMe: boolean;
   pushName: string | null;
   evoId: string | null;
+  isGroup: boolean;
 } | null {
   const d = payload?.data ?? payload ?? {};
   // JID do remetente em vários formatos
@@ -22,6 +23,12 @@ function parseMessage(payload: any): {
     d?.chatId ||
     payload?.sender ||
     null;
+  // grupos têm JID @g.us (e broadcast/status @broadcast) — não são conversas privadas
+  const jidStr = jid ? String(jid) : "";
+  const isGroup =
+    /@g\.us/i.test(jidStr) ||
+    /@broadcast/i.test(jidStr) ||
+    !!(d?.key?.participant || d?.Info?.IsGroup || d?.isGroup);
   const number = jid ? String(jid).replace(/[@:].*$/, "").replace(/\D/g, "") : null;
 
   const text =
@@ -39,7 +46,7 @@ function parseMessage(payload: any): {
   const evoId = d?.key?.id || d?.Info?.ID || d?.id || null;
 
   if (!number && !text) return null;
-  return { number, text, fromMe, pushName, evoId };
+  return { number, text, fromMe, pushName, evoId, isGroup };
 }
 
 export async function POST(req: NextRequest) {
@@ -62,6 +69,10 @@ export async function POST(req: NextRequest) {
   } catch {}
 
   const msg = parseMessage(payload);
+  // ignora grupos/broadcast (não são conversas privadas) — evita virar lead/conversa
+  if (msg?.isGroup) {
+    return NextResponse.json({ ok: true, skipped: "group" });
+  }
   // só processa mensagens de ENTRADA (não enviadas por nós) e com número
   if (msg && msg.number && !msg.fromMe && msg.text) {
     const tenantId = req.nextUrl.searchParams.get("tenant");

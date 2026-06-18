@@ -36,6 +36,7 @@ export async function generateTenantReply(tenantId: string, conversationId: stri
 
   const conv = await prismadb.tenant_Conversation.findUnique({ where: { id: conversationId } });
   if (!conv) return { reply: "", handoff: false, scheduled: false, skipped: "conv" };
+  if (conv.agent_paused) return { reply: "", handoff: true, scheduled: false, skipped: "pausado (humano)" };
 
   const msgs = await prismadb.tenant_Message.findMany({
     where: { conversationId },
@@ -93,9 +94,10 @@ export async function generateTenantReply(tenantId: string, conversationId: stri
             clientTenantId: tenant.id,
             scheduled_at: when,
             customer_name: (schedMatch[2] || "").trim() || conv.name || null,
-            customer_phone: (schedMatch[3] || "").trim() || conv.remoteNumber || null,
+            customer_phone: (schedMatch[3] || "").trim() || (conv.channel === "whatsapp" ? conv.remoteNumber : null),
             source: conv.channel,
             status: "scheduled",
+            confirmation_sent: true, // o agente já confirma na própria resposta
           },
         });
         scheduled = true;

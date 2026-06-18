@@ -33,6 +33,7 @@ export default function LeadFunnelPanel({ lead }: { lead: any }) {
   const [previewDomain, setPreviewDomain] = useState<string>(lead.preview_domain || "");
   const [uploading, setUploading] = useState(false);
   const [savingProposal, setSavingProposal] = useState(false);
+  const [publishing, setPublishing] = useState(false);
 
   const [botStatus, setBotStatus] = useState<string>(lead.bot_status || "idle");
   const [draft, setDraft] = useState<string>(lead.bot_draft || "");
@@ -92,6 +93,35 @@ export default function LeadFunnelPanel({ lead }: { lead: any }) {
     const next = images.filter((u) => u !== url);
     setImages(next);
     await saveLeadProposal({ leadId: lead.id, proposal_images: next });
+  }
+
+  async function publishZip(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = (e.target.files || [])[0];
+    if (!file) return;
+    if (!previewSlug.trim()) {
+      toast.error("Defina o slug da prévia e salve antes de publicar o ZIP");
+      e.target.value = "";
+      return;
+    }
+    setPublishing(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("slug", previewSlug.trim());
+      fd.append("leadId", lead.id);
+      const res = await fetch("/api/preview/upload", { method: "POST", body: fd });
+      const j = await res.json();
+      if (!res.ok) toast.error(j?.error || "Falha ao publicar");
+      else {
+        if (j.preview_url) setPreviewUrl(j.preview_url);
+        toast.success("Prévia publicada");
+      }
+    } catch (err: any) {
+      toast.error(err?.message || "Falha ao publicar");
+    } finally {
+      setPublishing(false);
+      e.target.value = "";
+    }
   }
 
   async function saveProposal() {
@@ -240,11 +270,16 @@ export default function LeadFunnelPanel({ lead }: { lead: any }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <Button size="sm" onClick={saveProposal} disabled={savingProposal}>
               {savingProposal && <Loader2 className="h-4 w-4 animate-spin mr-2" />}
               Salvar proposta
             </Button>
+            <label className="inline-flex items-center text-sm border rounded px-3 py-1.5 cursor-pointer hover:bg-muted">
+              {publishing ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <UploadCloud className="h-4 w-4 mr-2" />}
+              Publicar site (.zip)
+              <input type="file" accept=".zip,application/zip" className="hidden" onChange={publishZip} disabled={publishing} />
+            </label>
             {previewUrl && (
               <a
                 href={previewUrl}

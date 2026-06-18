@@ -18,6 +18,11 @@ const ADMIN_ONLY_PATHS = [
 export async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
+  // Páginas embutíveis (iframe sem sessão do CRM, ex.: Dashboard App do Chatwoot)
+  if (path.startsWith("/embed")) {
+    return NextResponse.next();
+  }
+
   // Inngest webhook — pass through, Inngest handles its own auth via signing key
   if (path.startsWith("/api/inngest")) {
     return NextResponse.next();

@@ -1944,6 +1944,7 @@ model Tenant_Conversation {
   remoteNumber   String // telefone (WhatsApp) ou id do visitante (widget)
   channel        String            @default("whatsapp") // whatsapp | widget
   name           String?
+  agent_paused   Boolean           @default(false) // humano assumiu esta conversa
   lastMessageAt  DateTime?
   unreadCount    Int               @default(0)
   createdAt      DateTime          @default(now())
@@ -2057,6 +2058,8 @@ model Appointment {
   status           String        @default("scheduled") // scheduled | confirmed | cancelled | done
   notes            String?
   source           String? // whatsapp | widget | manual
+  confirmation_sent Boolean      @default(false)
+  reminder_sent    Boolean       @default(false)
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
 

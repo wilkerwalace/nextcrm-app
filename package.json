@@ -66,6 +66,7 @@
     "@tiptap/starter-kit": "^3.20.5",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
+    "adm-zip": "^0.5.17",
     "ai": "^6.0.99",
     "autoprefixer": "^10.4.24",
     "aws-crt": "^1.29.0",
@@ -130,6 +131,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
+    "@types/adm-zip": "^0.5.8",
     "@types/bcrypt": "^6.0.0",
     "@types/bcryptjs": "^3.0.0",
     "@types/imap": "^0.8.43",

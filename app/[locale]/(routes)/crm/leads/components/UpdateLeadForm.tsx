@@ -47,7 +47,7 @@ export function UpdateLeadForm({ initialData, setOpen, leadSources, leadStatuses
   const formSchema = z.object({
     id: z.uuid(),
     firstName: z.string().optional().nullable(),
-    lastName: z.string().min(1, t("lastNameRequired")).max(30),
+    lastName: z.string().min(1, t("lastNameRequired")).max(60),
     company: z.string().nullable().optional(),
     jobTitle: z.string().nullable().optional(),
     email: z.string().email(t("emailInvalid")).nullable().optional().or(z.literal("")),

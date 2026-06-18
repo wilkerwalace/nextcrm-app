@@ -8,7 +8,8 @@ export const leadSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   firstName: z.string().optional().nullable(),
-  lastName: z.string().min(3).max(30).nonempty(),
+  // min(1): leads criados via WhatsApp podem ter nome curto (ex.: pushName de 1-2 chars)
+  lastName: z.string().min(1).max(60),
 });
 
 export type Lead = z.infer<typeof leadSchema>;

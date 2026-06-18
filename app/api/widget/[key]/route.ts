@@ -14,6 +14,22 @@ export async function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: CORS });
 }
 
+// rate-limit simples em memória: janela de 60s por (key+visitante)
+const RL = new Map<string, { n: number; ts: number }>();
+const RL_MAX = 20;
+const RL_WINDOW = 60_000;
+function rateLimited(id: string): boolean {
+  const now = Date.now();
+  const cur = RL.get(id);
+  if (!cur || now - cur.ts > RL_WINDOW) {
+    RL.set(id, { n: 1, ts: now });
+    if (RL.size > 5000) RL.clear(); // guarda contra crescimento
+    return false;
+  }
+  cur.n++;
+  return cur.n > RL_MAX;
+}
+
 async function tenantByKey(key: string) {
   if (!key) return null;
   return prismadb.client_Tenant.findFirst({
@@ -53,6 +69,10 @@ export async function POST(req: NextRequest, ctx: any) {
   const visitorId = String(body?.visitorId || "anon").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 60) || "anon";
   const text = String(body?.text || "").trim().slice(0, 2000);
   if (!text) return NextResponse.json({ error: "empty" }, { status: 400, headers: CORS });
+
+  if (rateLimited(`${key}:${visitorId}`)) {
+    return NextResponse.json({ reply: "Você enviou muitas mensagens. Aguarde um instante 🙂" }, { headers: CORS });
+  }
 
   const remoteNumber = `web_${visitorId}`;
   const conv = await prismadb.tenant_Conversation.upsert({

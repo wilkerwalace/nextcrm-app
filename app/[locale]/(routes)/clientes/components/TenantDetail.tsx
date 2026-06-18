@@ -14,6 +14,7 @@ import { Loader2, Save, RefreshCw, Plus } from "lucide-react";
 import { updateTenant, regenWidgetKey } from "@/actions/clientes/tenants";
 import { setAvailability, createAppointment, updateAppointmentStatus } from "@/actions/clientes/agenda";
 import TenantWhatsAppConnect from "./TenantWhatsAppConnect";
+import TenantConversations from "./TenantConversations";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
@@ -126,9 +127,14 @@ export default function TenantDetail({ tenant }: { tenant: any }) {
     <Tabs defaultValue="agente">
       <TabsList>
         <TabsTrigger value="agente">Agente</TabsTrigger>
+        <TabsTrigger value="conversas">Conversas</TabsTrigger>
         <TabsTrigger value="agenda">Agenda</TabsTrigger>
         <TabsTrigger value="canais">Canais</TabsTrigger>
       </TabsList>
+
+      <TabsContent value="conversas">
+        <TenantConversations conversations={tenant.conversations || []} />
+      </TabsContent>
 
       {/* AGENTE */}
       <TabsContent value="agente">
